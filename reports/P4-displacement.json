@@ -1,0 +1,54 @@
+{
+  "method": "regularized signed displacement residual table + source/target port offsets",
+  "reference": "Marquardt et al. 2000 \u00a73.1; adaptation is experimental, not claimed exact",
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "elapsed_seconds": 14.109773208,
+  "results": [
+    {
+      "bin_width_x": 2,
+      "bin_width_y": 4,
+      "table_entries": 31063,
+      "score_positive": 85.13826004816374,
+      "relative_error_p50": 0.024883359253499222,
+      "relative_error_p95": 0.12807881773399016,
+      "relative_error_p99": 0.24630541871921183,
+      "zero_golden_rows": 0,
+      "zero_exact": 0
+    },
+    {
+      "bin_width_x": 4,
+      "bin_width_y": 8,
+      "table_entries": 8227,
+      "score_positive": 85.16438669415321,
+      "relative_error_p50": 0.02477810650887574,
+      "relative_error_p95": 0.12742718446601942,
+      "relative_error_p99": 0.24731182795698925,
+      "zero_golden_rows": 0,
+      "zero_exact": 0
+    },
+    {
+      "bin_width_x": 1,
+      "bin_width_y": 2,
+      "table_entries": 107781,
+      "score_positive": 85.07681440463325,
+      "relative_error_p50": 0.024935649935649937,
+      "relative_error_p95": 0.12815656565656566,
+      "relative_error_p99": 0.24800796812749004,
+      "zero_golden_rows": 0,
+      "zero_exact": 0
+    },
+    {
+      "bin_width_x": 8,
+      "bin_width_y": 16,
+      "table_entries": 2153,
+      "score_positive": 85.16855442350047,
+      "relative_error_p50": 0.024771838331160364,
+      "relative_error_p95": 0.1276595744680851,
+      "relative_error_p99": 0.2490974729241877,
+      "zero_golden_rows": 0,
+      "zero_exact": 0
+    }
+  ],
+  "holdout_used": false
+}
