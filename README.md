@@ -9,6 +9,7 @@
 - [论文原文与阅读笔记](papers/README.md)
 - [实施计划、验收条件与参考文献](docs/PLAN.md)
 - [数据审计与精确基线阶段报告](reports/BASELINE.md)
+- [P4 压缩搜索实验](reports/P4-compression.md)
 
 ## 评测要求
 
@@ -51,11 +52,14 @@ make check
 python3 scripts/prepare_splits.py
 python3 scripts/prepare_stress.py
 python3 scripts/verify_stress.py
+python3 scripts/verify_compression.py
 build/estimate -in out/baseline/official8_bidirectional.request.csv -out out/result.csv
 ```
 
 `make check` 包括规则边界与评分测试、官方8条最短路检查、单向/双向对照、8条开发集样本、同点与重复请求。`out/` 保存生成数据、测量日志和报告；`reports/` 保存阶段快照。大规模百万条精确求解需要明显更长时间，先按计划开展加速实验。
 
 `prepare_stress.py`与`verify_stress.py`负责44组开发集交叉分层样本，当前全部匹配。本机此组耗时约41秒、峰值RSS约0.96GB；这是精确基线的测量，不是比赛运行性能承诺。
+
+实验选项 `--algorithm compressed` 使用Arc/Net严格交替性质，只搜索互联Input状态；44条开发分层样本输出与原图完全一致，本机端到端耗时约19.7秒、峰值RSS约0.34GB。默认算法仍是原图双向Dijkstra，用于独立对照。
 
 开发/验证/最终留出按请求对哈希固定划分为 700,705 / 150,053 / 149,242 条。请求和golden分文件保存，最终留出尚未用于算法评估。输入全量审计发现1条golden=0；评分工具单独报告零延时样本，不擅自补充官方未定义的除零规则。

@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <limits>
+#include <memory>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
@@ -68,6 +69,7 @@ class Graph {
 
 public:
     Node nodes() const { return std::size(archdata::SITES)*archdata::P; }
+    Node sites() const { return std::size(archdata::SITES); }
     Graph():grid(archdata::WIDTH*archdata::HEIGHT,-1),
             forward(std::size(archdata::SITES)*archdata::K), backward(forward.size()) {
         static_assert(std::size(archdata::BLOCKS)<=64);
@@ -114,6 +116,14 @@ public:
         auto it=port_ids.find(s.substr(slash+1));
         if(site<0 || it==port_ids.end()) throw std::runtime_error("Unknown pin: "+s);
         return static_cast<Node>(site)*archdata::P+it->second;
+    }
+
+    const std::vector<LocalEdge>& local_out(unsigned p) const { return arcs[p]; }
+    const std::vector<LocalEdge>& local_in(unsigned p) const { return reverse_arcs[p]; }
+    int net_out(unsigned p) const { return net_from[p]; }
+    int net_in(unsigned p) const { return net_to[p]; }
+    Move net_move(Node site,int net,bool reverse) const {
+        return (reverse?backward:forward)[site*archdata::K+archdata::NETS[net].vector];
     }
 
     template<class Visitor> void neighbors(Node u,bool reverse,Visitor visit) const {
@@ -212,6 +222,101 @@ public:
     }
 };
 
+// Arc edges always go Input -> Output; Net edges always Output -> Input.
+// Interior vertices can therefore be reduced to 160 inter-SRB Input ports.
+class CompactSolver {
+    const Graph& graph;
+    std::array<int,archdata::P> input_index;
+    std::vector<uint16_t> input_ports;
+    Frontier forward,backward;
+    Node state(Node site,int port) const { return site*input_ports.size()+input_index[port]; }
+    template<class Visitor> void neighbors(Node u,bool reverse,Visitor visit) const {
+        const Node site=u/input_ports.size();
+        const auto port=input_ports[u%input_ports.size()];
+        if(!reverse) {
+            for(auto edge:graph.local_out(port)) {
+                const int ni=graph.net_out(edge.port);
+                if(ni<0) continue;
+                auto moved=graph.net_move(site,ni,false);
+                if(moved.site!=NONE) {
+                    const auto& net=archdata::NETS[ni];
+                    visit(state(moved.site,net.to),edge.delay+net.delay+moved.delay);
+                }
+            }
+        } else {
+            const int ni=graph.net_in(port);
+            if(ni<0) throw std::runtime_error("Missing reverse Net for input port");
+            const auto& net=archdata::NETS[ni];
+            auto moved=graph.net_move(site,ni,true);
+            if(moved.site==NONE) return;
+            for(auto edge:graph.local_in(net.from)) {
+                if(input_index[edge.port]>=0)
+                    visit(state(moved.site,edge.port),edge.delay+net.delay+moved.delay);
+            }
+        }
+    }
+    void start(Node pin) {
+        Node site=pin/archdata::P,port=pin%archdata::P;
+        if(input_index[port]>=0) { forward.improve(state(site,port),0); return; }
+        int ni=graph.net_out(port);
+        if(ni>=0) {
+            auto m=graph.net_move(site,ni,false);
+            if(m.site!=NONE) forward.improve(state(m.site,archdata::NETS[ni].to),m.delay+archdata::NETS[ni].delay);
+            return;
+        }
+        for(auto edge:graph.local_out(port)) {
+            ni=graph.net_out(edge.port);
+            if(ni<0) continue;
+            auto m=graph.net_move(site,ni,false);
+            if(m.site!=NONE) forward.improve(state(m.site,archdata::NETS[ni].to),edge.delay+m.delay+archdata::NETS[ni].delay);
+        }
+    }
+    void finish(Node pin) {
+        Node site=pin/archdata::P,port=pin%archdata::P;
+        if(input_index[port]>=0) { backward.improve(state(site,port),0); return; }
+        for(auto edge:graph.local_in(port))
+            if(input_index[edge.port]>=0) backward.improve(state(site,edge.port),edge.delay);
+    }
+public:
+    explicit CompactSolver(const Graph& g):graph(g),forward(g.sites()*std::size(archdata::NETS)),
+                                             backward(g.sites()*std::size(archdata::NETS)) {
+        input_index.fill(-1);
+        for(const auto& net:archdata::NETS) {
+            if(input_index[net.to]>=0) throw std::runtime_error("Inter-input port has multiple Net templates");
+            input_index[net.to]=input_ports.size();
+            input_ports.push_back(net.to);
+        }
+        if(input_ports.size()!=160) throw std::runtime_error("Unexpected inter-input count");
+    }
+    Distance solve(Node source,Node target,SearchStats& stats) {
+        forward.reset(); backward.reset();
+        if(source==target) return 0;
+        Distance best=INF;
+        // A query can begin on a logic Input and end on a logic Output
+        // inside the same SRB without using a Net.
+        if(source/archdata::P==target/archdata::P)
+            for(auto edge:graph.local_out(source%archdata::P))
+                if(edge.port==target%archdata::P) best=std::min(best,Distance(edge.delay));
+        start(source); finish(target);
+        while(!forward.empty() && !backward.empty()) {
+            if(forward.top()+backward.top()>=best) break;
+            const bool reverse=backward.top()<forward.top();
+            Frontier& current=reverse?backward:forward;
+            Frontier& other=reverse?forward:backward;
+            Node u=current.pop(); ++stats.settled;
+            Distance du=current.get(u);
+            best=std::min(best,du+other.get(u));
+            neighbors(u,reverse,[&](Node v,uint32_t weight) {
+                ++stats.relaxations;
+                Distance dv=du+weight;
+                current.improve(v,dv);
+                best=std::min(best,dv+other.get(v));
+            });
+        }
+        return best;
+    }
+};
+
 std::string trim(std::string s) {
     auto a=s.find_first_not_of(" \t\r\n"), b=s.find_last_not_of(" \t\r\n");
     return a==std::string::npos?"":s.substr(a,b-a+1);
@@ -223,7 +328,7 @@ int main(int argc,char** argv) {
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra] [--stats stats.csv]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed] [--stats stats.csv]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -234,7 +339,7 @@ int main(int argc,char** argv) {
         }
         if(input.empty() || output.empty() || input==output) throw std::runtime_error("Provide distinct -in and -out files");
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -248,7 +353,11 @@ int main(int argc,char** argv) {
             stats<<"row,delay,wall_ms,settled,relaxations\n";
         }
         const auto cpu_start=std::clock();
-        Graph graph; Solver solver(graph);
+        Graph graph;
+        std::unique_ptr<Solver> solver;
+        std::unique_ptr<CompactSolver> compact_solver;
+        if(algorithm=="compressed") compact_solver=std::make_unique<CompactSolver>(graph);
+        else solver=std::make_unique<Solver>(graph);
         out<<"From,To,delay\n";
         std::string line; uint64_t row=0;
         while(std::getline(in,line)) {
@@ -259,7 +368,8 @@ int main(int argc,char** argv) {
             std::string s=trim(line.substr(0,comma)),t=trim(line.substr(comma+1));
             auto start=std::chrono::steady_clock::now();
             SearchStats counters;
-            Distance d=solver.solve(graph.pin(s),graph.pin(t),algorithm=="bidirectional",counters);
+            Node from=graph.pin(s),to=graph.pin(t);
+            Distance d=compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+s+" -> "+t+"; official output convention unspecified");
             auto ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
             out<<s<<','<<t<<','<<d<<'\n';

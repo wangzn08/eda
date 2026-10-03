@@ -12,6 +12,13 @@ def main():
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     a = Architecture(args.arch)
+    direction={p['Name']:p['Direction'] for p in a.ports}
+    if any(direction[x['from']]!='Input' or direction[x['to']]!='Output' for x in a.arcs):
+        raise ValueError('Compact search requires every Arc to go Input -> Output')
+    if any(direction[x['from']]!='Output' or direction[x['to']]!='Input' for x in a.nets):
+        raise ValueError('Compact search requires every Net to go Output -> Input')
+    if len({x['from'] for x in a.nets})!=len(a.nets) or len({x['to'] for x in a.nets})!=len(a.nets):
+        raise ValueError('Compact search requires unique inter-port Net templates')
     vectors = sorted({(n['delta x'], n['delta y']) for n in a.nets})
     fingerprint = hashlib.sha256(b''.join(p.read_bytes() for p in sorted(args.arch.glob('SRB_*.json')))).hexdigest()
     lines = ['// Generated from architecture JSON only. No request or answer data.', '#pragma once',

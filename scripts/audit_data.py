@@ -28,6 +28,9 @@ def main():
     for item in a.arcs + a.nets:
         assert item['from'] in a.port_ids and item['to'] in a.port_ids
         assert isinstance(item.get('delay', 0), int) and item.get('delay', 0) >= 0
+    direction={p['Name']:p['Direction'] for p in a.ports}
+    assert all(direction[x['from']]=='Input' and direction[x['to']]=='Output' for x in a.arcs)
+    assert all(direction[x['from']]=='Output' and direction[x['to']]=='Input' for x in a.nets)
     for n in a.nets:
         assert bool(n['delta x']) != bool(n['delta y'])
     for item in a.lines:
