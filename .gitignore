@@ -3,3 +3,7 @@ data/
 build/
 out/
 *.log
+papers/*.pdf
+papers/*.txt
+__pycache__/
+*.pyc

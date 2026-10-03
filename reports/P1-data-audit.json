@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "files": {
+    "data/EDA-PANGO-SRB-Arch-Delay/arch/SRB_Arc.json": {
+      "bytes": 837145,
+      "sha256": "6c51e426b6820246151d903bf16d58ff9b857be5648243f10258055de8b19dff"
+    },
+    "data/EDA-PANGO-SRB-Arch-Delay/arch/SRB_Gap.json": {
+      "bytes": 3969,
+      "sha256": "5e6a156373bcb8c1a653381d2a2cc7f16db1a2fec0e44362c936d99b66d9d6dd"
+    },
+    "data/EDA-PANGO-SRB-Arch-Delay/arch/SRB_Inst.json": {
+      "bytes": 4266018,
+      "sha256": "5b7dc880f67007b7fb10e33ac0864110a1c7604813a8730aedef60216000e277"
+    },
+    "data/EDA-PANGO-SRB-Arch-Delay/arch/SRB_Net.json": {
+      "bytes": 21062,
+      "sha256": "4231b9d315f9e27646aaae8d4fa35581825bbd07d4186d2f7f44813af6c22244"
+    },
+    "data/EDA-PANGO-SRB-Arch-Delay/arch/SRB_Port.json": {
+      "bytes": 31858,
+      "sha256": "e45cce375c1e14253ff3bdb4839962a97a46b4ea996917b36b189efd823d6515"
+    },
+    "data/EDA-PANGO-SRB-Arch-Delay/data/delay_estimate_ans.csv": {
+      "bytes": 41333954,
+      "sha256": "2d3350b1aed4b7489fbd2fc361b2d680a422db218159a07938782ed850b4c19f"
+    },
+    "data/EDA-PANGO-SRB-Arch-Delay/data/delay_estimate_check.csv": {
+      "bytes": 2969,
+      "sha256": "491521637846b5d2155ec26ba59393e8c642d27bd055a3702a882949853829f7"
+    }
+  },
+  "architecture": {
+    "width": 120,
+    "height": 550,
+    "instances": 60200,
+    "ports": 496,
+    "arcs": 8192,
+    "net_templates": 160,
+    "line_gaps": 19,
+    "block_gaps": 7,
+    "absent_sites": 5800,
+    "implicit_nodes": 29859200,
+    "expanded_internal_edges": 493158400,
+    "arc_delay_min": 48,
+    "arc_delay_max": 135,
+    "net_vectors": [
+      [
+        -10,
+        0
+      ],
+      [
+        -4,
+        0
+      ],
+      [
+        -2,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -12
+      ],
+      [
+        0,
+        -4
+      ],
+      [
+        0,
+        -2
+      ],
+      [
+        0,
+        -1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        12
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        10,
+        0
+      ]
+    ],
+    "net_base_delay": "absent in official JSON; interpreted as zero"
+  },
+  "path_replays": [
+    {
+      "from": "SRB_18_95/A_FQ0",
+      "to": "SRB_38_57/ZDN[7]",
+      "golden": 973,
+      "sum": 973,
+      "edges": 17
+    },
+    {
+      "from": "SRB_89_372/ZLE[0]",
+      "to": "SRB_114_366/ZSSB[1]",
+      "golden": 843,
+      "sum": 843,
+      "edges": 12
+    },
+    {
+      "from": "SRB_25_119/ZSNA[7]",
+      "to": "SRB_34_72/ZSNA[7]",
+      "golden": 786,
+      "sum": 786,
+      "edges": 16
+    },
+    {
+      "from": "SRB_50_398/S_CY",
+      "to": "SRB_21_380/S_G3",
+      "golden": 997,
+      "sum": 997,
+      "edges": 17
+    },
+    {
+      "from": "SRB_80_491/ZLE[0]",
+      "to": "SRB_74_540/ZSEA[0]",
+      "golden": 929,
+      "sum": 929,
+      "edges": 18
+    },
+    {
+      "from": "SRB_89_372/ZDS[5]",
+      "to": "SRB_88_387/ZDS[0]",
+      "golden": 562,
+      "sum": 562,
+      "edges": 14
+    },
+    {
+      "from": "SRB_28_463/S_HY",
+      "to": "SRB_38_478/ZLW[3]",
+      "golden": 692,
+      "sum": 692,
+      "edges": 15
+    },
+    {
+      "from": "SRB_103_107/ZSNB[3]",
+      "to": "SRB_112_126/ZDS[6]",
+      "golden": 661,
+      "sum": 661,
+      "edges": 14
+    }
+  ],
+  "public_samples": {
+    "rows": 1000000,
+    "unique_pairs": 1000000,
+    "duplicate_rows": 0,
+    "unique_sources": 903129,
+    "unique_targets": 956421,
+    "golden_min": 0,
+    "golden_max": 8385,
+    "zero_golden": 1,
+    "split_rows": {
+      "development": 700705,
+      "holdout": 149242,
+      "validation": 150053
+    },
+    "split_unique_pairs": {
+      "development": 700705,
+      "holdout": 149242,
+      "validation": 150053
+    },
+    "source_types": {
+      "INTER": 673280,
+      "LOGIC": 326720
+    },
+    "target_types": {
+      "INTER": 657842,
+      "LOGIC": 342158
+    },
+    "manhattan_distance_histogram": {
+      "256+": 361623,
+      "64-255": 540662,
+      "16-63": 90475,
+      "0-15": 7240
+    }
+  },
+  "scope": "Path replay validates legal edges and sums; it does not independently prove shortest distances. No held-out prediction scores are computed."
+}

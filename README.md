@@ -6,6 +6,9 @@
 
 - [赛事页面](https://cpipc.acge.org.cn/cw/hp/2c9080158ee9c272018f229208b610a6)
 - [赛题指南](https://cpipc.acge.org.cn/sysFile/downFile.do?fileId=e199a7633bda47ebb59331c1831f2faa)
+- [论文原文与阅读笔记](papers/README.md)
+- [实施计划、验收条件与参考文献](docs/PLAN.md)
+- [数据审计与精确基线阶段报告](reports/BASELINE.md)
 
 ## 评测要求
 
@@ -26,3 +29,33 @@
 4. 针对大规模查询优化预处理、查询路径和文件读写。
 
 `data/` 和构建产物不纳入 Git，避免提交大型赛题数据或本地生成文件。
+
+## 已收到的官方附件
+
+- `data/EDA-PANGO-SRB-Arch-Delay/arch/`：五份架构 JSON，分别有 60,200 个 Inst、496 个 Port、8,192 条 Arc、160 种 Net，以及 19 条 Line Gap 和 7 个 Block Gap。
+- `data/EDA-PANGO-SRB-Arch-Delay/data/delay_estimate_ans.csv`：1,000,000 行带答案的公开样本，列为 `From,To,delay`。
+- `data/EDA-PANGO-SRB-Arch-Delay/data/delay_estimate_check.csv`：8 行带最短路径的检查样例，列为 `From,To,Min Delay,Path`。
+- `data/紫光同创-EDA竞赛/`：两份 DOCX 格式说明，以及 `SRB_LOGIC_PORT.vsd`、`SRB_NET.vsd` 两张连接示意图。
+- 仓库根目录的赛题 PDF 是 V0.3 版，日期为 2026-08-31。
+
+压缩包内未见单独的 `delay_estimate_request.csv`；公开答案 CSV 的 `From,To` 两列可用于本地生成请求文件。Block Gap 会改变跨块 Net 的终点，Line Gap 会增加跨越延时，建图时必须按说明文件处理。
+
+## 当前实现与复跑方法
+
+已实现 C++17 精确参考程序：共享 Arc 模板，按官方规则预生成 Net 的几何映射，支持单向和双向 Dijkstra。默认双向，架构在构建时内嵌；执行时无需 JSON 或答案文件。当前用于核对正确性，远距离查询仍需秒级，尚不满足十亿请求的时间要求。
+
+```sh
+make -j1
+make audit
+make check
+python3 scripts/prepare_splits.py
+python3 scripts/prepare_stress.py
+python3 scripts/verify_stress.py
+build/estimate -in out/baseline/official8_bidirectional.request.csv -out out/result.csv
+```
+
+`make check` 包括规则边界与评分测试、官方8条最短路检查、单向/双向对照、8条开发集样本、同点与重复请求。`out/` 保存生成数据、测量日志和报告；`reports/` 保存阶段快照。大规模百万条精确求解需要明显更长时间，先按计划开展加速实验。
+
+`prepare_stress.py`与`verify_stress.py`负责44组开发集交叉分层样本，当前全部匹配。本机此组耗时约41秒、峰值RSS约0.96GB；这是精确基线的测量，不是比赛运行性能承诺。
+
+开发/验证/最终留出按请求对哈希固定划分为 700,705 / 150,053 / 149,242 条。请求和golden分文件保存，最终留出尚未用于算法评估。输入全量审计发现1条golden=0；评分工具单独报告零延时样本，不擅自补充官方未定义的除零规则。

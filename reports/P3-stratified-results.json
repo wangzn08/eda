@@ -1,0 +1,32 @@
+{
+  "rows": 44,
+  "exact_matches": 44,
+  "positive_delay_score": 100.0,
+  "zero_golden_rows": 0,
+  "zero_exact_matches": 0,
+  "relative_error_p50": 0.0,
+  "relative_error_p95": 0.0,
+  "relative_error_p99": 0.0,
+  "max_relative_error": 0.0,
+  "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately.",
+  "name": "development44_stratified",
+  "algorithm": "bidirectional",
+  "wall_seconds": 41.040590084,
+  "cpu_user_plus_system_seconds_rounded": 40.989999999999995,
+  "peak_rss_bytes": 957906944,
+  "query_wall_ms_min": 0.127833,
+  "query_wall_ms_max": 5656.71,
+  "query_wall_ms_median": 94.3926,
+  "query_wall_ms_p95": 3853.88,
+  "query_wall_ms_p99": 5656.71,
+  "output_sha256": "4bb5d8aadac5bba017b7826a832d04f4071e4cc9bdc67637ac9541c069b1f39b",
+  "command": [
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/build/estimate",
+    "-in",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/baseline/development44_stratified.request.csv",
+    "-out",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/baseline/development44_stratified.result.csv",
+    "--stats",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/baseline/development44_stratified.stats.csv"
+  ]
+}

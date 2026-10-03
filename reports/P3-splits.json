@@ -1,0 +1,35 @@
+{
+  "partition": "BLAKE2b-64(From + NUL + To), little-endian modulo 100; <70 development, <85 validation, otherwise holdout",
+  "counts": {
+    "development": 700705,
+    "holdout": 149242,
+    "validation": 150053
+  },
+  "files": {
+    "development.golden.csv": {
+      "bytes": 28962661,
+      "sha256": "a57487e145016bfb1c1852b679b01cc9579a4cb224498e73114cfad801947bcd"
+    },
+    "development.request.csv": {
+      "bytes": 25501900,
+      "sha256": "8be0fbfdae33b26d59b17a9432c7ef01484b18c5ead100e24c02d0f480b5ea6b"
+    },
+    "holdout.golden.csv": {
+      "bytes": 6168508,
+      "sha256": "9b81448e518b710cbbf15764225fdfdd66234f98d898ea38d61fa27a028294f2"
+    },
+    "holdout.request.csv": {
+      "bytes": 5431293,
+      "sha256": "9cc468ed745cd358fe06679021693cb20974b692d4afefac3da51074d84bc425"
+    },
+    "validation.golden.csv": {
+      "bytes": 6202815,
+      "sha256": "928bcf43ab485db2547858ead380c82855a82d5fdb473e5f30a2a74d0ed10ed1"
+    },
+    "validation.request.csv": {
+      "bytes": 5461450,
+      "sha256": "89b10db93f67a2f151364f8cb56eab77c697cf1e90ccedfcf1573152031b4cb4"
+    }
+  },
+  "note": "Splits prepared only; no validation or holdout predictions evaluated."
+}

@@ -1,0 +1,407 @@
+{
+  "selection": "First development request in each distance \u00d7 endpoint types \u00d7 geometry category; deterministic, no holdout.",
+  "geometry_note": "block_bbox and line_span describe endpoint geometry; they do NOT prove the shortest path crosses a particular obstacle.",
+  "rows": 44,
+  "groups": [
+    {
+      "group": "0-15|INTER|INTER|block_bbox",
+      "population": 8,
+      "sample": {
+        "From": "SRB_69_201/ZSNB[2]",
+        "To": "SRB_76_193/ZLN[0]",
+        "delay": "777"
+      }
+    },
+    {
+      "group": "0-15|INTER|INTER|line_span",
+      "population": 1225,
+      "sample": {
+        "From": "SRB_90_206/ZDW[0]",
+        "To": "SRB_96_213/ZSNA[1]",
+        "delay": "1124"
+      }
+    },
+    {
+      "group": "0-15|INTER|INTER|regular",
+      "population": 928,
+      "sample": {
+        "From": "SRB_10_454/ZLS[1]",
+        "To": "SRB_12_452/ZLS[4]",
+        "delay": "624"
+      }
+    },
+    {
+      "group": "0-15|INTER|LOGIC|block_bbox",
+      "population": 5,
+      "sample": {
+        "From": "SRB_78_151/ZSNB[0]",
+        "To": "SRB_75_140/A_C2",
+        "delay": "439"
+      }
+    },
+    {
+      "group": "0-15|INTER|LOGIC|line_span",
+      "population": 646,
+      "sample": {
+        "From": "SRB_92_147/ZLS[3]",
+        "To": "SRB_97_138/S_A4",
+        "delay": "420"
+      }
+    },
+    {
+      "group": "0-15|INTER|LOGIC|regular",
+      "population": 579,
+      "sample": {
+        "From": "SRB_101_100/ZSNA[1]",
+        "To": "SRB_103_93/S_F1",
+        "delay": "353"
+      }
+    },
+    {
+      "group": "0-15|LOGIC|INTER|block_bbox",
+      "population": 5,
+      "sample": {
+        "From": "SRB_88_254/A_CQ0",
+        "To": "SRB_93_245/ZLS[0]",
+        "delay": "662"
+      }
+    },
+    {
+      "group": "0-15|LOGIC|INTER|line_span",
+      "population": 573,
+      "sample": {
+        "From": "SRB_109_29/A_BQ1",
+        "To": "SRB_104_38/ZLS[7]",
+        "delay": "644"
+      }
+    },
+    {
+      "group": "0-15|LOGIC|INTER|regular",
+      "population": 491,
+      "sample": {
+        "From": "SRB_25_257/A_CY",
+        "To": "SRB_27_260/ZSSA[2]",
+        "delay": "250"
+      }
+    },
+    {
+      "group": "0-15|LOGIC|LOGIC|block_bbox",
+      "population": 3,
+      "sample": {
+        "From": "SRB_89_489/A_CQ0",
+        "To": "SRB_90_500/S_DM",
+        "delay": "439"
+      }
+    },
+    {
+      "group": "0-15|LOGIC|LOGIC|line_span",
+      "population": 335,
+      "sample": {
+        "From": "SRB_44_70/A_FQ1",
+        "To": "SRB_47_66/S_F0",
+        "delay": "456"
+      }
+    },
+    {
+      "group": "0-15|LOGIC|LOGIC|regular",
+      "population": 253,
+      "sample": {
+        "From": "SRB_28_232/A_FQ0",
+        "To": "SRB_25_233/A_D3",
+        "delay": "312"
+      }
+    },
+    {
+      "group": "16-63|INTER|INTER|block_bbox",
+      "population": 3765,
+      "sample": {
+        "From": "SRB_53_449/ZLW[2]",
+        "To": "SRB_79_458/ZSNA[3]",
+        "delay": "1321"
+      }
+    },
+    {
+      "group": "16-63|INTER|INTER|line_span",
+      "population": 21621,
+      "sample": {
+        "From": "SRB_12_231/ZSNA[3]",
+        "To": "SRB_1_218/ZSEA[6]",
+        "delay": "650"
+      }
+    },
+    {
+      "group": "16-63|INTER|INTER|regular",
+      "population": 2610,
+      "sample": {
+        "From": "SRB_95_538/ZLE[0]",
+        "To": "SRB_92_494/ZDN[3]",
+        "delay": "1436"
+      }
+    },
+    {
+      "group": "16-63|INTER|LOGIC|block_bbox",
+      "population": 1978,
+      "sample": {
+        "From": "SRB_78_458/ZDE[5]",
+        "To": "SRB_70_444/S_E4",
+        "delay": "519"
+      }
+    },
+    {
+      "group": "16-63|INTER|LOGIC|line_span",
+      "population": 11497,
+      "sample": {
+        "From": "SRB_53_307/ZLW[5]",
+        "To": "SRB_72_345/A_AD",
+        "delay": "1500"
+      }
+    },
+    {
+      "group": "16-63|INTER|LOGIC|regular",
+      "population": 1407,
+      "sample": {
+        "From": "SRB_22_486/ZSWA[6]",
+        "To": "SRB_20_538/S_H2",
+        "delay": "875"
+      }
+    },
+    {
+      "group": "16-63|LOGIC|INTER|block_bbox",
+      "population": 1880,
+      "sample": {
+        "From": "SRB_84_488/S_CQ1",
+        "To": "SRB_33_500/ZDN[2]",
+        "delay": "1322"
+      }
+    },
+    {
+      "group": "16-63|LOGIC|INTER|line_span",
+      "population": 10521,
+      "sample": {
+        "From": "SRB_18_357/A_BQ1",
+        "To": "SRB_61_368/ZSSB[7]",
+        "delay": "1327"
+      }
+    },
+    {
+      "group": "16-63|LOGIC|INTER|regular",
+      "population": 1270,
+      "sample": {
+        "From": "SRB_113_202/S_DQ1",
+        "To": "SRB_116_152/ZLS[7]",
+        "delay": "1001"
+      }
+    },
+    {
+      "group": "16-63|LOGIC|LOGIC|block_bbox",
+      "population": 950,
+      "sample": {
+        "From": "SRB_96_309/S_GQ0",
+        "To": "SRB_59_305/S_H4",
+        "delay": "1040"
+      }
+    },
+    {
+      "group": "16-63|LOGIC|LOGIC|line_span",
+      "population": 5570,
+      "sample": {
+        "From": "SRB_61_105/A_AY",
+        "To": "SRB_54_147/A_B0",
+        "delay": "944"
+      }
+    },
+    {
+      "group": "16-63|LOGIC|LOGIC|regular",
+      "population": 642,
+      "sample": {
+        "From": "SRB_25_361/S_DQ0",
+        "To": "SRB_32_414/S_H1",
+        "delay": "941"
+      }
+    },
+    {
+      "group": "256+|INTER|INTER|block_bbox",
+      "population": 64863,
+      "sample": {
+        "From": "SRB_84_356/ZLE[0]",
+        "To": "SRB_46_116/ZSSB[6]",
+        "delay": "3593"
+      }
+    },
+    {
+      "group": "256+|INTER|INTER|line_span",
+      "population": 47917,
+      "sample": {
+        "From": "SRB_9_168/ZSWA[1]",
+        "To": "SRB_75_474/ZSSA[2]",
+        "delay": "4934"
+      }
+    },
+    {
+      "group": "256+|INTER|LOGIC|block_bbox",
+      "population": 33141,
+      "sample": {
+        "From": "SRB_32_42/ZDE[3]",
+        "To": "SRB_77_268/S_F1",
+        "delay": "3636"
+      }
+    },
+    {
+      "group": "256+|INTER|LOGIC|line_span",
+      "population": 24281,
+      "sample": {
+        "From": "SRB_51_471/ZLS[1]",
+        "To": "SRB_22_198/S_A3",
+        "delay": "3600"
+      }
+    },
+    {
+      "group": "256+|LOGIC|INTER|block_bbox",
+      "population": 31943,
+      "sample": {
+        "From": "SRB_14_500/A_BQ1",
+        "To": "SRB_21_65/ZSSB[5]",
+        "delay": "5007"
+      }
+    },
+    {
+      "group": "256+|LOGIC|INTER|line_span",
+      "population": 23264,
+      "sample": {
+        "From": "SRB_62_470/A_AY",
+        "To": "SRB_7_255/ZSSB[7]",
+        "delay": "3727"
+      }
+    },
+    {
+      "group": "256+|LOGIC|LOGIC|block_bbox",
+      "population": 16291,
+      "sample": {
+        "From": "SRB_3_149/S_GY",
+        "To": "SRB_119_463/A_F5",
+        "delay": "6028"
+      }
+    },
+    {
+      "group": "256+|LOGIC|LOGIC|line_span",
+      "population": 11836,
+      "sample": {
+        "From": "SRB_99_376/A_EQ0",
+        "To": "SRB_95_85/A_D3",
+        "delay": "3504"
+      }
+    },
+    {
+      "group": "64-255|INTER|INTER|block_bbox",
+      "population": 79261,
+      "sample": {
+        "From": "SRB_15_155/ZLW[4]",
+        "To": "SRB_21_20/ZLS[4]",
+        "delay": "2209"
+      }
+    },
+    {
+      "group": "64-255|INTER|INTER|line_span",
+      "population": 87453,
+      "sample": {
+        "From": "SRB_75_320/ZSEA[5]",
+        "To": "SRB_75_509/ZSWA[7]",
+        "delay": "2754"
+      }
+    },
+    {
+      "group": "64-255|INTER|INTER|regular",
+      "population": 509,
+      "sample": {
+        "From": "SRB_51_330/ZSWA[6]",
+        "To": "SRB_48_261/ZSNA[2]",
+        "delay": "1080"
+      }
+    },
+    {
+      "group": "64-255|INTER|LOGIC|block_bbox",
+      "population": 42023,
+      "sample": {
+        "From": "SRB_40_175/ZDE[5]",
+        "To": "SRB_114_63/A_CD",
+        "delay": "3010"
+      }
+    },
+    {
+      "group": "64-255|INTER|LOGIC|line_span",
+      "population": 45831,
+      "sample": {
+        "From": "SRB_26_286/ZSSA[5]",
+        "To": "SRB_12_156/A_A3",
+        "delay": "1855"
+      }
+    },
+    {
+      "group": "64-255|INTER|LOGIC|regular",
+      "population": 260,
+      "sample": {
+        "From": "SRB_33_486/ZLS[7]",
+        "To": "SRB_25_548/S_A5",
+        "delay": "1204"
+      }
+    },
+    {
+      "group": "64-255|LOGIC|INTER|block_bbox",
+      "population": 38133,
+      "sample": {
+        "From": "SRB_96_243/A_EQ0",
+        "To": "SRB_72_464/ZLW[2]",
+        "delay": "3041"
+      }
+    },
+    {
+      "group": "64-255|LOGIC|INTER|line_span",
+      "population": 42300,
+      "sample": {
+        "From": "SRB_56_477/A_FQ0",
+        "To": "SRB_69_408/ZSSA[3]",
+        "delay": "1328"
+      }
+    },
+    {
+      "group": "64-255|LOGIC|INTER|regular",
+      "population": 253,
+      "sample": {
+        "From": "SRB_115_362/A_GQ0",
+        "To": "SRB_114_425/ZSSA[0]",
+        "delay": "861"
+      }
+    },
+    {
+      "group": "64-255|LOGIC|LOGIC|block_bbox",
+      "population": 20127,
+      "sample": {
+        "From": "SRB_42_53/S_GY",
+        "To": "SRB_82_188/A_A0",
+        "delay": "2515"
+      }
+    },
+    {
+      "group": "64-255|LOGIC|LOGIC|line_span",
+      "population": 22133,
+      "sample": {
+        "From": "SRB_28_380/A_HQ0",
+        "To": "SRB_41_433/A_F4",
+        "delay": "1051"
+      }
+    },
+    {
+      "group": "64-255|LOGIC|LOGIC|regular",
+      "population": 124,
+      "sample": {
+        "From": "SRB_27_450/S_HY",
+        "To": "SRB_24_527/A_G3",
+        "delay": "1154"
+      }
+    }
+  ],
+  "files_sha256": {
+    "request.csv": "d365d540568ef1bbb4dc77aa41af88bc719a68386b84d0d78a27171d6586e8bf",
+    "golden.csv": "dd91fcf2ef047760b59acd1bde49924458e92cfd36c8a21f65b3494c314b78e7"
+  }
+}
