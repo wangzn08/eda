@@ -1,0 +1,109 @@
+{
+  "candidate": "V14",
+  "model_frozen_sha256": "49be2a36397107431197a68f29e5a59a5ce6c4ee49312e93b6b60dae4c879fef",
+  "runtime_bytes": 97800391,
+  "all_bundle_bytes": 113176423,
+  "files": {
+    "README.md": {
+      "bytes": 661,
+      "sha256": "1199781f2f65edcb9045222a2a0a7fcd391eaa96a6d41d8e89918c5fda62d1e2"
+    },
+    "architecture_data.hpp": {
+      "bytes": 854679,
+      "sha256": "d341ea5a876a39790a29b39619d27eb6343c550cb044bff8f2c7cdde381924c0"
+    },
+    "cycle_path_oracle.hpp": {
+      "bytes": 7121,
+      "sha256": "aeb36c2e269fca57aae5715fdda167b3a751eda468c3f1682ba016e1dba71b03"
+    },
+    "cycle_prefix_bank.hpp": {
+      "bytes": 422573,
+      "sha256": "5495fcbe9eea2279e6571ce14e7b0fe182a6054b70855a98e08c5eb7d4c96b3a"
+    },
+    "dx_model.hpp": {
+      "bytes": 13176,
+      "sha256": "05d91d2edfaed11f94b6b40862d2753e18aa9a269e3e1f25b4dbb4b2156c11e1"
+    },
+    "estimate": {
+      "bytes": 9848696,
+      "sha256": "dfd12ee14bb725657bab691e9e39f23726f475116589d2c0a30a623c9e6afda6"
+    },
+    "estimate.cpp": {
+      "bytes": 52965,
+      "sha256": "00527a1fe3cfe0b66ce88cbc69d307095b1c55a4d69536aa5dbb8e9a87c1c232"
+    },
+    "forced_route_model.hpp": {
+      "bytes": 2753,
+      "sha256": "4f89b8332fd21e945a67eff5d2153b89572869f6674680e36c1a1d66c13d68b5"
+    },
+    "local-paths.bin": {
+      "bytes": 75982479,
+      "sha256": "8c407f1ed304665d8751f14e417fbefdb418aa7360c69e104a94fa335345ef05"
+    },
+    "local_path_oracle.hpp": {
+      "bytes": 8554,
+      "sha256": "04ae14169bec7ffba687a58bdbee5eb6b54d8669def68f91acc2671a074307b3"
+    },
+    "long-tail.bin": {
+      "bytes": 11969216,
+      "sha256": "c88f87d9d4e785a2e129fc1c606bc4bc552d6e43100a8822fc70467e0d1735f2"
+    },
+    "lookup_model.hpp": {
+      "bytes": 56344,
+      "sha256": "253a122a0d1035481f91ad7bb94beda8f16fd7a19998395ca189347e53cc062a"
+    },
+    "port_model.hpp": {
+      "bytes": 49129,
+      "sha256": "29946c3f73a6f8eab8c94ec4f9a470f6fe159e5d5704ec054f7c68c6d14cf71d"
+    },
+    "route_v3_final_model.hpp": {
+      "bytes": 183025,
+      "sha256": "cf0a4749ce779cfa1644dda3265fb70859700007f0202daf489c21f419a38598"
+    },
+    "route_v3_model.hpp": {
+      "bytes": 180614,
+      "sha256": "5baa42edb7aada1e408690a027001c7fb495dcbefb65befdc68e3df920ff564e"
+    },
+    "source_x_model.hpp": {
+      "bytes": 245370,
+      "sha256": "7aa95afeebee864ce0372cf562f38128c7152a4b18c841f7ebf1020a8ae0f0c1"
+    },
+    "spatial_model.hpp": {
+      "bytes": 15700,
+      "sha256": "71e8a1ae870730562c8dfea0e20dd24345a2f8c474b1bc7d81eb1836f55a0525"
+    },
+    "target_x_model.hpp": {
+      "bytes": 249698,
+      "sha256": "fc3eca0a4b895b45cac376d06c46f14932f648db6b8e57eca2f3be71e2d8c375"
+    },
+    "v14_tree_model.hpp": {
+      "bytes": 10195536,
+      "sha256": "49be2a36397107431197a68f29e5a59a5ce6c4ee49312e93b6b60dae4c879fef"
+    },
+    "v4_horizontal_model.hpp": {
+      "bytes": 435622,
+      "sha256": "f3ae9dd8a81903182b0adf1824252ba5d095f0b4cf79854bfa534a39a7e2e3ce"
+    },
+    "v4_table_model.hpp": {
+      "bytes": 663161,
+      "sha256": "b53c770bdec178eb32bf9dfc0f6755674556049c4ea1d4690209b46582f5f6cc"
+    },
+    "v4_tree_model.hpp": {
+      "bytes": 234499,
+      "sha256": "b17171259348c094c9f257b63bda27fba9fc3441b468b5ba1838b15e447f1983"
+    },
+    "v5_geometry_model.hpp": {
+      "bytes": 607001,
+      "sha256": "6595f95ba622da6a63db831971c51809de4676d2a2cafc316a02275d585a1b35"
+    },
+    "v6_pair_model.hpp": {
+      "bytes": 897851,
+      "sha256": "cf90fac4746e963678d6330c2afb79daf77345a9752dc9b6dc19a0a9b52874b4"
+    }
+  },
+  "archive_bytes": 49360676,
+  "archive_sha256": "7c7408eee3d0d25be298b702d6edcadca91371b5f015065e5a2defe318dc7a66",
+  "archive": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/fpga-delay-estimator-v14.tar.gz",
+  "archive_under_100mb": true,
+  "runtime_under_100mb": true
+}

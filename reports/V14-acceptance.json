@@ -1,0 +1,226 @@
+{
+  "machine": "macOS-26.6.2-arm64-arm-64bit",
+  "binary_sha256": "bf749a38fc12178a60e3045b0fedfa8957948e39f99824e6dc9d03a6a75584d8",
+  "model_frozen": "49be2a36397107431197a68f29e5a59a5ce6c4ee49312e93b6b60dae4c879fef",
+  "phase": "complete",
+  "checks": {
+    "validation": {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/validation.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/validation.csv"
+      ],
+      "rows": 150053,
+      "cpu_seconds": 6.85557,
+      "wall_seconds": 7.475380625,
+      "peak_rss_bytes": 254689280,
+      "output_bytes": 6052827,
+      "sha256": "59b2a05c63fe1ad6bc62795982993f1abf06fc59fc4349ef59101327edb7eef5",
+      "cache_hits": 0,
+      "cache_misses": 150053,
+      "metrics": {
+        "rows": 150053,
+        "exact_matches": 6593,
+        "positive_delay_score": 97.22350366143732,
+        "zero_golden_rows": 0,
+        "zero_exact_matches": 0,
+        "relative_error_p50": 0.004258717061485228,
+        "relative_error_p95": 0.022058823529411766,
+        "relative_error_p99": 0.04491725768321513,
+        "max_relative_error": 0.5631313131313131,
+        "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+      }
+    },
+    "validation-no-cache": {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/validation.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/validation-no-cache.csv",
+        "--no-cache"
+      ],
+      "rows": 150053,
+      "cpu_seconds": 6.84028,
+      "wall_seconds": 6.850746791,
+      "peak_rss_bytes": 221118464,
+      "output_bytes": 6052827,
+      "sha256": "59b2a05c63fe1ad6bc62795982993f1abf06fc59fc4349ef59101327edb7eef5",
+      "cache_hits": null,
+      "cache_misses": null
+    },
+    "holdout": {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/holdout.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/holdout.csv"
+      ],
+      "rows": 149242,
+      "cpu_seconds": 6.84432,
+      "wall_seconds": 6.854079749999999,
+      "peak_rss_bytes": 254705664,
+      "output_bytes": 6019309,
+      "sha256": "28f2fbbe5addd011be51c698eb5b43c71ea634415d1635a51f68f2ad0204759f",
+      "cache_hits": 0,
+      "cache_misses": 149242,
+      "metrics": {
+        "rows": 149242,
+        "exact_matches": 6572,
+        "positive_delay_score": 97.20993851209234,
+        "zero_golden_rows": 0,
+        "zero_exact_matches": 0,
+        "relative_error_p50": 0.0042932628797886395,
+        "relative_error_p95": 0.022148916116870875,
+        "relative_error_p99": 0.044859813084112146,
+        "max_relative_error": 0.4051863857374392,
+        "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+      }
+    },
+    "public-million": {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/public.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/public-million.csv"
+      ],
+      "rows": 1000000,
+      "cpu_seconds": 45.884,
+      "wall_seconds": 45.912985666000004,
+      "peak_rss_bytes": 254705664,
+      "output_bytes": 40334385,
+      "sha256": "f78180a3af8c8ad624f56e26269d0e0256430c12c4033a78efda022ec6229223",
+      "cache_hits": 0,
+      "cache_misses": 1000000,
+      "metrics": {
+        "rows": 1000000,
+        "exact_matches": 71602,
+        "positive_delay_score": 97.53837224250185,
+        "zero_golden_rows": 1,
+        "zero_exact_matches": 1,
+        "relative_error_p50": 0.0036572622779519333,
+        "relative_error_p95": 0.0200387847446671,
+        "relative_error_p99": 0.0408570004982561,
+        "max_relative_error": 0.5631313131313131,
+        "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+      }
+    }
+  },
+  "billion_runs": [
+    {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.result.csv"
+      ],
+      "rows": 1000000000,
+      "cpu_seconds": 249.076,
+      "wall_seconds": 250.240029,
+      "peak_rss_bytes": 254705664,
+      "output_bytes": 40334371014,
+      "sha256": "1238889b5f88f5b9ffc2878a2510c4e58375cabc046d74788324a9a2fbfd601e",
+      "cache_hits": 999000000,
+      "cache_misses": 1000000,
+      "index": 1
+    },
+    {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.result.csv"
+      ],
+      "rows": 1000000000,
+      "cpu_seconds": 247.836,
+      "wall_seconds": 248.78951625000002,
+      "peak_rss_bytes": 254672896,
+      "output_bytes": 40334371014,
+      "sha256": "1238889b5f88f5b9ffc2878a2510c4e58375cabc046d74788324a9a2fbfd601e",
+      "cache_hits": 999000000,
+      "cache_misses": 1000000,
+      "index": 2
+    },
+    {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.result.csv"
+      ],
+      "rows": 1000000000,
+      "cpu_seconds": 252.063,
+      "wall_seconds": 253.24018108300004,
+      "peak_rss_bytes": 254689280,
+      "output_bytes": 40334371014,
+      "sha256": "1238889b5f88f5b9ffc2878a2510c4e58375cabc046d74788324a9a2fbfd601e",
+      "cache_hits": 999000000,
+      "cache_misses": 1000000,
+      "index": 3
+    },
+    {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.result.csv"
+      ],
+      "rows": 1000000000,
+      "cpu_seconds": 255.474,
+      "wall_seconds": 256.4125604999999,
+      "peak_rss_bytes": 254640128,
+      "output_bytes": 40334371014,
+      "sha256": "1238889b5f88f5b9ffc2878a2510c4e58375cabc046d74788324a9a2fbfd601e",
+      "cache_hits": 999000000,
+      "cache_misses": 1000000,
+      "index": 4
+    },
+    {
+      "command": [
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/extracted/fpga-delay-estimator-v14/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/acceptance-v14/stress1b.result.csv"
+      ],
+      "rows": 1000000000,
+      "cpu_seconds": 254.315,
+      "wall_seconds": 256.25349533400004,
+      "peak_rss_bytes": 254656512,
+      "output_bytes": 40334371014,
+      "sha256": "1238889b5f88f5b9ffc2878a2510c4e58375cabc046d74788324a9a2fbfd601e",
+      "cache_hits": 999000000,
+      "cache_misses": 1000000,
+      "index": 5
+    }
+  ],
+  "cache_does_not_change_output": true,
+  "average_billion_cpu_seconds": 251.75280000000004,
+  "time_score": 86.01373333333333,
+  "all_billion_outputs_identical": true,
+  "all_billion_runs_within_limits": true,
+  "local_simulated_total": 95.67001080967388,
+  "expected_repeated_output_matches": true,
+  "new_query_billion_linear_estimate_seconds": 45884.0,
+  "new_query_billion_measured": false,
+  "official_environment_verified": false,
+  "acceptance_conclusion": "Local pipeline and repeated public billion pass; unique-query throughput is not compliant by linear estimate; final hidden-set acceptance remains unverified.",
+  "temporary_large_csv_cleanup": [
+    {
+      "file": "stress1b.request.csv",
+      "bytes": 36394616009
+    },
+    {
+      "file": "stress1b.result.csv",
+      "bytes": 40334371014
+    }
+  ]
+}

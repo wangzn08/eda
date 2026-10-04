@@ -46,6 +46,35 @@ constexpr Distance INF = std::numeric_limits<Distance>::max()/4;
 struct Move { Node site=NONE; uint32_t delay=0; };
 struct LocalEdge { uint16_t port; uint32_t delay; };
 
+// Memoization contains predictions computed in this process, never answers.
+class PredictionCache {
+    struct Entry {uint64_t key=UINT64_MAX,value=0;};
+    std::vector<Entry> entries;
+    size_t used=0;
+    static uint64_t hash(uint64_t x) {
+        x^=x>>30;x*=0xbf58476d1ce4e5b9ULL;x^=x>>27;x*=0x94d049bb133111ebULL;return x^(x>>31);
+    }
+public:
+    uint64_t hits=0,misses=0;
+    PredictionCache():entries(1u<<21) {}
+    bool get(uint64_t key,Distance& value) {
+        size_t slot=hash(key)&(entries.size()-1);
+        for(unsigned probe=0;probe<64;++probe,slot=(slot+1)&(entries.size()-1)) {
+            if(entries[slot].key==key) {value=entries[slot].value;++hits;return true;}
+            if(entries[slot].key==UINT64_MAX) break;
+        }
+        ++misses;return false;
+    }
+    void put(uint64_t key,Distance value) {
+        if(used>=entries.size()*3/4) return;
+        size_t slot=hash(key)&(entries.size()-1);
+        for(unsigned probe=0;probe<64;++probe,slot=(slot+1)&(entries.size()-1)) {
+            if(entries[slot].key==UINT64_MAX) {entries[slot]={key,value};++used;return;}
+            if(entries[slot].key==key) return;
+        }
+    }
+};
+
 class FastPinParser {
     std::vector<int> grid;
     std::unordered_map<std::string_view,unsigned> ports;
@@ -933,11 +962,13 @@ std::string_view trim_view(std::string_view s) {
 int main(int argc,char** argv) {
     try {
         std::string input,output,stats_path,trace_path,oracle_path,cycle_path,algorithm="v6-pair";
+        bool cache_enabled=true;
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--no-cache] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
+            if(arg=="--no-cache") {cache_enabled=false;continue;}
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
             else if(arg=="-out") output=argv[++i];
@@ -985,6 +1016,8 @@ int main(int argc,char** argv) {
             throw std::runtime_error("V14 requires --local-oracle and --cycle-oracle assets");
         std::unique_ptr<CyclePathOracle> cycle_oracle;
         if(!cycle_path.empty()) cycle_oracle=std::make_unique<CyclePathOracle>(cycle_path);
+        std::unique_ptr<PredictionCache> cache;
+        if(cache_enabled && algorithm=="v14-tree") cache=std::make_unique<PredictionCache>();
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -1006,12 +1039,14 @@ int main(int argc,char** argv) {
             Node from=parser.pin(s),to=parser.pin(t);
             CompactSolver::Trace route;
             if(trace.is_open()) route=compact_solver->trace(from,to,counters);
+            Distance d=INF;uint64_t cache_key=(uint64_t(from)<<32)|to;
+            if(!cache || !cache->get(cache_key,d)) {
             Distance route_upper=INF;
             if(algorithm=="v14-tree") {
                 route_upper=std::min(route_upper,local_oracle->upper_bound(from,to));
                 route_upper=cycle_oracle->cap(from,to,route_upper);
             }
-            Distance d=trace.is_open()?route.delay:
+            d=trace.is_open()?route.delay:
                 algorithm=="approximate"?lookup_delay(from,to):
                 algorithm=="spatial"?spatial_delay(from,to):
                 algorithm=="port"?port_delay(from,to):
@@ -1034,6 +1069,8 @@ int main(int argc,char** argv) {
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(local_oracle && algorithm!="v14-tree") d=std::min(d,local_oracle->upper_bound(from,to));
             if(cycle_oracle && algorithm!="v14-tree") d=cycle_oracle->cap(from,to,d);
+                if(cache) cache->put(cache_key,d);
+            }
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
             out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');
             char digits[32];auto end=std::to_chars(digits,digits+sizeof(digits),d);
@@ -1071,6 +1108,7 @@ int main(int argc,char** argv) {
         out.flush();
         if(in.bad() || !out || (stats.is_open() && !stats) || (trace.is_open() && !trace)) throw std::runtime_error("File I/O failed");
         std::cerr<<"rows="<<row<<" cpu_seconds="<<double(std::clock()-cpu_start)/CLOCKS_PER_SEC<<" arch_sha256="<<archdata::HASH<<'\n';
+        if(cache) std::cerr<<"cache_hits="<<cache->hits<<" cache_misses="<<cache->misses<<'\n';
         return 0;
     } catch(const std::exception& e) { std::cerr<<"error: "<<e.what()<<'\n'; return 1; }
 }
