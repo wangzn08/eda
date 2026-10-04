@@ -26,8 +26,8 @@ def main():
              f'constexpr char HASH[]="{fingerprint}";',
              'struct XY {int x,y;};', 'struct Arc {int from,to,delay;};',
              'struct Net {int from,to,vector,delay;};',
-             'struct Line {bool vertical; int site,delay;};',
-             'struct Block {int left,right,lower,upper; bool hcross,vcross; int hdelay,vdelay;};']
+             'struct Line {bool vertical; int site,delay,id;};',
+             'struct Block {int left,right,lower,upper; bool hcross,vcross; int hdelay,vdelay,id;};']
     def array(kind, name, rows):
         lines.append(f'constexpr {kind} {name}[]={{')
         lines.extend('  {' + ','.join(str(x).lower() for x in row) + '},' for row in rows)
@@ -37,8 +37,8 @@ def main():
     array('XY', 'VECTORS', vectors)
     array('Arc', 'ARCS', ((a.port_ids[p['from']], a.port_ids[p['to']], p['delay']) for p in a.arcs))
     array('Net', 'NETS', ((a.port_ids[p['from']], a.port_ids[p['to']], vectors.index((p['delta x'], p['delta y'])), p.get('delay', 0)) for p in a.nets))
-    array('Line', 'LINES', ((p['direction']=='vertical', p['site'], p['delay']) for p in a.lines))
-    array('Block', 'BLOCKS', ((p['left'], p['right'], p['lower'], p['upper'], p['horizontal crossable'], p['vertical crossable'], p['horizontal cross delay'], p['vertical cross delay']) for p in a.blocks))
+    array('Line', 'LINES', ((p['direction']=='vertical', p['site'], p['delay'], p['id']) for p in a.lines))
+    array('Block', 'BLOCKS', ((p['left'], p['right'], p['lower'], p['upper'], p['horizontal crossable'], p['vertical crossable'], p['horizontal cross delay'], p['vertical cross delay'], p['id']) for p in a.blocks))
     lines.append('}')
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text('\n'.join(lines) + '\n')

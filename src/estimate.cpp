@@ -1,8 +1,10 @@
 #include "architecture_data.hpp"
+#include "lookup_model.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
 #include <chrono>
+#include <cmath>
 #include <cstdint>
 #include <ctime>
 #include <fstream>
@@ -182,6 +184,31 @@ public:
 };
 
 struct SearchStats {uint64_t settled=0, relaxations=0;};
+
+// Offline-fitted, constant-time approximate oracle. All inputs are public
+// architecture constants and the request endpoints; no labels are read here.
+Distance lookup_delay(Node source,Node target) {
+    if(source==target) return 0;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    int dx=b.x-a.x,dy=b.y-a.y;
+    int sx=(dx>0)-(dx<0),sy=(dy>0)-(dy<0);
+    size_t key=(((sx+1)*3+(sy+1))*15+std::abs(dx)/8)*35+std::abs(dy)/16;
+    double estimate=lookup_model::intercept+lookup_model::ax*std::abs(dx)
+        +lookup_model::ay*std::abs(dy)+lookup_model::residual[key]
+        +lookup_model::source[source%archdata::P]+lookup_model::target[target%archdata::P];
+    estimate=std::max(0.0,std::nearbyint(estimate));
+    for(const auto& line:archdata::LINES) {
+        int u=line.vertical?a.x:a.y,v=line.vertical?b.x:b.y;
+        if(std::min(u,v)<=line.site && line.site<std::max(u,v)) estimate+=lookup_model::line[line.id];
+    }
+    for(const auto& block:archdata::BLOCKS) {
+        if(std::max(a.x,b.x)>=block.left && std::min(a.x,b.x)<=block.right
+           && std::max(a.y,b.y)>=block.lower && std::min(a.y,b.y)<=block.upper)
+            estimate+=lookup_model::block[block.id];
+    }
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(estimate)));
+}
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -328,7 +355,7 @@ int main(int argc,char** argv) {
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed] [--stats stats.csv]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate] [--stats stats.csv]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -339,7 +366,7 @@ int main(int argc,char** argv) {
         }
         if(input.empty() || output.empty() || input==output) throw std::runtime_error("Provide distinct -in and -out files");
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -357,7 +384,7 @@ int main(int argc,char** argv) {
         std::unique_ptr<Solver> solver;
         std::unique_ptr<CompactSolver> compact_solver;
         if(algorithm=="compressed") compact_solver=std::make_unique<CompactSolver>(graph);
-        else solver=std::make_unique<Solver>(graph);
+        else if(algorithm!="approximate") solver=std::make_unique<Solver>(graph);
         out<<"From,To,delay\n";
         std::string line; uint64_t row=0;
         while(std::getline(in,line)) {
@@ -369,7 +396,8 @@ int main(int argc,char** argv) {
             auto start=std::chrono::steady_clock::now();
             SearchStats counters;
             Node from=graph.pin(s),to=graph.pin(t);
-            Distance d=compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
+            Distance d=algorithm=="approximate"?lookup_delay(from,to):
+                compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+s+" -> "+t+"; official output convention unspecified");
             auto ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
             out<<s<<','<<t<<','<<d<<'\n';
