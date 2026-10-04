@@ -1,0 +1,9 @@
+{
+  "path": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/route_v3_final_model.hpp",
+  "bytes": 183025,
+  "route_entries": 179,
+  "forced_entries": 55,
+  "momentum_entries": 1853,
+  "python_validation_score": 92.8434116220866,
+  "holdout_used": false
+}

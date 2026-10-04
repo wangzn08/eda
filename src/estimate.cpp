@@ -5,6 +5,9 @@
 #include "source_x_model.hpp"
 #include "target_x_model.hpp"
 #include "dx_model.hpp"
+#include "route_v3_model.hpp"
+#include "forced_route_model.hpp"
+#include "route_v3_final_model.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -301,6 +304,115 @@ Distance v2_delay(Node source,Node target) {
     size_t key=(dx+119)*3+ysign+1;
     return static_cast<Distance>(std::max(0.0,std::nearbyint(base+dx_model::residual[key])));
 }
+struct NetVectors {
+    std::array<archdata::XY,archdata::P> first{},last{};
+};
+const NetVectors& endpoint_vectors() {
+    static const NetVectors vectors=[] {
+        NetVectors result;
+        for(const auto& net:archdata::NETS) {
+            const auto v=archdata::VECTORS[net.vector];
+            result.first[net.from]=v;
+            result.last[net.to]=v;
+        }
+        return result;
+    }();
+    return vectors;
+}
+Distance v3_delay(Node source,Node target) {
+    Distance base=v2_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,dy=b.y-a.y;
+    const int distance=std::abs(dx)+std::abs(dy);
+    const int bucket=distance<16?0:distance<64?1:distance<256?2:3;
+    const auto initial=[](char c){return c=='A'?0:c=='S'?1:c=='Z'?2:3;};
+    int route=0,detour=0;
+    if(std::min(a.x,b.x)<=89 && std::max(a.x,b.x)>=76) {
+        const auto blocked=[](int y){return y<550 && y%100<50?y/100:-1;};
+        int s=blocked(a.y),t=blocked(b.y);
+        if(s>=0 || t>=0) {
+            if(s!=t) route=1;
+            else {
+                route=2;
+                int lower=s*100,upper=lower+49;
+                int distance_to_edge=std::min(a.y-lower+b.y-lower+2,2*upper-a.y-b.y+2);
+                detour=std::min(9,std::max(0,distance_to_edge/10));
+            }
+        }
+    }
+    size_t route_key=((((route*10+detour)*4+initial(archdata::PORTS[source%archdata::P][0]))*4
+                       +initial(archdata::PORTS[target%archdata::P][0]))*4+bucket);
+    double estimate=std::max(0.0,std::nearbyint(base+route_v3_model::route[route_key]));
+    const int port=source%archdata::P;
+    const auto v=endpoint_vectors().first[port];
+    const int projection=v.x*dx+v.y*dy;
+    const int momentum=(v.x || v.y)?(projection>0?1:projection<0?2:3):0;
+    const int port_key=momentum?port:archdata::P;
+    const int xsign=(dx>0)-(dx<0),ysign=(dy>0)-(dy<0);
+    size_t momentum_key=((((port_key*4+momentum)*4+bucket)*3+xsign+1)*3+ysign+1);
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(estimate+route_v3_model::momentum[momentum_key])));
+}
+Distance v3_forced_delay(Node source,Node target) {
+    Distance base=v3_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    int dx=b.x-a.x,dy=b.y-a.y;
+    const auto& vectors=endpoint_vectors();
+    const auto first=vectors.first[source%archdata::P];
+    const auto last=vectors.last[target%archdata::P];
+    const int direct=std::abs(dx)+std::abs(dy);
+    const int forced=std::abs(first.x)+std::abs(first.y)+std::abs(last.x)+std::abs(last.y)
+        +std::abs(dx-first.x-last.x)+std::abs(dy-first.y-last.y);
+    const int detour=std::min(50,std::max(0,forced-direct));
+    const int bucket=direct<16?0:direct<64?1:direct<256?2:3;
+    const int s=first.x || first.y,t=last.x || last.y;
+    size_t key=(((detour*4+bucket)*2+s)*2+t);
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(base+forced_route_model::residual[key])));
+}
+Distance v3_final_delay(Node source,Node target) {
+    Distance base=v2_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,dy=b.y-a.y,direct=std::abs(dx)+std::abs(dy);
+    const int bucket=direct<16?0:direct<64?1:direct<256?2:3;
+    const auto initial=[](char c){return c=='A'?0:c=='S'?1:c=='Z'?2:3;};
+    int route=0,detour=0;
+    if(std::min(a.x,b.x)<=89 && std::max(a.x,b.x)>=76) {
+        const auto blocked=[](int y){return y<550 && y%100<50?y/100:-1;};
+        int s=blocked(a.y),t=blocked(b.y);
+        if(s>=0 || t>=0) {
+            if(s!=t) route=1;
+            else {
+                route=2;
+                int lower=s*100,upper=lower+49;
+                int distance_to_edge=std::min(a.y-lower+b.y-lower+2,2*upper-a.y-b.y+2);
+                detour=std::min(9,std::max(0,distance_to_edge/10));
+            }
+        }
+    }
+    size_t route_key=((((route*10+detour)*4+initial(archdata::PORTS[source%archdata::P][0]))*4
+                       +initial(archdata::PORTS[target%archdata::P][0]))*4+bucket);
+    double estimate=std::max(0.0,std::nearbyint(base+route_v3_final_model::route[route_key]));
+    const auto& vectors=endpoint_vectors();
+    const auto first=vectors.first[source%archdata::P];
+    const auto last=vectors.last[target%archdata::P];
+    const int forced=std::abs(first.x)+std::abs(first.y)+std::abs(last.x)+std::abs(last.y)
+        +std::abs(dx-first.x-last.x)+std::abs(dy-first.y-last.y);
+    const int extra=std::min(50,std::max(0,forced-direct));
+    const int source_fixed=first.x || first.y,target_fixed=last.x || last.y;
+    size_t forced_key=(((extra*4+bucket)*2+source_fixed)*2+target_fixed);
+    estimate=std::max(0.0,std::nearbyint(estimate+route_v3_final_model::forced[forced_key]));
+    const int projection=first.x*dx+first.y*dy;
+    const int momentum=source_fixed?(projection>0?1:projection<0?2:3):0;
+    const int port_key=momentum?source%archdata::P:archdata::P;
+    const int xsign=(dx>0)-(dx<0),ysign=(dy>0)-(dy<0);
+    size_t momentum_key=((((port_key*4+momentum)*4+bucket)*3+xsign+1)*3+ysign+1);
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(estimate+route_v3_final_model::momentum[momentum_key])));
+}
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -348,6 +460,7 @@ class CompactSolver {
     std::array<int,archdata::P> input_index;
     std::vector<uint16_t> input_ports;
     Frontier forward,backward;
+    std::vector<Node> trace_parent;
     Node state(Node site,int port) const { return site*input_ports.size()+input_index[port]; }
     template<class Visitor> void neighbors(Node u,bool reverse,Visitor visit) const {
         const Node site=u/input_ports.size();
@@ -374,20 +487,30 @@ class CompactSolver {
             }
         }
     }
-    void start(Node pin) {
+    void start(Node pin,bool trace=false) {
         Node site=pin/archdata::P,port=pin%archdata::P;
-        if(input_index[port]>=0) { forward.improve(state(site,port),0); return; }
+        if(input_index[port]>=0) {
+            Node s=state(site,port);
+            if(forward.improve(s,0) && trace) trace_parent[s]=NONE;
+            return;
+        }
         int ni=graph.net_out(port);
         if(ni>=0) {
             auto m=graph.net_move(site,ni,false);
-            if(m.site!=NONE) forward.improve(state(m.site,archdata::NETS[ni].to),m.delay+archdata::NETS[ni].delay);
+            if(m.site!=NONE) {
+                Node s=state(m.site,archdata::NETS[ni].to);
+                if(forward.improve(s,m.delay+archdata::NETS[ni].delay) && trace) trace_parent[s]=NONE;
+            }
             return;
         }
         for(auto edge:graph.local_out(port)) {
             ni=graph.net_out(edge.port);
             if(ni<0) continue;
             auto m=graph.net_move(site,ni,false);
-            if(m.site!=NONE) forward.improve(state(m.site,archdata::NETS[ni].to),edge.delay+m.delay+archdata::NETS[ni].delay);
+            if(m.site!=NONE) {
+                Node s=state(m.site,archdata::NETS[ni].to);
+                if(forward.improve(s,edge.delay+m.delay+archdata::NETS[ni].delay) && trace) trace_parent[s]=NONE;
+            }
         }
     }
     void finish(Node pin) {
@@ -397,6 +520,7 @@ class CompactSolver {
             if(input_index[edge.port]>=0) backward.improve(state(site,edge.port),edge.delay);
     }
 public:
+    struct Trace {Distance delay=INF; std::vector<Node> states;};
     explicit CompactSolver(const Graph& g):graph(g),forward(g.sites()*std::size(archdata::NETS)),
                                              backward(g.sites()*std::size(archdata::NETS)) {
         input_index.fill(-1);
@@ -434,6 +558,44 @@ public:
         }
         return best;
     }
+    Trace trace(Node source,Node target,SearchStats& stats) {
+        forward.reset();
+        if(trace_parent.empty()) trace_parent.resize(graph.sites()*input_ports.size(),NONE);
+        if(source==target) return {0,{}};
+        Distance best=INF;
+        Node terminal=NONE;
+        const Node target_site=target/archdata::P;
+        const int target_port=target%archdata::P;
+        if(source/archdata::P==target_site)
+            for(auto edge:graph.local_out(source%archdata::P))
+                if(edge.port==target_port) best=std::min(best,Distance(edge.delay));
+        start(source,true);
+        while(!forward.empty() && forward.top()<best) {
+            Node u=forward.pop(); ++stats.settled;
+            Distance du=forward.get(u);
+            if(u/input_ports.size()==target_site) {
+                const int port=input_ports[u%input_ports.size()];
+                if(port==target_port && du<best) {best=du;terminal=u;}
+                for(auto edge:graph.local_out(port))
+                    if(edge.port==target_port && du+edge.delay<best) {
+                        best=du+edge.delay;terminal=u;
+                    }
+            }
+            if(du>=best) continue;
+            neighbors(u,false,[&](Node v,uint32_t weight) {
+                ++stats.relaxations;
+                if(forward.improve(v,du+weight)) trace_parent[v]=u;
+            });
+        }
+        Trace result;result.delay=best;
+        while(terminal!=NONE) {
+            result.states.push_back(terminal);
+            terminal=trace_parent[terminal];
+        }
+        std::reverse(result.states.begin(),result.states.end());
+        return result;
+    }
+    Node trace_site(Node state) const {return state/input_ports.size();}
 };
 
 std::string trim(std::string s) {
@@ -448,29 +610,32 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,algorithm="v2";
+        std::string input,output,stats_path,trace_path,algorithm="v2";
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2] [--stats stats.csv]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
             else if(arg=="-out") output=argv[++i];
             else if(arg=="--stats") stats_path=argv[++i];
+            else if(arg=="--trace") trace_path=argv[++i];
             else if(arg=="--algorithm") algorithm=argv[++i];
             else throw std::runtime_error("Unknown option: "+arg);
         }
         if(input.empty() || output.empty() || input==output) throw std::runtime_error("Provide distinct -in and -out files");
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2") throw std::runtime_error("Unknown algorithm");
+        if(!trace_path.empty() && (algorithm!="compressed" || trace_path==input || trace_path==output || trace_path==stats_path))
+            throw std::runtime_error("Trace requires compressed algorithm and a distinct file");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
         std::getline(in,header);
         if(trim(header)!="From,To") throw std::runtime_error("Expected input header From,To (no golden column)");
         std::vector<char> output_buffer(1<<20);
-        std::ofstream out, stats;
+        std::ofstream out, stats, trace;
         out.rdbuf()->pubsetbuf(output_buffer.data(),output_buffer.size());
         out.open(output);
         if(!out) throw std::runtime_error("Cannot open output");
@@ -479,8 +644,13 @@ int main(int argc,char** argv) {
             if(!stats) throw std::runtime_error("Cannot open stats file");
             stats<<"row,delay,wall_ms,settled,relaxations\n";
         }
+        if(!trace_path.empty()) {
+            trace.open(trace_path);
+            if(!trace) throw std::runtime_error("Cannot open trace file");
+            trace<<"row,delay,steps,hops,long_hops,turns,detour\n";
+        }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2";
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final";
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -500,12 +670,18 @@ int main(int argc,char** argv) {
             auto start=collect?std::chrono::steady_clock::now():std::chrono::steady_clock::time_point{};
             SearchStats counters;
             Node from=parser.pin(s),to=parser.pin(t);
-            Distance d=algorithm=="approximate"?lookup_delay(from,to):
+            CompactSolver::Trace route;
+            if(trace.is_open()) route=compact_solver->trace(from,to,counters);
+            Distance d=trace.is_open()?route.delay:
+                algorithm=="approximate"?lookup_delay(from,to):
                 algorithm=="spatial"?spatial_delay(from,to):
                 algorithm=="port"?port_delay(from,to):
                 algorithm=="source-x"?source_x_delay(from,to):
                 algorithm=="target-x"?target_x_delay(from,to):
                 algorithm=="v2"?v2_delay(from,to):
+                algorithm=="v3"?v3_delay(from,to):
+                algorithm=="v3-forced"?v3_forced_delay(from,to):
+                algorithm=="v3-final"?v3_final_delay(from,to):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
             out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');
@@ -518,9 +694,31 @@ int main(int argc,char** argv) {
                 stats<<row<<','<<d<<','<<ms<<','<<counters.settled<<','<<counters.relaxations<<'\n';
                 stats.flush();
             }
+            if(trace.is_open()) {
+                const auto& first=archdata::SITES[from/archdata::P];
+                const auto& last=archdata::SITES[to/archdata::P];
+                int x=first.x,y=first.y,steps=0,hops=0,long_hops=0,turns=0,axis=0,sign=0;
+                auto segment=[&](int nx,int ny) {
+                    int dx=nx-x,dy=ny-y,length=std::abs(dx)+std::abs(dy);
+                    if(length) {
+                        ++hops;steps+=length;long_hops+=length>1;
+                        int next_axis=dx?1:2,next_sign=(dx?dx:dy)>0?1:-1;
+                        if(axis && (axis!=next_axis || sign!=next_sign)) ++turns;
+                        axis=next_axis;sign=next_sign;
+                    }
+                    x=nx;y=ny;
+                };
+                for(Node s:route.states) {
+                    const auto& p=archdata::SITES[compact_solver->trace_site(s)];
+                    segment(p.x,p.y);
+                }
+                segment(last.x,last.y);
+                int direct=std::abs(last.x-first.x)+std::abs(last.y-first.y);
+                trace<<row<<','<<d<<','<<steps<<','<<hops<<','<<long_hops<<','<<turns<<','<<steps-direct<<'\n';
+            }
         }
         out.flush();
-        if(in.bad() || !out || (stats.is_open() && !stats)) throw std::runtime_error("File I/O failed");
+        if(in.bad() || !out || (stats.is_open() && !stats) || (trace.is_open() && !trace)) throw std::runtime_error("File I/O failed");
         std::cerr<<"rows="<<row<<" cpu_seconds="<<double(std::clock()-cpu_start)/CLOCKS_PER_SEC<<" arch_sha256="<<archdata::HASH<<'\n';
         return 0;
     } catch(const std::exception& e) { std::cerr<<"error: "<<e.what()<<'\n'; return 1; }

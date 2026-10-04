@@ -1,0 +1,10 @@
+{
+  "output": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/route_v3_model.hpp",
+  "bytes": 180614,
+  "route_nonzero": 179,
+  "route_dense": 1920,
+  "momentum_nonzero": 1853,
+  "momentum_dense": 71568,
+  "python_validation_score": 92.69609368311777,
+  "holdout_used": false
+}

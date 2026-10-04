@@ -1,0 +1,44 @@
+[
+  {
+    "run": 1,
+    "algorithm": "v2",
+    "wall_seconds": 1.92766125,
+    "cpu_seconds": 1.92118,
+    "bytes": 403326724
+  },
+  {
+    "run": 1,
+    "algorithm": "v3-final",
+    "wall_seconds": 2.041719834,
+    "cpu_seconds": 2.03399,
+    "bytes": 403330090
+  },
+  {
+    "run": 2,
+    "algorithm": "v2",
+    "wall_seconds": 1.9481371250000001,
+    "cpu_seconds": 1.94252,
+    "bytes": 403326724
+  },
+  {
+    "run": 2,
+    "algorithm": "v3-final",
+    "wall_seconds": 2.0563347089999997,
+    "cpu_seconds": 2.04153,
+    "bytes": 403330090
+  },
+  {
+    "run": 3,
+    "algorithm": "v2",
+    "wall_seconds": 1.9502699170000009,
+    "cpu_seconds": 1.946,
+    "bytes": 403326724
+  },
+  {
+    "run": 3,
+    "algorithm": "v3-final",
+    "wall_seconds": 2.040176707999999,
+    "cpu_seconds": 2.03388,
+    "bytes": 403330090
+  }
+]

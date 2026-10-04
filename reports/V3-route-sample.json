@@ -1,0 +1,14 @@
+{
+  "source": "development only",
+  "selection": "smallest deterministic BLAKE2b-64 rank per distance bucket",
+  "counts": {
+    "0-15": 120,
+    "16-63": 160,
+    "64-255": 240,
+    "256+": 80
+  },
+  "rows": 600,
+  "request": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/route-v3-development.request.csv",
+  "golden": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/route-v3-development.golden.csv",
+  "holdout_used": false
+}

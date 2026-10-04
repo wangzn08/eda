@@ -1,0 +1,105 @@
+{
+  "exact_matches": 600,
+  "exact_cpu_seconds": 461.327,
+  "overall_v2": 81.63964391633857,
+  "note": "Sample is deliberately distance-stratified development data, not representative of the hidden request mix.",
+  "overall_v3": 82.36518349317578,
+  "groups": {
+    "distance": {
+      "0-15": {
+        "rows": 120,
+        "v2_score": 52.42660995542272,
+        "v3_score": 54.785200291073906,
+        "mean_detour": 5.883333333333334,
+        "detour_fraction": 0.5666666666666667,
+        "mean_turns": 2.1666666666666665,
+        "mean_long_hops": 3.425
+      },
+      "16-63": {
+        "rows": 160,
+        "v2_score": 79.39961455634621,
+        "v3_score": 79.81855689570197,
+        "mean_detour": 3.6125,
+        "detour_fraction": 0.49375,
+        "mean_turns": 2.9875,
+        "mean_long_hops": 6.25625
+      },
+      "64-255": {
+        "rows": 240,
+        "v2_score": 92.86551437691945,
+        "v3_score": 93.18633768874639,
+        "mean_detour": 3.6083333333333334,
+        "detour_fraction": 0.5375,
+        "mean_turns": 5.704166666666667,
+        "mean_long_hops": 16.479166666666668
+      },
+      "256+": {
+        "rows": 80,
+        "v2_score": 96.2616421959546,
+        "v3_score": 96.36494890456464,
+        "mean_detour": 2.675,
+        "detour_fraction": 0.4375,
+        "mean_turns": 6.15,
+        "mean_long_hops": 34.3875
+      }
+    },
+    "detour": {
+      "1-10": {
+        "rows": 247,
+        "v2_score": 82.88345920665417,
+        "v3_score": 83.41400553784652,
+        "mean_detour": 4.153846153846154,
+        "detour_fraction": 1.0,
+        "mean_turns": 5.125506072874494,
+        "mean_long_hops": 13.591093117408906
+      },
+      "11+": {
+        "rows": 64,
+        "v2_score": 71.25793312295549,
+        "v3_score": 74.3487332105586,
+        "mean_detour": 20.90625,
+        "detour_fraction": 1.0,
+        "mean_turns": 4.828125,
+        "mean_long_hops": 12.8125
+      },
+      "zero": {
+        "rows": 289,
+        "v2_score": 82.8756546916623,
+        "v3_score": 83.24405468021337,
+        "mean_detour": 0.0,
+        "detour_fraction": 0.0,
+        "mean_turns": 3.5432525951557095,
+        "mean_long_hops": 13.636678200692042
+      }
+    },
+    "turns": {
+      "4+": {
+        "rows": 295,
+        "v2_score": 89.77988261451638,
+        "v3_score": 90.44137811024245,
+        "mean_detour": 4.989830508474577,
+        "detour_fraction": 0.6305084745762712,
+        "mean_turns": 6.664406779661017,
+        "mean_long_hops": 18.28135593220339
+      },
+      "2-3": {
+        "rows": 220,
+        "v2_score": 77.00185588499424,
+        "v3_score": 77.7883664826196,
+        "mean_detour": 4.054545454545455,
+        "detour_fraction": 0.5681818181818182,
+        "mean_turns": 2.5136363636363637,
+        "mean_long_hops": 10.209090909090909
+      },
+      "0-1": {
+        "rows": 85,
+        "v2_score": 65.39191392731865,
+        "v3_score": 66.18191679067844,
+        "mean_detour": 0.0,
+        "detour_fraction": 0.0,
+        "mean_turns": 0.9411764705882353,
+        "mean_long_hops": 5.635294117647059
+      }
+    }
+  }
+}

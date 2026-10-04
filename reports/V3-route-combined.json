@@ -1,0 +1,43 @@
+{
+  "baseline": 92.53153015795635,
+  "outcomes": [
+    {
+      "order": [
+        "route",
+        "momentum"
+      ],
+      "stages": [
+        {
+          "kind": "route",
+          "entries": 179,
+          "validation_score": 92.6046292392761
+        },
+        {
+          "kind": "momentum",
+          "entries": 1853,
+          "validation_score": 92.69609368311777
+        }
+      ]
+    },
+    {
+      "order": [
+        "momentum",
+        "route"
+      ],
+      "stages": [
+        {
+          "kind": "momentum",
+          "entries": 1853,
+          "validation_score": 92.61680859670095
+        },
+        {
+          "kind": "route",
+          "entries": 179,
+          "validation_score": 92.69549734094167
+        }
+      ]
+    }
+  ],
+  "holdout_used": false,
+  "elapsed_seconds": 7.601252667
+}

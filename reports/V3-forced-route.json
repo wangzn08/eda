@@ -1,0 +1,56 @@
+{
+  "baseline": 92.69609368311777,
+  "candidates": [
+    {
+      "kind": "detour_exact",
+      "prior": 20,
+      "entries": 55,
+      "validation_score": 92.79690593747715
+    },
+    {
+      "kind": "detour_exact",
+      "prior": 100,
+      "entries": 55,
+      "validation_score": 92.78803238477722
+    },
+    {
+      "kind": "detour_direction",
+      "prior": 20,
+      "entries": 288,
+      "validation_score": 92.78454092224949
+    },
+    {
+      "kind": "detour_direction",
+      "prior": 100,
+      "entries": 288,
+      "validation_score": 92.74681855793818
+    },
+    {
+      "kind": "detour_coarse",
+      "prior": 20,
+      "entries": 209,
+      "validation_score": 92.78763301197425
+    },
+    {
+      "kind": "detour_coarse",
+      "prior": 100,
+      "entries": 209,
+      "validation_score": 92.76397164773111
+    },
+    {
+      "kind": "detour_port",
+      "prior": 20,
+      "entries": 177,
+      "validation_score": 92.79540536589526
+    },
+    {
+      "kind": "detour_port",
+      "prior": 100,
+      "entries": 177,
+      "validation_score": 92.76729350699019
+    }
+  ],
+  "elapsed_seconds": 9.378798125,
+  "holdout_used": false,
+  "note": "Forced route length is a Manhattan lower bound based on fixed endpoint Net vectors, not an exact path length."
+}
