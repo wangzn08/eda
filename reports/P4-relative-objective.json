@@ -1,0 +1,108 @@
+{
+  "method": "weighted squared-error fitting for displacement lookup",
+  "weight": "(1000/max(100,golden))**power; development labels only",
+  "variants": [
+    {
+      "weight_power": 0,
+      "metrics": {
+        "overall": 85.16855442350047,
+        "groups": {
+          "short": {
+            "rows": 1881,
+            "score": 49.249139408330585
+          },
+          "middle": {
+            "rows": 73709,
+            "score": 79.86504543001857
+          },
+          "far": {
+            "rows": 74463,
+            "score": 91.32571655830711
+          }
+        }
+      }
+    },
+    {
+      "weight_power": 0.5,
+      "metrics": {
+        "overall": 85.21647797205715,
+        "groups": {
+          "short": {
+            "rows": 1881,
+            "score": 49.7475154563693
+          },
+          "middle": {
+            "rows": 73709,
+            "score": 79.95215961304072
+          },
+          "far": {
+            "rows": 74463,
+            "score": 91.32346748922222
+          }
+        }
+      }
+    },
+    {
+      "weight_power": 1,
+      "metrics": {
+        "overall": 85.23574210939339,
+        "groups": {
+          "short": {
+            "rows": 1881,
+            "score": 49.846690257817805
+          },
+          "middle": {
+            "rows": 73709,
+            "score": 80.00194588138258
+          },
+          "far": {
+            "rows": 74463,
+            "score": 91.31049994486827
+          }
+        }
+      }
+    },
+    {
+      "weight_power": 1.5,
+      "metrics": {
+        "overall": 85.21948777266483,
+        "groups": {
+          "short": {
+            "rows": 1881,
+            "score": 49.45916666107898
+          },
+          "middle": {
+            "rows": 73709,
+            "score": 80.00830457339542
+          },
+          "far": {
+            "rows": 74463,
+            "score": 91.28124013888575
+          }
+        }
+      }
+    },
+    {
+      "weight_power": 2,
+      "metrics": {
+        "overall": 85.14786354013125,
+        "groups": {
+          "short": {
+            "rows": 1881,
+            "score": 48.384078313520924
+          },
+          "middle": {
+            "rows": 73709,
+            "score": 79.96031277133132
+          },
+          "far": {
+            "rows": 74463,
+            "score": 91.21157114832252
+          }
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 20.509173792000002,
+  "holdout_used": false
+}

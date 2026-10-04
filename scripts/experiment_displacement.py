@@ -44,16 +44,18 @@ def quantile(sorted_values, fraction):
     return sorted_values[min(len(sorted_values) - 1, math.ceil(len(sorted_values) * fraction) - 1)]
 
 
-def train(rows, width_x, width_y, prior=16):
+def train(rows, width_x, width_y, prior=16, weight_power=0):
     # The geometric baseline prevents empty and sparse bins from returning zero.
     # Within each displacement bin, endpoint port offsets are learned only from
     # the residual. Two backfitting rounds avoid source/target bias leakage.
-    total, xsum, ysum, xx, yy, xy, gx, gy = [0.0] * 8
+    total, xsum, ysum, xx, yy, xy, gx, gy, dsum = [0.0] * 9
     for dx, dy, _, _, d in rows:
+        weight = (1000 / max(100, d)) ** weight_power
         x, y = abs(dx), abs(dy)
-        total += 1; xsum += x; ysum += y
-        xx += x*x; yy += y*y; xy += x*y; gx += x*d; gy += y*d
-    mean_d = sum(r[4] for r in rows) / total
+        total += weight; xsum += weight*x; ysum += weight*y
+        xx += weight*x*x; yy += weight*y*y; xy += weight*x*y
+        gx += weight*x*d; gy += weight*y*d; dsum += weight*d
+    mean_d = dsum / total
     mx, my = xsum / total, ysum / total
     vx, vy, covariance = xx / total - mx*mx, yy / total - my*my, xy / total - mx*my
     rhs_x, rhs_y = gx / total - mx*mean_d, gy / total - my*mean_d
@@ -65,19 +67,21 @@ def train(rows, width_x, width_y, prior=16):
     for _ in range(3):
         sums = collections.defaultdict(lambda: [0.0, 0])
         for dx, dy, sp, tp, d in rows:
+            weight = (1000 / max(100, d)) ** weight_power
             key = bucket(dx, dy, width_x, width_y)
             baseline = intercept + ax*abs(dx) + ay*abs(dy)
-            sums[key][0] += d - baseline - source_offsets.get(sp, 0) - target_offsets.get(tp, 0)
-            sums[key][1] += 1
+            sums[key][0] += weight * (d - baseline - source_offsets.get(sp, 0) - target_offsets.get(tp, 0))
+            sums[key][1] += weight
         table = {k: value / (count + prior) for k, (value, count) in sums.items()}
         for port_index, current, other in ((2, source_offsets, target_offsets), (3, target_offsets, source_offsets)):
             sums = collections.defaultdict(lambda: [0.0, 0])
             for dx, dy, sp, tp, d in rows:
+                weight = (1000 / max(100, d)) ** weight_power
                 key = bucket(dx, dy, width_x, width_y)
                 own, opposite = (sp, tp) if port_index == 2 else (tp, sp)
                 baseline = intercept + ax*abs(dx) + ay*abs(dy)
-                sums[own][0] += d - baseline - table.get(key, 0) - other.get(opposite, 0)
-                sums[own][1] += 1
+                sums[own][0] += weight * (d - baseline - table.get(key, 0) - other.get(opposite, 0))
+                sums[own][1] += weight
             current.clear()
             current.update({k: value / (count + prior) for k, (value, count) in sums.items()})
     return intercept, ax, ay, source_offsets, target_offsets, table

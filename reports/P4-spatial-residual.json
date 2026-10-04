@@ -1,0 +1,160 @@
+{
+  "baseline": {
+    "score": 86.89164754303984,
+    "groups": {
+      "middle": {
+        "rows": 73709,
+        "score": 82.20344272169028
+      },
+      "far": {
+        "rows": 74463,
+        "score": 92.44502214871437
+      },
+      "short": {
+        "rows": 1881,
+        "score": 50.76296913492625
+      }
+    }
+  },
+  "candidates": [
+    {
+      "features": [
+        "x_pair"
+      ],
+      "table_entries": [
+        432
+      ],
+      "metrics": {
+        "score": 88.19215702776384,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 83.96894795006291
+          },
+          "far": {
+            "rows": 74463,
+            "score": 93.28551340606533
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.05282789995246
+          }
+        }
+      }
+    },
+    {
+      "features": [
+        "y_pair"
+      ],
+      "table_entries": [
+        363
+      ],
+      "metrics": {
+        "score": 86.99696841334978,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 82.33333486403089
+          },
+          "far": {
+            "rows": 74463,
+            "score": 92.52826178837212
+          },
+          "short": {
+            "rows": 1881,
+            "score": 50.779566341462655
+          }
+        }
+      }
+    },
+    {
+      "features": [
+        "source_cell",
+        "target_cell"
+      ],
+      "table_entries": [
+        124,
+        124
+      ],
+      "metrics": {
+        "score": 87.07776212903063,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 82.36627973972455
+          },
+          "far": {
+            "rows": 74463,
+            "score": 92.68182216302773
+          },
+          "short": {
+            "rows": 1881,
+            "score": 49.854760067120566
+          }
+        }
+      }
+    },
+    {
+      "features": [
+        "x_pair",
+        "y_pair"
+      ],
+      "table_entries": [
+        432,
+        363
+      ],
+      "metrics": {
+        "score": 88.35540754093519,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 84.24446372601139
+          },
+          "far": {
+            "rows": 74463,
+            "score": 93.33173578331862
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.44962749926077
+          }
+        }
+      }
+    },
+    {
+      "features": [
+        "x_pair",
+        "y_pair",
+        "source_cell",
+        "target_cell"
+      ],
+      "table_entries": [
+        432,
+        363,
+        124,
+        124
+      ],
+      "metrics": {
+        "score": 88.36486490223677,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 84.26618427220805
+          },
+          "far": {
+            "rows": 74463,
+            "score": 93.3313246669186
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.3692014791355
+          }
+        }
+      }
+    }
+  ],
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "elapsed_seconds": 14.233246292,
+  "holdout_used": false
+}

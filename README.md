@@ -11,6 +11,7 @@
 - [数据审计与精确基线阶段报告](reports/BASELINE.md)
 - [P4 压缩搜索实验](reports/P4-compression.md)
 - [P4 位移、Gap/Block 与 C++ 高速候选实验](reports/P4-short-and-cpp.md)
+- [P5 已选模型与淘汰理由](reports/P5-selected-model.md)
 
 ## 评测要求
 
@@ -64,5 +65,7 @@ build/estimate -in out/baseline/official8_bidirectional.request.csv -out out/res
 实验选项 `--algorithm compressed` 使用Arc/Net严格交替性质，只搜索互联Input状态；44条开发分层样本输出与原图完全一致，本机端到端耗时约19.7秒、峰值RSS约0.34GB。默认算法仍是原图双向Dijkstra，用于独立对照。
 
 实验选项 `--algorithm approximate` 使用开发集离线拟合并内嵌的位移表、端口偏置和 Gap/Block 校正，执行时不读取 golden。在15万独立验证请求上得分86.89，本机70万请求进程CPU约0.244秒、峰值RSS约18.4MB。正式隐藏集准确率和十亿请求全流程尚未确认；当前默认入口仍为精确参考算法。
+
+当前提交候选为 `--algorithm port`：在上述特征上增加粗网格位置对、端口族×方向校正，验证评分90.89。本机1000万条重复请求约1.97秒、峰值RSS约3.5MB。精确参考仍是默认选项；最终包装时将以该候选作为正式入口。
 
 开发/验证/最终留出按请求对哈希固定划分为 700,705 / 150,053 / 149,242 条。请求和golden分文件保存，最终留出尚未用于算法评估。输入全量审计发现1条golden=0；评分工具单独报告零延时样本，不擅自补充官方未定义的除零规则。

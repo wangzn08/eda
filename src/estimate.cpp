@@ -1,5 +1,7 @@
 #include "architecture_data.hpp"
 #include "lookup_model.hpp"
+#include "spatial_model.hpp"
+#include "port_model.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -13,6 +15,7 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <vector>
 
@@ -24,6 +27,36 @@ constexpr Distance INF = std::numeric_limits<Distance>::max()/4;
 
 struct Move { Node site=NONE; uint32_t delay=0; };
 struct LocalEdge { uint16_t port; uint32_t delay; };
+
+class FastPinParser {
+    std::vector<int> grid;
+    std::unordered_map<std::string_view,unsigned> ports;
+public:
+    FastPinParser():grid(archdata::WIDTH*archdata::HEIGHT,-1) {
+        for(size_t i=0;i<std::size(archdata::SITES);++i) {
+            const auto& p=archdata::SITES[i];
+            grid[p.x*archdata::HEIGHT+p.y]=static_cast<int>(i);
+        }
+        ports.reserve(archdata::P);
+        for(int i=0;i<archdata::P;++i) ports.emplace(archdata::PORTS[i],i);
+    }
+    Node pin(std::string_view text) const {
+        if(text.substr(0,4)!="SRB_") throw std::runtime_error("Invalid pin: "+std::string(text));
+        size_t under=text.find('_',4),slash=text.find('/',4);
+        if(under==text.npos || slash==text.npos || under>=slash)
+            throw std::runtime_error("Invalid pin: "+std::string(text));
+        int x=-1,y=-1;
+        auto px=std::from_chars(text.data()+4,text.data()+under,x);
+        auto py=std::from_chars(text.data()+under+1,text.data()+slash,y);
+        if(px.ec!=std::errc() || py.ec!=std::errc() || px.ptr!=text.data()+under || py.ptr!=text.data()+slash
+           || x<0 || x>=archdata::WIDTH || y<0 || y>=archdata::HEIGHT)
+            throw std::runtime_error("Invalid coordinates: "+std::string(text));
+        int site=grid[x*archdata::HEIGHT+y];
+        auto found=ports.find(text.substr(slash+1));
+        if(site<0 || found==ports.end()) throw std::runtime_error("Unknown pin: "+std::string(text));
+        return static_cast<Node>(site)*archdata::P+found->second;
+    }
+};
 
 class Graph {
     std::vector<int> grid;
@@ -209,6 +242,30 @@ Distance lookup_delay(Node source,Node target) {
     }
     return static_cast<Distance>(std::max(0.0,std::nearbyint(estimate)));
 }
+
+Distance spatial_delay(Node source,Node target) {
+    Distance base=lookup_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int xsign=(b.x>a.x)-(b.x<a.x),ysign=(b.y>a.y)-(b.y<a.y);
+    const size_t xkey=((a.x/10)*12+(b.x/10))*3+ysign+1;
+    const size_t ykey=((a.y/50)*11+(b.y/50))*3+xsign+1;
+    double estimate=base+spatial_model::x_pair[xkey]+spatial_model::y_pair[ykey];
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(estimate)));
+}
+
+Distance port_delay(Node source,Node target) {
+    Distance base=spatial_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    int dx=(b.x>a.x)-(b.x<a.x),dy=(b.y>a.y)-(b.y<a.y);
+    int from=port_model::family[source%archdata::P];
+    int to=port_model::family[target%archdata::P];
+    size_t key=((from*port_model::FAMILIES+to)*3+dx+1)*3+dy+1;
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(base+port_model::residual[key])));
+}
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -349,13 +406,18 @@ std::string trim(std::string s) {
     return a==std::string::npos?"":s.substr(a,b-a+1);
 }
 
+std::string_view trim_view(std::string_view s) {
+    auto first=s.find_first_not_of(" \t\r\n"),last=s.find_last_not_of(" \t\r\n");
+    return first==s.npos?std::string_view{}:s.substr(first,last-first+1);
+}
+
 int main(int argc,char** argv) {
     try {
         std::string input,output,stats_path,algorithm="bidirectional";
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate] [--stats stats.csv]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port] [--stats stats.csv]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -366,13 +428,16 @@ int main(int argc,char** argv) {
         }
         if(input.empty() || output.empty() || input==output) throw std::runtime_error("Provide distinct -in and -out files");
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
         std::getline(in,header);
         if(trim(header)!="From,To") throw std::runtime_error("Expected input header From,To (no golden column)");
-        std::ofstream out(output), stats;
+        std::vector<char> output_buffer(1<<20);
+        std::ofstream out, stats;
+        out.rdbuf()->pubsetbuf(output_buffer.data(),output_buffer.size());
+        out.open(output);
         if(!out) throw std::runtime_error("Cannot open output");
         if(!stats_path.empty()) {
             stats.open(stats_path);
@@ -380,29 +445,41 @@ int main(int argc,char** argv) {
             stats<<"row,delay,wall_ms,settled,relaxations\n";
         }
         const auto cpu_start=std::clock();
-        Graph graph;
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port";
+        FastPinParser parser;
+        std::unique_ptr<Graph> graph;
+        if(!fast) graph=std::make_unique<Graph>();
         std::unique_ptr<Solver> solver;
         std::unique_ptr<CompactSolver> compact_solver;
-        if(algorithm=="compressed") compact_solver=std::make_unique<CompactSolver>(graph);
-        else if(algorithm!="approximate") solver=std::make_unique<Solver>(graph);
+        if(algorithm=="compressed") compact_solver=std::make_unique<CompactSolver>(*graph);
+        else if(!fast) solver=std::make_unique<Solver>(*graph);
         out<<"From,To,delay\n";
         std::string line; uint64_t row=0;
         while(std::getline(in,line)) {
-            line=trim(line);
-            if(line.empty()) continue;
-            auto comma=line.find(',');
-            if(comma==std::string::npos || line.find(',',comma+1)!=std::string::npos) throw std::runtime_error("Invalid CSV row");
-            std::string s=trim(line.substr(0,comma)),t=trim(line.substr(comma+1));
-            auto start=std::chrono::steady_clock::now();
+            auto record=trim_view(line);
+            if(record.empty()) continue;
+            auto comma=record.find(',');
+            if(comma==record.npos || record.find(',',comma+1)!=record.npos) throw std::runtime_error("Invalid CSV row");
+            std::string_view s=trim_view(record.substr(0,comma)),t=trim_view(record.substr(comma+1));
+            const bool collect=stats.is_open();
+            auto start=collect?std::chrono::steady_clock::now():std::chrono::steady_clock::time_point{};
             SearchStats counters;
-            Node from=graph.pin(s),to=graph.pin(t);
+            Node from=parser.pin(s),to=parser.pin(t);
             Distance d=algorithm=="approximate"?lookup_delay(from,to):
+                algorithm=="spatial"?spatial_delay(from,to):
+                algorithm=="port"?port_delay(from,to):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
-            if(d>=INF) throw std::runtime_error("Unreachable query: "+s+" -> "+t+"; official output convention unspecified");
-            auto ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
-            out<<s<<','<<t<<','<<d<<'\n';
+            if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
+            out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');
+            char digits[32];auto end=std::to_chars(digits,digits+sizeof(digits),d);
+            if(end.ec!=std::errc()) throw std::runtime_error("Cannot format delay");
+            out.write(digits,end.ptr-digits);out.put('\n');
             ++row;
-            if(stats.is_open()) { stats<<row<<','<<d<<','<<ms<<','<<counters.settled<<','<<counters.relaxations<<'\n'; stats.flush(); }
+            if(collect) {
+                auto ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
+                stats<<row<<','<<d<<','<<ms<<','<<counters.settled<<','<<counters.relaxations<<'\n';
+                stats.flush();
+            }
         }
         out.flush();
         if(in.bad() || !out || (stats.is_open() && !stats)) throw std::runtime_error("File I/O failed");

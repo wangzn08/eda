@@ -1,0 +1,243 @@
+{
+  "baseline": {
+    "score": 90.88916720043925,
+    "groups": {
+      "middle": {
+        "rows": 73709,
+        "score": 87.6465532580302
+      },
+      "far": {
+        "rows": 74463,
+        "score": 95.05283026456345
+      },
+      "short": {
+        "rows": 1881,
+        "score": 53.127863817756534
+      }
+    }
+  },
+  "candidates": [
+    {
+      "kind": "source_port_direction",
+      "prior": 20,
+      "entries": 787,
+      "metrics": {
+        "score": 90.9747807813369,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.68580013616034
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.19345055951915
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.85285982578674
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_port_direction",
+      "prior": 100,
+      "entries": 787,
+      "metrics": {
+        "score": 90.97145834849876,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.68377265777333
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.18670906768293
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.934143236908064
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_port_direction",
+      "prior": 20,
+      "entries": 2002,
+      "metrics": {
+        "score": 90.91143572679695,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.63642465887622
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.11482089482854
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.847172589234994
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_port_direction",
+      "prior": 100,
+      "entries": 2002,
+      "metrics": {
+        "score": 90.91669796255056,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.64837415577779
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.11145243422551
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.93205003544096
+          }
+        }
+      }
+    },
+    {
+      "kind": "family_pair_direction_distance",
+      "prior": 20,
+      "entries": 13220,
+      "metrics": {
+        "score": 90.91804275732247,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.6686927012713
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.06540264793583
+          },
+          "short": {
+            "rows": 1881,
+            "score": 54.066093659258385
+          }
+        }
+      }
+    },
+    {
+      "kind": "family_pair_direction_distance",
+      "prior": 100,
+      "entries": 13220,
+      "metrics": {
+        "score": 90.91873456808185,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.67907035158822
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.06525614988621
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.7204215364254
+          }
+        }
+      }
+    },
+    {
+      "kind": "family_pair_direction_dx",
+      "prior": 20,
+      "entries": 9212,
+      "metrics": {
+        "score": 90.98725029638614,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.76152398465554
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.11976890417691
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.7971001737401
+          }
+        }
+      }
+    },
+    {
+      "kind": "family_pair_direction_dx",
+      "prior": 100,
+      "entries": 9212,
+      "metrics": {
+        "score": 90.97606750963125,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.75274367704228
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.10940827734873
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.65922688740034
+          }
+        }
+      }
+    },
+    {
+      "kind": "family_pair_direction_dy",
+      "prior": 20,
+      "entries": 12929,
+      "metrics": {
+        "score": 90.91113407515923,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.67115140872932
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.05818641413063
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.704288803107914
+          }
+        }
+      }
+    },
+    {
+      "kind": "family_pair_direction_dy",
+      "prior": 100,
+      "entries": 12929,
+      "metrics": {
+        "score": 90.91067021251186,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.67279098712761
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.06032573051192
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.518347504848656
+          }
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 7.664573333,
+  "holdout_used": false
+}

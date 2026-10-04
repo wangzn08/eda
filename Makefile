@@ -9,7 +9,7 @@ all: build/estimate
 build/architecture_data.hpp: $(ARCH_FILES) scripts/generate_architecture.py scripts/architecture.py
 	python3 scripts/generate_architecture.py --arch "$(ARCH)" --out $@
 
-build/estimate: src/estimate.cpp src/lookup_model.hpp build/architecture_data.hpp
+build/estimate: src/estimate.cpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp build/architecture_data.hpp
 	$(CXX) $(CXXFLAGS) -Ibuild src/estimate.cpp -o $@
 
 audit:
