@@ -1,0 +1,26 @@
+{
+  "source": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/v4_table_model.hpp",
+  "bytes": 663161,
+  "stages": [
+    {
+      "kind": "signed_dy_exact",
+      "nonzero_entries": 3173,
+      "dense_entries": 3297,
+      "validation_score": 93.08713906864223
+    },
+    {
+      "kind": "target_port_dy16",
+      "nonzero_entries": 17534,
+      "dense_entries": 52080,
+      "validation_score": 93.19578028598141
+    },
+    {
+      "kind": "source_port_dy16",
+      "nonzero_entries": 6695,
+      "dense_entries": 52080,
+      "validation_score": 93.27397322017892
+    }
+  ],
+  "final_python_validation_score": 93.27397322017892,
+  "holdout_used": false
+}

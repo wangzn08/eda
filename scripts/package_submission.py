@@ -27,6 +27,9 @@ def main():
         'route_v3_model.hpp':ROOT/'src/route_v3_model.hpp',
         'forced_route_model.hpp':ROOT/'src/forced_route_model.hpp',
         'route_v3_final_model.hpp':ROOT/'src/route_v3_final_model.hpp',
+        'v4_tree_model.hpp':ROOT/'src/v4_tree_model.hpp',
+        'v4_table_model.hpp':ROOT/'src/v4_table_model.hpp',
+        'v4_horizontal_model.hpp':ROOT/'src/v4_horizontal_model.hpp',
     }
     readme='''# FPGA delay estimator submission source
 
@@ -38,9 +41,9 @@ Run with the official two-column request CSV:
 
     ./estimate -in delay_estimate_request.csv -out delay_estimate_result.csv
 
-The default uses the V3 architecture-aware lookup model with source-column,
-target-column, signed horizontal-displacement, Block-route, and fixed-Net
-endpoint corrections. The architecture
+The default uses the V4 architecture-aware lookup model. It begins with the
+V3 routing and endpoint estimates, then applies three vertical and three
+horizontal residual corrections fitted on development labels. The architecture
 and fitted parameters are embedded in the supplied headers. No JSON or golden
 answer file is read at runtime. Use --algorithm bidirectional for the slow
 exact reference if needed for diagnostics.
@@ -49,7 +52,7 @@ The source was validated on macOS arm64. Rebuild and benchmark on the actual
 contest machine; the organizer's target compiler, OS and packaging rules
 must take precedence over this local package.
 '''
-    archive=output/'fpga-delay-estimator-v3-source.tar.gz'
+    archive=output/'fpga-delay-estimator-v4-source.tar.gz'
     readme_path=output/'README.txt'
     readme_path.write_text(readme)
     def normalize(info):

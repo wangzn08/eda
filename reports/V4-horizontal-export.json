@@ -1,0 +1,26 @@
+{
+  "source": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/v4_horizontal_model.hpp",
+  "bytes": 435622,
+  "stages": [
+    {
+      "kind": "signed_dx_dybucket",
+      "nonzero_entries": 8220,
+      "dense_entries": 12906,
+      "validation_score": 93.3198089275925
+    },
+    {
+      "kind": "target_port_dx8",
+      "nonzero_entries": 7935,
+      "dense_entries": 22320,
+      "validation_score": 93.37417839406514
+    },
+    {
+      "kind": "source_port_dx8",
+      "nonzero_entries": 3066,
+      "dense_entries": 22320,
+      "validation_score": 93.40712764583768
+    }
+  ],
+  "final_python_validation_score": 93.40712764583768,
+  "holdout_used": false
+}

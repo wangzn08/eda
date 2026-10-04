@@ -1,0 +1,64 @@
+{
+  "input": "out/evaluation/stress1b.request.csv",
+  "input_bytes": 36394618757,
+  "output": "out/evaluation/stress1b.v4-horizontal.csv",
+  "expected_rows": 1000000000,
+  "command": [
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/build/estimate",
+    "-in",
+    "out/evaluation/stress1b.request.csv",
+    "-out",
+    "out/evaluation/stress1b.v4-horizontal.csv"
+  ],
+  "machine": "macOS-26.6.2-arm64-arm-64bit",
+  "architecture": "arm64",
+  "binary_sha256": "9e258e807815626b761ef91d6d403d3cfa5df34a0001139850a0186bf47cc60a",
+  "runs": [
+    {
+      "index": 1,
+      "rows": 1000000000,
+      "process_cpu_seconds": 234.213,
+      "wall_seconds": 235.945106458,
+      "peak_rss_bytes": 5111808,
+      "output_bytes": 40333618804,
+      "output_sha256": "265da96f913aae81d99f43fe16634dfce20d4e5ebd6d0d573ade4d367673874c"
+    },
+    {
+      "index": 2,
+      "rows": 1000000000,
+      "process_cpu_seconds": 233.643,
+      "wall_seconds": 234.64453454199997,
+      "peak_rss_bytes": 5128192,
+      "output_bytes": 40333618804,
+      "output_sha256": "265da96f913aae81d99f43fe16634dfce20d4e5ebd6d0d573ade4d367673874c"
+    },
+    {
+      "index": 3,
+      "rows": 1000000000,
+      "process_cpu_seconds": 234.182,
+      "wall_seconds": 235.09077041699993,
+      "peak_rss_bytes": 5128192,
+      "output_bytes": 40333618804,
+      "output_sha256": "265da96f913aae81d99f43fe16634dfce20d4e5ebd6d0d573ade4d367673874c"
+    },
+    {
+      "index": 4,
+      "rows": 1000000000,
+      "process_cpu_seconds": 236.463,
+      "wall_seconds": 239.87787379200006,
+      "peak_rss_bytes": 5111808,
+      "output_bytes": 40333618804,
+      "output_sha256": "265da96f913aae81d99f43fe16634dfce20d4e5ebd6d0d573ade4d367673874c"
+    },
+    {
+      "index": 5,
+      "rows": 1000000000,
+      "process_cpu_seconds": 233.402,
+      "wall_seconds": 235.05691116599996,
+      "peak_rss_bytes": 5128192,
+      "output_bytes": 40333618804,
+      "output_sha256": "265da96f913aae81d99f43fe16634dfce20d4e5ebd6d0d573ade4d367673874c"
+    }
+  ],
+  "all_outputs_identical": true
+}

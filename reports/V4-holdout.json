@@ -1,0 +1,19 @@
+{
+  "rows": 149242,
+  "positive_delay_rows": 149242,
+  "v3_score": 92.82274038273523,
+  "v4_score": 93.39638154446895,
+  "mean_paired_gain": 0.5736411617354757,
+  "paired_standard_error": 0.00984315698492168,
+  "approximate_iid_95_percent_interval": [
+    0.5543485740450292,
+    0.5929337494259223
+  ],
+  "v4_better_rows": 83525,
+  "v3_better_rows": 61846,
+  "tied_rows": 3871,
+  "v4_relative_error_p50": 0.009186864738076622,
+  "v4_relative_error_p95": 0.057926829268292686,
+  "v4_relative_error_p99": 0.13903743315508021,
+  "holdout_used_for_tuning": false
+}

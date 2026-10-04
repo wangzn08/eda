@@ -8,6 +8,9 @@
 #include "route_v3_model.hpp"
 #include "forced_route_model.hpp"
 #include "route_v3_final_model.hpp"
+#include "v4_tree_model.hpp"
+#include "v4_table_model.hpp"
+#include "v4_horizontal_model.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -413,6 +416,87 @@ Distance v3_final_delay(Node source,Node target) {
     size_t momentum_key=((((port_key*4+momentum)*4+bucket)*3+xsign+1)*3+ysign+1);
     return static_cast<Distance>(std::max(0.0,std::nearbyint(estimate+route_v3_final_model::momentum[momentum_key])));
 }
+Distance v4_tree_delay(Node source,Node target) {
+    Distance base=v3_final_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,dy=b.y-a.y,direct=std::abs(dx)+std::abs(dy);
+    const auto& vectors=endpoint_vectors();
+    const auto first=vectors.first[source%archdata::P],last=vectors.last[target%archdata::P];
+    const int forced=std::abs(first.x)+std::abs(first.y)+std::abs(last.x)+std::abs(last.y)
+        +std::abs(dx-first.x-last.x)+std::abs(dy-first.y-last.y);
+    int route=0,route_detour=0;
+    if(std::min(a.x,b.x)<=89 && std::max(a.x,b.x)>=76) {
+        const auto blocked=[](int y){return y<550 && y%100<50?y/100:-1;};
+        int s=blocked(a.y),t=blocked(b.y);
+        if(s>=0 || t>=0) {
+            if(s!=t) route=1;
+            else {
+                route=2;
+                int lower=s*100,upper=lower+49;
+                int distance_to_edge=std::min(a.y-lower+b.y-lower+2,2*upper-a.y-b.y+2);
+                route_detour=std::min(9,std::max(0,distance_to_edge/10));
+            }
+        }
+    }
+    const int xmin=std::min(a.x,b.x),xmax=std::max(a.x,b.x);
+    const int ymin=std::min(a.y,b.y),ymax=std::max(a.y,b.y);
+    const auto& m=v4_tree_model::family;
+    std::array<float,31> feature={
+        float(a.x),float(a.y),float(b.x),float(b.y),float(dx),float(dy),
+        float(std::abs(dx)),float(std::abs(dy)),float(direct),float(base),
+        float(source%archdata::P),float(target%archdata::P),
+        float(m[source%archdata::P]),float(m[target%archdata::P]),
+        float((dx>0)-(dx<0)),float((dy>0)-(dy<0)),
+        float(a.x%10),float(b.x%10),float(a.y%12),float(b.y%12),
+        float(v4_tree_model::x_gap_prefix[xmax]-v4_tree_model::x_gap_prefix[xmin]),
+        float(v4_tree_model::y_gap_prefix[ymax]-v4_tree_model::y_gap_prefix[ymin]),
+        float(route),float(route_detour),float(std::max(0,forced-direct)),
+        float(first.x*dx+first.y*dy),float(last.x*dx+last.y*dy),
+        float(first.x || first.y),float(last.x || last.y),
+        float(a.y%100),float(b.y%100)};
+    double correction=0.;
+    for(uint32_t root:v4_tree_model::roots) {
+        uint32_t node=root;
+        while(v4_tree_model::nodes[node].feature!=65535) {
+            const auto& branch=v4_tree_model::nodes[node];
+            node=feature[branch.feature]<=branch.threshold?branch.left:branch.right;
+        }
+        correction+=v4_tree_model::nodes[node].value;
+    }
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(double(base)*(1.0+correction))));
+}
+Distance v4_table_delay(Node source,Node target) {
+    Distance base=v3_final_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,dy=b.y-a.y;
+    const int xsign=(dx>0)-(dx<0),ysign=(dy>0)-(dy<0);
+    const int bucket=std::abs(dy)/16;
+    double estimate=std::max(0.0,std::nearbyint(base+v4_table_model::signed_dy_exact[(dy+549)*3+xsign+1]));
+    estimate=std::max(0.0,std::nearbyint(estimate+v4_table_model::target_port_dy16
+        [(target%archdata::P*35+bucket)*3+ysign+1]));
+    estimate=std::max(0.0,std::nearbyint(estimate+v4_table_model::source_port_dy16
+        [(source%archdata::P*35+bucket)*3+ysign+1]));
+    return static_cast<Distance>(estimate);
+}
+Distance v4_horizontal_delay(Node source,Node target) {
+    Distance base=v4_table_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,dy=b.y-a.y;
+    const int xsign=(dx>0)-(dx<0),ysign=(dy>0)-(dy<0);
+    double estimate=std::max(0.0,std::nearbyint(base+v4_horizontal_model::signed_dx_dybucket
+        [((dx+119)*18+std::abs(dy)/32)*3+ysign+1]));
+    estimate=std::max(0.0,std::nearbyint(estimate+v4_horizontal_model::target_port_dx8
+        [(target%archdata::P*15+std::abs(dx)/8)*3+xsign+1]));
+    estimate=std::max(0.0,std::nearbyint(estimate+v4_horizontal_model::source_port_dx8
+        [(source%archdata::P*15+std::abs(dx)/8)*3+xsign+1]));
+    return static_cast<Distance>(estimate);
+}
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -610,11 +694,11 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,trace_path,algorithm="v3-final";
+        std::string input,output,stats_path,trace_path,algorithm="v4-horizontal";
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -628,7 +712,7 @@ int main(int argc,char** argv) {
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
         if(!trace_path.empty() && (algorithm!="compressed" || trace_path==input || trace_path==output || trace_path==stats_path))
             throw std::runtime_error("Trace requires compressed algorithm and a distinct file");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -650,7 +734,7 @@ int main(int argc,char** argv) {
             trace<<"row,delay,steps,hops,long_hops,turns,detour\n";
         }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final";
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal";
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -682,6 +766,9 @@ int main(int argc,char** argv) {
                 algorithm=="v3"?v3_delay(from,to):
                 algorithm=="v3-forced"?v3_forced_delay(from,to):
                 algorithm=="v3-final"?v3_final_delay(from,to):
+                algorithm=="v4-tree"?v4_tree_delay(from,to):
+                algorithm=="v4-table"?v4_table_delay(from,to):
+                algorithm=="v4-horizontal"?v4_horizontal_delay(from,to):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
             out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');

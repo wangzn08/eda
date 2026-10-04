@@ -1,0 +1,145 @@
+{
+  "baseline": 93.27397322017892,
+  "candidates": [
+    {
+      "order": [
+        "target_port_dx8",
+        "source_port_dx8"
+      ],
+      "stages": [
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.33861740991263
+        },
+        {
+          "kind": "source_port_dx8",
+          "entries": 3066,
+          "validation_score": 93.36844022953771
+        }
+      ]
+    },
+    {
+      "order": [
+        "source_port_dx8",
+        "target_port_dx8"
+      ],
+      "stages": [
+        {
+          "kind": "source_port_dx8",
+          "entries": 3066,
+          "validation_score": 93.31745924161928
+        },
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.36886249109494
+        }
+      ]
+    },
+    {
+      "order": [
+        "target_port_dx8",
+        "signed_dx_dybucket"
+      ],
+      "stages": [
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.33861740991263
+        },
+        {
+          "kind": "signed_dx_dybucket",
+          "entries": 8220,
+          "validation_score": 93.37398189124197
+        }
+      ]
+    },
+    {
+      "order": [
+        "signed_dx_dybucket",
+        "target_port_dx8"
+      ],
+      "stages": [
+        {
+          "kind": "signed_dx_dybucket",
+          "entries": 8220,
+          "validation_score": 93.3198089275925
+        },
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.37417839406514
+        }
+      ]
+    },
+    {
+      "order": [
+        "target_port_dx8",
+        "source_port_dx8",
+        "signed_dx_dybucket"
+      ],
+      "stages": [
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.33861740991263
+        },
+        {
+          "kind": "source_port_dx8",
+          "entries": 3066,
+          "validation_score": 93.36844022953771
+        },
+        {
+          "kind": "signed_dx_dybucket",
+          "entries": 8220,
+          "validation_score": 93.4059158132317
+        }
+      ]
+    },
+    {
+      "order": [
+        "signed_dx_dybucket",
+        "target_port_dx8",
+        "source_port_dx8"
+      ],
+      "stages": [
+        {
+          "kind": "signed_dx_dybucket",
+          "entries": 8220,
+          "validation_score": 93.3198089275925
+        },
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.37417839406514
+        },
+        {
+          "kind": "source_port_dx8",
+          "entries": 3066,
+          "validation_score": 93.40712764583768
+        }
+      ]
+    },
+    {
+      "order": [
+        "target_port_dx8",
+        "source_port_x"
+      ],
+      "stages": [
+        {
+          "kind": "target_port_dx8",
+          "entries": 7935,
+          "validation_score": 93.33861740991263
+        },
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.36061187215674
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 15.688351833,
+  "holdout_used": false
+}

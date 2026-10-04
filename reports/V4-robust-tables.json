@@ -1,0 +1,67 @@
+{
+  "baseline": 92.8434116220866,
+  "outcomes": [
+    {
+      "method": "mean",
+      "stages": [
+        {
+          "kind": "signed_dy_exact",
+          "entries": 3173,
+          "validation_score": 93.08713906864223
+        },
+        {
+          "kind": "target_port_dy16",
+          "entries": 17534,
+          "validation_score": 93.19578028598141
+        },
+        {
+          "kind": "source_port_dy16",
+          "entries": 6695,
+          "validation_score": 93.27397322017892
+        }
+      ]
+    },
+    {
+      "method": "median",
+      "stages": [
+        {
+          "kind": "signed_dy_exact",
+          "entries": 3173,
+          "validation_score": 93.0884732197377
+        },
+        {
+          "kind": "target_port_dy16",
+          "entries": 17534,
+          "validation_score": 93.19969989329748
+        },
+        {
+          "kind": "source_port_dy16",
+          "entries": 6695,
+          "validation_score": 93.28143961326519
+        }
+      ]
+    },
+    {
+      "method": "relative_median",
+      "stages": [
+        {
+          "kind": "signed_dy_exact",
+          "entries": 3173,
+          "validation_score": 93.09070440758087
+        },
+        {
+          "kind": "target_port_dy16",
+          "entries": 17534,
+          "validation_score": 93.20118911818179
+        },
+        {
+          "kind": "source_port_dy16",
+          "entries": 6695,
+          "validation_score": 93.28413016260333
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 10.876821375,
+  "holdout_used": false
+}
