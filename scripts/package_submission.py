@@ -44,7 +44,7 @@ The source was validated on macOS arm64. Rebuild and benchmark on the actual
 contest machine; the organizer's target compiler, OS and packaging rules
 must take precedence over this local package.
 '''
-    archive=output/'fpga-delay-estimator-source.tar.gz'
+    archive=output/'fpga-delay-estimator-v2-source.tar.gz'
     readme_path=output/'README.txt'
     readme_path.write_text(readme)
     def normalize(info):

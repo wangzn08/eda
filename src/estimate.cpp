@@ -448,7 +448,7 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,algorithm="port";
+        std::string input,output,stats_path,algorithm="v2";
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
