@@ -13,6 +13,11 @@ from experiment_port_interaction import family
 def key(row,kind):
     sx,sy,tx,ty,sp,tp,_,_=row
     dx,dy=tx-sx,ty-sy
+    route=0
+    if min(sx,tx)<=89 and max(sx,tx)>=76:
+        bs=sy//100 if sy%100<50 else -1
+        bt=ty//100 if ty%100<50 else -1
+        if bs>=0 or bt>=0:route=1 if bs!=bt else 2
     if kind=='source_port_dy16':return sp,abs(dy)//16,(dy>0)-(dy<0)
     if kind=='target_port_dy16':return tp,abs(dy)//16,(dy>0)-(dy<0)
     if kind=='source_port_dx8':return sp,abs(dx)//8,(dx>0)-(dx<0)
@@ -37,6 +42,25 @@ def key(row,kind):
     if kind=='signed_dx_dybucket':return dx,abs(dy)//32,(dy>0)-(dy<0)
     if kind=='dy_phase_exact':return dy,sy%100//10,ty%100//10
     if kind=='port_pair_distance':return family(sp),family(tp),abs(dy)//32,(dx>0)-(dx<0)
+    if kind=='source_x_target_yphase':return sx,ty%100//5
+    if kind=='target_x_target_yphase':return tx,ty%100//5
+    if kind=='source_x_source_yphase':return sx,sy%100//5
+    if kind=='source_x_target_x':return sx,tx
+    if kind=='source_x_dy20':return sx,abs(dy)//20,(dy>0)-(dy<0)
+    if kind=='source_x_dx16':return sx,abs(dx)//16,(dx>0)-(dx<0)
+    if kind=='target_x_dy20':return tx,abs(dy)//20,(dy>0)-(dy<0)
+    if kind=='target_x_dx16':return tx,abs(dx)//16,(dx>0)-(dx<0)
+    if kind=='target_yphase_dx16':return ty%100//5,abs(dx)//16,(dx>0)-(dx<0)
+    if kind=='source_yphase_dx16':return sy%100//5,abs(dx)//16,(dx>0)-(dx<0)
+    if kind=='route_source_x':return route,sx
+    if kind=='route_target_x':return route,tx
+    if kind=='route_source_yphase':return route,sy%100//5
+    if kind=='route_target_yphase':return route,ty%100//5
+    if kind=='route_dx16':return route,abs(dx)//16,(dx>0)-(dx<0)
+    if kind=='route_dy20':return route,abs(dy)//20,(dy>0)-(dy<0)
+    if kind=='route_source_family':return route,family(sp)
+    if kind=='route_target_family':return route,family(tp)
+    if kind=='short_port_pair':return family(sp),family(tp),min(4,abs(dy)//10),min(4,abs(dx)//10)
     raise ValueError(kind)
 
 
@@ -72,7 +96,13 @@ def main():
            'target_port_dy8','source_port_dy8','target_port_yphase20',
            'source_port_yphase20','target_port_x','source_port_x',
            'target_port_gap_y','source_port_gap_y','signed_dx_dybucket',
-           'dy_phase_exact','port_pair_distance')
+           'dy_phase_exact','port_pair_distance',
+           'source_x_target_yphase','target_x_target_yphase','source_x_source_yphase',
+           'source_x_target_x','source_x_dy20','source_x_dx16','target_x_dy20',
+           'target_x_dx16','target_yphase_dx16','source_yphase_dx16',
+           'route_source_x','route_target_x','route_source_yphase','route_target_yphase',
+           'route_dx16','route_dy20','route_source_family','route_target_family',
+           'short_port_pair')
     baseline=score(val,kinds[0],{})
     results=[]
     for kind in kinds:

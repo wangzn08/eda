@@ -11,6 +11,7 @@
 #include "v4_tree_model.hpp"
 #include "v4_table_model.hpp"
 #include "v4_horizontal_model.hpp"
+#include "v5_geometry_model.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -497,6 +498,38 @@ Distance v4_horizontal_delay(Node source,Node target) {
         [(source%archdata::P*15+std::abs(dx)/8)*3+xsign+1]));
     return static_cast<Distance>(estimate);
 }
+Distance v5_geometry_delay(Node source,Node target) {
+    Distance base=v4_horizontal_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,xsign=(dx>0)-(dx<0),bucket=std::abs(dx)/16;
+    double estimate=std::max(0.0,std::nearbyint(base+
+        v5_geometry_model::source_x_target_x[a.x*120+b.x]));
+    estimate=std::max(0.0,std::nearbyint(estimate+
+        v5_geometry_model::source_port_x[source%archdata::P*120+a.x]));
+    estimate=std::max(0.0,std::nearbyint(estimate+
+        v5_geometry_model::source_yphase_dx16[((a.y%100/5)*8+bucket)*3+xsign+1]));
+    estimate=std::max(0.0,std::nearbyint(estimate+
+        v5_geometry_model::target_yphase_dx16[((b.y%100/5)*8+bucket)*3+xsign+1]));
+    estimate=std::max(0.0,std::nearbyint(estimate+
+        v5_geometry_model::target_x_dx16[(b.x*8+bucket)*3+xsign+1]));
+    return static_cast<Distance>(estimate);
+}
+Distance v5_geometry_fused_delay(Node source,Node target) {
+    Distance base=v4_horizontal_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,xsign=(dx>0)-(dx<0),bucket=std::abs(dx)/16;
+    const double correction=
+        v5_geometry_model::source_x_target_x[a.x*120+b.x]+
+        v5_geometry_model::source_port_x[source%archdata::P*120+a.x]+
+        v5_geometry_model::source_yphase_dx16[((a.y%100/5)*8+bucket)*3+xsign+1]+
+        v5_geometry_model::target_yphase_dx16[((b.y%100/5)*8+bucket)*3+xsign+1]+
+        v5_geometry_model::target_x_dx16[(b.x*8+bucket)*3+xsign+1];
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(base+correction)));
+}
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -698,7 +731,7 @@ int main(int argc,char** argv) {
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -712,7 +745,7 @@ int main(int argc,char** argv) {
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
         if(!trace_path.empty() && (algorithm!="compressed" || trace_path==input || trace_path==output || trace_path==stats_path))
             throw std::runtime_error("Trace requires compressed algorithm and a distinct file");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -734,7 +767,7 @@ int main(int argc,char** argv) {
             trace<<"row,delay,steps,hops,long_hops,turns,detour\n";
         }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal";
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused";
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -769,6 +802,8 @@ int main(int argc,char** argv) {
                 algorithm=="v4-tree"?v4_tree_delay(from,to):
                 algorithm=="v4-table"?v4_table_delay(from,to):
                 algorithm=="v4-horizontal"?v4_horizontal_delay(from,to):
+                algorithm=="v5-geometry"?v5_geometry_delay(from,to):
+                algorithm=="v5-geometry-fused"?v5_geometry_fused_delay(from,to):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
             out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');

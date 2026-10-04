@@ -1,0 +1,205 @@
+{
+  "baseline": 93.40712764583768,
+  "candidates": [
+    {
+      "order": [
+        "source_x_target_x",
+        "target_x_dx16",
+        "source_port_x"
+      ],
+      "stages": [
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.45563834968411
+        },
+        {
+          "kind": "target_x_dx16",
+          "entries": 1142,
+          "validation_score": 93.458832524111
+        },
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.48171241015395
+        }
+      ]
+    },
+    {
+      "order": [
+        "target_x_dx16",
+        "source_x_target_x",
+        "source_port_x"
+      ],
+      "stages": [
+        {
+          "kind": "target_x_dx16",
+          "entries": 1142,
+          "validation_score": 93.4508749440317
+        },
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.45938791868738
+        },
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.48229649717373
+        }
+      ]
+    },
+    {
+      "order": [
+        "source_port_x",
+        "source_x_target_x",
+        "target_x_dx16"
+      ],
+      "stages": [
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.43208112738903
+        },
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.47876697401344
+        },
+        {
+          "kind": "target_x_dx16",
+          "entries": 1142,
+          "validation_score": 93.48187809680755
+        }
+      ]
+    },
+    {
+      "order": [
+        "source_x_target_x",
+        "source_port_x",
+        "source_yphase_dx16"
+      ],
+      "stages": [
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.45563834968411
+        },
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.4785160105306
+        },
+        {
+          "kind": "source_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.49505550079151
+        }
+      ]
+    },
+    {
+      "order": [
+        "source_x_target_x",
+        "target_x_dx16",
+        "source_yphase_dx16",
+        "target_yphase_dx16"
+      ],
+      "stages": [
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.45563834968411
+        },
+        {
+          "kind": "target_x_dx16",
+          "entries": 1142,
+          "validation_score": 93.458832524111
+        },
+        {
+          "kind": "source_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.4762464723
+        },
+        {
+          "kind": "target_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.488977478362
+        }
+      ]
+    },
+    {
+      "order": [
+        "source_x_target_x",
+        "source_port_x",
+        "source_yphase_dx16",
+        "target_yphase_dx16",
+        "target_x_dx16"
+      ],
+      "stages": [
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.45563834968411
+        },
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.4785160105306
+        },
+        {
+          "kind": "source_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.49505550079151
+        },
+        {
+          "kind": "target_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.50858145537816
+        },
+        {
+          "kind": "target_x_dx16",
+          "entries": 1142,
+          "validation_score": 93.51549014095669
+        }
+      ]
+    },
+    {
+      "order": [
+        "source_port_x",
+        "source_x_target_x",
+        "source_yphase_dx16",
+        "target_yphase_dx16",
+        "target_x_dx16"
+      ],
+      "stages": [
+        {
+          "kind": "source_port_x",
+          "entries": 10698,
+          "validation_score": 93.43208112738903
+        },
+        {
+          "kind": "source_x_target_x",
+          "entries": 14400,
+          "validation_score": 93.47876697401344
+        },
+        {
+          "kind": "source_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.49503361835747
+        },
+        {
+          "kind": "target_yphase_dx16",
+          "entries": 340,
+          "validation_score": 93.5086686467042
+        },
+        {
+          "kind": "target_x_dx16",
+          "entries": 1142,
+          "validation_score": 93.5157341894647
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 30.007119459,
+  "holdout_used": false
+}

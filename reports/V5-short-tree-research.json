@@ -1,0 +1,1024 @@
+{
+  "baseline": 93.4071276458371,
+  "best": {
+    "trained_on": "all",
+    "trees": 64,
+    "applied_to": "all",
+    "validation_score": 93.6652935451656,
+    "active_fraction": 1.0
+  },
+  "candidates": [
+    {
+      "trained_on": "all",
+      "trees": 8,
+      "applied_to": "all",
+      "validation_score": 93.50619438010952,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "all",
+      "trees": 8,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.45072798191208,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "all",
+      "trees": 8,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.47661420014045,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "all",
+      "trees": 8,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.43752325187155,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "all",
+      "trees": 8,
+      "applied_to": "either_short",
+      "validation_score": 93.4838755595362,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "all",
+      "trees": 16,
+      "applied_to": "all",
+      "validation_score": 93.55352002179491,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "all",
+      "trees": 16,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.4690281626254,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "all",
+      "trees": 16,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.5049381704674,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "all",
+      "trees": 16,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.46272799776483,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "all",
+      "trees": 16,
+      "applied_to": "either_short",
+      "validation_score": 93.52274613048999,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "all",
+      "trees": 24,
+      "applied_to": "all",
+      "validation_score": 93.58844543925177,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "all",
+      "trees": 24,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.48127718065088,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "all",
+      "trees": 24,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.52327399151709,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "all",
+      "trees": 24,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.48087019424783,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "all",
+      "trees": 24,
+      "applied_to": "either_short",
+      "validation_score": 93.54853487347972,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "all",
+      "trees": 32,
+      "applied_to": "all",
+      "validation_score": 93.61332230779809,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "all",
+      "trees": 32,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.490693648517,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "all",
+      "trees": 32,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.5366641330995,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "all",
+      "trees": 32,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.49393181744894,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "all",
+      "trees": 32,
+      "applied_to": "either_short",
+      "validation_score": 93.56797065082917,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "all",
+      "trees": 48,
+      "applied_to": "all",
+      "validation_score": 93.6444773798702,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "all",
+      "trees": 48,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.50223781421253,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "all",
+      "trees": 48,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.5524455442112,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "all",
+      "trees": 48,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.50818997040393,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "all",
+      "trees": 48,
+      "applied_to": "either_short",
+      "validation_score": 93.5897246912987,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "all",
+      "trees": 64,
+      "applied_to": "all",
+      "validation_score": 93.6652935451656,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "all",
+      "trees": 64,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.50686523660691,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "all",
+      "trees": 64,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.55956120404173,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "all",
+      "trees": 64,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.51572618997987,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "all",
+      "trees": 64,
+      "applied_to": "either_short",
+      "validation_score": 93.60196016841212,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 8,
+      "applied_to": "all",
+      "validation_score": 93.16366387327096,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 8,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.46809479166753,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 8,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.50519834443583,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 8,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.33585576341714,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 8,
+      "applied_to": "either_short",
+      "validation_score": 93.3972900304711,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 16,
+      "applied_to": "all",
+      "validation_score": 92.77001412658011,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 16,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.49656656998343,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 16,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.54801848628902,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 16,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.18769257559505,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 16,
+      "applied_to": "either_short",
+      "validation_score": 93.27152558887099,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 24,
+      "applied_to": "all",
+      "validation_score": 92.60324711938253,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 24,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.51045389520193,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 24,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.56813825299015,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 24,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.11843407946297,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 24,
+      "applied_to": "either_short",
+      "validation_score": 93.21189964943191,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 32,
+      "applied_to": "all",
+      "validation_score": 92.50875613693663,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 32,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.52288977623493,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 32,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.58505918785825,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 32,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.06897393325164,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 32,
+      "applied_to": "either_short",
+      "validation_score": 93.16938994327653,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 48,
+      "applied_to": "all",
+      "validation_score": 92.43984870900837,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 48,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.53696252222514,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 48,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.60702351735264,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 48,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.02906099822208,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 48,
+      "applied_to": "either_short",
+      "validation_score": 93.14130070627621,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 64,
+      "applied_to": "all",
+      "validation_score": 92.42167533722169,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 64,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.54410833256486,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 64,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.61791289169847,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 64,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.03089274367375,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "dy_lt_40",
+      "trees": 64,
+      "applied_to": "either_short",
+      "validation_score": 93.14843079256127,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 8,
+      "applied_to": "all",
+      "validation_score": 93.49251165652228,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 8,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.45431984293471,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 8,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.4823898990162,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 8,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.44288396818123,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 8,
+      "applied_to": "either_short",
+      "validation_score": 93.4902256905341,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 16,
+      "applied_to": "all",
+      "validation_score": 93.5317405228875,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 16,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.47840805363101,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 16,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.51908278117878,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 16,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.46492259603967,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 16,
+      "applied_to": "either_short",
+      "validation_score": 93.53280855034379,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 24,
+      "applied_to": "all",
+      "validation_score": 93.55706820432248,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 24,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.48744668349738,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 24,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.53189208569108,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 24,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.485451577348,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 24,
+      "applied_to": "either_short",
+      "validation_score": 93.55938823354819,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 32,
+      "applied_to": "all",
+      "validation_score": 93.58013457028005,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 32,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.50022302485708,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 32,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.54973171168012,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 32,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.50596823497457,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 32,
+      "applied_to": "either_short",
+      "validation_score": 93.587324893528,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 48,
+      "applied_to": "all",
+      "validation_score": 93.62570588319807,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 48,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.51630569683297,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 48,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.57259267809793,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 48,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.53694816382382,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 48,
+      "applied_to": "either_short",
+      "validation_score": 93.62766048936922,
+      "active_fraction": 0.3962399952016954
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 64,
+      "applied_to": "all",
+      "validation_score": 93.65372168427055,
+      "active_fraction": 1.0
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 64,
+      "applied_to": "dy_lt_20",
+      "validation_score": 93.52704777804027,
+      "active_fraction": 0.0698020032921701
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 64,
+      "applied_to": "dy_lt_40",
+      "validation_score": 93.58725428049411,
+      "active_fraction": 0.13808454346131033
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 64,
+      "applied_to": "dx_lt_20",
+      "validation_score": 93.55705438256638,
+      "active_fraction": 0.2994475285399159
+    },
+    {
+      "trained_on": "either_short",
+      "trees": 64,
+      "applied_to": "either_short",
+      "validation_score": 93.65478503619731,
+      "active_fraction": 0.3962399952016954
+    }
+  ],
+  "feature_gain_importance": {
+    "all": [
+      [
+        "source_x",
+        33541
+      ],
+      [
+        "target_y_mod100",
+        27372
+      ],
+      [
+        "target_x",
+        24589
+      ],
+      [
+        "route_class",
+        22283
+      ],
+      [
+        "abs_dy",
+        20461
+      ],
+      [
+        "abs_dx",
+        18973
+      ],
+      [
+        "vertical_gap_delay",
+        14979
+      ],
+      [
+        "source_y_mod100",
+        13039
+      ],
+      [
+        "manhattan",
+        12484
+      ],
+      [
+        "v3_delay",
+        12410
+      ],
+      [
+        "horizontal_gap_delay",
+        12331
+      ],
+      [
+        "forced_detour",
+        11828
+      ],
+      [
+        "target_port",
+        5395
+      ],
+      [
+        "source_projection",
+        4134
+      ],
+      [
+        "dx",
+        4079
+      ],
+      [
+        "target_x_mod10",
+        2443
+      ],
+      [
+        "source_port",
+        2143
+      ],
+      [
+        "source_x_mod10",
+        1176
+      ],
+      [
+        "target_family",
+        990
+      ],
+      [
+        "target_y",
+        918
+      ],
+      [
+        "source_family",
+        530
+      ],
+      [
+        "source_y",
+        515
+      ],
+      [
+        "dy",
+        401
+      ],
+      [
+        "route_detour",
+        80
+      ],
+      [
+        "x_sign",
+        0
+      ],
+      [
+        "y_sign",
+        0
+      ],
+      [
+        "source_y_mod12",
+        0
+      ],
+      [
+        "target_y_mod12",
+        0
+      ],
+      [
+        "target_projection",
+        0
+      ],
+      [
+        "source_fixed",
+        0
+      ],
+      [
+        "target_fixed",
+        0
+      ]
+    ],
+    "dy_lt_40": [
+      [
+        "source_x",
+        24958
+      ],
+      [
+        "target_y_mod100",
+        19895
+      ],
+      [
+        "route_class",
+        16397
+      ],
+      [
+        "target_x",
+        14835
+      ],
+      [
+        "source_y_mod100",
+        10545
+      ],
+      [
+        "source_projection",
+        6888
+      ],
+      [
+        "abs_dy",
+        5711
+      ],
+      [
+        "target_port",
+        4749
+      ],
+      [
+        "vertical_gap_delay",
+        3415
+      ],
+      [
+        "forced_detour",
+        3072
+      ],
+      [
+        "manhattan",
+        2986
+      ],
+      [
+        "v3_delay",
+        2224
+      ],
+      [
+        "abs_dx",
+        2043
+      ],
+      [
+        "source_port",
+        1276
+      ],
+      [
+        "target_family",
+        1014
+      ],
+      [
+        "source_y",
+        702
+      ],
+      [
+        "dx",
+        662
+      ],
+      [
+        "source_family",
+        373
+      ],
+      [
+        "target_y",
+        336
+      ],
+      [
+        "source_x_mod10",
+        272
+      ],
+      [
+        "route_detour",
+        267
+      ],
+      [
+        "dy",
+        169
+      ],
+      [
+        "target_x_mod10",
+        90
+      ],
+      [
+        "target_y_mod12",
+        65
+      ],
+      [
+        "horizontal_gap_delay",
+        22
+      ],
+      [
+        "source_y_mod12",
+        17
+      ],
+      [
+        "x_sign",
+        0
+      ],
+      [
+        "y_sign",
+        0
+      ],
+      [
+        "target_projection",
+        0
+      ],
+      [
+        "source_fixed",
+        0
+      ],
+      [
+        "target_fixed",
+        0
+      ]
+    ],
+    "either_short": [
+      [
+        "source_x",
+        21942
+      ],
+      [
+        "abs_dx",
+        18413
+      ],
+      [
+        "target_x",
+        18095
+      ],
+      [
+        "abs_dy",
+        15930
+      ],
+      [
+        "target_y_mod100",
+        15177
+      ],
+      [
+        "route_class",
+        13888
+      ],
+      [
+        "source_y_mod100",
+        13001
+      ],
+      [
+        "forced_detour",
+        10215
+      ],
+      [
+        "vertical_gap_delay",
+        8140
+      ],
+      [
+        "source_projection",
+        6873
+      ],
+      [
+        "v3_delay",
+        6376
+      ],
+      [
+        "manhattan",
+        6313
+      ],
+      [
+        "target_port",
+        5250
+      ],
+      [
+        "source_port",
+        3956
+      ],
+      [
+        "horizontal_gap_delay",
+        2979
+      ],
+      [
+        "dx",
+        1905
+      ],
+      [
+        "target_x_mod10",
+        1483
+      ],
+      [
+        "target_family",
+        891
+      ],
+      [
+        "source_family",
+        634
+      ],
+      [
+        "target_y",
+        493
+      ],
+      [
+        "source_y",
+        457
+      ],
+      [
+        "route_detour",
+        443
+      ],
+      [
+        "dy",
+        380
+      ],
+      [
+        "source_x_mod10",
+        302
+      ],
+      [
+        "target_y_mod12",
+        30
+      ],
+      [
+        "x_sign",
+        0
+      ],
+      [
+        "y_sign",
+        0
+      ],
+      [
+        "source_y_mod12",
+        0
+      ],
+      [
+        "target_projection",
+        0
+      ],
+      [
+        "source_fixed",
+        0
+      ],
+      [
+        "target_fixed",
+        0
+      ]
+    ]
+  },
+  "elapsed_seconds": 5.979137457999999,
+  "holdout_used": false
+}

@@ -18,6 +18,7 @@
 - [V3 路径结构研究与创新点](reports/V3-route-research.md)
 - [V3 最终本机验收与提交包](reports/V3-final.md)
 - [V4 准确率提升与本机验收](reports/V4-accuracy.md)
+- [V5 结构化路径模型研究](reports/V5-structured-research.md)
 
 ## 评测要求
 
@@ -73,5 +74,7 @@ build/estimate -in out/baseline/official8_bidirectional.request.csv -out out/res
 早期实验选项 `--algorithm approximate` 使用开发集离线拟合并内嵌的位移表、端口偏置和 Gap/Block 校正，执行时不读取 golden。在15万独立验证请求上得分86.89，本机70万请求进程CPU约0.244秒、峰值RSS约18.4MB；该方案已被后续版本取代。
 
 V1 `port` 模型在验证/留出集的评分为90.89/90.86，本机五次十亿请求约192–198秒且输出一致；[V1独立源码包](out/submission/fpga-delay-estimator-source.tar.gz)继续保留。V2 增加源列、目标列与精确横向位移校正，验证/留出集评分为92.53/92.49，本机五次十亿请求约196–205秒。V3 进一步利用官方架构的 Block 绕行与端点固定 Net 方向，验证/留出集评分为92.84/92.82，五次十亿请求约208–212秒。V4 加入纵向与横向的端口条件修正，验证/留出集评分为93.41/93.40；不传 `--algorithm` 时运行 V4。[V4 报告](reports/V4-accuracy.md)记录方法与验收；V1/V2/V3 源码包仍保留。十亿请求的大型临时 CSV 可由脚本重新生成。官方评测环境和上传格式以赛事系统为准。
+
+研究分支另有 `--algorithm v5-geometry` 与 `--algorithm v5-geometry-fused`。前者留出分为93.5040，后者验证分为93.5160；额外运行成本使其暂不替换 V4 默认版，详见 [V5 研究](reports/V5-structured-research.md)。
 
 开发/验证/最终留出按请求对哈希固定划分为 700,705 / 150,053 / 149,242 条。请求和 golden 分文件保存，每版最终留出只在候选冻结后评估。输入全量审计发现1条 golden=0；评分工具单独报告零延时样本，不擅自补充官方未定义的除零规则。

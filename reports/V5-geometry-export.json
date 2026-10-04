@@ -1,0 +1,38 @@
+{
+  "source": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/v5_geometry_model.hpp",
+  "bytes": 607001,
+  "stages": [
+    {
+      "kind": "source_x_target_x",
+      "nonzero_entries": 14400,
+      "dense_entries": 14400,
+      "validation_score": 93.45563834968411
+    },
+    {
+      "kind": "source_port_x",
+      "nonzero_entries": 10698,
+      "dense_entries": 59520,
+      "validation_score": 93.4785160105306
+    },
+    {
+      "kind": "source_yphase_dx16",
+      "nonzero_entries": 340,
+      "dense_entries": 480,
+      "validation_score": 93.49505550079151
+    },
+    {
+      "kind": "target_yphase_dx16",
+      "nonzero_entries": 340,
+      "dense_entries": 480,
+      "validation_score": 93.50858145537816
+    },
+    {
+      "kind": "target_x_dx16",
+      "nonzero_entries": 1142,
+      "dense_entries": 2880,
+      "validation_score": 93.51549014095669
+    }
+  ],
+  "final_python_validation_score": 93.51549014095669,
+  "holdout_used": false
+}

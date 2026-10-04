@@ -1,0 +1,18 @@
+{
+  "rows": 149242,
+  "exact_matches": 1531,
+  "positive_delay_score": 93.50395479477233,
+  "zero_golden_rows": 0,
+  "zero_exact_matches": 0,
+  "relative_error_p50": 0.00909090909090909,
+  "relative_error_p95": 0.05689277899343545,
+  "relative_error_p99": 0.13524590163934427,
+  "max_relative_error": 1.3697478991596639,
+  "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately.",
+  "algorithm": "v5-geometry",
+  "v4_holdout_score": 93.39638154446895,
+  "score_gain_vs_v4": 0.10757325030337483,
+  "fitted_on": "development",
+  "selected_on": "validation",
+  "fused_variant_holdout_used": false
+}

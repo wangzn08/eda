@@ -1,0 +1,416 @@
+{
+  "baseline": 93.40712764583768,
+  "stem": "v4-horizontal",
+  "candidates": [
+    {
+      "kind": "source_port_dy16",
+      "prior": 20,
+      "entries": 6695,
+      "validation_score": 93.40764360737643
+    },
+    {
+      "kind": "source_port_dy16",
+      "prior": 100,
+      "entries": 6695,
+      "validation_score": 93.40823855612838
+    },
+    {
+      "kind": "target_port_dy16",
+      "prior": 20,
+      "entries": 17534,
+      "validation_score": 93.40863427908064
+    },
+    {
+      "kind": "target_port_dy16",
+      "prior": 100,
+      "entries": 17534,
+      "validation_score": 93.41089441699947
+    },
+    {
+      "kind": "source_port_dx8",
+      "prior": 20,
+      "entries": 3066,
+      "validation_score": 93.40599812951888
+    },
+    {
+      "kind": "source_port_dx8",
+      "prior": 100,
+      "entries": 3066,
+      "validation_score": 93.40679053370184
+    },
+    {
+      "kind": "target_port_dx8",
+      "prior": 20,
+      "entries": 7935,
+      "validation_score": 93.40204079098032
+    },
+    {
+      "kind": "target_port_dx8",
+      "prior": 100,
+      "entries": 7935,
+      "validation_score": 93.40517629244232
+    },
+    {
+      "kind": "source_x_dy50",
+      "prior": 20,
+      "entries": 2700,
+      "validation_score": 93.41676443672189
+    },
+    {
+      "kind": "source_x_dy50",
+      "prior": 100,
+      "entries": 2700,
+      "validation_score": 93.41740490373283
+    },
+    {
+      "kind": "target_x_dy50",
+      "prior": 20,
+      "entries": 2700,
+      "validation_score": 93.41546915667442
+    },
+    {
+      "kind": "target_x_dy50",
+      "prior": 100,
+      "entries": 2700,
+      "validation_score": 93.4164714980499
+    },
+    {
+      "kind": "source_yphase_dy50",
+      "prior": 20,
+      "entries": 2199,
+      "validation_score": 93.417808235877
+    },
+    {
+      "kind": "source_yphase_dy50",
+      "prior": 100,
+      "entries": 2199,
+      "validation_score": 93.41816718145986
+    },
+    {
+      "kind": "target_yphase_dy50",
+      "prior": 20,
+      "entries": 2200,
+      "validation_score": 93.41298801179686
+    },
+    {
+      "kind": "target_yphase_dy50",
+      "prior": 100,
+      "entries": 2200,
+      "validation_score": 93.4139367027414
+    },
+    {
+      "kind": "source_port_target_x10",
+      "prior": 20,
+      "entries": 1230,
+      "validation_score": 93.41267622384095
+    },
+    {
+      "kind": "source_port_target_x10",
+      "prior": 100,
+      "entries": 1230,
+      "validation_score": 93.41365005336338
+    },
+    {
+      "kind": "target_port_source_x10",
+      "prior": 20,
+      "entries": 3072,
+      "validation_score": 93.4030907024891
+    },
+    {
+      "kind": "target_port_source_x10",
+      "prior": 100,
+      "entries": 3072,
+      "validation_score": 93.40626747219318
+    },
+    {
+      "kind": "source_family_yphase",
+      "prior": 20,
+      "entries": 1800,
+      "validation_score": 93.40499605966413
+    },
+    {
+      "kind": "source_family_yphase",
+      "prior": 100,
+      "entries": 1800,
+      "validation_score": 93.41172597973764
+    },
+    {
+      "kind": "target_family_yphase",
+      "prior": 20,
+      "entries": 1800,
+      "validation_score": 93.40000338402619
+    },
+    {
+      "kind": "target_family_yphase",
+      "prior": 100,
+      "entries": 1800,
+      "validation_score": 93.40304144795319
+    },
+    {
+      "kind": "signed_dy_exact",
+      "prior": 20,
+      "entries": 3173,
+      "validation_score": 93.40865477681089
+    },
+    {
+      "kind": "signed_dy_exact",
+      "prior": 100,
+      "entries": 3173,
+      "validation_score": 93.40871180235152
+    },
+    {
+      "kind": "target_port_dy8",
+      "prior": 20,
+      "entries": 34099,
+      "validation_score": 93.39834156051253
+    },
+    {
+      "kind": "target_port_dy8",
+      "prior": 100,
+      "entries": 34099,
+      "validation_score": 93.41038688672344
+    },
+    {
+      "kind": "source_port_dy8",
+      "prior": 20,
+      "entries": 12832,
+      "validation_score": 93.40705640104123
+    },
+    {
+      "kind": "source_port_dy8",
+      "prior": 100,
+      "entries": 12832,
+      "validation_score": 93.41194750735922
+    },
+    {
+      "kind": "target_port_yphase20",
+      "prior": 20,
+      "entries": 1280,
+      "validation_score": 93.40447873987115
+    },
+    {
+      "kind": "target_port_yphase20",
+      "prior": 100,
+      "entries": 1280,
+      "validation_score": 93.4052337925353
+    },
+    {
+      "kind": "source_port_yphase20",
+      "prior": 20,
+      "entries": 503,
+      "validation_score": 93.40672724868075
+    },
+    {
+      "kind": "source_port_yphase20",
+      "prior": 100,
+      "entries": 503,
+      "validation_score": 93.40829412722603
+    },
+    {
+      "kind": "target_port_x",
+      "prior": 20,
+      "entries": 30719,
+      "validation_score": 93.37830012812263
+    },
+    {
+      "kind": "target_port_x",
+      "prior": 100,
+      "entries": 30719,
+      "validation_score": 93.40457033118781
+    },
+    {
+      "kind": "source_port_x",
+      "prior": 20,
+      "entries": 10698,
+      "validation_score": 93.43208112738903
+    },
+    {
+      "kind": "source_port_x",
+      "prior": 100,
+      "entries": 10698,
+      "validation_score": 93.43200819441829
+    },
+    {
+      "kind": "target_port_gap_y",
+      "prior": 20,
+      "entries": 7678,
+      "validation_score": 93.408673412812
+    },
+    {
+      "kind": "target_port_gap_y",
+      "prior": 100,
+      "entries": 7678,
+      "validation_score": 93.41273771792804
+    },
+    {
+      "kind": "source_port_gap_y",
+      "prior": 20,
+      "entries": 2962,
+      "validation_score": 93.4074750597204
+    },
+    {
+      "kind": "source_port_gap_y",
+      "prior": 100,
+      "entries": 2962,
+      "validation_score": 93.40872290632407
+    },
+    {
+      "kind": "signed_dx_dybucket",
+      "prior": 20,
+      "entries": 8220,
+      "validation_score": 93.40572097540557
+    },
+    {
+      "kind": "signed_dx_dybucket",
+      "prior": 100,
+      "entries": 8220,
+      "validation_score": 93.406248670801
+    },
+    {
+      "kind": "dy_phase_exact",
+      "prior": 20,
+      "entries": 18939,
+      "validation_score": 93.40212235553055
+    },
+    {
+      "kind": "dy_phase_exact",
+      "prior": 100,
+      "entries": 18939,
+      "validation_score": 93.41473465466396
+    },
+    {
+      "kind": "port_pair_distance",
+      "prior": 20,
+      "entries": 13391,
+      "validation_score": 93.40660974743966
+    },
+    {
+      "kind": "port_pair_distance",
+      "prior": 100,
+      "entries": 13391,
+      "validation_score": 93.4132108496022
+    },
+    {
+      "kind": "source_x_target_yphase",
+      "prior": 20,
+      "entries": 2400,
+      "validation_score": 93.40714350264186
+    },
+    {
+      "kind": "source_x_target_yphase",
+      "prior": 100,
+      "entries": 2400,
+      "validation_score": 93.4095903035309
+    },
+    {
+      "kind": "target_x_target_yphase",
+      "prior": 20,
+      "entries": 2260,
+      "validation_score": 93.41130848850351
+    },
+    {
+      "kind": "target_x_target_yphase",
+      "prior": 100,
+      "entries": 2260,
+      "validation_score": 93.41352514016005
+    },
+    {
+      "kind": "source_x_source_yphase",
+      "prior": 20,
+      "entries": 2260,
+      "validation_score": 93.41588536642767
+    },
+    {
+      "kind": "source_x_source_yphase",
+      "prior": 100,
+      "entries": 2260,
+      "validation_score": 93.42109040390108
+    },
+    {
+      "kind": "source_x_target_x",
+      "prior": 20,
+      "entries": 14400,
+      "validation_score": 93.45563834968411
+    },
+    {
+      "kind": "source_x_target_x",
+      "prior": 100,
+      "entries": 14400,
+      "validation_score": 93.44528294692348
+    },
+    {
+      "kind": "source_x_dy20",
+      "prior": 20,
+      "entries": 6596,
+      "validation_score": 93.40856250195607
+    },
+    {
+      "kind": "source_x_dy20",
+      "prior": 100,
+      "entries": 6596,
+      "validation_score": 93.41273487528656
+    },
+    {
+      "kind": "source_x_dx16",
+      "prior": 20,
+      "entries": 1142,
+      "validation_score": 93.43821046331126
+    },
+    {
+      "kind": "source_x_dx16",
+      "prior": 100,
+      "entries": 1142,
+      "validation_score": 93.43866301148448
+    },
+    {
+      "kind": "target_x_dy20",
+      "prior": 20,
+      "entries": 6606,
+      "validation_score": 93.40652652667796
+    },
+    {
+      "kind": "target_x_dy20",
+      "prior": 100,
+      "entries": 6606,
+      "validation_score": 93.41114864070163
+    },
+    {
+      "kind": "target_x_dx16",
+      "prior": 20,
+      "entries": 1142,
+      "validation_score": 93.4508749440317
+    },
+    {
+      "kind": "target_x_dx16",
+      "prior": 100,
+      "entries": 1142,
+      "validation_score": 93.45084128952065
+    },
+    {
+      "kind": "target_yphase_dx16",
+      "prior": 20,
+      "entries": 340,
+      "validation_score": 93.41861870120822
+    },
+    {
+      "kind": "target_yphase_dx16",
+      "prior": 100,
+      "entries": 340,
+      "validation_score": 93.41886689429226
+    },
+    {
+      "kind": "source_yphase_dx16",
+      "prior": 20,
+      "entries": 340,
+      "validation_score": 93.42250017521194
+    },
+    {
+      "kind": "source_yphase_dx16",
+      "prior": 100,
+      "entries": 340,
+      "validation_score": 93.4224739079564
+    }
+  ],
+  "elapsed_seconds": 31.053519708,
+  "holdout_used": false
+}

@@ -1,0 +1,35 @@
+{
+  "runs": [
+    {
+      "algorithm": "v4-horizontal",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.24721
+    },
+    {
+      "algorithm": "v5-geometry",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.4371
+    },
+    {
+      "algorithm": "v4-horizontal",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.28036
+    },
+    {
+      "algorithm": "v5-geometry",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.4632
+    },
+    {
+      "algorithm": "v4-horizontal",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.27838
+    },
+    {
+      "algorithm": "v5-geometry",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.46171
+    }
+  ],
+  "holdout_used_for_tuning": false
+}

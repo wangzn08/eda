@@ -1,0 +1,34 @@
+{
+  "runs": [
+    {
+      "algorithm": "v4-horizontal",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.26509
+    },
+    {
+      "algorithm": "v5-geometry-fused",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.38231
+    },
+    {
+      "algorithm": "v4-horizontal",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.28205
+    },
+    {
+      "algorithm": "v5-geometry-fused",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.40117
+    },
+    {
+      "algorithm": "v4-horizontal",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.29811
+    },
+    {
+      "algorithm": "v5-geometry-fused",
+      "rows": 10000000,
+      "process_cpu_seconds": 2.40735
+    }
+  ]
+}
