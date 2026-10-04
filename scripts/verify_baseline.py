@@ -25,8 +25,7 @@ def run(name, rows, algorithm, stats_enabled=True):
     inp, out, stats = (directory / (name + ext) for ext in ('.request.csv', '.result.csv', '.stats.csv'))
     write_csv(inp, ['From', 'To'], rows)
     cmd = [str(ROOT/'build/estimate'), '-in', str(inp), '-out', str(out)]
-    if algorithm != 'bidirectional':
-        cmd += ['--algorithm', algorithm]
+    cmd += ['--algorithm', algorithm]
     if stats_enabled:
         cmd += ['--stats', str(stats)]
     # macOS time reports maximum resident set size in bytes.
@@ -91,8 +90,8 @@ def main():
     report={'machine': platform.platform(), 'processor': platform.machine(),
             'compiler': subprocess.check_output(['clang++','--version'],text=True).splitlines()[0],
             'build': 'make -j1; C++17 -O3',
-            'files_sha256': {name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ['src/estimate.cpp','scripts/architecture.py','scripts/generate_architecture.py','build/architecture_data.hpp','build/estimate']},
-            'selection': '8 official paths; 2 first development requests per Manhattan bucket; synthetic identical endpoint; reordered duplicates. No holdout scoring. Repeat uses only standard -in/-out options from a directory without architecture files.',
+            'files_sha256': {name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in ['src/estimate.cpp','scripts/architecture.py','scripts/generate_architecture.py','src/architecture_data.hpp','build/estimate']},
+            'selection': '8 official paths; 2 first development requests per Manhattan bucket; synthetic identical endpoint; reordered duplicates. No holdout scoring. Exact reference passes --algorithm explicitly because the default is the fast submission model.',
             'runs': results}
     (ROOT/'out/baseline/report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
 

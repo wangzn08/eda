@@ -1,16 +1,15 @@
-CXX = clang++
+CXX = c++
 CXXFLAGS = -std=c++17 -O3 -Wall -Wextra -Wpedantic
 ARCH = data/EDA-PANGO-SRB-Arch-Delay/arch
-ARCH_FILES = $(wildcard $(ARCH)/SRB_*.json)
 
-.PHONY: all audit check
+.PHONY: all audit check refresh-architecture
 all: build/estimate
 
-build/architecture_data.hpp: $(ARCH_FILES) scripts/generate_architecture.py scripts/architecture.py
-	python3 scripts/generate_architecture.py --arch "$(ARCH)" --out $@
+refresh-architecture:
+	python3 scripts/generate_architecture.py --arch "$(ARCH)" --out src/architecture_data.hpp
 
-build/estimate: src/estimate.cpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp build/architecture_data.hpp
-	$(CXX) $(CXXFLAGS) -Ibuild src/estimate.cpp -o $@
+build/estimate: src/estimate.cpp src/architecture_data.hpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp
+	$(CXX) $(CXXFLAGS) src/estimate.cpp -o $@
 
 audit:
 	python3 scripts/audit_data.py

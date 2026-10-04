@@ -12,6 +12,7 @@
 - [P4 压缩搜索实验](reports/P4-compression.md)
 - [P4 位移、Gap/Block 与 C++ 高速候选实验](reports/P4-short-and-cpp.md)
 - [P5 已选模型与淘汰理由](reports/P5-selected-model.md)
+- [P7 最终本机验收与提交包](reports/P7-final.md)
 
 ## 评测要求
 
@@ -31,7 +32,7 @@
 3. 实现可复核的基础算法，并在公开集上统计准确性、耗时和内存。
 4. 针对大规模查询优化预处理、查询路径和文件读写。
 
-`data/` 和构建产物不纳入 Git，避免提交大型赛题数据或本地生成文件。
+`data/` 和构建产物不纳入 Git。架构常量已固化在受版本控制的 `src/architecture_data.hpp`，因此直接编译不需要下载原始 JSON；如需依据本地官方 JSON 重新生成，可执行 `make refresh-architecture`。
 
 ## 已收到的官方附件
 
@@ -45,7 +46,7 @@
 
 ## 当前实现与复跑方法
 
-已实现 C++17 精确参考程序：共享 Arc 模板，按官方规则预生成 Net 的几何映射，支持单向和双向 Dijkstra。默认双向，架构在构建时内嵌；执行时无需 JSON 或答案文件。当前用于核对正确性，远距离查询仍需秒级，尚不满足十亿请求的时间要求。
+已实现 C++17 高速估算入口和精确参考程序。正式命令默认采用已冻结的端口族×方向查表模型；`--algorithm bidirectional|dijkstra|compressed` 可复核精确最短路。架构和模型参数在构建时内嵌；执行时无需 JSON 或答案文件。
 
 ```sh
 make -j1
@@ -62,10 +63,10 @@ build/estimate -in out/baseline/official8_bidirectional.request.csv -out out/res
 
 `prepare_stress.py`与`verify_stress.py`负责44组开发集交叉分层样本，当前全部匹配。本机此组耗时约41秒、峰值RSS约0.96GB；这是精确基线的测量，不是比赛运行性能承诺。
 
-实验选项 `--algorithm compressed` 使用Arc/Net严格交替性质，只搜索互联Input状态；44条开发分层样本输出与原图完全一致，本机端到端耗时约19.7秒、峰值RSS约0.34GB。默认算法仍是原图双向Dijkstra，用于独立对照。
+实验选项 `--algorithm compressed` 使用Arc/Net严格交替性质，只搜索互联Input状态；44条开发分层样本输出与原图完全一致，本机端到端耗时约19.7秒、峰值RSS约0.34GB。原图双向Dijkstra仍可用 `--algorithm bidirectional` 运行独立对照。
 
 实验选项 `--algorithm approximate` 使用开发集离线拟合并内嵌的位移表、端口偏置和 Gap/Block 校正，执行时不读取 golden。在15万独立验证请求上得分86.89，本机70万请求进程CPU约0.244秒、峰值RSS约18.4MB。正式隐藏集准确率和十亿请求全流程尚未确认；当前默认入口仍为精确参考算法。
 
-当前提交候选为 `--algorithm port`：在上述特征上增加粗网格位置对、端口族×方向校正，验证评分90.89。本机1000万条重复请求约1.97秒、峰值RSS约3.5MB。精确参考仍是默认选项；最终包装时将以该候选作为正式入口。
+当前正式入口为 `--algorithm port`：在上述特征上增加粗网格位置对、端口族×方向校正，验证评分90.89、最终留出评分90.86。不传 `--algorithm` 时即运行这一模型。本机五次十亿请求完整运行均约192–198秒、峰值RSS约3.5MB且输出完全一致；[独立源码包](out/submission/fpga-delay-estimator-source.tar.gz)可脱离数据目录编译。十亿请求的大型临时 CSV 已在验收后清理，脚本可以重新生成。官方评测环境和上传格式以赛事系统为准。
 
 开发/验证/最终留出按请求对哈希固定划分为 700,705 / 150,053 / 149,242 条。请求和golden分文件保存，最终留出尚未用于算法评估。输入全量审计发现1条golden=0；评分工具单独报告零延时样本，不擅自补充官方未定义的除零规则。
