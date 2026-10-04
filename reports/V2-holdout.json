@@ -1,0 +1,12 @@
+{
+  "rows": 149242,
+  "exact_matches": 1295,
+  "positive_delay_score": 92.48655331083751,
+  "zero_golden_rows": 0,
+  "zero_exact_matches": 0,
+  "relative_error_p50": 0.010769230769230769,
+  "relative_error_p95": 0.06569343065693431,
+  "relative_error_p99": 0.15520282186948853,
+  "max_relative_error": 1.5769230769230769,
+  "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+}

@@ -14,6 +14,7 @@
 - [P5 已选模型与淘汰理由](reports/P5-selected-model.md)
 - [P7 最终本机验收与提交包](reports/P7-final.md)
 - [V2 列感知准确率优化](reports/V2-optimization.md)
+- [V2 最终本机验收与提交包](reports/V2-final.md)
 
 ## 评测要求
 
@@ -68,6 +69,6 @@ build/estimate -in out/baseline/official8_bidirectional.request.csv -out out/res
 
 实验选项 `--algorithm approximate` 使用开发集离线拟合并内嵌的位移表、端口偏置和 Gap/Block 校正，执行时不读取 golden。在15万独立验证请求上得分86.89，本机70万请求进程CPU约0.244秒、峰值RSS约18.4MB。正式隐藏集准确率和十亿请求全流程尚未确认；当前默认入口仍为精确参考算法。
 
-V1 `port` 模型在验证/留出集的评分为90.89/90.86，本机五次十亿请求约192–198秒且输出一致；[V1独立源码包](out/submission/fpga-delay-estimator-source.tar.gz)继续保留。V2 在此基础上增加源列、目标列与精确横向位移校正，验证/留出集评分为92.53/92.49，1000万条本机约2.03秒。不传 `--algorithm` 时运行 V2；[V2实验报告](reports/V2-optimization.md)记录参数选择。十亿请求的大型临时 CSV 可由脚本重新生成。官方评测环境和上传格式以赛事系统为准。
+V1 `port` 模型在验证/留出集的评分为90.89/90.86，本机五次十亿请求约192–198秒且输出一致；[V1独立源码包](out/submission/fpga-delay-estimator-source.tar.gz)继续保留。V2 在此基础上增加源列、目标列与精确横向位移校正，验证/留出集评分为92.53/92.49，本机五次十亿请求约196–205秒且输出一致。不传 `--algorithm` 时运行 V2；[V2实验报告](reports/V2-optimization.md)记录参数选择，[V2最终报告](reports/V2-final.md)记录验收。十亿请求的大型临时 CSV 可由脚本重新生成。官方评测环境和上传格式以赛事系统为准。
 
 开发/验证/最终留出按请求对哈希固定划分为 700,705 / 150,053 / 149,242 条。请求和golden分文件保存，最终留出尚未用于算法评估。输入全量审计发现1条golden=0；评分工具单独报告零延时样本，不擅自补充官方未定义的除零规则。

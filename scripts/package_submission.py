@@ -35,8 +35,9 @@ Run with the official two-column request CSV:
 
     ./estimate -in delay_estimate_request.csv -out delay_estimate_result.csv
 
-The default uses the architecture-aware lookup model. The architecture and
-fitted parameters are embedded in the supplied headers. No JSON or golden
+The default uses the V2 architecture-aware lookup model with source-column,
+target-column, and signed horizontal-displacement corrections. The architecture
+and fitted parameters are embedded in the supplied headers. No JSON or golden
 answer file is read at runtime. Use --algorithm bidirectional for the slow
 exact reference if needed for diagnostics.
 
