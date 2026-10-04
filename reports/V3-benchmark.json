@@ -1,0 +1,64 @@
+{
+  "input": "out/evaluation/stress1b.request.csv",
+  "input_bytes": 36394618757,
+  "output": "out/evaluation/stress1b.v3.csv",
+  "expected_rows": 1000000000,
+  "command": [
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/build/estimate",
+    "-in",
+    "out/evaluation/stress1b.request.csv",
+    "-out",
+    "out/evaluation/stress1b.v3.csv"
+  ],
+  "machine": "macOS-26.6.2-arm64-arm-64bit",
+  "architecture": "arm64",
+  "binary_sha256": "697b6dda9fdde272ed8a1cd9a24b3ca6f7bf91bfe40b020e68a88367c31955af",
+  "runs": [
+    {
+      "index": 1,
+      "rows": 1000000000,
+      "process_cpu_seconds": 208.478,
+      "wall_seconds": 209.6298595,
+      "peak_rss_bytes": 4046848,
+      "output_bytes": 40333000845,
+      "output_sha256": "36b7f5ea18c93acef3fd0f7b9b6e2d122fb828d3ea99f4c9f70c19dfb870639c"
+    },
+    {
+      "index": 2,
+      "rows": 1000000000,
+      "process_cpu_seconds": 209.038,
+      "wall_seconds": 210.279375167,
+      "peak_rss_bytes": 4046848,
+      "output_bytes": 40333000845,
+      "output_sha256": "36b7f5ea18c93acef3fd0f7b9b6e2d122fb828d3ea99f4c9f70c19dfb870639c"
+    },
+    {
+      "index": 3,
+      "rows": 1000000000,
+      "process_cpu_seconds": 208.382,
+      "wall_seconds": 209.607032791,
+      "peak_rss_bytes": 4046848,
+      "output_bytes": 40333000845,
+      "output_sha256": "36b7f5ea18c93acef3fd0f7b9b6e2d122fb828d3ea99f4c9f70c19dfb870639c"
+    },
+    {
+      "index": 4,
+      "rows": 1000000000,
+      "process_cpu_seconds": 209.193,
+      "wall_seconds": 212.02645074999998,
+      "peak_rss_bytes": 4046848,
+      "output_bytes": 40333000845,
+      "output_sha256": "36b7f5ea18c93acef3fd0f7b9b6e2d122fb828d3ea99f4c9f70c19dfb870639c"
+    },
+    {
+      "index": 5,
+      "rows": 1000000000,
+      "process_cpu_seconds": 207.235,
+      "wall_seconds": 208.21404762500003,
+      "peak_rss_bytes": 4046848,
+      "output_bytes": 40333000845,
+      "output_sha256": "36b7f5ea18c93acef3fd0f7b9b6e2d122fb828d3ea99f4c9f70c19dfb870639c"
+    }
+  ],
+  "all_outputs_identical": true
+}

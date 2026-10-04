@@ -610,7 +610,7 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,trace_path,algorithm="v2";
+        std::string input,output,stats_path,trace_path,algorithm="v3-final";
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
