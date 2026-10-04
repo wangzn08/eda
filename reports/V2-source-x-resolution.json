@@ -1,0 +1,103 @@
+{
+  "baseline": 90.88916720043925,
+  "candidates": [
+    {
+      "width": 1,
+      "prior": 20,
+      "entries": 11863,
+      "validation_score": 91.87062888873471
+    },
+    {
+      "width": 1,
+      "prior": 100,
+      "entries": 11863,
+      "validation_score": 91.60395651522171
+    },
+    {
+      "width": 2,
+      "prior": 20,
+      "entries": 6655,
+      "validation_score": 91.80212409157193
+    },
+    {
+      "width": 2,
+      "prior": 100,
+      "entries": 6655,
+      "validation_score": 91.65584574385014
+    },
+    {
+      "width": 3,
+      "prior": 20,
+      "entries": 4721,
+      "validation_score": 91.4660454534247
+    },
+    {
+      "width": 3,
+      "prior": 100,
+      "entries": 4721,
+      "validation_score": 91.39862941698654
+    },
+    {
+      "width": 5,
+      "prior": 20,
+      "entries": 2992,
+      "validation_score": 91.45313704263674
+    },
+    {
+      "width": 5,
+      "prior": 100,
+      "entries": 2992,
+      "validation_score": 91.41195794854706
+    },
+    {
+      "width": 8,
+      "prior": 20,
+      "entries": 1964,
+      "validation_score": 91.21486446659935
+    },
+    {
+      "width": 8,
+      "prior": 100,
+      "entries": 1964,
+      "validation_score": 91.19649744524219
+    },
+    {
+      "width": 10,
+      "prior": 20,
+      "entries": 1585,
+      "validation_score": 91.18265708667029
+    },
+    {
+      "width": 10,
+      "prior": 100,
+      "entries": 1585,
+      "validation_score": 91.16753973561892
+    },
+    {
+      "width": 15,
+      "prior": 20,
+      "entries": 1103,
+      "validation_score": 91.07937827944649
+    },
+    {
+      "width": 15,
+      "prior": 100,
+      "entries": 1103,
+      "validation_score": 91.0688941814016
+    },
+    {
+      "width": 20,
+      "prior": 20,
+      "entries": 838,
+      "validation_score": 91.03590039318779
+    },
+    {
+      "width": 20,
+      "prior": 100,
+      "entries": 838,
+      "validation_score": 91.03032155261094
+    }
+  ],
+  "elapsed_seconds": 8.307371542,
+  "holdout_used": false
+}

@@ -2,6 +2,9 @@
 #include "lookup_model.hpp"
 #include "spatial_model.hpp"
 #include "port_model.hpp"
+#include "source_x_model.hpp"
+#include "target_x_model.hpp"
+#include "dx_model.hpp"
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -266,6 +269,38 @@ Distance port_delay(Node source,Node target) {
     size_t key=((from*port_model::FAMILIES+to)*3+dx+1)*3+dy+1;
     return static_cast<Distance>(std::max(0.0,std::nearbyint(base+port_model::residual[key])));
 }
+
+Distance source_x_delay(Node source,Node target) {
+    Distance base=port_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    int dx=(b.x>a.x)-(b.x<a.x),dy=(b.y>a.y)-(b.y<a.y);
+    int from=port_model::family[source%archdata::P];
+    size_t key=((from*120+a.x)*3+dx+1)*3+dy+1;
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(base+source_x_model::residual[key])));
+}
+
+Distance target_x_delay(Node source,Node target) {
+    Distance base=source_x_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    int dx=(b.x>a.x)-(b.x<a.x),dy=(b.y>a.y)-(b.y<a.y);
+    int to=port_model::family[target%archdata::P];
+    size_t key=((to*120+b.x)*3+dx+1)*3+dy+1;
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(base+target_x_model::residual[key])));
+}
+
+Distance v2_delay(Node source,Node target) {
+    Distance base=target_x_delay(source,target);
+    if(source==target) return base;
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    int dx=b.x-a.x,ysign=(b.y>a.y)-(b.y<a.y);
+    size_t key=(dx+119)*3+ysign+1;
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(base+dx_model::residual[key])));
+}
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -417,7 +452,7 @@ int main(int argc,char** argv) {
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port] [--stats stats.csv]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2] [--stats stats.csv]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -428,7 +463,7 @@ int main(int argc,char** argv) {
         }
         if(input.empty() || output.empty() || input==output) throw std::runtime_error("Provide distinct -in and -out files");
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -445,7 +480,7 @@ int main(int argc,char** argv) {
             stats<<"row,delay,wall_ms,settled,relaxations\n";
         }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port";
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2";
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -468,6 +503,9 @@ int main(int argc,char** argv) {
             Distance d=algorithm=="approximate"?lookup_delay(from,to):
                 algorithm=="spatial"?spatial_delay(from,to):
                 algorithm=="port"?port_delay(from,to):
+                algorithm=="source-x"?source_x_delay(from,to):
+                algorithm=="target-x"?target_x_delay(from,to):
+                algorithm=="v2"?v2_delay(from,to):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
             out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');

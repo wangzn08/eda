@@ -8,7 +8,7 @@ all: build/estimate
 refresh-architecture:
 	python3 scripts/generate_architecture.py --arch "$(ARCH)" --out src/architecture_data.hpp
 
-build/estimate: src/estimate.cpp src/architecture_data.hpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp
+build/estimate: src/estimate.cpp src/architecture_data.hpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp src/source_x_model.hpp src/target_x_model.hpp src/dx_model.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) src/estimate.cpp -o $@
 

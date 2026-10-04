@@ -1,0 +1,91 @@
+{
+  "baseline": 91.87062888873471,
+  "candidates": [
+    {
+      "kind": "target_x_family_dir",
+      "prior": 20,
+      "entries": 12192,
+      "validation_score": 92.36480187035626
+    },
+    {
+      "kind": "target_x_family_dir",
+      "prior": 100,
+      "entries": 12192,
+      "validation_score": 92.271555936796
+    },
+    {
+      "kind": "source_y25_family_dir",
+      "prior": 20,
+      "entries": 2825,
+      "validation_score": 91.87120501016182
+    },
+    {
+      "kind": "source_y25_family_dir",
+      "prior": 100,
+      "entries": 2825,
+      "validation_score": 91.87638534274538
+    },
+    {
+      "kind": "target_y25_family_dir",
+      "prior": 20,
+      "entries": 2871,
+      "validation_score": 91.87013193491792
+    },
+    {
+      "kind": "target_y25_family_dir",
+      "prior": 100,
+      "entries": 2871,
+      "validation_score": 91.87098132154351
+    },
+    {
+      "kind": "source_y10_family_dir",
+      "prior": 20,
+      "entries": 6250,
+      "validation_score": 91.86478424942203
+    },
+    {
+      "kind": "source_y10_family_dir",
+      "prior": 100,
+      "entries": 6250,
+      "validation_score": 91.87527893636394
+    },
+    {
+      "kind": "target_y10_family_dir",
+      "prior": 20,
+      "entries": 6304,
+      "validation_score": 91.86002418337134
+    },
+    {
+      "kind": "target_y10_family_dir",
+      "prior": 100,
+      "entries": 6304,
+      "validation_score": 91.86764387174934
+    },
+    {
+      "kind": "source_port_x_dir",
+      "prior": 20,
+      "entries": 45134,
+      "validation_score": 91.95234156766905
+    },
+    {
+      "kind": "source_port_x_dir",
+      "prior": 100,
+      "entries": 45134,
+      "validation_score": 91.91657680292207
+    },
+    {
+      "kind": "target_port_x_dir",
+      "prior": 20,
+      "entries": 114907,
+      "validation_score": 92.1180362901468
+    },
+    {
+      "kind": "target_port_x_dir",
+      "prior": 100,
+      "entries": 114907,
+      "validation_score": 91.9654293605108
+    }
+  ],
+  "elapsed_seconds": 8.793159042000001,
+  "holdout_used": false
+}

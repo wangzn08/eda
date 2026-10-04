@@ -21,6 +21,9 @@ def main():
         'lookup_model.hpp':ROOT/'src/lookup_model.hpp',
         'spatial_model.hpp':ROOT/'src/spatial_model.hpp',
         'port_model.hpp':ROOT/'src/port_model.hpp',
+        'source_x_model.hpp':ROOT/'src/source_x_model.hpp',
+        'target_x_model.hpp':ROOT/'src/target_x_model.hpp',
+        'dx_model.hpp':ROOT/'src/dx_model.hpp',
     }
     readme='''# FPGA delay estimator submission source
 

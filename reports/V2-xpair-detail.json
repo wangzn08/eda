@@ -1,0 +1,67 @@
+{
+  "baseline": 92.36480187035626,
+  "candidates": [
+    {
+      "kind": "exact_pair",
+      "prior": 20,
+      "entries": 14400,
+      "validation_score": 92.53097435487686
+    },
+    {
+      "kind": "exact_pair",
+      "prior": 100,
+      "entries": 14400,
+      "validation_score": 92.48010470113566
+    },
+    {
+      "kind": "exact_pair_y_sign",
+      "prior": 20,
+      "entries": 30079,
+      "validation_score": 92.50851173879784
+    },
+    {
+      "kind": "exact_pair_y_sign",
+      "prior": 100,
+      "entries": 30079,
+      "validation_score": 92.44519144605783
+    },
+    {
+      "kind": "half_pair_y_sign",
+      "prior": 20,
+      "entries": 8291,
+      "validation_score": 92.44222988062629
+    },
+    {
+      "kind": "half_pair_y_sign",
+      "prior": 100,
+      "entries": 8291,
+      "validation_score": 92.43473803107544
+    },
+    {
+      "kind": "fifth_pair_y_sign",
+      "prior": 20,
+      "entries": 1656,
+      "validation_score": 92.40867493119842
+    },
+    {
+      "kind": "fifth_pair_y_sign",
+      "prior": 100,
+      "entries": 1656,
+      "validation_score": 92.40939780754688
+    },
+    {
+      "kind": "exact_signed_displacement",
+      "prior": 20,
+      "entries": 691,
+      "validation_score": 92.53153015795635
+    },
+    {
+      "kind": "exact_signed_displacement",
+      "prior": 100,
+      "entries": 691,
+      "validation_score": 92.530610879486
+    }
+  ],
+  "elapsed_seconds": 4.89425725,
+  "holdout_used": false
+}

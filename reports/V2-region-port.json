@@ -1,0 +1,377 @@
+{
+  "baseline": {
+    "score": 90.88916720043925,
+    "groups": {
+      "middle": {
+        "rows": 73709,
+        "score": 87.6465532580302
+      },
+      "far": {
+        "rows": 74463,
+        "score": 95.05283026456345
+      },
+      "short": {
+        "rows": 1881,
+        "score": 53.127863817756534
+      }
+    }
+  },
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "candidates": [
+    {
+      "kind": "source_family_x_dir",
+      "prior": 20,
+      "entries": 1585,
+      "metrics": {
+        "score": 91.18265708667029,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 88.0261914836587
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.25488309805102
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.66525020040473
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_family_x_dir",
+      "prior": 100,
+      "entries": 1585,
+      "metrics": {
+        "score": 91.16753973561892,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 88.0092994234018
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.24362263662286
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.5669943425255
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_family_x_dir",
+      "prior": 20,
+      "entries": 1638,
+      "metrics": {
+        "score": 90.90719224274889,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.67442816037543
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.06170675892226
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.12207439575496
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_family_x_dir",
+      "prior": 100,
+      "entries": 1638,
+      "metrics": {
+        "score": 90.9067976467801,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.67310320438112
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.06171822754027
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.14206210699173
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_family_y_dir",
+      "prior": 20,
+      "entries": 1508,
+      "metrics": {
+        "score": 90.91657767867547,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.6823432880146
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.07293069662956
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.116294810721975
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_family_y_dir",
+      "prior": 100,
+      "entries": 1508,
+      "metrics": {
+        "score": 90.91588770109799,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.68241926474678
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.07133411367342
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.121479809237236
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_family_y_dir",
+      "prior": 20,
+      "entries": 1529,
+      "metrics": {
+        "score": 90.8901014062242,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.64498245219076
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.05462623293175
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.19284505948497
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_family_y_dir",
+      "prior": 100,
+      "entries": 1529,
+      "metrics": {
+        "score": 90.89000568097384,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.64537759571196
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.05473912225007
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.165255706902585
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_port_x",
+      "prior": 20,
+      "entries": 1195,
+      "metrics": {
+        "score": 91.03408641087539,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.81618113475726
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.1706653398724
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.37672501130045
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_port_x",
+      "prior": 100,
+      "entries": 1195,
+      "metrics": {
+        "score": 91.03625521562086,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.8216864302278
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.16978587986605
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.36882127127948
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_port_x",
+      "prior": 20,
+      "entries": 3072,
+      "metrics": {
+        "score": 90.8815350590664,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.63723707969035
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.04740417489903
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.09889167229173
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_port_x",
+      "prior": 100,
+      "entries": 3072,
+      "metrics": {
+        "score": 90.88891383989858,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.64751899098876
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.05186189430125
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.108144006433974
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_port_y",
+      "prior": 20,
+      "entries": 1106,
+      "metrics": {
+        "score": 90.91817310260635,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.61554481139245
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.14146592902053
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.14803752771954
+          }
+        }
+      }
+    },
+    {
+      "kind": "source_port_y",
+      "prior": 100,
+      "entries": 1106,
+      "metrics": {
+        "score": 90.92201871675219,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.6276051995558
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.13767283557335
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.13237134245679
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_port_y",
+      "prior": 20,
+      "entries": 2816,
+      "metrics": {
+        "score": 90.88886223204949,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.60823497500395
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.09342900518676
+          },
+          "short": {
+            "rows": 1881,
+            "score": 52.99789937251903
+          }
+        }
+      }
+    },
+    {
+      "kind": "target_port_y",
+      "prior": 100,
+      "entries": 2816,
+      "metrics": {
+        "score": 90.89914215677969,
+        "groups": {
+          "middle": {
+            "rows": 73709,
+            "score": 87.63088203799448
+          },
+          "far": {
+            "rows": 74463,
+            "score": 95.09001445833182
+          },
+          "short": {
+            "rows": 1881,
+            "score": 53.06568171293938
+          }
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 8.71803025,
+  "holdout_used": false
+}

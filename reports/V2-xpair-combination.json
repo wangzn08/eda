@@ -1,0 +1,47 @@
+{
+  "baseline": 92.36480187035626,
+  "candidates": [
+    {
+      "stages": [
+        "exact_signed_displacement"
+      ],
+      "entries": [
+        691
+      ],
+      "validation_score": 92.53153015795635
+    },
+    {
+      "stages": [
+        "exact_pair"
+      ],
+      "entries": [
+        14400
+      ],
+      "validation_score": 92.53097435487686
+    },
+    {
+      "stages": [
+        "exact_signed_displacement",
+        "exact_pair"
+      ],
+      "entries": [
+        691,
+        14400
+      ],
+      "validation_score": 92.55793984435238
+    },
+    {
+      "stages": [
+        "exact_pair",
+        "exact_signed_displacement"
+      ],
+      "entries": [
+        14400,
+        691
+      ],
+      "validation_score": 92.55557923926717
+    }
+  ],
+  "elapsed_seconds": 5.117036042,
+  "holdout_used": false
+}
