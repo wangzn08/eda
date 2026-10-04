@@ -31,6 +31,9 @@ def main():
         'v4_table_model.hpp':ROOT/'src/v4_table_model.hpp',
         'v4_horizontal_model.hpp':ROOT/'src/v4_horizontal_model.hpp',
         'v5_geometry_model.hpp':ROOT/'src/v5_geometry_model.hpp',
+        'v6_pair_model.hpp':ROOT/'src/v6_pair_model.hpp',
+        'v7_tree_model.hpp':ROOT/'src/v7_tree_model.hpp',
+        'local_path_oracle.hpp':ROOT/'src/local_path_oracle.hpp',
     }
     readme='''# FPGA delay estimator submission source
 
@@ -42,21 +45,18 @@ Run with the official two-column request CSV:
 
     ./estimate -in delay_estimate_request.csv -out delay_estimate_result.csv
 
-The default uses the V4 architecture-aware lookup model. It begins with the
-V3 routing and endpoint estimates, then applies three vertical and three
-horizontal residual corrections fitted on development labels. The architecture
-and fitted parameters are embedded in the supplied headers. No JSON or golden
-answer file is read at runtime. Use --algorithm bidirectional for the slow
-exact reference if needed for diagnostics.
-
-This research build also includes --algorithm v5-geometry and
---algorithm v5-geometry-fused. The default remains the fully accepted V4 model.
+The default uses the V6 architecture-aware model. It begins with the V3 route
+estimate, adds V4 directional and V5 geometry corrections, then applies a
+source-port by target-port correction fitted on development labels. The
+architecture and fitted parameters are embedded in the supplied headers.
+No JSON or golden answer file is read at runtime. Use --algorithm bidirectional
+for the slow exact reference if needed for diagnostics.
 
 The source was validated on macOS arm64. Rebuild and benchmark on the actual
 contest machine; the organizer's target compiler, OS and packaging rules
 must take precedence over this local package.
 '''
-    archive=output/'fpga-delay-estimator-v5-research-source.tar.gz'
+    archive=output/'fpga-delay-estimator-v6-source.tar.gz'
     readme_path=output/'README.txt'
     readme_path.write_text(readme)
     def normalize(info):

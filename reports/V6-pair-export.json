@@ -1,0 +1,13 @@
+{
+  "source": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/v6_pair_model.hpp",
+  "bytes": 897851,
+  "dense_entries": 246016,
+  "nonzero_entries": 23254,
+  "fit": {
+    "alpha": 0.5,
+    "prior": 1,
+    "cap": 3
+  },
+  "python_validation_score": 94.02002918386849,
+  "holdout_used": false
+}

@@ -1,0 +1,222 @@
+{
+  "baseline": 94.02002918386849,
+  "candidates": [
+    {
+      "kind": "pair_xsign",
+      "prior": 1,
+      "entries": 49831,
+      "validation_score": 93.97775586339034
+    },
+    {
+      "kind": "pair_xsign",
+      "prior": 5,
+      "entries": 49831,
+      "validation_score": 94.00656937404902
+    },
+    {
+      "kind": "pair_xsign",
+      "prior": 20,
+      "entries": 49831,
+      "validation_score": 94.02739758609225
+    },
+    {
+      "kind": "pair_xsign",
+      "prior": 100,
+      "entries": 49831,
+      "validation_score": 94.02690071487254
+    },
+    {
+      "kind": "pair_ysign",
+      "prior": 1,
+      "entries": 46250,
+      "validation_score": 93.997146774766
+    },
+    {
+      "kind": "pair_ysign",
+      "prior": 5,
+      "entries": 46250,
+      "validation_score": 94.02632737245897
+    },
+    {
+      "kind": "pair_ysign",
+      "prior": 20,
+      "entries": 46250,
+      "validation_score": 94.0410370392445
+    },
+    {
+      "kind": "pair_ysign",
+      "prior": 100,
+      "entries": 46250,
+      "validation_score": 94.03263986395453
+    },
+    {
+      "kind": "pair_signs",
+      "prior": 1,
+      "entries": 93535,
+      "validation_score": 93.944800170936
+    },
+    {
+      "kind": "pair_signs",
+      "prior": 5,
+      "entries": 93535,
+      "validation_score": 94.03011754143822
+    },
+    {
+      "kind": "pair_signs",
+      "prior": 20,
+      "entries": 93535,
+      "validation_score": 94.0517991778009
+    },
+    {
+      "kind": "pair_signs",
+      "prior": 100,
+      "entries": 93535,
+      "validation_score": 94.03499908396974
+    },
+    {
+      "kind": "pair_dy100",
+      "prior": 1,
+      "entries": 185113,
+      "validation_score": 93.87307550824819
+    },
+    {
+      "kind": "pair_dy100",
+      "prior": 5,
+      "entries": 185113,
+      "validation_score": 94.0142910763782
+    },
+    {
+      "kind": "pair_dy100",
+      "prior": 20,
+      "entries": 185113,
+      "validation_score": 94.03967171294919
+    },
+    {
+      "kind": "pair_dy100",
+      "prior": 100,
+      "entries": 185113,
+      "validation_score": 94.02830380170492
+    },
+    {
+      "kind": "pair_dx32",
+      "prior": 1,
+      "entries": 147815,
+      "validation_score": 93.88003912206116
+    },
+    {
+      "kind": "pair_dx32",
+      "prior": 5,
+      "entries": 147815,
+      "validation_score": 94.00141658083855
+    },
+    {
+      "kind": "pair_dx32",
+      "prior": 20,
+      "entries": 147815,
+      "validation_score": 94.03481362559658
+    },
+    {
+      "kind": "pair_dx32",
+      "prior": 100,
+      "entries": 147815,
+      "validation_score": 94.02784146251143
+    },
+    {
+      "kind": "pair_short",
+      "prior": 1,
+      "entries": 78122,
+      "validation_score": 93.92315133002839
+    },
+    {
+      "kind": "pair_short",
+      "prior": 5,
+      "entries": 78122,
+      "validation_score": 94.01320965989632
+    },
+    {
+      "kind": "pair_short",
+      "prior": 20,
+      "entries": 78122,
+      "validation_score": 94.03834126217389
+    },
+    {
+      "kind": "pair_short",
+      "prior": 100,
+      "entries": 78122,
+      "validation_score": 94.03116925027511
+    },
+    {
+      "kind": "family_pair_dy20",
+      "prior": 1,
+      "entries": 4144,
+      "validation_score": 94.01224802325103
+    },
+    {
+      "kind": "family_pair_dy20",
+      "prior": 5,
+      "entries": 4144,
+      "validation_score": 94.01628416222567
+    },
+    {
+      "kind": "family_pair_dy20",
+      "prior": 20,
+      "entries": 4144,
+      "validation_score": 94.02092564868721
+    },
+    {
+      "kind": "family_pair_dy20",
+      "prior": 100,
+      "entries": 4144,
+      "validation_score": 94.02457333266031
+    },
+    {
+      "kind": "family_pair_dx16",
+      "prior": 1,
+      "entries": 4205,
+      "validation_score": 94.0271150689071
+    },
+    {
+      "kind": "family_pair_dx16",
+      "prior": 5,
+      "entries": 4205,
+      "validation_score": 94.02781257802519
+    },
+    {
+      "kind": "family_pair_dx16",
+      "prior": 20,
+      "entries": 4205,
+      "validation_score": 94.02853819389392
+    },
+    {
+      "kind": "family_pair_dx16",
+      "prior": 100,
+      "entries": 4205,
+      "validation_score": 94.02827647759695
+    },
+    {
+      "kind": "family_pair_short",
+      "prior": 1,
+      "entries": 7713,
+      "validation_score": 93.9795838418001
+    },
+    {
+      "kind": "family_pair_short",
+      "prior": 5,
+      "entries": 7713,
+      "validation_score": 94.0012022696273
+    },
+    {
+      "kind": "family_pair_short",
+      "prior": 20,
+      "entries": 7713,
+      "validation_score": 94.01428921311492
+    },
+    {
+      "kind": "family_pair_short",
+      "prior": 100,
+      "entries": 7713,
+      "validation_score": 94.02047566559285
+    }
+  ],
+  "holdout_used": false
+}

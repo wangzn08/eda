@@ -1,0 +1,69 @@
+{
+  "split": "validation",
+  "baseline": "v6-pair",
+  "before": {
+    "rows": 150053,
+    "exact_matches": 1577,
+    "positive_delay_score": 94.02002918386849,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.00862533692722372,
+    "relative_error_p95": 0.05103806228373702,
+    "relative_error_p99": 0.12114989733059549,
+    "max_relative_error": 1.5175438596491229,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "after": {
+    "rows": 150053,
+    "exact_matches": 2082,
+    "positive_delay_score": 94.17451794688026,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.008549038233198766,
+    "relative_error_p95": 0.04934541792547835,
+    "relative_error_p99": 0.11305361305361306,
+    "max_relative_error": 0.7804878048780488,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "counts": {
+    "distance": 148677,
+    "missing": 179,
+    "hit": 913,
+    "line": 260,
+    "block": 20,
+    "boundary": 4
+  },
+  "changed_rows": 505,
+  "upper_bound_violations": 0,
+  "violation_examples": [],
+  "hit_before": {
+    "rows": 913,
+    "exact_matches": 4,
+    "positive_delay_score": 60.771909850997986,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.09140767824497258,
+    "relative_error_p95": 0.3829113924050633,
+    "relative_error_p99": 0.7368421052631579,
+    "max_relative_error": 1.5175438596491229,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "hit_after": {
+    "rows": 913,
+    "exact_matches": 509,
+    "positive_delay_score": 86.1623834065308,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.0,
+    "relative_error_p95": 0.17943107221006566,
+    "relative_error_p99": 0.255,
+    "max_relative_error": 0.47115384615384615,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "oracle_bytes": 71680768,
+  "oracle_path": "out/local-oracle/regular-12-v2.bin",
+  "oracle_version": 2,
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "elapsed_seconds": 0.875008333
+}

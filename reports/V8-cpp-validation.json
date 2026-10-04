@@ -1,0 +1,32 @@
+{
+  "v6": {
+    "python_cpp_rows_identical": true,
+    "metrics": {
+      "rows": 150053,
+      "exact_matches": 2685,
+      "positive_delay_score": 94.3100060336682,
+      "zero_golden_rows": 0,
+      "zero_exact_matches": 0,
+      "relative_error_p50": 0.008461047254150703,
+      "relative_error_p95": 0.04790419161676647,
+      "relative_error_p99": 0.1062992125984252,
+      "max_relative_error": 0.7804878048780488,
+      "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+    }
+  },
+  "v7": {
+    "python_cpp_rows_identical": true,
+    "metrics": {
+      "rows": 150053,
+      "exact_matches": 2963,
+      "positive_delay_score": 95.04105535616392,
+      "zero_golden_rows": 0,
+      "zero_exact_matches": 0,
+      "relative_error_p50": 0.007469654528478058,
+      "relative_error_p95": 0.04060017652250662,
+      "relative_error_p99": 0.09030837004405286,
+      "max_relative_error": 0.6707317073170732,
+      "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+    }
+  }
+}

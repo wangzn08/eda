@@ -1,0 +1,609 @@
+{
+  "baseline": 94.02002918386954,
+  "best": {
+    "leaves": 127,
+    "trees": 512,
+    "blend": 1.0,
+    "validation_score": 94.62124587604933
+  },
+  "candidates": [
+    {
+      "leaves": 31,
+      "trees": 32,
+      "blend": 0.5,
+      "validation_score": 94.1265997386633
+    },
+    {
+      "leaves": 31,
+      "trees": 32,
+      "blend": 1.0,
+      "validation_score": 94.20626307569873
+    },
+    {
+      "leaves": 31,
+      "trees": 64,
+      "blend": 0.5,
+      "validation_score": 94.15592021852821
+    },
+    {
+      "leaves": 31,
+      "trees": 64,
+      "blend": 1.0,
+      "validation_score": 94.25743558330227
+    },
+    {
+      "leaves": 31,
+      "trees": 128,
+      "blend": 0.5,
+      "validation_score": 94.18950777655049
+    },
+    {
+      "leaves": 31,
+      "trees": 128,
+      "blend": 1.0,
+      "validation_score": 94.31301673613372
+    },
+    {
+      "leaves": 31,
+      "trees": 256,
+      "blend": 0.5,
+      "validation_score": 94.2303467194247
+    },
+    {
+      "leaves": 31,
+      "trees": 256,
+      "blend": 1.0,
+      "validation_score": 94.37930117722172
+    },
+    {
+      "leaves": 31,
+      "trees": 384,
+      "blend": 0.5,
+      "validation_score": 94.25557608922809
+    },
+    {
+      "leaves": 31,
+      "trees": 384,
+      "blend": 1.0,
+      "validation_score": 94.42121716095636
+    },
+    {
+      "leaves": 31,
+      "trees": 512,
+      "blend": 0.5,
+      "validation_score": 94.27144908311381
+    },
+    {
+      "leaves": 31,
+      "trees": 512,
+      "blend": 1.0,
+      "validation_score": 94.44803751013387
+    },
+    {
+      "leaves": 63,
+      "trees": 32,
+      "blend": 0.5,
+      "validation_score": 94.15598286171068
+    },
+    {
+      "leaves": 63,
+      "trees": 32,
+      "blend": 1.0,
+      "validation_score": 94.257412771908
+    },
+    {
+      "leaves": 63,
+      "trees": 64,
+      "blend": 0.5,
+      "validation_score": 94.1982611976112
+    },
+    {
+      "leaves": 63,
+      "trees": 64,
+      "blend": 1.0,
+      "validation_score": 94.3298276435007
+    },
+    {
+      "leaves": 63,
+      "trees": 128,
+      "blend": 0.5,
+      "validation_score": 94.23552293371715
+    },
+    {
+      "leaves": 63,
+      "trees": 128,
+      "blend": 1.0,
+      "validation_score": 94.38911012576992
+    },
+    {
+      "leaves": 63,
+      "trees": 256,
+      "blend": 0.5,
+      "validation_score": 94.27695099515039
+    },
+    {
+      "leaves": 63,
+      "trees": 256,
+      "blend": 1.0,
+      "validation_score": 94.46027886141759
+    },
+    {
+      "leaves": 63,
+      "trees": 384,
+      "blend": 0.5,
+      "validation_score": 94.30152022646107
+    },
+    {
+      "leaves": 63,
+      "trees": 384,
+      "blend": 1.0,
+      "validation_score": 94.5023767173638
+    },
+    {
+      "leaves": 63,
+      "trees": 512,
+      "blend": 0.5,
+      "validation_score": 94.32594413457568
+    },
+    {
+      "leaves": 63,
+      "trees": 512,
+      "blend": 1.0,
+      "validation_score": 94.54290111631654
+    },
+    {
+      "leaves": 127,
+      "trees": 32,
+      "blend": 0.5,
+      "validation_score": 94.18289366472005
+    },
+    {
+      "leaves": 127,
+      "trees": 32,
+      "blend": 1.0,
+      "validation_score": 94.30654982771112
+    },
+    {
+      "leaves": 127,
+      "trees": 64,
+      "blend": 0.5,
+      "validation_score": 94.23462780130832
+    },
+    {
+      "leaves": 127,
+      "trees": 64,
+      "blend": 1.0,
+      "validation_score": 94.39351362822052
+    },
+    {
+      "leaves": 127,
+      "trees": 128,
+      "blend": 0.5,
+      "validation_score": 94.27486490927608
+    },
+    {
+      "leaves": 127,
+      "trees": 128,
+      "blend": 1.0,
+      "validation_score": 94.45898238274144
+    },
+    {
+      "leaves": 127,
+      "trees": 256,
+      "blend": 0.5,
+      "validation_score": 94.32183755776082
+    },
+    {
+      "leaves": 127,
+      "trees": 256,
+      "blend": 1.0,
+      "validation_score": 94.5384659121349
+    },
+    {
+      "leaves": 127,
+      "trees": 384,
+      "blend": 0.5,
+      "validation_score": 94.35273543642535
+    },
+    {
+      "leaves": 127,
+      "trees": 384,
+      "blend": 1.0,
+      "validation_score": 94.59052212267162
+    },
+    {
+      "leaves": 127,
+      "trees": 512,
+      "blend": 0.5,
+      "validation_score": 94.37180842896922
+    },
+    {
+      "leaves": 127,
+      "trees": 512,
+      "blend": 1.0,
+      "validation_score": 94.62124587604933
+    }
+  ],
+  "importance": {
+    "31": [
+      [
+        "source_x",
+        94405.80444741249
+      ],
+      [
+        "abs_dy",
+        55042.997334480286
+      ],
+      [
+        "target_y_mod100",
+        50461.13612627983
+      ],
+      [
+        "abs_dx",
+        50355.03337264061
+      ],
+      [
+        "target_x",
+        46800.5836584568
+      ],
+      [
+        "source_projection",
+        44669.67494893074
+      ],
+      [
+        "route_class",
+        41262.085238456726
+      ],
+      [
+        "source_port",
+        38599.703009843826
+      ],
+      [
+        "manhattan",
+        36262.47000479698
+      ],
+      [
+        "source_y_mod100",
+        33063.74025654793
+      ],
+      [
+        "target_port",
+        24925.4780960083
+      ],
+      [
+        "forced_detour",
+        20358.560087442398
+      ],
+      [
+        "horizontal_gap_delay",
+        20189.542268514633
+      ],
+      [
+        "vertical_gap_delay",
+        19457.697829008102
+      ],
+      [
+        "v3_delay",
+        18869.250654935837
+      ],
+      [
+        "dx",
+        18628.09730863571
+      ],
+      [
+        "dy",
+        9143.43565917015
+      ],
+      [
+        "target_family",
+        8498.425362825394
+      ],
+      [
+        "target_x_mod10",
+        6769.786234140396
+      ],
+      [
+        "source_y",
+        6694.146742343903
+      ],
+      [
+        "source_family",
+        5492.0291612148285
+      ],
+      [
+        "target_y",
+        5336.558914422989
+      ],
+      [
+        "source_x_mod10",
+        3836.7211368083954
+      ],
+      [
+        "target_y_mod12",
+        2680.3414268493652
+      ],
+      [
+        "source_y_mod12",
+        1670.6768338680267
+      ],
+      [
+        "route_detour",
+        705.7374286651611
+      ],
+      [
+        "x_sign",
+        0.0
+      ],
+      [
+        "y_sign",
+        0.0
+      ],
+      [
+        "target_projection",
+        0.0
+      ],
+      [
+        "source_fixed",
+        0.0
+      ],
+      [
+        "target_fixed",
+        0.0
+      ]
+    ],
+    "63": [
+      [
+        "source_x",
+        108796.57541203499
+      ],
+      [
+        "abs_dx",
+        108442.67221057415
+      ],
+      [
+        "source_projection",
+        80123.46955025196
+      ],
+      [
+        "abs_dy",
+        74283.2178785801
+      ],
+      [
+        "source_port",
+        66056.38502264023
+      ],
+      [
+        "target_x",
+        55132.11861395836
+      ],
+      [
+        "target_y_mod100",
+        55100.32718741894
+      ],
+      [
+        "manhattan",
+        44483.38441991806
+      ],
+      [
+        "target_port",
+        43757.86261796951
+      ],
+      [
+        "route_class",
+        38040.952465415
+      ],
+      [
+        "source_y_mod100",
+        36719.34392142296
+      ],
+      [
+        "dx",
+        33780.23640811443
+      ],
+      [
+        "forced_detour",
+        27059.32879590988
+      ],
+      [
+        "v3_delay",
+        26436.021968007088
+      ],
+      [
+        "horizontal_gap_delay",
+        26042.379880666733
+      ],
+      [
+        "vertical_gap_delay",
+        23315.55973315239
+      ],
+      [
+        "dy",
+        20972.43670153618
+      ],
+      [
+        "source_family",
+        15266.852730512619
+      ],
+      [
+        "source_y",
+        13014.761011600494
+      ],
+      [
+        "target_family",
+        12350.767879009247
+      ],
+      [
+        "target_x_mod10",
+        10954.777575731277
+      ],
+      [
+        "target_y",
+        10094.301570892334
+      ],
+      [
+        "target_y_mod12",
+        7307.573442578316
+      ],
+      [
+        "source_x_mod10",
+        6255.310034990311
+      ],
+      [
+        "source_y_mod12",
+        5357.123418569565
+      ],
+      [
+        "route_detour",
+        651.0097393989563
+      ],
+      [
+        "x_sign",
+        0.0
+      ],
+      [
+        "y_sign",
+        0.0
+      ],
+      [
+        "target_projection",
+        0.0
+      ],
+      [
+        "source_fixed",
+        0.0
+      ],
+      [
+        "target_fixed",
+        0.0
+      ]
+    ],
+    "127": [
+      [
+        "abs_dx",
+        150079.48706495762
+      ],
+      [
+        "source_x",
+        132674.0045595169
+      ],
+      [
+        "source_projection",
+        111756.79045140743
+      ],
+      [
+        "source_port",
+        99010.50912666321
+      ],
+      [
+        "abs_dy",
+        98874.40130627155
+      ],
+      [
+        "target_y_mod100",
+        68835.67973351479
+      ],
+      [
+        "target_port",
+        68820.11652123928
+      ],
+      [
+        "target_x",
+        67594.35284435749
+      ],
+      [
+        "manhattan",
+        57334.91825795174
+      ],
+      [
+        "dx",
+        48570.9555670023
+      ],
+      [
+        "source_y_mod100",
+        46269.07290017605
+      ],
+      [
+        "v3_delay",
+        38981.324991345406
+      ],
+      [
+        "route_class",
+        37236.019557356834
+      ],
+      [
+        "dy",
+        37173.88276588917
+      ],
+      [
+        "forced_detour",
+        30740.54399251938
+      ],
+      [
+        "vertical_gap_delay",
+        29605.251855492592
+      ],
+      [
+        "horizontal_gap_delay",
+        26761.3310277462
+      ],
+      [
+        "source_y",
+        24902.899466872215
+      ],
+      [
+        "source_family",
+        24609.61898803711
+      ],
+      [
+        "target_y",
+        22764.01104927063
+      ],
+      [
+        "target_family",
+        20264.43013072014
+      ],
+      [
+        "target_x_mod10",
+        18633.033246397972
+      ],
+      [
+        "target_y_mod12",
+        18540.968864440918
+      ],
+      [
+        "source_y_mod12",
+        17253.32886850834
+      ],
+      [
+        "source_x_mod10",
+        13001.638639211655
+      ],
+      [
+        "route_detour",
+        1054.401150226593
+      ],
+      [
+        "x_sign",
+        0.0
+      ],
+      [
+        "y_sign",
+        0.0
+      ],
+      [
+        "target_projection",
+        0.0
+      ],
+      [
+        "source_fixed",
+        0.0
+      ],
+      [
+        "target_fixed",
+        0.0
+      ]
+    ]
+  },
+  "holdout_used": false,
+  "elapsed_seconds": 60.726912333
+}

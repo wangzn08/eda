@@ -1,0 +1,45 @@
+{
+  "baseline": 94.02002918386954,
+  "best": {
+    "trees": 2048,
+    "validation_score": 94.57961367887572
+  },
+  "candidates": [
+    {
+      "trees": 256,
+      "validation_score": 94.46427955726504
+    },
+    {
+      "trees": 512,
+      "validation_score": 94.50624670496242
+    },
+    {
+      "trees": 768,
+      "validation_score": 94.52894888572939
+    },
+    {
+      "trees": 1024,
+      "validation_score": 94.54304745336545
+    },
+    {
+      "trees": 1536,
+      "validation_score": 94.55973162602015
+    },
+    {
+      "trees": 2048,
+      "validation_score": 94.57961367887572
+    }
+  ],
+  "categorical_indices": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    22
+  ],
+  "sign_offset": 1,
+  "holdout_used": false,
+  "elapsed_seconds": 96.06617025000001
+}

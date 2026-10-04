@@ -1,0 +1,359 @@
+{
+  "baseline": 93.51599925496323,
+  "best": {
+    "loss": "weighted_mean",
+    "alpha": 0.5,
+    "cap": 3,
+    "prior": 1,
+    "entries": 23254,
+    "validation_score": 94.02002918386849
+  },
+  "candidates": [
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 3,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 94.01245079376373
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 3,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 94.01327731620623
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 3,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 94.01167397988793
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 3,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 94.00021402602644
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 10,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 94.01245079376373
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 10,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 94.01327731620623
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 10,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 94.01167397988793
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0,
+      "cap": 10,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 94.00021402602644
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 3,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 94.01406857490487
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 3,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 94.02002918386849
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 3,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 94.01704174942414
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 3,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.99290362527597
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 10,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 94.01406857490487
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 10,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 94.02002918386849
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 10,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 94.01704174942414
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 0.5,
+      "cap": 10,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.99290362527597
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 3,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.95767030946276
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 3,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.98674025173167
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 3,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.98773426854633
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 3,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.95207701535773
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 10,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.95584846954344
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 10,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.9849602012421
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 10,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.98603350785302
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1,
+      "cap": 10,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.95060901413117
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 3,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.8139980457076
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 3,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.90774762306236
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 3,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.92096711216168
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 3,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.88460317788879
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 10,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.80359563187665
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 10,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.89798343328351
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 10,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.91184770558014
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 1.5,
+      "cap": 10,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.87727136250872
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 3,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.59362386525865
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 3,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.79805804960341
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 3,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.83262845364835
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 3,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.8127442070432
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 10,
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.56724734317994
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 10,
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.77094954267947
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 10,
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.80633873337696
+    },
+    {
+      "loss": "weighted_mean",
+      "alpha": 2,
+      "cap": 10,
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.79198121677271
+    },
+    {
+      "loss": "median",
+      "prior": 0,
+      "entries": 23254,
+      "validation_score": 93.98956165745408
+    },
+    {
+      "loss": "median",
+      "prior": 1,
+      "entries": 23254,
+      "validation_score": 93.99072692097273
+    },
+    {
+      "loss": "median",
+      "prior": 2,
+      "entries": 23254,
+      "validation_score": 93.98907187810323
+    },
+    {
+      "loss": "median",
+      "prior": 5,
+      "entries": 23254,
+      "validation_score": 93.97856864265489
+    }
+  ],
+  "elapsed_seconds": 18.618762333,
+  "holdout_used": false
+}

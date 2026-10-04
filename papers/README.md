@@ -39,3 +39,10 @@
 4. Bast et al., [*Route Planning in Transportation Networks*](https://arxiv.org/abs/1504.05140), 2015：综述预处理时间、空间与查询时间的取舍，适合确定本题的候选路线。
 
 `Optimal Approximate Distance Oracle for Planar Graphs` 等平面图结果只有在确认 SRB 的 Port/Arc/Net 图满足相应平面性和权重假设后才适用，不能仅凭 120×550 的网格坐标套用。
+
+## V8 新增参考：压缩路径数据库
+
+Botea, Harabor, *Path Planning with Compressed All-Pairs Shortest Paths Data*, ICAPS 2013。
+[作者公开 PDF](https://pathfinding.ai/pdf/botea-harabor-icaps13.pdf)，本地文件 `Botea_Harabor_2013_Compressed_Path_Data.pdf`。
+
+阅读重点：预处理最短路径并压缩下一步动作，利用空间相邻目标的共同动作减少存储。其全点对路径预处理和无损压缩思想属于已有工作，不能作为我们的原创。V8 借鉴预处理与压缩的工程思想，存储 FPGA 规则区域的局部可行路径延时及足迹证书，以平移后的有效性检查获得上界；与完整全点对最短距离数据库不同。具体创新候选和限制见 `reports/V8-path-witness-research.md`。

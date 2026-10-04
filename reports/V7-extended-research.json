@@ -1,0 +1,83 @@
+{
+  "baseline": 94.02002918386954,
+  "best": {
+    "trees": 2048,
+    "blend": 1.0,
+    "validation_score": 94.78767105778644
+  },
+  "candidates": [
+    {
+      "trees": 512,
+      "blend": 0.75,
+      "validation_score": 94.51091105555564
+    },
+    {
+      "trees": 512,
+      "blend": 1.0,
+      "validation_score": 94.62124587604933
+    },
+    {
+      "trees": 768,
+      "blend": 0.75,
+      "validation_score": 94.55645846347917
+    },
+    {
+      "trees": 768,
+      "blend": 1.0,
+      "validation_score": 94.67596739941314
+    },
+    {
+      "trees": 1024,
+      "blend": 0.75,
+      "validation_score": 94.58202991192303
+    },
+    {
+      "trees": 1024,
+      "blend": 1.0,
+      "validation_score": 94.70551533189173
+    },
+    {
+      "trees": 1280,
+      "blend": 0.75,
+      "validation_score": 94.61345327039443
+    },
+    {
+      "trees": 1280,
+      "blend": 1.0,
+      "validation_score": 94.7428095482198
+    },
+    {
+      "trees": 1536,
+      "blend": 0.75,
+      "validation_score": 94.62745311350321
+    },
+    {
+      "trees": 1536,
+      "blend": 1.0,
+      "validation_score": 94.7593035486779
+    },
+    {
+      "trees": 1792,
+      "blend": 0.75,
+      "validation_score": 94.64086546393315
+    },
+    {
+      "trees": 1792,
+      "blend": 1.0,
+      "validation_score": 94.77569589321371
+    },
+    {
+      "trees": 2048,
+      "blend": 0.75,
+      "validation_score": 94.65165042764488
+    },
+    {
+      "trees": 2048,
+      "blend": 1.0,
+      "validation_score": 94.78767105778644
+    }
+  ],
+  "model": "out/v7/l1-127-extended.txt",
+  "holdout_used": false,
+  "elapsed_seconds": 80.655102
+}

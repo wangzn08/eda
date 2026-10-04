@@ -1,0 +1,131 @@
+{
+  "candidates": [
+    {
+      "order": [
+        "pair_signs",
+        "route_dy20",
+        "route_source_yphase",
+        "route_target_yphase"
+      ],
+      "stages": [
+        {
+          "kind": "pair_signs",
+          "entries": 93535,
+          "validation_score": 94.0517991778009
+        },
+        {
+          "kind": "route_dy20",
+          "entries": 120,
+          "validation_score": 94.08079089285717
+        },
+        {
+          "kind": "route_source_yphase",
+          "entries": 50,
+          "validation_score": 94.08825606299125
+        },
+        {
+          "kind": "route_target_yphase",
+          "entries": 50,
+          "validation_score": 94.09252937555893
+        }
+      ]
+    },
+    {
+      "order": [
+        "route_dy20",
+        "route_source_yphase",
+        "route_target_yphase",
+        "pair_signs"
+      ],
+      "stages": [
+        {
+          "kind": "route_dy20",
+          "entries": 120,
+          "validation_score": 94.0481395920696
+        },
+        {
+          "kind": "route_source_yphase",
+          "entries": 50,
+          "validation_score": 94.05589539603041
+        },
+        {
+          "kind": "route_target_yphase",
+          "entries": 50,
+          "validation_score": 94.06025002094889
+        },
+        {
+          "kind": "pair_signs",
+          "entries": 93535,
+          "validation_score": 94.09323535672745
+        }
+      ]
+    },
+    {
+      "order": [
+        "pair_ysign",
+        "pair_xsign",
+        "route_dy20",
+        "route_source_yphase",
+        "route_target_yphase"
+      ],
+      "stages": [
+        {
+          "kind": "pair_ysign",
+          "entries": 46250,
+          "validation_score": 94.0410370392445
+        },
+        {
+          "kind": "pair_xsign",
+          "entries": 49831,
+          "validation_score": 94.04778558083883
+        },
+        {
+          "kind": "route_dy20",
+          "entries": 120,
+          "validation_score": 94.07651738675398
+        },
+        {
+          "kind": "route_source_yphase",
+          "entries": 50,
+          "validation_score": 94.08437144480304
+        },
+        {
+          "kind": "route_target_yphase",
+          "entries": 50,
+          "validation_score": 94.0888562566621
+        }
+      ]
+    },
+    {
+      "order": [
+        "pair_signs",
+        "route_dy20",
+        "route_source_x",
+        "route_target_x"
+      ],
+      "stages": [
+        {
+          "kind": "pair_signs",
+          "entries": 93535,
+          "validation_score": 94.0517991778009
+        },
+        {
+          "kind": "route_dy20",
+          "entries": 120,
+          "validation_score": 94.08079089285717
+        },
+        {
+          "kind": "route_source_x",
+          "entries": 346,
+          "validation_score": 94.08577988120135
+        },
+        {
+          "kind": "route_target_x",
+          "entries": 346,
+          "validation_score": 94.08709575830532
+        }
+      ]
+    }
+  ],
+  "holdout_used": false
+}

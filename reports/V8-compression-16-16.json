@@ -1,0 +1,13 @@
+{
+  "input": "out/local-oracle/regular-16-v4.bin",
+  "output": "out/local-oracle/regular-16-dict.bin",
+  "raw_bytes": 124896000,
+  "compressed_bytes": 71648216,
+  "max_dictionary_entries": 29817,
+  "dictionary_entries": 2299620,
+  "entries": 31223808,
+  "encoding": "per-source uint16 index into uint32 path-witness dictionary",
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "sha256": "b43dfe63953d9e2632109a631474078f16cf51e43a4eedb90f957bc99f606d07"
+}

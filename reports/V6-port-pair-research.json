@@ -1,0 +1,486 @@
+{
+  "candidates": [
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair",
+      "prior": 20,
+      "entries": 23254,
+      "validation_score": 93.81216442494714,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair",
+      "prior": 100,
+      "entries": 23254,
+      "validation_score": 93.62072921309112,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair",
+      "prior": 500,
+      "entries": 23254,
+      "validation_score": 93.47454891473325,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_xsign",
+      "prior": 20,
+      "entries": 49831,
+      "validation_score": 93.72998545503827,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_xsign",
+      "prior": 100,
+      "entries": 49831,
+      "validation_score": 93.54514821904976,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_xsign",
+      "prior": 500,
+      "entries": 49831,
+      "validation_score": 93.44272907774,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_ysign",
+      "prior": 20,
+      "entries": 46250,
+      "validation_score": 93.74444811129273,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_ysign",
+      "prior": 100,
+      "entries": 46250,
+      "validation_score": 93.5520652921727,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_ysign",
+      "prior": 500,
+      "entries": 46250,
+      "validation_score": 93.44497626493957,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_signs",
+      "prior": 20,
+      "entries": 93535,
+      "validation_score": 93.65715828880319,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_signs",
+      "prior": 100,
+      "entries": 93535,
+      "validation_score": 93.49674695337508,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_signs",
+      "prior": 500,
+      "entries": 93535,
+      "validation_score": 93.42544502860417,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_dy100",
+      "prior": 20,
+      "entries": 185113,
+      "validation_score": 93.6113907421401,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_dy100",
+      "prior": 100,
+      "entries": 185113,
+      "validation_score": 93.47400536441259,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_dy100",
+      "prior": 500,
+      "entries": 185113,
+      "validation_score": 93.41896147831422,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_dx32",
+      "prior": 20,
+      "entries": 147815,
+      "validation_score": 93.6228878843603,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_dx32",
+      "prior": 100,
+      "entries": 147815,
+      "validation_score": 93.48132626243735,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_dx32",
+      "prior": 500,
+      "entries": 147815,
+      "validation_score": 93.42135794799663,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_short",
+      "prior": 20,
+      "entries": 78122,
+      "validation_score": 93.64062082697698,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_short",
+      "prior": 100,
+      "entries": 78122,
+      "validation_score": 93.49745160835383,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "pair_short",
+      "prior": 500,
+      "entries": 78122,
+      "validation_score": 93.42757482769909,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_dy20",
+      "prior": 20,
+      "entries": 4144,
+      "validation_score": 93.40581834546998,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_dy20",
+      "prior": 100,
+      "entries": 4144,
+      "validation_score": 93.41033859690744,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_dy20",
+      "prior": 500,
+      "entries": 4144,
+      "validation_score": 93.40957824727744,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_dx16",
+      "prior": 20,
+      "entries": 4205,
+      "validation_score": 93.41526023709022,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_dx16",
+      "prior": 100,
+      "entries": 4205,
+      "validation_score": 93.41528436280349,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_dx16",
+      "prior": 500,
+      "entries": 4205,
+      "validation_score": 93.4124473679011,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_short",
+      "prior": 20,
+      "entries": 7713,
+      "validation_score": 93.40129496338876,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_short",
+      "prior": 100,
+      "entries": 7713,
+      "validation_score": 93.40762028259812,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v4-horizontal",
+      "kind": "family_pair_short",
+      "prior": 500,
+      "entries": 7713,
+      "validation_score": 93.40851284176276,
+      "baseline": 93.40712764583768
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair",
+      "prior": 20,
+      "entries": 23254,
+      "validation_score": 93.92575046132053,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair",
+      "prior": 100,
+      "entries": 23254,
+      "validation_score": 93.73004218872285,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair",
+      "prior": 500,
+      "entries": 23254,
+      "validation_score": 93.58286914376899,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_xsign",
+      "prior": 20,
+      "entries": 49831,
+      "validation_score": 93.84415371483698,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_xsign",
+      "prior": 100,
+      "entries": 49831,
+      "validation_score": 93.65469069901428,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_xsign",
+      "prior": 500,
+      "entries": 49831,
+      "validation_score": 93.55148626751341,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_ysign",
+      "prior": 20,
+      "entries": 46250,
+      "validation_score": 93.85811667185806,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_ysign",
+      "prior": 100,
+      "entries": 46250,
+      "validation_score": 93.66059801557822,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_ysign",
+      "prior": 500,
+      "entries": 46250,
+      "validation_score": 93.55309357401835,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_signs",
+      "prior": 20,
+      "entries": 93535,
+      "validation_score": 93.76994749058609,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_signs",
+      "prior": 100,
+      "entries": 93535,
+      "validation_score": 93.60611608839216,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_signs",
+      "prior": 500,
+      "entries": 93535,
+      "validation_score": 93.53402103374488,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_dy100",
+      "prior": 20,
+      "entries": 185113,
+      "validation_score": 93.7231674265074,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_dy100",
+      "prior": 100,
+      "entries": 185113,
+      "validation_score": 93.58256718572038,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_dy100",
+      "prior": 500,
+      "entries": 185113,
+      "validation_score": 93.5273575877608,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_dx32",
+      "prior": 20,
+      "entries": 147815,
+      "validation_score": 93.7355621718389,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_dx32",
+      "prior": 100,
+      "entries": 147815,
+      "validation_score": 93.59039404961534,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_dx32",
+      "prior": 500,
+      "entries": 147815,
+      "validation_score": 93.52986320389849,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_short",
+      "prior": 20,
+      "entries": 78122,
+      "validation_score": 93.75128618670702,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_short",
+      "prior": 100,
+      "entries": 78122,
+      "validation_score": 93.60561796529699,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "pair_short",
+      "prior": 500,
+      "entries": 78122,
+      "validation_score": 93.53614147899995,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_dy20",
+      "prior": 20,
+      "entries": 4144,
+      "validation_score": 93.51777342178305,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_dy20",
+      "prior": 100,
+      "entries": 4144,
+      "validation_score": 93.52017634877366,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_dy20",
+      "prior": 500,
+      "entries": 4144,
+      "validation_score": 93.51892800901689,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_dx16",
+      "prior": 20,
+      "entries": 4205,
+      "validation_score": 93.52869922542885,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_dx16",
+      "prior": 100,
+      "entries": 4205,
+      "validation_score": 93.52697213842389,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_dx16",
+      "prior": 500,
+      "entries": 4205,
+      "validation_score": 93.52210597002497,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_short",
+      "prior": 20,
+      "entries": 7713,
+      "validation_score": 93.51219807182099,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_short",
+      "prior": 100,
+      "entries": 7713,
+      "validation_score": 93.51727405765088,
+      "baseline": 93.51599925496323
+    },
+    {
+      "stem": "v5-geometry-fused",
+      "kind": "family_pair_short",
+      "prior": 500,
+      "entries": 7713,
+      "validation_score": 93.51769299840059,
+      "baseline": 93.51599925496323
+    }
+  ],
+  "elapsed_seconds": 41.335558834,
+  "holdout_used": false
+}
