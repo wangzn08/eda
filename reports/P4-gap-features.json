@@ -1,0 +1,89 @@
+{
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "baseline": {
+    "positive_score": 85.16855442350047,
+    "relative_error_p50": 0.024771838331160364,
+    "relative_error_p95": 0.1276595744680851,
+    "relative_error_p99": 0.2490974729241877,
+    "groups": {
+      "no_block": {
+        "rows": 78238,
+        "score": 82.83559057270243
+      },
+      "long": {
+        "rows": 148172,
+        "score": 85.62454084228116
+      },
+      "has_block": {
+        "rows": 71815,
+        "score": 87.71017422101856
+      },
+      "short": {
+        "rows": 1881,
+        "score": 49.249139408330585
+      }
+    }
+  },
+  "candidates": [
+    {
+      "prior": 100,
+      "features": 26,
+      "metrics": {
+        "positive_score": 86.88356109302696,
+        "relative_error_p50": 0.02073578595317726,
+        "relative_error_p95": 0.11667323610563658,
+        "relative_error_p99": 0.23673870333988212,
+        "groups": {
+          "no_block": {
+            "rows": 78238,
+            "score": 84.42472448607606
+          },
+          "long": {
+            "rows": 148172,
+            "score": 87.34216394185042
+          },
+          "has_block": {
+            "rows": 71815,
+            "score": 89.56231147184062
+          },
+          "short": {
+            "rows": 1881,
+            "score": 50.75804205217822
+          }
+        }
+      }
+    },
+    {
+      "prior": 1000,
+      "features": 26,
+      "metrics": {
+        "positive_score": 86.89164754303984,
+        "relative_error_p50": 0.020694752402069475,
+        "relative_error_p95": 0.11678832116788321,
+        "relative_error_p99": 0.23692307692307693,
+        "groups": {
+          "no_block": {
+            "rows": 78238,
+            "score": 84.43193207071414
+          },
+          "long": {
+            "rows": 148172,
+            "score": 87.35029049910229
+          },
+          "has_block": {
+            "rows": 71815,
+            "score": 89.57135539131222
+          },
+          "short": {
+            "rows": 1881,
+            "score": 50.76296913492625
+          }
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 32.60708275,
+  "holdout_used": false,
+  "caveat": "Endpoint bounding-box features do not identify the true routing path."
+}
