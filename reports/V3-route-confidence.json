@@ -1,0 +1,216 @@
+{
+  "hypothesis": "Topology-based route sketch and confidence-gated residual",
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "baseline": {
+    "score": 92.53153015795698,
+    "selected_rows": 0,
+    "selected_fraction": 0.0,
+    "selected_score": null
+  },
+  "candidates": [
+    {
+      "kind": "route_distance",
+      "prior": 20,
+      "entries": 119,
+      "score": 92.60176643558884,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.60176643558884
+    },
+    {
+      "kind": "route_distance",
+      "prior": 100,
+      "entries": 119,
+      "score": 92.59999700444823,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.59999700444823
+    },
+    {
+      "kind": "route_ports",
+      "prior": 20,
+      "entries": 179,
+      "score": 92.6046292392759,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.6046292392759
+    },
+    {
+      "kind": "route_ports",
+      "prior": 100,
+      "entries": 179,
+      "score": 92.600146710977,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.600146710977
+    },
+    {
+      "kind": "wire_phase",
+      "prior": 20,
+      "entries": 47250,
+      "score": 92.53703652276583,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.53703652276583
+    },
+    {
+      "kind": "wire_phase",
+      "prior": 100,
+      "entries": 47250,
+      "score": 92.54839631875063,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.54839631875063
+    },
+    {
+      "kind": "source_wire_phase",
+      "prior": 20,
+      "entries": 3418,
+      "score": 92.52304172311943,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.52304172311943
+    },
+    {
+      "kind": "source_wire_phase",
+      "prior": 100,
+      "entries": 3418,
+      "score": 92.52968027083203,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.52968027083203
+    },
+    {
+      "kind": "target_wire_phase",
+      "prior": 20,
+      "entries": 3396,
+      "score": 92.52061316697021,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.52061316697021
+    },
+    {
+      "kind": "target_wire_phase",
+      "prior": 100,
+      "entries": 3396,
+      "score": 92.5285669241027,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.5285669241027
+    },
+    {
+      "kind": "route_wire_phase",
+      "prior": 20,
+      "entries": 919,
+      "score": 92.59619915445957,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.59619915445957
+    },
+    {
+      "kind": "route_wire_phase",
+      "prior": 100,
+      "entries": 919,
+      "score": 92.58838673526401,
+      "selected_rows": 150053,
+      "selected_fraction": 1.0,
+      "selected_score": 92.58838673526401
+    }
+  ],
+  "selected_candidate": {
+    "kind": "route_ports",
+    "prior": 20,
+    "entries": 179,
+    "score": 92.6046292392759,
+    "selected_rows": 150053,
+    "selected_fraction": 1.0,
+    "selected_score": 92.6046292392759
+  },
+  "development_risk_by_geometry": {
+    "(0, 0)": 0.17633605282414186,
+    "(0, 1)": 0.17182627554530952,
+    "(1, 0)": 0.05811852074825655,
+    "(1, 1)": 0.04783865738534331,
+    "(1, 2)": 0.04893909395778788,
+    "(2, 0)": 0.019456947669710845,
+    "(2, 1)": 0.01456631903322116,
+    "(2, 2)": 0.022594833773948036,
+    "(3, 0)": 0.00936182546467015,
+    "(3, 1)": 0.007437676679972708
+  },
+  "gated_candidates": [
+    {
+      "threshold": 0.01,
+      "score": 92.58375419707122,
+      "selected_rows": 95840,
+      "selected_fraction": 0.6387076566279914,
+      "selected_score": 90.37446550800672
+    },
+    {
+      "threshold": 0.02,
+      "score": 92.56504978381426,
+      "selected_rows": 16445,
+      "selected_fraction": 0.10959460990450041,
+      "selected_score": 78.68893794894962
+    },
+    {
+      "threshold": 0.03,
+      "score": 92.54654867795277,
+      "selected_rows": 14397,
+      "selected_fraction": 0.0959460990450041,
+      "selected_score": 76.76353446650165
+    },
+    {
+      "threshold": 0.05,
+      "score": 92.52900730211586,
+      "selected_rows": 12603,
+      "selected_fraction": 0.0839903234190586,
+      "selected_score": 75.82392796263264
+    }
+  ],
+  "elapsed_seconds": 14.609627167,
+  "crossfit_benefit_by_geometry": {
+    "(0, 0)": -0.1946215245309488,
+    "(0, 1)": -1.0373215871846662,
+    "(1, 0)": 0.00599194468500649,
+    "(1, 1)": 0.6366383242980891,
+    "(1, 2)": 2.7627048324058543,
+    "(2, 0)": 0.002858861798886132,
+    "(2, 1)": 0.08202711863004111,
+    "(2, 2)": 1.2519701977923894,
+    "(3, 0)": 0.030890128190992065,
+    "(3, 1)": 0.11920501156562478
+  },
+  "benefit_gated_candidates": [
+    {
+      "threshold": 0.0,
+      "score": 92.60999713315029,
+      "selected_rows": 148966,
+      "selected_fraction": 0.9927558929178357,
+      "selected_score": 92.91407619554919
+    },
+    {
+      "threshold": 0.02,
+      "score": 92.60627410411568,
+      "selected_rows": 84695,
+      "selected_fraction": 0.5644339000219922,
+      "selected_score": 95.41860793144691
+    },
+    {
+      "threshold": 0.05,
+      "score": 92.60142320293765,
+      "selected_rows": 52768,
+      "selected_fraction": 0.35166241261420966,
+      "selected_score": 94.95362352334828
+    },
+    {
+      "threshold": 0.1,
+      "score": 92.58359678068203,
+      "selected_rows": 26128,
+      "selected_fraction": 0.17412514244966779,
+      "selected_score": 95.74319062833983
+    }
+  ],
+  "holdout_used": false
+}

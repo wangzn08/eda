@@ -1,0 +1,246 @@
+{
+  "dataset": "validation",
+  "rows": 150053,
+  "groups": {
+    "overall": {
+      "all": {
+        "rows": 150053,
+        "score": 92.53153015795698,
+        "mean_signed_error": 0.000911047456795108,
+        "share_of_total_score_loss": 7.468469842043028
+      }
+    },
+    "distance": {
+      "0-15": {
+        "rows": 1087,
+        "score": 50.93801773176056,
+        "mean_signed_error": 0.02701579072958423,
+        "share_of_total_score_loss": 0.35541025321437275
+      },
+      "16-63": {
+        "rows": 13310,
+        "score": 78.70333632298083,
+        "mean_signed_error": 0.0015875342441540076,
+        "share_of_total_score_loss": 1.8890564903142562
+      },
+      "256+": {
+        "rows": 54213,
+        "score": 96.48942678408824,
+        "mean_signed_error": 0.00011673467005750685,
+        "share_of_total_score_loss": 1.2683432237557701
+      },
+      "64-255": {
+        "rows": 81443,
+        "score": 92.71197486355902,
+        "mean_signed_error": 0.0009808163016330885,
+        "share_of_total_score_loss": 3.9556598747586715
+      }
+    },
+    "endpoint_type": {
+      "INTER->INTER": {
+        "rows": 66457,
+        "score": 91.9852027639277,
+        "mean_signed_error": 0.0005449611679781303,
+        "share_of_total_score_loss": 3.5496749809577732
+      },
+      "INTER->LOGIC": {
+        "rows": 34624,
+        "score": 92.73215140645519,
+        "mean_signed_error": 0.0010207494088403791,
+        "share_of_total_score_loss": 1.677020717365836
+      },
+      "LOGIC->INTER": {
+        "rows": 32264,
+        "score": 92.90304834750168,
+        "mean_signed_error": 0.0012196157298481566,
+        "share_of_total_score_loss": 1.525967812147746
+      },
+      "LOGIC->LOGIC": {
+        "rows": 16708,
+        "score": 93.57140965577368,
+        "mean_signed_error": 0.0015439795460046389,
+        "share_of_total_score_loss": 0.7158063315717342
+      }
+    },
+    "error": {
+      "1-2%": {
+        "rows": 37781,
+        "score": 94.27874515366219,
+        "mean_signed_error": -0.0005508980927994789,
+        "share_of_total_score_loss": 1.4405225443642495
+      },
+      "10-20%": {
+        "rows": 2616,
+        "score": 51.31919268614444,
+        "mean_signed_error": 0.009570594697374554,
+        "share_of_total_score_loss": 0.8486934078828556
+      },
+      "2-5%": {
+        "rows": 29941,
+        "score": 87.84545936212803,
+        "mean_signed_error": 0.0023210720181522904,
+        "share_of_total_score_loss": 2.4252704127110083
+      },
+      "20%+": {
+        "rows": 847,
+        "score": 19.700010004771997,
+        "mean_signed_error": 0.059741435806200706,
+        "share_of_total_score_loss": 0.4532671224564529
+      },
+      "5-10%": {
+        "rows": 8068,
+        "score": 73.64087012152136,
+        "mean_signed_error": 0.0046702824396556925,
+        "share_of_total_score_loss": 1.4172689640298137
+      },
+      "<1%": {
+        "rows": 70800,
+        "score": 98.12762808896171,
+        "mean_signed_error": -0.0003572576694390938,
+        "share_of_total_score_loss": 0.883447390598725
+      }
+    }
+  },
+  "highest_loss_examples": [
+    {
+      "loss": 99.99978739395556,
+      "from": "SRB_75_438/ZSNA[6]",
+      "to": "SRB_75_441/ZSNA[0]",
+      "golden": 114,
+      "prediction": 310
+    },
+    {
+      "loss": 99.99896732302177,
+      "from": "SRB_42_64/ZSSA[4]",
+      "to": "SRB_43_63/ZSSA[4]",
+      "golden": 115,
+      "prediction": 290
+    },
+    {
+      "loss": 99.99018861969778,
+      "from": "SRB_64_175/ZSWA[0]",
+      "to": "SRB_63_173/ZSSB[0]",
+      "golden": 129,
+      "prediction": 289
+    },
+    {
+      "loss": 99.98835897905171,
+      "from": "SRB_74_137/ZDN[6]",
+      "to": "SRB_74_142/ZSEA[7]",
+      "golden": 169,
+      "prediction": 375
+    },
+    {
+      "loss": 99.92282793124161,
+      "from": "SRB_58_329/A_CY",
+      "to": "SRB_58_332/ZSNA[4]",
+      "golden": 171,
+      "prediction": 339
+    },
+    {
+      "loss": 99.90966786889966,
+      "from": "SRB_97_326/ZSNA[1]",
+      "to": "SRB_99_326/ZSSB[1]",
+      "golden": 188,
+      "prediction": 369
+    },
+    {
+      "loss": 99.88944427261528,
+      "from": "SRB_20_11/ZDS[6]",
+      "to": "SRB_30_11/A_F0",
+      "golden": 272,
+      "prediction": 527
+    },
+    {
+      "loss": 99.87553720463119,
+      "from": "SRB_79_470/S_DQ0",
+      "to": "SRB_78_469/S_C3",
+      "golden": 194,
+      "prediction": 373
+    },
+    {
+      "loss": 99.86164953010787,
+      "from": "SRB_88_472/ZSWA[0]",
+      "to": "SRB_87_464/A_A5",
+      "golden": 254,
+      "prediction": 485
+    },
+    {
+      "loss": 99.85504375491135,
+      "from": "SRB_22_140/A_EQ0",
+      "to": "SRB_22_136/ZDS[4]",
+      "golden": 166,
+      "prediction": 316
+    },
+    {
+      "loss": 99.8254628910075,
+      "from": "SRB_68_239/S_GY",
+      "to": "SRB_65_239/ZSWB[7]",
+      "golden": 209,
+      "prediction": 393
+    },
+    {
+      "loss": 99.79572265648912,
+      "from": "SRB_34_514/ZSSA[1]",
+      "to": "SRB_32_515/ZSNA[2]",
+      "golden": 201,
+      "prediction": 374
+    },
+    {
+      "loss": 99.6436437025702,
+      "from": "SRB_74_415/ZLN[7]",
+      "to": "SRB_72_425/ZSSB[7]",
+      "golden": 201,
+      "prediction": 360
+    },
+    {
+      "loss": 99.63312397573284,
+      "from": "SRB_118_299/ZLS[4]",
+      "to": "SRB_118_274/ZSSB[5]",
+      "golden": 254,
+      "prediction": 454
+    },
+    {
+      "loss": 99.49392768552924,
+      "from": "SRB_11_497/ZLE[4]",
+      "to": "SRB_13_496/ZSSA[0]",
+      "golden": 605,
+      "prediction": 153
+    },
+    {
+      "loss": 99.429361422936,
+      "from": "SRB_115_246/ZSNA[1]",
+      "to": "SRB_114_251/ZSNA[1]",
+      "golden": 209,
+      "prediction": 362
+    },
+    {
+      "loss": 99.40870015731716,
+      "from": "SRB_113_4/ZSWA[1]",
+      "to": "SRB_110_6/A_H4",
+      "golden": 279,
+      "prediction": 482
+    },
+    {
+      "loss": 99.37469761202826,
+      "from": "SRB_50_398/ZSNB[0]",
+      "to": "SRB_48_400/ZSEB[0]",
+      "golden": 204,
+      "prediction": 351
+    },
+    {
+      "loss": 99.16725970033194,
+      "from": "SRB_56_539/ZSNA[1]",
+      "to": "SRB_56_544/S_D4",
+      "golden": 241,
+      "prediction": 406
+    },
+    {
+      "loss": 99.0919692428822,
+      "from": "SRB_67_350/ZLE[7]",
+      "to": "SRB_87_352/ZSNA[7]",
+      "golden": 328,
+      "prediction": 549
+    }
+  ]
+}
