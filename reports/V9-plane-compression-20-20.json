@@ -1,0 +1,13 @@
+{
+  "encoding": "target-plane signed cost deltas plus footprint runs; decode once to uint32 records",
+  "input": "out/local-oracle/factorized-20-v4.bin",
+  "output": "out/local-oracle/factorized-20-planes.bin",
+  "raw_bytes": 120494656,
+  "compressed_bytes": 75982479,
+  "decoded_payload_bytes": 120494080,
+  "cost_bytes": 31372732,
+  "footprint_bytes": 44465811,
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "sha256": "8c407f1ed304665d8751f14e417fbefdb418aa7360c69e104a94fa335345ef05"
+}

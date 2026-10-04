@@ -1,0 +1,9 @@
+{
+  "entries": 30123520,
+  "all_records_identical": true,
+  "compressed_bytes": 75982479,
+  "decoded_bytes": 120494080,
+  "elapsed_seconds": 24.512794041000003,
+  "fit_used_golden": false,
+  "holdout_used": false
+}

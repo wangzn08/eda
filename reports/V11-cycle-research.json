@@ -1,0 +1,31 @@
+{
+  "before": {
+    "rows": 150053,
+    "exact_matches": 3838,
+    "positive_delay_score": 95.73729879373046,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.006406970784213224,
+    "relative_error_p95": 0.034975369458128076,
+    "relative_error_p99": 0.07550644567219153,
+    "max_relative_error": 0.5118110236220472,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "after": {
+    "rows": 150053,
+    "exact_matches": 5192,
+    "positive_delay_score": 95.91244968691699,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.006199628022318661,
+    "relative_error_p95": 0.03327085285848173,
+    "relative_error_p99": 0.07075471698113207,
+    "max_relative_error": 0.46634615384615385,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "changed": 3709,
+  "changed_upper_bound_violations": 0,
+  "examples": [],
+  "fit_used_golden": false,
+  "holdout_used": false
+}

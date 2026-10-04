@@ -1,0 +1,54 @@
+{
+  "before": {
+    "rows": 150053,
+    "exact_matches": 6593,
+    "positive_delay_score": 97.22350366143732,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.004258717061485228,
+    "relative_error_p95": 0.022058823529411766,
+    "relative_error_p99": 0.04491725768321513,
+    "max_relative_error": 0.5631313131313131,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "after": {
+    "rows": 150053,
+    "exact_matches": 6594,
+    "positive_delay_score": 97.22351625391367,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.004258614014711576,
+    "relative_error_p95": 0.022058823529411766,
+    "relative_error_p99": 0.04491725768321513,
+    "max_relative_error": 0.5631313131313131,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "lower_bound_violations": 0,
+  "changed_rows": 1,
+  "lower_exact_matches": 3,
+  "source_bytes": 5176680,
+  "parameter_bytes": 1968128,
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "slopes_scaled_by_12": [
+    [
+      150,
+      125
+    ],
+    [
+      150,
+      -125
+    ],
+    [
+      -150,
+      125
+    ],
+    [
+      -150,
+      -125
+    ]
+  ],
+  "proof": "Folded edge cost subtracts a maximum possible potential increase; shortest folded costs lower-bound every actual reweighted route.",
+  "integrated_into_cpp_candidate": false,
+  "decision": "Do not integrate: only one changed row and approximately 0.000013 score gain for additional 1.97 MB parameters."
+}

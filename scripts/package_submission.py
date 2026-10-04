@@ -33,6 +33,11 @@ def main():
         'v5_geometry_model.hpp':ROOT/'src/v5_geometry_model.hpp',
         'v6_pair_model.hpp':ROOT/'src/v6_pair_model.hpp',
         'v7_tree_model.hpp':ROOT/'src/v7_tree_model.hpp',
+        'v9_tree_model.hpp':ROOT/'src/v9_tree_model.hpp',
+        'v10_tree_model.hpp':ROOT/'src/v10_tree_model.hpp',
+        'v14_tree_model.hpp':ROOT/'src/v14_tree_model.hpp',
+        'cycle_prefix_bank.hpp':ROOT/'src/cycle_prefix_bank.hpp',
+        'cycle_path_oracle.hpp':ROOT/'src/cycle_path_oracle.hpp',
         'local_path_oracle.hpp':ROOT/'src/local_path_oracle.hpp',
     }
     readme='''# FPGA delay estimator submission source

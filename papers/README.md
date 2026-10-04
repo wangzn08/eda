@@ -46,3 +46,10 @@ Botea, Harabor, *Path Planning with Compressed All-Pairs Shortest Paths Data*, I
 [作者公开 PDF](https://pathfinding.ai/pdf/botea-harabor-icaps13.pdf)，本地文件 `Botea_Harabor_2013_Compressed_Path_Data.pdf`。
 
 阅读重点：预处理最短路径并压缩下一步动作，利用空间相邻目标的共同动作减少存储。其全点对路径预处理和无损压缩思想属于已有工作，不能作为我们的原创。V8 借鉴预处理与压缩的工程思想，存储 FPGA 规则区域的局部可行路径延时及足迹证书，以平移后的有效性检查获得上界；与完整全点对最短距离数据库不同。具体创新候选和限制见 `reports/V8-path-witness-research.md`。
+
+## V9–V14 新增参考：架构自适应的路由前瞻
+
+Petelin, Betz, *The Speed of Diversity: Exploring Complex FPGA Routing Topologies for the Global Metal Layer*, FPL 2016。
+[作者公开稿](https://www.eecg.utoronto.ca/~vaughn/papers/fpl2016_complex_routing.pdf)，已下载 `Petelin_Betz_2016_Complex_Routing.pdf`。重点阅读第 II-D 与 IV-D 节及图 4：从少量参考导线运行按延时排序的 Dijkstra，并按导线类型、方向和相对位移建立路由前瞻表。
+
+该文说明导线类型、连接拓扑和长导线入口对延时估算的重要性；这些基本思路已有研究依据。本项目新增候选集中在逐端口可行路径的平移证书、入口路径银行、可重复长导线组合，以及由有效上界约束学习模型。前瞻估计与本题的最短路标签、逐条误差评分任务不同，不能把论文结论直接当成本题性能。现代 [VTR 路由前瞻文档](https://docs.verilogtorouting.org/en/latest/api/vprinternals/router_lookahead/) 可用于核对已有实现概念。

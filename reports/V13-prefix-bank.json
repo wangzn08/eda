@@ -1,0 +1,9 @@
+{
+  "records": 14336,
+  "source_bytes": 422573,
+  "runtime_record_bytes": 172032,
+  "selection": "up to 4 low-cost spatially separated witnesses per source/long-input pair",
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "input": "out/local-oracle/factorized-20-v4.bin"
+}

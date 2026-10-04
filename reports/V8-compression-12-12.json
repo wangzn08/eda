@@ -1,0 +1,14 @@
+{
+  "input": "out/local-oracle/long-tail-12-v4.bin",
+  "output": "out/local-oracle/long-tail-12-dict.bin",
+  "raw_bytes": 20480608,
+  "compressed_bytes": 11969216,
+  "max_dictionary_entries": 15689,
+  "dictionary_entries": 432054,
+  "entries": 5120000,
+  "encoding": "per-source uint16 index into uint32 path-witness dictionary",
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "y_groups": 1,
+  "sha256": "c88f87d9d4e785a2e129fc1c606bc4bc552d6e43100a8822fc70467e0d1735f2"
+}

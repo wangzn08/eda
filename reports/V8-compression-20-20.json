@@ -1,0 +1,14 @@
+{
+  "input": "out/local-oracle/factorized-20-v4.bin",
+  "output": "out/local-oracle/factorized-20-dict.bin",
+  "raw_bytes": 120494656,
+  "compressed_bytes": 97640964,
+  "max_dictionary_entries": 34292,
+  "dictionary_entries": 9346991,
+  "entries": 30123520,
+  "encoding": "per-source uint16 index into uint32 path-witness dictionary",
+  "fit_used_golden": false,
+  "holdout_used": false,
+  "y_groups": 4,
+  "sha256": "e138ebb7eacb78feb351739045cfa7ea251e8abcb350df5181a0ba3bad4e89e5"
+}

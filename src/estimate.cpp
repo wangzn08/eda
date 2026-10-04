@@ -14,6 +14,11 @@
 #include "v5_geometry_model.hpp"
 #include "v6_pair_model.hpp"
 #include "v7_tree_model.hpp"
+#include "v9_tree_model.hpp"
+#include "v10_tree_model.hpp"
+#include "v14_tree_model.hpp"
+#include "cycle_path_oracle.hpp"
+#include <cstring>
 #include "local_path_oracle.hpp"
 #include <algorithm>
 #include <array>
@@ -591,6 +596,145 @@ Distance v7_tree_delay(Node source,Node target) {
     }
     return static_cast<Distance>(std::max(0.0,std::nearbyint(double(base)*(1.0+v7_tree_model::blend*correction))));
 }
+std::array<float,73> topology_features(Node source,Node target) {
+    Distance base=v6_pair_delay(source,target);
+    const auto& a=archdata::SITES[source/archdata::P];
+    const auto& b=archdata::SITES[target/archdata::P];
+    const int dx=b.x-a.x,dy=b.y-a.y,direct=std::abs(dx)+std::abs(dy);
+    const auto& vectors=endpoint_vectors();
+    const auto first=vectors.first[source%archdata::P],last=vectors.last[target%archdata::P];
+    const int forced=std::abs(first.x)+std::abs(first.y)+std::abs(last.x)+std::abs(last.y)
+        +std::abs(dx-first.x-last.x)+std::abs(dy-first.y-last.y);
+    int route=0,route_detour=0;
+    if(std::min(a.x,b.x)<=89 && std::max(a.x,b.x)>=76) {
+        const auto blocked=[](int y){return y<550 && y%100<50?y/100:-1;};
+        int s=blocked(a.y),t=blocked(b.y);
+        if(s>=0 || t>=0) {
+            if(s!=t) route=1;
+            else {
+                route=2;
+                int lower=s*100,upper=lower+49;
+                int distance_to_edge=std::min(a.y-lower+b.y-lower+2,2*upper-a.y-b.y+2);
+                route_detour=std::min(9,std::max(0,distance_to_edge/10));
+            }
+        }
+    }
+    const int xmin=std::min(a.x,b.x),xmax=std::max(a.x,b.x);
+    const int ymin=std::min(a.y,b.y),ymax=std::max(a.y,b.y);
+    const auto& m=v4_tree_model::family;
+    std::array<float,73> feature={
+        float(a.x),float(a.y),float(b.x),float(b.y),float(dx),float(dy),
+        float(std::abs(dx)),float(std::abs(dy)),float(direct),float(base),
+        float(source%archdata::P),float(target%archdata::P),
+        float(m[source%archdata::P]),float(m[target%archdata::P]),
+        float((dx>0)-(dx<0)),float((dy>0)-(dy<0)),
+        float(a.x%10),float(b.x%10),float(a.y%12),float(b.y%12),
+        float(v4_tree_model::x_gap_prefix[xmax]-v4_tree_model::x_gap_prefix[xmin]),
+        float(v4_tree_model::y_gap_prefix[ymax]-v4_tree_model::y_gap_prefix[ymin]),
+        float(route),float(route_detour),float(std::max(0,forced-direct)),
+        float(first.x*dx+first.y*dy),float(last.x*dx+last.y*dy),
+        float(first.x || first.y),float(last.x || last.y),
+        float(a.y%100),float(b.y%100)};
+    struct Topology {
+        std::array<uint32_t,archdata::P*archdata::P> distance;
+        std::array<std::array<uint32_t,4>,archdata::P> access,terminal,long_access,long_terminal;
+    };
+    static const Topology topology=[] {
+        Topology result;result.distance.fill(10000000);
+        for(int i=0;i<archdata::P;++i) result.distance[i*archdata::P+i]=0;
+        for(const auto& arc:archdata::ARCS) {auto& d=result.distance[arc.from*archdata::P+arc.to];d=std::min(d,uint32_t(arc.delay));}
+        for(const auto& net:archdata::NETS) {auto& d=result.distance[net.from*archdata::P+net.to];d=std::min(d,uint32_t(net.delay));}
+        for(int k=0;k<archdata::P;++k) for(int i=0;i<archdata::P;++i) for(int j=0;j<archdata::P;++j) {
+            auto& d=result.distance[i*archdata::P+j];d=std::min(d,result.distance[i*archdata::P+k]+result.distance[k*archdata::P+j]);
+        }
+        for(int i=0;i<archdata::P;++i) {result.access[i].fill(10000000);result.terminal[i].fill(10000000);result.long_access[i].fill(10000000);result.long_terminal[i].fill(10000000);}
+        for(const auto& net:archdata::NETS) {
+            auto v=archdata::VECTORS[net.vector];int direction=v.x>0?0:v.x<0?1:v.y>0?2:3;
+            for(int i=0;i<archdata::P;++i) {
+                auto ac=result.distance[i*archdata::P+net.from],te=result.distance[net.to*archdata::P+i];
+                result.access[i][direction]=std::min(result.access[i][direction],ac);
+                result.terminal[i][direction]=std::min(result.terminal[i][direction],te);
+                if(std::abs(v.x)+std::abs(v.y)>=10) {
+                    result.long_access[i][direction]=std::min(result.long_access[i][direction],ac);
+                    result.long_terminal[i][direction]=std::min(result.long_terminal[i][direction],te);
+                }
+            }
+        }
+        return result;
+    }();
+    auto mod=[](int value,int divisor){return (value%divisor+divisor)%divisor;};
+    int sp=source%archdata::P,tp=target%archdata::P,rx=dx-first.x-last.x,ry=dy-first.y-last.y;
+    std::array<float,31> extra={float(first.x),float(first.y),float(last.x),float(last.y),
+        float(rx),float(ry),float(std::abs(rx)),float(std::abs(ry)),float(mod(rx,12)),float(mod(ry,12)),
+        float(mod(rx,4)),float(mod(ry,4)),float(sp%8),float(tp%8),float(topology.distance[sp*archdata::P+tp]),
+        float(topology.access[sp][0]),float(topology.access[sp][1]),float(topology.access[sp][2]),float(topology.access[sp][3]),
+        float(topology.terminal[tp][0]),float(topology.terminal[tp][1]),float(topology.terminal[tp][2]),float(topology.terminal[tp][3]),
+        float(std::min(a.x,archdata::WIDTH-1-a.x)),float(std::min(a.y,archdata::HEIGHT-1-a.y)),
+        float(std::min(b.x,archdata::WIDTH-1-b.x)),float(std::min(b.y,archdata::HEIGHT-1-b.y)),
+        float(mod(a.x+first.x,10)),float(mod(b.x-last.x,10)),float(mod(a.y+first.y,12)),float(mod(b.y-last.y,12))};
+    std::copy(extra.begin(),extra.end(),feature.begin()+31);
+    std::array<float,11> wire={float(mod(rx,10)),float(std::abs(rx)%10),float(std::abs(ry)%12),
+        float(topology.long_access[sp][0]),float(topology.long_access[sp][1]),float(topology.long_access[sp][2]),float(topology.long_access[sp][3]),
+        float(topology.long_terminal[tp][0]),float(topology.long_terminal[tp][1]),float(topology.long_terminal[tp][2]),float(topology.long_terminal[tp][3])};
+    std::copy(wire.begin(),wire.end(),feature.begin()+62);
+    return feature;
+}
+Distance v9_tree_delay(Node source,Node target) {
+    Distance base=v6_pair_delay(source,target);
+    if(source==target) return base;
+    auto feature=topology_features(source,target);
+    double correction=0.;
+    for(uint32_t root:v9_tree_model::roots) {
+        uint32_t node=root;
+        while(v9_tree_model::nodes[node].feature!=65535) {
+            const auto& branch=v9_tree_model::nodes[node];
+            node=feature[branch.feature]<=branch.threshold?branch.left:branch.right;
+        }
+        correction+=v9_tree_model::nodes[node].value;
+    }
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(double(base)*(1.0+v9_tree_model::blend*correction))));
+}
+Distance v10_tree_delay(Node source,Node target) {
+    Distance base=v6_pair_delay(source,target);
+    if(source==target) return base;
+    auto feature=topology_features(source,target);double correction=0.;
+    for(uint32_t root:v10_tree_model::roots) {
+        uint32_t node=root;
+        while(v10_tree_model::code[node]!=255) {
+            auto f=v10_tree_model::code[node];float threshold;
+            std::memcpy(&threshold,v10_tree_model::code.data()+node+3,4);
+            uint32_t right=v10_tree_model::code[node+1]|(uint32_t(v10_tree_model::code[node+2])<<8);
+            node+=feature[f]<=threshold?7:right;
+        }
+        double value;std::memcpy(&value,v10_tree_model::code.data()+node+1,8);correction+=value;
+    }
+    return static_cast<Distance>(std::max(0.0,std::nearbyint(double(base)*(1.0+correction))));
+}
+
+Distance v14_tree_delay(Node source,Node target,Distance upper) {
+    Distance base=v6_pair_delay(source,target);
+    if(source==target) return base;
+    auto original=topology_features(source,target);
+    std::array<float,77> feature{};std::copy(original.begin(),original.end(),feature.begin());
+    bool available=upper<INF;
+    feature[73]=available?float(upper):0.f;feature[74]=available?1.f:0.f;
+    feature[75]=available?float(double(upper)/std::max(1.0,double(base))):0.f;
+    feature[76]=available?float(double(upper)-double(base)):0.f;
+    double anchor=v14_tree_model::slack_anchor && available?double(upper):double(base);
+    double correction=0.;
+    for(uint32_t root:v14_tree_model::roots) {
+        uint32_t node=root;
+        while(v14_tree_model::code[node]!=255) {
+            auto f=v14_tree_model::code[node];float threshold;
+            std::memcpy(&threshold,v14_tree_model::code.data()+node+3,4);
+            uint32_t right=v14_tree_model::code[node+1]|(uint32_t(v14_tree_model::code[node+2])<<8);
+            node+=feature[f]<=threshold?7:right;
+        }
+        double value;std::memcpy(&value,v14_tree_model::code.data()+node+1,8);correction+=value;
+    }
+    return std::min(upper,static_cast<Distance>(std::max(0.0,std::nearbyint(anchor*(1.0+correction)))));
+}
+
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -788,17 +932,18 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,trace_path,oracle_path,algorithm="v6-pair";
+        std::string input,output,stats_path,trace_path,oracle_path,cycle_path,algorithm="v6-pair";
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree] [--local-oracle dictionary.bin] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
             else if(arg=="-out") output=argv[++i];
             else if(arg=="--stats") stats_path=argv[++i];
             else if(arg=="--trace") trace_path=argv[++i];
+            else if(arg=="--cycle-oracle") cycle_path=argv[++i];
             else if(arg=="--local-oracle") oracle_path=argv[++i];
             else if(arg=="--algorithm") algorithm=argv[++i];
             else throw std::runtime_error("Unknown option: "+arg);
@@ -807,7 +952,7 @@ int main(int argc,char** argv) {
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
         if(!trace_path.empty() && (algorithm!="compressed" || trace_path==input || trace_path==output || trace_path==stats_path))
             throw std::runtime_error("Trace requires compressed algorithm and a distinct file");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused" && algorithm!="v6-pair" && algorithm!="v7-tree") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused" && algorithm!="v6-pair" && algorithm!="v7-tree" && algorithm!="v9-tree" && algorithm!="v10-tree" && algorithm!="v14-tree") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -829,11 +974,17 @@ int main(int argc,char** argv) {
             trace<<"row,delay,steps,hops,long_hops,turns,detour\n";
         }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused" || algorithm=="v6-pair" || algorithm=="v7-tree";
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused" || algorithm=="v6-pair" || algorithm=="v7-tree" || algorithm=="v9-tree" || algorithm=="v10-tree" || algorithm=="v14-tree";
         if(!oracle_path.empty() && (!fast || oracle_path==input || oracle_path==output || oracle_path==stats_path))
             throw std::runtime_error("Path oracle requires an estimate algorithm and distinct files");
         std::unique_ptr<LocalPathOracle> local_oracle;
         if(!oracle_path.empty()) local_oracle=std::make_unique<LocalPathOracle>(oracle_path);
+        if(!cycle_path.empty() && (!fast || cycle_path==input || cycle_path==output || cycle_path==stats_path))
+            throw std::runtime_error("Cycle oracle requires an estimate algorithm and distinct files");
+        if(algorithm=="v14-tree" && (oracle_path.empty() || cycle_path.empty()))
+            throw std::runtime_error("V14 requires --local-oracle and --cycle-oracle assets");
+        std::unique_ptr<CyclePathOracle> cycle_oracle;
+        if(!cycle_path.empty()) cycle_oracle=std::make_unique<CyclePathOracle>(cycle_path);
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -855,6 +1006,11 @@ int main(int argc,char** argv) {
             Node from=parser.pin(s),to=parser.pin(t);
             CompactSolver::Trace route;
             if(trace.is_open()) route=compact_solver->trace(from,to,counters);
+            Distance route_upper=INF;
+            if(algorithm=="v14-tree") {
+                route_upper=std::min(route_upper,local_oracle->upper_bound(from,to));
+                route_upper=cycle_oracle->cap(from,to,route_upper);
+            }
             Distance d=trace.is_open()?route.delay:
                 algorithm=="approximate"?lookup_delay(from,to):
                 algorithm=="spatial"?spatial_delay(from,to):
@@ -872,8 +1028,12 @@ int main(int argc,char** argv) {
                 algorithm=="v5-geometry-fused"?v5_geometry_fused_delay(from,to):
                 algorithm=="v6-pair"?v6_pair_delay(from,to):
                 algorithm=="v7-tree"?v7_tree_delay(from,to):
+                algorithm=="v9-tree"?v9_tree_delay(from,to):
+                algorithm=="v10-tree"?v10_tree_delay(from,to):
+                algorithm=="v14-tree"?v14_tree_delay(from,to,route_upper):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
-            if(local_oracle) d=std::min(d,local_oracle->upper_bound(from,to));
+            if(local_oracle && algorithm!="v14-tree") d=std::min(d,local_oracle->upper_bound(from,to));
+            if(cycle_oracle && algorithm!="v14-tree") d=cycle_oracle->cap(from,to,d);
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
             out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');
             char digits[32];auto end=std::to_chars(digits,digits+sizeof(digits),d);

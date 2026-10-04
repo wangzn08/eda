@@ -1,0 +1,20 @@
+{
+  "metrics": {
+    "rows": 150053,
+    "exact_matches": 6593,
+    "positive_delay_score": 97.22350366143732,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.004258717061485228,
+    "relative_error_p95": 0.022058823529411766,
+    "relative_error_p99": 0.04491725768321513,
+    "max_relative_error": 0.5631313131313131,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "python_cpp_predictions_identical": true,
+  "finite_route_bounds": 141674,
+  "route_bound_violations": 0,
+  "model_exceeds_finite_bound": 0,
+  "holdout_used": false,
+  "acceptance_run": false
+}
