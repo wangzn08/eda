@@ -25,6 +25,7 @@ class CoreTemplateModel {
     struct ShortVerticalCell {uint16_t base[4],slope;};
     static_assert(sizeof(ShortVerticalCell)==10,"Short vertical cell size");
     std::vector<ShortVerticalCell>short_vertical;
+    std::vector<int>corridor_ports;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
     }
@@ -74,6 +75,12 @@ class CoreTemplateModel {
         return best;
     }
 public:
+    void enable_corridor_hubs(unsigned count){
+        if(!corridor_geometry || !count || count>32)throw std::runtime_error("Corridor hubs require geometry and1..32 hubs");
+        std::vector<std::pair<unsigned,int>>ports;
+        for(auto net:archdata::NETS){auto v=archdata::VECTORS[net.vector];if(std::abs(v.x)+std::abs(v.y)>=10)ports.push_back({net.delay,net.to});}
+        std::sort(ports.begin(),ports.end());for(auto p:ports)if(std::find(corridor_ports.begin(),corridor_ports.end(),p.second)==corridor_ports.end()){corridor_ports.push_back(p.second);if(corridor_ports.size()==count)break;}
+    }
     void enable_short_vertical_layout(){
         if(!has_far || far_joint.empty())throw std::runtime_error("Wide joint layout requires far joint layout");
         short_vertical.resize(size_t(160)*160*59*24);
@@ -136,8 +143,15 @@ public:
         auto bound=[&](Node s,int p){auto a=archdata::SITES[s];int dx=b.x-a.x,dy=b.y-a.y;Distance value=nominal(p,tp,dx,dy);if(std::min(a.x,b.x)<76 && std::max(a.x,b.x)>89){
                 if(corridor_geometry)for(const auto& block:archdata::BLOCKS)if(block.left==76 && block.right==89 && a.y>=block.lower && a.y<=block.upper && b.y>=block.lower && b.y<=block.upper){
                     value=INF;
-                    if(block.lower>0){int extra=std::min(a.y,b.y)-block.lower+1;value=std::min(value,nominal(p,tp,dx,-std::abs(dy)-2*extra));}
-                    if(block.upper+1<archdata::HEIGHT){int extra=block.upper-std::max(a.y,b.y)+1;value=std::min(value,nominal(p,tp,dx,std::abs(dy)+2*extra));}
+                    auto corridor=[&](int cy,bool lower){
+                        if(corridor_ports.empty()){int extra=lower?std::min(a.y,b.y)-block.lower+1:block.upper-std::max(a.y,b.y)+1;return nominal(p,tp,dx,(lower?-1:1)*(std::abs(dy)+2*extra));}
+                        Distance best=INF;int cx=82;
+                        for(int hub:corridor_ports){Distance first=nominal(p,hub,cx-a.x,cy-a.y),second=nominal(hub,tp,b.x-cx,b.y-cy);best=std::min(best,first+second);}
+                        Distance detour=Distance(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[cy])))+Distance(std::llabs(int64_t(ygap[b.y])-int64_t(ygap[cy])))-Distance(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])));
+                        return best+detour;
+                    };
+                    if(block.lower>0)value=std::min(value,corridor(block.lower-1,true));
+                    if(block.upper+1<archdata::HEIGHT)value=std::min(value,corridor(block.upper+1,false));
                     break;
                 }
                 value=std::min(value,nominal(p,tp,dx+(dx>0?-14:14),dy)+292);

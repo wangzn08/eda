@@ -1,0 +1,41 @@
+{
+  "split": "validation",
+  "holdout_used": false,
+  "residual_model": false,
+  "selection": "Fixed evenly spaced2048 same-band block-crossing rows",
+  "candidates": [
+    {
+      "hubs": 0,
+      "rows": 2048,
+      "pilot_score": 97.03501233253886,
+      "mean_absolute_error_ps": 13.6142578125,
+      "mean_signed_error_ps": -12.806640625,
+      "query_cpu_seconds": 0.026539999999999786
+    },
+    {
+      "hubs": 4,
+      "rows": 2048,
+      "pilot_score": 98.55827569253698,
+      "mean_absolute_error_ps": 6.39013671875,
+      "mean_signed_error_ps": 3.27978515625,
+      "query_cpu_seconds": 0.030540000000000234
+    },
+    {
+      "hubs": 16,
+      "rows": 2048,
+      "pilot_score": 98.65434342995164,
+      "mean_absolute_error_ps": 5.97412109375,
+      "mean_signed_error_ps": 2.85302734375,
+      "query_cpu_seconds": 0.08492000000000033
+    },
+    {
+      "hubs": 32,
+      "rows": 2048,
+      "pilot_score": 98.78109104627148,
+      "mean_absolute_error_ps": 5.4833984375,
+      "mean_signed_error_ps": 2.306640625,
+      "query_cpu_seconds": 0.1653500000000001
+    }
+  ],
+  "scope": "Targeted approximate min-plus composition pilot, no full validation, actual path certificate or final throughput claim."
+}
