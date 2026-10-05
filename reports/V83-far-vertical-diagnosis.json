@@ -1,0 +1,57 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "bands": [
+    72,
+    84
+  ],
+  "residues": 12,
+  "recurrence_comparison": [
+    {
+      "direction": "south",
+      "periods": 4,
+      "entries": 18124800,
+      "mean_absolute_error_ps": 1.728240808174435,
+      "p95_absolute_error_ps": 11.0,
+      "exact_fraction": 0.7497806872351694,
+      "mean_signed_error_ps": 0.3434044513594633
+    },
+    {
+      "direction": "south",
+      "periods": 5,
+      "entries": 18124800,
+      "mean_absolute_error_ps": 2.8410211423022598,
+      "p95_absolute_error_ps": 17.0,
+      "exact_fraction": 0.7184265205685029,
+      "mean_signed_error_ps": 0.8215417549435028
+    },
+    {
+      "direction": "north",
+      "periods": 4,
+      "entries": 18124800,
+      "mean_absolute_error_ps": 0.8394418145303673,
+      "p95_absolute_error_ps": 5.0,
+      "exact_fraction": 0.8022339005120056,
+      "mean_signed_error_ps": 0.15062935866878532
+    },
+    {
+      "direction": "north",
+      "periods": 5,
+      "entries": 18124800,
+      "mean_absolute_error_ps": 1.2934819694562147,
+      "p95_absolute_error_ps": 8.0,
+      "exact_fraction": 0.7809565346927966,
+      "mean_signed_error_ps": 0.2661180261299435
+    }
+  ],
+  "growth_slope_change_fraction": 0.22944934564795197,
+  "asset_bytes": 20334184,
+  "asset_sha256": "431b50ae9b3010a5f3b8572e98dd6177a4e2d2dcc11d7d3a137ada713cb160aa",
+  "exact_compression_roundtrip": true,
+  "compression_cpu_seconds": 6.302657,
+  "scope": "Finite nominal graph diagnostic, not physical path certificate, full validation or query throughput.",
+  "delta_asset_bytes": 12455824,
+  "delta_exact_roundtrip": true,
+  "delta_asset_sha256": "a2c20cae7c8b257f8bd0a4683f7e3e92a20f715c3301b99dfd777e2325d2e3f3",
+  "v82_128_files_plus_delta_bytes": 98141596
+}

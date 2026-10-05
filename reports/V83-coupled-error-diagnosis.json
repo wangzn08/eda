@@ -1,0 +1,89 @@
+{
+  "split": "validation",
+  "holdout_used": false,
+  "model": "V82 trees128",
+  "distance_bins": [
+    {
+      "axis": "x",
+      "minimum": 0,
+      "maximum_exclusive": 10,
+      "rows": 23150,
+      "score": 98.47420030933718,
+      "total_score_loss_contribution": 0.23539857809470136,
+      "relative_error_p95": 0.0210736222618238
+    },
+    {
+      "axis": "x",
+      "minimum": 10,
+      "maximum_exclusive": 30,
+      "rows": 41092,
+      "score": 98.85909683633838,
+      "total_score_loss_contribution": 0.3124362245418836,
+      "relative_error_p95": 0.01478574304970237
+    },
+    {
+      "axis": "x",
+      "minimum": 30,
+      "maximum_exclusive": 60,
+      "rows": 47621,
+      "score": 98.58123292495527,
+      "total_score_loss_contribution": 0.45026162009893017,
+      "relative_error_p95": 0.015016424213984044
+    },
+    {
+      "axis": "x",
+      "minimum": 60,
+      "maximum_exclusive": 120,
+      "rows": 38190,
+      "score": 98.58068607007195,
+      "total_score_loss_contribution": 0.3612296920684847,
+      "relative_error_p95": 0.013223140495867768
+    },
+    {
+      "axis": "y",
+      "minimum": 0,
+      "maximum_exclusive": 12,
+      "rows": 6230,
+      "score": 98.10790019271398,
+      "total_score_loss_contribution": 0.07855745502850275,
+      "relative_error_p95": 0.02914535361433149
+    },
+    {
+      "axis": "y",
+      "minimum": 12,
+      "maximum_exclusive": 36,
+      "rows": 12454,
+      "score": 98.33627437532665,
+      "total_score_loss_contribution": 0.13808480290085443,
+      "relative_error_p95": 0.025038576732232986
+    },
+    {
+      "axis": "y",
+      "minimum": 36,
+      "maximum_exclusive": 72,
+      "rows": 18116,
+      "score": 98.65713403958965,
+      "total_score_loss_contribution": 0.16212511405166083,
+      "relative_error_p95": 0.015113350125944584
+    },
+    {
+      "axis": "y",
+      "minimum": 72,
+      "maximum_exclusive": 144,
+      "rows": 32501,
+      "score": 98.69405210732751,
+      "total_score_loss_contribution": 0.2828641377363229,
+      "relative_error_p95": 0.01346389228886169
+    },
+    {
+      "axis": "y",
+      "minimum": 144,
+      "maximum_exclusive": 550,
+      "rows": 80752,
+      "score": 98.70354705051183,
+      "total_score_loss_contribution": 0.697694605086659,
+      "relative_error_p95": 0.014460828583714874
+    }
+  ],
+  "scope": "Diagnostic only; repeated validation research selection, not independent hidden score."
+}
