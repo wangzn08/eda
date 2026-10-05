@@ -1,0 +1,6 @@
+{
+  "architecture_values_checked": 134400,
+  "mismatches": 0,
+  "golden_labels_used": false,
+  "scope": "Independent3-source probe compared with full horizontal residual export."
+}

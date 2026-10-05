@@ -1,0 +1,30 @@
+{
+  "rows": 150053,
+  "holdout_used": false,
+  "golden_labels_used_for_assets": false,
+  "template_baseline_score": 96.34999162187053,
+  "vertical_baseline_score": 97.97144301878541,
+  "candidates": [
+    {
+      "vertical_enabled": false,
+      "horizontal_enabled": true,
+      "validation_score": 96.75338589049997,
+      "exact_fraction": 0.26683238589031877,
+      "cpu_seconds": 3.9232,
+      "initialization_seconds": 3.56736,
+      "query_cpu_seconds": 0.35584000000000016,
+      "maximum_rss_bytes": 504872960
+    },
+    {
+      "vertical_enabled": true,
+      "horizontal_enabled": true,
+      "validation_score": 98.24991785308708,
+      "exact_fraction": 0.4501742717573124,
+      "cpu_seconds": 5.12592,
+      "initialization_seconds": 4.57138,
+      "query_cpu_seconds": 0.5545399999999994,
+      "maximum_rss_bytes": 651902976
+    }
+  ],
+  "scope": "Unlearned nominal transient corrections; complete validation, single CPU measurements; not physical path certificate, no hidden/billion acceptance."
+}

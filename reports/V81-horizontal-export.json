@@ -1,0 +1,11 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "decoded_values": 72704000,
+  "asset_bytes": 23032644,
+  "exact_roundtrip": true,
+  "sha256": "36a07734d7d306661b2f18260d294cfbafaebc15f426ef47e10b75fa22383268",
+  "cpu_seconds": 6.866899,
+  "combined_with_v80_bytes": 102530376,
+  "scope": "Codec feasibility; horizontal/vertical coupling validation and full profile limits remain to evaluate."
+}

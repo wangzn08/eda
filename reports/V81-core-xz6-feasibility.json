@@ -1,0 +1,12 @@
+{
+  "architecture_only": true,
+  "codec": "XZ/LZMA2 preset6 CRC32",
+  "asset_bytes": 42083456,
+  "source_asset_bytes": 90459669,
+  "exact_roundtrip": true,
+  "decoded_sha256": "5a80c9cd75b59faca02886f1a26a6655197b0ae2d1d423d5e4e0b57240e921bb",
+  "asset_sha256": "ef0dd8146b0b9a0a3d331f06fefd004d82cae417c034d2eafc495160a5956621",
+  "cpu_seconds": 75.413577,
+  "combined_transient_and_binary_bytes": 71448606,
+  "scope": "Compression feasibility only; C++decoder/dependency availability and final runtime packaging not validated."
+}

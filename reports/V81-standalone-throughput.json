@@ -1,0 +1,10 @@
+{
+  "rows": 10000000,
+  "cpu_seconds": 40.2004,
+  "initialization_seconds": 4.3554,
+  "query_cpu_seconds": 35.845,
+  "requests_per_cpu_second": 278978.9370902497,
+  "maximum_rss_bytes": 635027456,
+  "cache_enabled": false,
+  "scope": "Standalone coupled architecture, actual repeated-development10m CSV measurement. No final billion/official proof."
+}
