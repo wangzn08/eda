@@ -1,0 +1,63 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "fit_geometry_band": [
+    24,
+    59
+  ],
+  "evaluation_geometry_band": [
+    72,
+    83
+  ],
+  "results": [
+    {
+      "sign": -1,
+      "method": "anchor24_cheapest",
+      "rows": 40320,
+      "exact_fraction": 0.2148313492063492,
+      "mean_abs_error_ps": 16.22061011904762,
+      "max_abs_error_ps": 134
+    },
+    {
+      "sign": -1,
+      "method": "anchor48_cheapest",
+      "rows": 40320,
+      "exact_fraction": 0.3597718253968254,
+      "mean_abs_error_ps": 8.521230158730159,
+      "max_abs_error_ps": 20
+    },
+    {
+      "sign": -1,
+      "method": "anchor48_measured_slope",
+      "rows": 40320,
+      "exact_fraction": 0.6845238095238095,
+      "mean_abs_error_ps": 2.3223710317460315,
+      "max_abs_error_ps": 32
+    },
+    {
+      "sign": 1,
+      "method": "anchor24_cheapest",
+      "rows": 40320,
+      "exact_fraction": 0.37648809523809523,
+      "mean_abs_error_ps": 6.544642857142857,
+      "max_abs_error_ps": 157
+    },
+    {
+      "sign": 1,
+      "method": "anchor48_cheapest",
+      "rows": 40320,
+      "exact_fraction": 0.5816220238095238,
+      "mean_abs_error_ps": 2.438640873015873,
+      "max_abs_error_ps": 23
+    },
+    {
+      "sign": 1,
+      "method": "anchor48_measured_slope",
+      "rows": 40320,
+      "exact_fraction": 0.8219742063492064,
+      "mean_abs_error_ps": 0.7132440476190476,
+      "max_abs_error_ps": 27
+    }
+  ],
+  "scope": "Distance-band extrapolation in finite nominal graph for3 source ports and7 horizontal offsets; not real validation accuracy or feasible path certificate."
+}

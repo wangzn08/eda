@@ -1,0 +1,164 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "source_port_indices": [
+    0,
+    80,
+    159
+  ],
+  "targets": 160,
+  "horizontal_offsets": [
+    -29,
+    -20,
+    -10,
+    0,
+    10,
+    20,
+    29
+  ],
+  "finite_window_radius": 112,
+  "rows": 561120,
+  "bands": [
+    {
+      "distance_band": [
+        24,
+        35
+      ],
+      "vertical_sign": -1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.1417906746031746,
+      "recurrence_max_abs_error_ps": 242,
+      "anchor_exact_fraction": 1.0,
+      "anchor_mean_abs_error_ps": 0.0,
+      "anchor_underestimate_fraction": 0.0,
+      "anchor_max_abs_error_ps": 0
+    },
+    {
+      "distance_band": [
+        24,
+        35
+      ],
+      "vertical_sign": 1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.22130456349206348,
+      "recurrence_max_abs_error_ps": 260,
+      "anchor_exact_fraction": 0.9999503968253968,
+      "anchor_mean_abs_error_ps": 0.0004464285714285714,
+      "anchor_underestimate_fraction": 0.0,
+      "anchor_max_abs_error_ps": 10
+    },
+    {
+      "distance_band": [
+        36,
+        47
+      ],
+      "vertical_sign": -1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.23368055555555556,
+      "recurrence_max_abs_error_ps": 134,
+      "anchor_exact_fraction": 0.23368055555555556,
+      "anchor_mean_abs_error_ps": 5.166468253968254,
+      "anchor_underestimate_fraction": 0.510342261904762,
+      "anchor_max_abs_error_ps": 134
+    },
+    {
+      "distance_band": [
+        36,
+        47
+      ],
+      "vertical_sign": 1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.3938988095238095,
+      "recurrence_max_abs_error_ps": 157,
+      "anchor_exact_fraction": 0.39384920634920634,
+      "anchor_mean_abs_error_ps": 3.277157738095238,
+      "anchor_underestimate_fraction": 0.2977430555555556,
+      "anchor_max_abs_error_ps": 157
+    },
+    {
+      "distance_band": [
+        48,
+        59
+      ],
+      "vertical_sign": -1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.3038690476190476,
+      "recurrence_max_abs_error_ps": 61,
+      "anchor_exact_fraction": 0.22018849206349206,
+      "anchor_mean_abs_error_ps": 8.922247023809524,
+      "anchor_underestimate_fraction": 0.586483134920635,
+      "anchor_max_abs_error_ps": 134
+    },
+    {
+      "distance_band": [
+        48,
+        59
+      ],
+      "vertical_sign": 1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.5110863095238095,
+      "recurrence_max_abs_error_ps": 111,
+      "anchor_exact_fraction": 0.38544146825396824,
+      "anchor_mean_abs_error_ps": 4.679017857142857,
+      "anchor_underestimate_fraction": 0.3239831349206349,
+      "anchor_max_abs_error_ps": 157
+    },
+    {
+      "distance_band": [
+        60,
+        71
+      ],
+      "vertical_sign": -1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.3619295634920635,
+      "recurrence_max_abs_error_ps": 20,
+      "anchor_exact_fraction": 0.21413690476190475,
+      "anchor_mean_abs_error_ps": 12.556522817460317,
+      "anchor_underestimate_fraction": 0.6338789682539683,
+      "anchor_max_abs_error_ps": 134
+    },
+    {
+      "distance_band": [
+        60,
+        71
+      ],
+      "vertical_sign": 1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.5815476190476191,
+      "recurrence_max_abs_error_ps": 23,
+      "anchor_exact_fraction": 0.3759920634920635,
+      "anchor_mean_abs_error_ps": 5.662946428571429,
+      "anchor_underestimate_fraction": 0.34580853174603177,
+      "anchor_max_abs_error_ps": 157
+    },
+    {
+      "distance_band": [
+        72,
+        83
+      ],
+      "vertical_sign": -1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.4023313492063492,
+      "recurrence_max_abs_error_ps": 10,
+      "anchor_exact_fraction": 0.2148313492063492,
+      "anchor_mean_abs_error_ps": 16.22061011904762,
+      "anchor_underestimate_fraction": 0.6557787698412698,
+      "anchor_max_abs_error_ps": 134
+    },
+    {
+      "distance_band": [
+        72,
+        83
+      ],
+      "vertical_sign": 1,
+      "recurrence_pairs": 40320,
+      "exact_periodic_fraction": 0.6195684523809524,
+      "recurrence_max_abs_error_ps": 9,
+      "anchor_exact_fraction": 0.37643849206349206,
+      "anchor_mean_abs_error_ps": 6.545089285714286,
+      "anchor_underestimate_fraction": 0.3630704365079365,
+      "anchor_max_abs_error_ps": 157
+    }
+  ],
+  "scope": "Finite nominal graph recurrence evidence, not infinite-graph proof or physical-boundary/obstacle accuracy. Current anchors from radius48 graph; extended values from radius112."
+}
