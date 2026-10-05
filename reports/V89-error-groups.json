@@ -1,0 +1,43 @@
+{
+  "model": "V89trees64",
+  "split": "validation",
+  "holdout_used": false,
+  "groups": [
+    {
+      "group": "block_crossing",
+      "rows": 55123,
+      "score": 98.5570987415217,
+      "total_score_loss_contribution": 0.5300596860515924,
+      "mean_signed_error_ps": -3.2566442319902764
+    },
+    {
+      "group": "no_block_crossing",
+      "rows": 94930,
+      "score": 99.25998985587329,
+      "total_score_loss_contribution": 0.4681623358543248,
+      "mean_signed_error_ps": -0.737933213947119
+    },
+    {
+      "group": "both_long",
+      "rows": 75084,
+      "score": 98.89591490571054,
+      "total_score_loss_contribution": 0.5524656302748332,
+      "mean_signed_error_ps": -0.8657636780139577
+    },
+    {
+      "group": "short_x_long_y",
+      "rows": 56285,
+      "score": 99.2198797144468,
+      "total_score_loss_contribution": 0.29262374142710823,
+      "mean_signed_error_ps": -2.007248822954606
+    },
+    {
+      "group": "short_y",
+      "rows": 18684,
+      "score": 98.77017696633177,
+      "total_score_loss_contribution": 0.1531326502039758,
+      "mean_signed_error_ps": -3.831353029329908
+    }
+  ],
+  "scope": "Overlapping diagnostic groups, not fitting or independent test evidence."
+}

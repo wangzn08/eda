@@ -13,7 +13,7 @@ class CoreTemplateModel {
     std::array<std::vector<std::pair<unsigned,unsigned>>,496>terminal;
     std::array<Distance,120>xgap{};
     std::array<Distance,550>ygap{};
-    bool envelope,has_far=false;
+    bool envelope,has_far=false,corridor_geometry=false;
     unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX,far_period=4;
     std::unique_ptr<VerticalTransientModel>vertical;
     std::unique_ptr<HorizontalTransientModel>horizontal;
@@ -111,7 +111,7 @@ public:
         auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
         return {float(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x]))),float(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])))};
     }
-    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX,const std::string&horizontal_path="",const std::string&far_path=""):envelope(use_envelope),shell_x(sx),shell_y(sy),growth_cap(cap){
+    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX,const std::string&horizontal_path="",const std::string&far_path="",bool use_corridor=false):envelope(use_envelope),corridor_geometry(use_corridor),shell_x(sx),shell_y(sy),growth_cap(cap){
         if(sx>2 || sy>2 || (use_envelope && (sx || sy)))throw std::runtime_error("Invalid template shell policy");
         std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated core template");};
         char magic[8],hash[64];std::array<uint16_t,160>ports;uint64_t decoded;
@@ -133,7 +133,15 @@ public:
     }
     Distance predict(const Graph&graph,Node source,Node target)const{
         if(source==target)return 0;Node site=source/496;int port=source%496,tp=target%496;auto b=archdata::SITES[target/496];Distance best=INF;
-        auto bound=[&](Node s,int p){auto a=archdata::SITES[s];int dx=b.x-a.x,dy=b.y-a.y;Distance value=nominal(p,tp,dx,dy);if(std::min(a.x,b.x)<76 && std::max(a.x,b.x)>89)value=std::min(value,nominal(p,tp,dx+(dx>0?-14:14),dy)+292);return value+Distance(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x])))+Distance(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])));};
+        auto bound=[&](Node s,int p){auto a=archdata::SITES[s];int dx=b.x-a.x,dy=b.y-a.y;Distance value=nominal(p,tp,dx,dy);if(std::min(a.x,b.x)<76 && std::max(a.x,b.x)>89){
+                if(corridor_geometry)for(const auto& block:archdata::BLOCKS)if(block.left==76 && block.right==89 && a.y>=block.lower && a.y<=block.upper && b.y>=block.lower && b.y<=block.upper){
+                    value=INF;
+                    if(block.lower>0){int extra=std::min(a.y,b.y)-block.lower+1;value=std::min(value,nominal(p,tp,dx,-std::abs(dy)-2*extra));}
+                    if(block.upper+1<archdata::HEIGHT){int extra=block.upper-std::max(a.y,b.y)+1;value=std::min(value,nominal(p,tp,dx,std::abs(dy)+2*extra));}
+                    break;
+                }
+                value=std::min(value,nominal(p,tp,dx+(dx>0?-14:14),dy)+292);
+            }return value+Distance(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x])))+Distance(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])));};
         if(site==target/496)for(auto e:graph.local_out(port))if(e.port==tp)best=std::min(best,Distance(e.delay));
         auto after_net=[&](int ni,Distance cost){auto m=graph.net_move(site,ni,false);if(m.site!=NONE)best=std::min(best,cost+m.delay+archdata::NETS[ni].delay+bound(m.site,archdata::NETS[ni].to));};
         if(index[port]>=0)best=std::min(best,bound(site,port));else if(graph.net_out(port)>=0)after_net(graph.net_out(port),0);else for(auto e:graph.local_out(port))if(graph.net_out(e.port)>=0)after_net(graph.net_out(e.port),e.delay);
