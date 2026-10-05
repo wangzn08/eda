@@ -9,3 +9,7 @@ The binary format currently uses little-endian IEEE float32 and uint32, with a d
 ## V40 architecture phase bounds
 
 `phase-bounds-safe.bin` is an architecture-derived periodic relaxed-graph lower-bound database, not a learned neural model. Its 47,019,458-byte PHASELB4 representation includes the official architecture SHA-256 and lossless dictionary/second-difference encoding. It is used by the standalone `phase_estimate` profile together with the existing 11,969,216-byte path tail. Asset metadata is in `reports/V40-phase-bound-asset.json`; proof conditions and limitations are in `reports/V36-V40-precision-research.md`. Rebuild using `scripts/build_phase_bound_asset.py` in the research environment.
+
+## Fast V50 research candidate
+
+fast-residual-v50.bin: 256 numeric CatBoost symmetric trees, depth10, 71 endpoint/architecture/PDB features. Development labels only. Full fixed validation96.9329251, C++/Python predictions match; no per-query error certificate. SHA256e902cb3b50e21d5e7a160206bb6418a25efbafb3c38da2799af7ca13410fe7a1. Pair with phase-bounds-safe.bin; use phase_fast_estimate, not the V40 precision entry.

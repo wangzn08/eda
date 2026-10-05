@@ -1,0 +1,58 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "architecture": "PDB anchored compact numeric oblivious residual trees; no route search or upper-bank runtime",
+  "candidates": [
+    {
+      "depth": 6,
+      "trees": 64,
+      "score": 95.7185166141908
+    },
+    {
+      "depth": 6,
+      "trees": 128,
+      "score": 95.93354458070844
+    },
+    {
+      "depth": 6,
+      "trees": 256,
+      "score": 96.12161025767085
+    },
+    {
+      "depth": 6,
+      "trees": 512,
+      "score": 96.2858473268542
+    },
+    {
+      "depth": 6,
+      "trees": 1024,
+      "score": 96.41892344338608
+    },
+    {
+      "depth": 10,
+      "trees": 64,
+      "score": 96.05577415701408
+    },
+    {
+      "depth": 10,
+      "trees": 128,
+      "score": 96.33759586578404
+    },
+    {
+      "depth": 10,
+      "trees": 256,
+      "score": 96.54046743814918
+    },
+    {
+      "depth": 10,
+      "trees": 512,
+      "score": 96.68465184193639
+    },
+    {
+      "depth": 10,
+      "trees": 1024,
+      "score": 96.76043474793961
+    }
+  ],
+  "elapsed": 154.6818529579905
+}

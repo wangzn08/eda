@@ -1,0 +1,33 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "architecture": "PDB anchored oblivious residual trees with endpoint graph and long-wire access features; no route search or upper-bank runtime",
+  "candidates": [
+    {
+      "depth": 10,
+      "trees": 64,
+      "score": 96.27555841001657
+    },
+    {
+      "depth": 10,
+      "trees": 128,
+      "score": 96.62825082275381
+    },
+    {
+      "depth": 10,
+      "trees": 256,
+      "score": 96.93292509763232
+    },
+    {
+      "depth": 10,
+      "trees": 512,
+      "score": 97.10490755776938
+    },
+    {
+      "depth": 10,
+      "trees": 1024,
+      "score": 97.1881053508133
+    }
+  ],
+  "elapsed": 224.32420358300442
+}

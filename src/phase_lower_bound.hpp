@@ -48,6 +48,7 @@ public:
         for(const auto& b:archdata::BLOCKS)if(b.vcross || (b.hcross && (b.left!=76 || b.right!=89 || b.hdelay<292)))throw std::runtime_error("Phase proof requires official crossing geometry");
         for(const auto& line:archdata::LINES) {if(line.vertical){for(int x=line.site+1;x<archdata::WIDTH;++x)if(x>=0)xgap[x]+=line.delay;}else{for(int y=line.site+1;y<archdata::HEIGHT;++y)if(y>=0)ygap[y]+=line.delay;}}
     }
+    bool compact_input(int port)const{return input_index[port]>=0;}
     uint64_t gaps(archdata::XY a,archdata::XY b)const{return uint64_t(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x])))+uint64_t(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])));}
     uint64_t lower(archdata::XY a,int port,archdata::XY b,int target)const {
         int pi=input_index[port];if(pi<0)throw std::runtime_error("Phase lower bound expects compact input");

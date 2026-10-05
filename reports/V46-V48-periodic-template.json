@@ -1,0 +1,35 @@
+{
+  "v46-dense": {
+    "rows": 150053,
+    "score": 95.11561428309501,
+    "exact": 0.12286325498323926,
+    "under": 119963,
+    "over": 11654,
+    "mean_relative_error": 0.012314027439764922,
+    "q99_relative_error": 0.0682183433896738,
+    "cpu_seconds": 0.364347,
+    "rss_bytes": 789577728
+  },
+  "v47-directional": {
+    "rows": 150053,
+    "score": 96.34999162187053,
+    "exact": 0.1781970370469101,
+    "under": 103504,
+    "over": 19810,
+    "mean_relative_error": 0.009216573946422559,
+    "q99_relative_error": 0.06703350815727521,
+    "cpu_seconds": 0.378108,
+    "rss_bytes": 789528576
+  },
+  "v48-conditioned": {
+    "rows": 150053,
+    "score": 87.2589891791021,
+    "exact": 0.14756119504441764,
+    "under": 8477,
+    "over": 119434,
+    "mean_relative_error": 0.03358031056518934,
+    "q99_relative_error": 0.19452698698824733,
+    "cpu_seconds": 0.477576,
+    "rss_bytes": 1210892288
+  }
+}

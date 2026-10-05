@@ -13,13 +13,14 @@ int main(int argc,char** argv) {
  try {
     auto directory=std::filesystem::absolute(argv[0]).parent_path();
     std::string input,output,phase=(directory/"phase-bounds.bin").string(),tail=(directory/"long-tail.bin").string(),certificate;
-    double error=.00024;bool use_cache=true,progress=false;
+    double error=.00024,weight=1;bool use_cache=true,progress=false;
     for(int i=1;i<argc;++i) {
-        std::string arg=argv[i];if(arg=="--help"){std::cout<<"phase_estimate -in requests.csv -out result.csv [--phase-bounds file] [--cycle-oracle file] [--relative-error number] [--no-cache] [--certificate file (no-cache)] [--progress]\n";return 0;}
+        std::string arg=argv[i];if(arg=="--help"){std::cout<<"phase_estimate -in requests.csv -out result.csv [--phase-bounds file] [--cycle-oracle file] [--relative-error number] [--weighted factor (research, no certificate)] [--no-cache] [--certificate file (no-cache)] [--progress]\n";return 0;}
         if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--progress"){progress=true;continue;}
         if(i+1==argc)throw std::runtime_error("Missing argument");
-        if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--phase-bounds")phase=argv[++i];else if(arg=="--cycle-oracle")tail=argv[++i];else if(arg=="--relative-error")error=std::stod(argv[++i]);else if(arg=="--certificate")certificate=argv[++i];else throw std::runtime_error("Unknown option");
+        if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--phase-bounds")phase=argv[++i];else if(arg=="--cycle-oracle")tail=argv[++i];else if(arg=="--weighted")weight=std::stod(argv[++i]);else if(arg=="--relative-error")error=std::stod(argv[++i]);else if(arg=="--certificate")certificate=argv[++i];else throw std::runtime_error("Unknown option");
     }
+    if(!std::isfinite(weight) || weight<1 || weight>4 || (weight>1 && !certificate.empty()))throw std::runtime_error("Weighted research mode cannot emit certificates");
     if(input.empty() || output.empty() || !std::isfinite(error) || error<0 || error>.1)throw std::runtime_error("Invalid input or relative error");
     auto normalized=[](const std::string& p){return std::filesystem::weakly_canonical(std::filesystem::absolute(p));};
     if(normalized(output)==normalized(input) || normalized(output)==normalized(phase) || normalized(output)==normalized(tail))throw std::runtime_error("Output must be distinct from inputs/assets");
@@ -33,7 +34,7 @@ int main(int argc,char** argv) {
     while(std::getline(in,line)) {
         auto text=strip(line);if(text.empty())continue;auto comma=text.find(',');if(comma==text.npos || text.find(',',comma+1)!=text.npos)throw std::runtime_error("Invalid request row");
         auto s=strip(text.substr(0,comma)),t=strip(text.substr(comma+1));Node from=parser.pin(s),to=parser.pin(t);Distance delay=INF;uint64_t key=(uint64_t(from)<<32)|to;SearchStats stats;
-        if(!cache || !cache->get(key,delay)){Distance u=upper.cap(from,to,INF,true);delay=solver.solve_phase(from,to,stats,bounds,u,error);if(cache)cache->put(key,delay);}
+        if(!cache || !cache->get(key,delay)){Distance u=upper.cap(from,to,INF,true);delay=weight>1?solver.solve_phase_weighted(from,to,stats,bounds,u,weight):solver.solve_phase(from,to,stats,bounds,u,error);if(cache)cache->put(key,delay);}
         if(delay>=INF)throw std::runtime_error("Unreachable query");
         out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');char digits[32];auto end=std::to_chars(digits,digits+sizeof(digits),delay);if(end.ec!=std::errc())throw std::runtime_error("Delay formatting failed");out.write(digits,end.ptr-digits);out.put('\n');++rows;
         if(cert.is_open())cert<<rows<<','<<stats.lower<<','<<stats.upper<<','<<stats.settled<<','<<stats.relaxations<<'\n';

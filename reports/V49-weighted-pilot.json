@@ -1,0 +1,7 @@
+{
+  "rows": 1001,
+  "score": 99.88855694168214,
+  "cpu_seconds": 2.26639,
+  "exact_fraction": 0.7272727272727273,
+  "scope": "1001 pilot only, no full-validation or billion acceptance"
+}

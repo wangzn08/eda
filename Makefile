@@ -36,3 +36,28 @@ build/compress_phase_bounds: src/compress_phase_bounds.cpp src/architecture_data
 build/phase_estimate: src/phase_estimate.cpp src/routing_search.hpp src/phase_lower_bound.hpp src/cycle_path_oracle.hpp src/cycle_prefix_bank.hpp src/local_path_oracle.hpp src/potential_lower_model.hpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@
+
+# Direct periodic relaxation; experimental, no per-request graph search.
+build/phase_fast_estimate: src/phase_fast_estimate.cpp src/fast_residual_model.hpp src/periodic_dense_model.hpp src/phase_required_bound.hpp src/routing_search.hpp src/phase_lower_bound.hpp src/architecture_data.hpp src/potential_lower_model.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -ffp-contract=off -Isrc src/phase_fast_estimate.cpp -o $@
+
+build/build_phase_required: src/build_phase_required.cpp src/architecture_data.hpp src/potential_lower_model.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/build_phase_required.cpp -o $@
+
+build/build_periodic_anchor: src/build_periodic_anchor.cpp src/architecture_data.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/build_periodic_anchor.cpp -o $@
+
+build/build_periodic_dense: src/build_periodic_dense.cpp src/architecture_data.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/build_periodic_dense.cpp -o $@
+
+build/build_periodic_conditioned: src/build_periodic_conditioned.cpp src/architecture_data.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/build_periodic_conditioned.cpp -o $@
+
+build/compress_periodic_dense: src/compress_periodic_dense.cpp src/architecture_data.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/compress_periodic_dense.cpp -o $@

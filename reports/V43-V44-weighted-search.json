@@ -1,0 +1,16 @@
+{
+  "v43-weighted-full": {
+    "rows": 150053,
+    "score": 95.42560371769993,
+    "exact": 0.13909751887666358,
+    "under_golden": 0,
+    "cpu_seconds": 15.2668
+  },
+  "v44-weighted-pilot": {
+    "rows": 1001,
+    "score": 99.98682047220956,
+    "exact": 0.922077922077922,
+    "under_golden": 0,
+    "cpu_seconds": 3.27848
+  }
+}

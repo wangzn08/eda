@@ -1,0 +1,10 @@
+{
+  "periodic-dense.raw.bin": {
+    "zlib_bytes": 391532027,
+    "seconds": 16.17249354199157
+  },
+  "periodic-conditioned.raw.bin": {
+    "zlib_bytes": 311418456,
+    "seconds": 13.019124999991618
+  }
+}

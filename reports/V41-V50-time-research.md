@@ -1,0 +1,54 @@
+# V41–V50：一小时吞吐研究（进行中）
+
+## 目标及口径
+
+单线程十亿条CPU<=3600秒，并尽量保留99.9精度。V40仍为精度参考：99.9964分、150053条447.952秒。本轮不读取holdout。1000万测速输入由700705条开发请求重复扩充，关闭缓存，每行重新计算，含CSV和真实文件输出。有限分布的吞吐外推不等于十亿实测或官方环境验收。
+
+| 路线 | 固定验证分 | CPU | 结论 |
+|---|---:|---|---|
+|V41：直接周期下界|91.8493|15万0.220秒|精度不足|
+|V42：纵向长线访问产品图|92.1266|15万0.300秒|收益小|
+|V43：1.05加权A*|95.4256|15万15.267秒|精度下降大|
+|V44：1.001加权A*|99.9868|仅1001条3.278秒|没有足够提速|
+|V45：PDB锚定量化残差树64棵|96.0558|15万0.272秒；1000万8.476秒|快速研究基线|
+|V46：中等位移周期延伸|95.1156|15万0.364秒|低估多|
+|V47：区分向北127与其余125重复成本|96.3500|15万0.378秒|精度不足、资产大|
+|V48：强制经过最便宜长线端口|87.2590|15万0.478秒|接入成本大，淘汰|
+|V49：1.005加权A*|99.8886|仅1001条2.266秒|速度仍不足|
+|V50：端口图、长线接入、量化残差树256棵|96.9329|15万0.444秒；1000万18.568秒|十亿实测进行中|
+
+V45标签只来自development。64棵完整验证C++与Python逐行一致，完全相同答案比例约2.23%。禁用浮点乘加收缩（-ffp-contract=off）以复现数值特征。学习预测没有V40逐条误差证书。更多树：256棵96.5405、1000万16.114秒；512棵96.6847、1000万33.332秒。更多树C++核对待继续；512测速与训练并发，待单独复测。
+
+## 模板失败与空间限制
+
+有限窗口图只读架构，160种输入、全部496目标端口，x=-29..29,y=-35..35，搜索半径48。大位移减去10/12周期再加方向循环成本。无路径证书的延伸只是近似。V48两个访问标志限制过强，未平衡其他长线的接入和重复成本。
+
+raw基本资产664878472 bytes，条件资产526315912 bytes；二维差分和零游程压缩合计560484006 bytes，超过100MB，不能选作提交资产。zlib探测也未满足。文件仅留在忽略的out，不加入Git/提交方案。
+
+## 创新边界与参考
+
+PDB、产品图、加权A*、CatBoost对称树、量化分裂和位运算叶索引都是已有手段。本题研究贡献候选是周期架构下界锚定非负最优性差值，并在微秒预算内选取端口/长线/周期特征；当前未证明超过强基线，也不宣称学术首次。周期延伸与必要循环访问是另一领域适配候选，本次固定最便宜长线的方案失败。
+
+- Culberson & Schaeffer, Pattern Databases, 1998：[作者稿](https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/compi.pdf)。松弛图预计算下界。
+- Hansen & Zhou, Anytime Heuristic Search, 2007：[论文](https://arxiv.org/abs/1110.2737)。加权搜索与质量/时间取舍。
+- Prokhorenkova et al., CatBoost, 2018：[论文](https://arxiv.org/abs/1706.09516)。本轮只用数值特征，不声称采用类别统计创新；已读本地正文树及boosting章节。
+- Marquardt et al., Timing-Driven Placement for FPGAs, 2000：[作者稿](https://www.eecg.toronto.edu/~jayar/pubs/marq/fpga2000_arm.pdf)。位移延时表。
+- Botea & Harabor, Path Planning with Compressed All-Pairs Shortest Paths Data, 2013：[作者稿](https://pathfinding.ai/pdf/botea-harabor-icaps13.pdf)。预计算与压缩路径。这里近似距离模板不称为完整CPD。
+
+## 复现
+
+训练：scripts/experiment_v45_fast_residual.py、scripts/experiment_v50_fast_topology.py。导出：scripts/export_fast_residual.py source.json model.bin --trees N。运行：build/phase_fast_estimate -in requests.csv -out result.csv --phase-bounds models/phase-bounds-safe.bin --residual-model model.bin --trees N --no-cache。核对：scripts/evaluate_fast_phase.py。大请求生成：scripts/prepare_repeated_stress.py。
+
+最终时限、资产大小和精度结论以完成后的报告为准。
+
+## V50已完成的结果与当前运行
+
+完整150053条验证：96.9329251分，C++和Python逐行一致，完全相同答案约3.05%，RSS127893504 bytes。1000万关闭缓存、真实文件输出CPU18.5683秒，初始化0.149236秒。按本机有限分布线性外推十亿约31分钟，尚不算达标。
+
+选择256棵深度10对称树，71个可直接从架构/端点/PDB取得的特征，无搜索/上界路径银行/神经网络运行库。512/1024棵的验证分97.1049/97.1881，尚未完成对应C++全验证与独立吞吐测量，不选作本次完整测速候选。
+
+独立研究目录out/phase-fast-v50包含默认标准入口estimate及两份资产，合计49839022 bytes；1001条标准入口与完整研究预测相同。仍不是正式提交包验收。
+
+已生成十亿请求文件36394618757 bytes：由开发请求重复1427次加93965行尾部，无标签。正在执行scripts/benchmark_time_goal.py，一轮完整输入、真实文件输出，关闭结果缓存，逐条重新计算。实时状态在V50-billion-no-cache.json，进度在同名.log。完成后检查行数、输出SHA256、CPU和RSS。不能将其结果推广为任意十亿独特隐藏请求，更不是官方服务器验收。
+
+目前仅快速路线降低了耗时，精度由V40的99.9964降到96.9329。一小时与99.9共同目标尚未完成；V40独立保留。下一阶段需要提升快速架构精度或在明确重复分布下比较高精度缓存路线，分别报告。

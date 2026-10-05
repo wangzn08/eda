@@ -459,6 +459,28 @@ public:
         }
         stats.lower=stats.upper=best;return best;
     }
+    // Weighted priority returns feasible upper paths, not an error certificate.
+    Distance solve_phase_weighted(Node source,Node target,SearchStats& stats,const PhaseLowerBound& phase,Distance certified_upper=INF,double weight=1.05) {
+        forward.reset();backward.reset();if(source==target){stats.lower=stats.upper=0;return 0;}
+        Distance best=certified_upper;
+        if(source/archdata::P==target/archdata::P)for(auto edge:graph.local_out(source%archdata::P))if(edge.port==target%archdata::P)best=std::min(best,Distance(edge.delay));
+        start(source);finish(target);auto b=archdata::SITES[target/archdata::P];int tp=target%archdata::P;
+        auto heuristic=[&](Node u){return phase.lower(archdata::SITES[u/input_ports.size()],input_ports[u%input_ports.size()],b,tp);};
+        struct Item {Distance f,g;Node node;bool operator<(const Item& a)const{return f>a.f || (f==a.f && (g<a.g || (g==a.g && node>a.node)));}};
+        std::priority_queue<Item> queue;
+        while(!forward.empty()) {Node u=forward.pop();Distance g=forward.get(u);best=std::min(best,g+backward.get(u));Distance h=Distance(std::ceil(weight*heuristic(u)));if(g+h<best)queue.push({g+h,g,u});}
+        while(!queue.empty()) {
+            auto item=queue.top();queue.pop();if(item.g!=forward.get(item.node))continue;
+            if(item.f>=best){stats.upper=best;return best;}
+            ++stats.settled;best=std::min(best,item.g+backward.get(item.node));
+            neighbors(item.node,false,[&](Node next,uint32_t cost) {
+                ++stats.relaxations;
+                Distance g=item.g+cost;if(g>=best)return;best=std::min(best,g+backward.get(next));Distance h=Distance(std::ceil(weight*heuristic(next)));if(g+h>=best)return;
+                if(forward.record(next,g))queue.push({g+h,g,next});
+            });
+        }
+        stats.upper=best;return best;
+    }
     Trace trace(Node source,Node target,SearchStats& stats) {
         forward.reset();
         if(trace_parent.empty()) trace_parent.resize(graph.sites()*input_ports.size(),NONE);

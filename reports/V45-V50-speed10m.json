@@ -1,0 +1,39 @@
+{
+  "v45-speed10m": {
+    "rows": 10000000,
+    "cpu_seconds": 8.47642,
+    "initialization_seconds": 0.109513,
+    "rss_bytes": 125337600,
+    "cache": false,
+    "real_file_output": true,
+    "input_scope": "Development requests repeated to 10 million"
+  },
+  "v45-speed10m-256": {
+    "rows": 10000000,
+    "cpu_seconds": 16.1141,
+    "initialization_seconds": 0.128682,
+    "rss_bytes": 126877696,
+    "cache": false,
+    "real_file_output": true,
+    "input_scope": "Development requests repeated to 10 million"
+  },
+  "v45-speed10m-512": {
+    "rows": 10000000,
+    "cpu_seconds": 33.3315,
+    "initialization_seconds": 0.123331,
+    "rss_bytes": 129171456,
+    "cache": false,
+    "real_file_output": true,
+    "input_scope": "Development requests repeated to 10 million",
+    "concurrent_training": true
+  },
+  "v50-speed10m": {
+    "rows": 10000000,
+    "cpu_seconds": 18.5683,
+    "initialization_seconds": 0.149236,
+    "rss_bytes": 127959040,
+    "cache": false,
+    "real_file_output": true,
+    "input_scope": "Development requests repeated to 10 million"
+  }
+}
