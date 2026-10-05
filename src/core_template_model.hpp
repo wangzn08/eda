@@ -2,6 +2,8 @@
 #include "routing_search.hpp"
 #include <zlib.h>
 #include <cstring>
+#include "vertical_transient_model.hpp"
+#include <memory>
 // Exact finite-template storage; periodic extension remains approximate.
 class CoreTemplateModel {
     std::array<int,496>index;
@@ -10,7 +12,8 @@ class CoreTemplateModel {
     std::array<Distance,120>xgap{};
     std::array<Distance,550>ygap{};
     bool envelope;
-    unsigned shell_x=0,shell_y=0;
+    unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX;
+    std::unique_ptr<VerticalTransientModel>vertical;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
     }
@@ -22,7 +25,7 @@ class CoreTemplateModel {
         Distance best=INF;
         auto candidate=[&](int rx,int ry,int nx,int ny){
             Distance base=INF;
-            for(auto end:terminal[target])base=std::min(base,at(index[port],end.first,rx,ry)+end.second);
+            for(auto end:terminal[target]){int64_t value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);base=std::min(base,Distance(std::max<int64_t>(0,value)));}
             best=std::min(best,base+Distance(nx)*125+Distance(ny)*(dy>0?127:125));
         };
         if(!envelope){candidate(x,y,qx,qy);return best;}
@@ -40,13 +43,14 @@ public:
         auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
         return {float(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x]))),float(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])))};
     }
-    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0):envelope(use_envelope),shell_x(sx),shell_y(sy){
+    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX):envelope(use_envelope),shell_x(sx),shell_y(sy),growth_cap(cap){
         if(sx>2 || sy>2 || (use_envelope && (sx || sy)))throw std::runtime_error("Invalid template shell policy");
         std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated core template");};
         char magic[8],hash[64];std::array<uint16_t,160>ports;uint64_t decoded;
         read(magic,8);read(hash,64);read(ports.data(),320);read(&decoded,8);
         if(std::string(magic,8)!="COREZL01" || std::string(hash,64)!=archdata::HASH || decoded!=214476800)throw std::runtime_error("Invalid core template header");
         index.fill(-1);for(unsigned i=0;i<160;++i){if(ports[i]>=496 || index[ports[i]]>=0)throw std::runtime_error("Invalid core ports");index[ports[i]]=i;terminal[ports[i]].push_back({i,0});}
+        if(!transient_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Transient requires original anchor policy");vertical=std::make_unique<VerticalTransientModel>(transient_path,ports);}
         for(auto arc:archdata::ARCS)if(index[arc.from]>=0)terminal[arc.to].push_back({unsigned(index[arc.from]),unsigned(arc.delay)});
         std::vector<unsigned char>compressed((std::istreambuf_iterator<char>(f)),{});
         if(f.bad() || compressed.empty() || compressed.size()>100000000)throw std::runtime_error("Invalid core payload size");

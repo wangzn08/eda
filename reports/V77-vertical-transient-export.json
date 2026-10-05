@@ -1,0 +1,26 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "decoded_values": 72499200,
+  "decoded_bytes": 144998400,
+  "choices": [
+    {
+      "transform": 0,
+      "compressed_bytes": 28629154
+    },
+    {
+      "transform": 1,
+      "compressed_bytes": 35061687
+    },
+    {
+      "transform": 2,
+      "compressed_bytes": 38642643
+    }
+  ],
+  "selected_transform": 0,
+  "exact_roundtrip": true,
+  "asset_bytes": 28629558,
+  "sha256": "2d5e2a37b7738733abc8a3adabefc0cf483f51684e7199206a973a62efee3e03",
+  "combined_with_v59_runtime_bytes": 121907695,
+  "scope": "Adds36..59 vertical residuals to existing template; finite nominal graph, not a certified physical path."
+}

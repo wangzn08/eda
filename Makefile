@@ -38,7 +38,7 @@ build/phase_estimate: src/repeat_cycle_jump.hpp src/phase_estimate.cpp src/routi
 	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@
 
 # Direct periodic relaxation; experimental, no per-request graph search.
-build/core_template_estimate: src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
+build/core_template_estimate: src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -ffp-contract=off -Isrc src/core_template_estimate.cpp -lz -o $@
 

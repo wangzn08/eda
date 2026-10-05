@@ -1,0 +1,45 @@
+{
+  "rows": 150053,
+  "holdout_used": false,
+  "golden_labels_used_for_asset": false,
+  "baseline_template_score": 96.34999162187053,
+  "candidates": [
+    {
+      "growth_cap": 0,
+      "validation_score": 96.89050759163854,
+      "exact_fraction": 0.2510313022731968,
+      "cpu_seconds": 1.06163,
+      "initialization_seconds": 0.719466,
+      "query_cpu_seconds": 0.342164,
+      "maximum_rss_bytes": 603209728
+    },
+    {
+      "growth_cap": 2,
+      "validation_score": 97.27174430360652,
+      "exact_fraction": 0.2701245559902168,
+      "cpu_seconds": 1.01633,
+      "initialization_seconds": 0.675392,
+      "query_cpu_seconds": 0.34093799999999996,
+      "maximum_rss_bytes": 605110272
+    },
+    {
+      "growth_cap": 4,
+      "validation_score": 97.5241597503709,
+      "exact_fraction": 0.28736513098705124,
+      "cpu_seconds": 1.07634,
+      "initialization_seconds": 0.711758,
+      "query_cpu_seconds": 0.3645820000000001,
+      "maximum_rss_bytes": 605143040
+    },
+    {
+      "growth_cap": 4294967295,
+      "validation_score": 97.97144301878541,
+      "exact_fraction": 0.3503428788494732,
+      "cpu_seconds": 1.05788,
+      "initialization_seconds": 0.690503,
+      "query_cpu_seconds": 0.36737699999999995,
+      "maximum_rss_bytes": 605241344
+    }
+  ],
+  "scope": "C++ full validation, no learned correction. Research assets exceed100MB together; not submission profile or billion acceptance."
+}
