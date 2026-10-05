@@ -33,7 +33,7 @@ build/compress_phase_bounds: src/compress_phase_bounds.cpp src/architecture_data
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -Isrc src/compress_phase_bounds.cpp -o $@
 
-build/phase_estimate: src/phase_estimate.cpp src/routing_search.hpp src/phase_lower_bound.hpp src/cycle_path_oracle.hpp src/cycle_prefix_bank.hpp src/local_path_oracle.hpp src/potential_lower_model.hpp src/architecture_data.hpp
+build/phase_estimate: src/repeat_cycle_jump.hpp src/phase_estimate.cpp src/routing_search.hpp src/phase_lower_bound.hpp src/cycle_path_oracle.hpp src/cycle_prefix_bank.hpp src/local_path_oracle.hpp src/potential_lower_model.hpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@
 

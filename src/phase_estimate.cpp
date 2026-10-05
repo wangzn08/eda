@@ -1,6 +1,7 @@
 // Standalone architecture-derived precision profile; no learned model required.
 #include "routing_search.hpp"
 #include "cycle_path_oracle.hpp"
+#include "repeat_cycle_jump.hpp"
 #include <ctime>
 #include <fstream>
 #include <iostream>
@@ -13,20 +14,23 @@ int main(int argc,char** argv) {
  try {
     auto directory=std::filesystem::absolute(argv[0]).parent_path();
     std::string input,output,phase=(directory/"phase-bounds.bin").string(),tail=(directory/"long-tail.bin").string(),certificate;
-    double error=.00024,weight=1;bool use_cache=true,progress=false,dense=false,memo=false;
+    double error=.00024,weight=1;bool use_cache=true,progress=false,dense=false,memo=false,jumps=false;
     for(int i=1;i<argc;++i) {
         std::string arg=argv[i];if(arg=="--help"){std::cout<<"phase_estimate -in requests.csv -out result.csv [--phase-bounds file] [--cycle-oracle file] [--relative-error number] [--weighted factor (research, no certificate)] [--no-cache] [--certificate file (no-cache)] [--progress]\n";return 0;}
-        if(arg=="--memo-phase"){memo=true;continue;}if(arg=="--dense-phase"){dense=true;continue;}if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--progress"){progress=true;continue;}
+        if(arg=="--cycle-shortcuts"){jumps=true;continue;}if(arg=="--memo-phase"){memo=true;continue;}if(arg=="--dense-phase"){dense=true;continue;}if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--progress"){progress=true;continue;}
         if(i+1==argc)throw std::runtime_error("Missing argument");
         if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--phase-bounds")phase=argv[++i];else if(arg=="--cycle-oracle")tail=argv[++i];else if(arg=="--weighted")weight=std::stod(argv[++i]);else if(arg=="--relative-error")error=std::stod(argv[++i]);else if(arg=="--certificate")certificate=argv[++i];else throw std::runtime_error("Unknown option");
     }
-    if(memo && weight>1)throw std::runtime_error("Memo currently requires certified search");
+    if((memo || jumps) && weight>1)throw std::runtime_error("Memo currently requires certified search");
     if(!std::isfinite(weight) || weight<1 || weight>4 || (weight>1 && !certificate.empty()))throw std::runtime_error("Weighted research mode cannot emit certificates");
     if(input.empty() || output.empty() || !std::isfinite(error) || error<0 || error>.1)throw std::runtime_error("Invalid input or relative error");
     auto normalized=[](const std::string& p){return std::filesystem::weakly_canonical(std::filesystem::absolute(p));};
     if(normalized(output)==normalized(input) || normalized(output)==normalized(phase) || normalized(output)==normalized(tail))throw std::runtime_error("Output must be distinct from inputs/assets");
     if(!certificate.empty() && (use_cache || normalized(certificate)==normalized(input) || normalized(certificate)==normalized(output) || normalized(certificate)==normalized(phase) || normalized(certificate)==normalized(tail)))throw std::runtime_error("Certificates require --no-cache and distinct files");
     auto begin=std::clock();PhaseLowerBound bounds(phase,dense);CyclePathOracle upper(tail);Graph graph;CompactSolver solver(graph);FastPinParser parser;
+    std::unique_ptr<RepeatCycleJump> jump_table;std::array<int,496>cycle_index;cycle_index.fill(-1);if(jumps){jump_table=std::make_unique<RepeatCycleJump>(graph);for(unsigned i=0;i<jump_table->cycles.size();++i)cycle_index[jump_table->cycles[i].port]=i;}
+    archdata::XY shortcut_target{};std::function<void(Node,int,const std::function<void(Node,Distance)>&)> shortcut;
+    if(jumps)shortcut=[&](Node site,int port,const std::function<void(Node,Distance)>&visit){int ci=cycle_index[port];if(ci<0)return;auto a=archdata::SITES[site];auto cycle=jump_table->cycles[ci];auto vector=archdata::VECTORS[archdata::NETS[cycle.net].vector];auto phi=[](int x){return x-std::clamp(x-76,0,14);};int remaining=vector.x?(phi(shortcut_target.x)-phi(a.x))*(vector.x>0?1:-1):(shortcut_target.y-a.y)*(vector.y>0?1:-1);int q=remaining/(std::abs(vector.x)+std::abs(vector.y));if(q<2)return;for(int count=std::max(2,q-2);count<=std::min(63,q+2);++count){auto result=jump_table->jump(ci,site,count);if(result.site!=NONE)visit(result.site,result.delay);}};
     double initialization=double(std::clock()-begin)/CLOCKS_PER_SEC;
     std::unique_ptr<PredictionCache> cache;if(use_cache)cache=std::make_unique<PredictionCache>();
     std::ifstream in(input);std::ofstream out(output),cert;std::vector<char> buffer(1<<20);out.rdbuf()->pubsetbuf(buffer.data(),buffer.size());
@@ -35,8 +39,8 @@ int main(int argc,char** argv) {
     out<<"From,To,delay\n";uint64_t rows=0;
     while(std::getline(in,line)) {
         auto text=strip(line);if(text.empty())continue;auto comma=text.find(',');if(comma==text.npos || text.find(',',comma+1)!=text.npos)throw std::runtime_error("Invalid request row");
-        auto s=strip(text.substr(0,comma)),t=strip(text.substr(comma+1));Node from=parser.pin(s),to=parser.pin(t);Distance delay=INF;uint64_t key=(uint64_t(from)<<32)|to;SearchStats stats;
-        if(!cache || !cache->get(key,delay)){Distance u=upper.cap(from,to,INF,true);delay=weight>1?solver.solve_phase_weighted(from,to,stats,bounds,u,weight):solver.solve_phase(from,to,stats,bounds,u,error,INF,memo);if(cache)cache->put(key,delay);}
+        auto s=strip(text.substr(0,comma)),t=strip(text.substr(comma+1));Node from=parser.pin(s),to=parser.pin(t);Distance delay=INF;uint64_t key=(uint64_t(from)<<32)|to;SearchStats stats;shortcut_target=archdata::SITES[to/496];
+        if(!cache || !cache->get(key,delay)){Distance u=upper.cap(from,to,INF,true);delay=weight>1?solver.solve_phase_weighted(from,to,stats,bounds,u,weight):solver.solve_phase(from,to,stats,bounds,u,error,INF,memo,shortcut);if(cache)cache->put(key,delay);}
         if(delay>=INF)throw std::runtime_error("Unreachable query");
         out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');char digits[32];auto end=std::to_chars(digits,digits+sizeof(digits),delay);if(end.ec!=std::errc())throw std::runtime_error("Delay formatting failed");out.write(digits,end.ptr-digits);out.put('\n');++rows;
         if(cert.is_open())cert<<rows<<','<<stats.lower<<','<<stats.upper<<','<<stats.settled<<','<<stats.relaxations<<'\n';

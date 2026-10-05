@@ -1,0 +1,67 @@
+{
+  "rows": 1001,
+  "holdout_used": false,
+  "candidates": [
+    {
+      "relative_error_limit": 0.00024,
+      "validation_pilot_score": 99.9961340391025,
+      "max_relative_error": 0.00023713540431586437,
+      "invalid_intervals": 0,
+      "prediction_outside_interval": 0,
+      "settled": 6139175,
+      "query_cpu_seconds": 3.409821,
+      "cpu_seconds": 3.52929
+    },
+    {
+      "relative_error_limit": 0.0005,
+      "validation_pilot_score": 99.97572293089115,
+      "max_relative_error": 0.0004978839930296241,
+      "invalid_intervals": 0,
+      "prediction_outside_interval": 0,
+      "settled": 6054253,
+      "query_cpu_seconds": 3.4098919999999997,
+      "cpu_seconds": 3.52946
+    },
+    {
+      "relative_error_limit": 0.001,
+      "validation_pilot_score": 99.92571166363922,
+      "max_relative_error": 0.0009913258983890955,
+      "invalid_intervals": 0,
+      "prediction_outside_interval": 0,
+      "settled": 5899651,
+      "query_cpu_seconds": 3.363505,
+      "cpu_seconds": 3.48504
+    },
+    {
+      "relative_error_limit": 0.002,
+      "validation_pilot_score": 99.85169283791434,
+      "max_relative_error": 0.001982651796778191,
+      "invalid_intervals": 0,
+      "prediction_outside_interval": 0,
+      "settled": 5781632,
+      "query_cpu_seconds": 3.325301,
+      "cpu_seconds": 3.4472
+    },
+    {
+      "relative_error_limit": 0.005,
+      "validation_pilot_score": 99.55868397824896,
+      "max_relative_error": 0.004953998584571833,
+      "invalid_intervals": 0,
+      "prediction_outside_interval": 0,
+      "settled": 5069634,
+      "query_cpu_seconds": 3.005061,
+      "cpu_seconds": 3.12505
+    },
+    {
+      "relative_error_limit": 0.01,
+      "validation_pilot_score": 98.89782732322233,
+      "max_relative_error": 0.009968186638388122,
+      "invalid_intervals": 0,
+      "prediction_outside_interval": 0,
+      "settled": 2575353,
+      "query_cpu_seconds": 1.614766,
+      "cpu_seconds": 1.73748
+    }
+  ],
+  "scope": "Fixed validation pilot, one run per error limit. Looser bound does not guarantee99.9 score; no billion runtime extrapolation or final acceptance."
+}

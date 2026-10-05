@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <limits>
 #include <queue>
+#include <functional>
 #include <stdexcept>
 #include <string>
 #include <string_view>
@@ -432,7 +433,7 @@ public:
             });
         }
     }
-    Distance solve_phase(Node source,Node target,SearchStats& stats,const PhaseLowerBound& phase,Distance certified_upper=INF,double relative_error=0,Distance proposal=INF,bool memo=false) {
+    Distance solve_phase(Node source,Node target,SearchStats& stats,const PhaseLowerBound& phase,Distance certified_upper=INF,double relative_error=0,Distance proposal=INF,bool memo=false,const std::function<void(Node,int,const std::function<void(Node,Distance)>&)>& shortcuts={}) {
         forward.reset();backward.reset();if(source==target){stats.lower=stats.upper=0;return 0;}
         Distance best=certified_upper;
         if(source/archdata::P==target/archdata::P)for(auto edge:graph.local_out(source%archdata::P))if(edge.port==target%archdata::P)best=std::min(best,Distance(edge.delay));
@@ -453,11 +454,13 @@ public:
                 }
             }
             ++stats.settled;best=std::min(best,item.g+backward.get(item.node));
-            neighbors(item.node,false,[&](Node next,uint32_t cost) {
+            auto relax=[&](Node next,Distance cost) {
                 ++stats.relaxations;
                 Distance g=item.g+cost;if(g>=best)return;best=std::min(best,g+backward.get(next));Distance h=heuristic(next);if(g+h>=best)return;
                 if(forward.record(next,g))queue.push({g+h,g,next});
-            });
+            };
+            neighbors(item.node,false,relax);
+            if(shortcuts){int port=input_ports[item.node%input_ports.size()];shortcuts(item.node/input_ports.size(),port,[&](Node site,Distance cost){relax(state(site,port),cost);});}
         }
         stats.lower=stats.upper=best;return best;
     }

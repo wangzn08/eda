@@ -1,0 +1,18 @@
+{
+  "rows": 1001,
+  "holdout_used": false,
+  "score": 99.99604060906204,
+  "max_relative_error": 0.00023713540431586437,
+  "invalid_intervals": 0,
+  "prediction_outside_interval": 0,
+  "baseline_settled": 6139175,
+  "shortcut_settled": 6133477,
+  "baseline_relaxations": 106368957,
+  "shortcut_relaxations": 111961227,
+  "cpu_seconds": 3.8753,
+  "initialization_seconds": 0.164434,
+  "query_cpu_seconds": 3.710866,
+  "maximum_rss_bytes": 474398720,
+  "scope": "Actual cycle shortcut edges added without removing original graph edges; validation pilot only, one timing run, no full acceptance.",
+  "decision": "Do not enable by default: negligible expansion reduction and more relaxations."
+}
