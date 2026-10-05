@@ -1,0 +1,7 @@
+{
+  "rows": 150053,
+  "byte_exact": true,
+  "reference": "validation.v82-128.csv",
+  "candidate": "validation.v82-joint.csv",
+  "scope": "Full validation exact prediction parity; optional layout, no new accuracy claims."
+}

@@ -1,0 +1,28 @@
+{
+  "state": "complete",
+  "candidates": [
+    {
+      "joint_layout": false,
+      "trees": 128,
+      "rows": 10000000,
+      "cpu_seconds": 48.6289,
+      "initialization_seconds": 4.39552,
+      "query_cpu_seconds": 44.233380000000004,
+      "requests_per_cpu_second": 226073.61228104203,
+      "runtime_file_bytes": 85685772,
+      "maximum_rss_bytes": 636338176
+    },
+    {
+      "joint_layout": true,
+      "trees": 128,
+      "rows": 10000000,
+      "cpu_seconds": 39.9805,
+      "initialization_seconds": 4.82459,
+      "query_cpu_seconds": 35.15591,
+      "requests_per_cpu_second": 284447.19536487607,
+      "runtime_file_bytes": 85685772,
+      "maximum_rss_bytes": 931282944
+    }
+  ],
+  "scope": "10m repeated development requests, every row computed with prediction cache disabled, single runs. Actual CPU includes CSV input/output; no full billion proof, arbitrary hidden mix guarantee or official acceptance."
+}

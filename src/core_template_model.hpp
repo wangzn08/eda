@@ -17,6 +17,8 @@ class CoreTemplateModel {
     unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX;
     std::unique_ptr<VerticalTransientModel>vertical;
     std::unique_ptr<HorizontalTransientModel>horizontal;
+    struct JointCell {int32_t base[4];int32_t slope_x,slope_y;};
+    std::vector<JointCell>joint;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
     }
@@ -28,7 +30,12 @@ class CoreTemplateModel {
         Distance best=INF;
         auto candidate=[&](int rx,int ry,int nx,int ny){
             Distance base=INF;
-            for(auto end:terminal[target]){int64_t value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);if(horizontal)value+=horizontal->correction(index[port],end.first,ry,dx,growth_cap);base=std::min(base,Distance(std::max<int64_t>(0,value)));}
+            for(auto end:terminal[target]){int64_t value;
+                if(!joint.empty() && nx>0 && ny>0){
+                    unsigned ix=(rx>0?10:0)+std::abs(rx)-20,iy=(ry>0?12:0)+std::abs(ry)-24;
+                    const auto& cell=joint[(size_t(index[port])*160+end.first)*480+ix*24+iy];
+                    value=cell.base[(nx>=2?2:0)+(ny>=2?1:0)]+int64_t(std::min(unsigned(std::max(0,nx-2)),growth_cap))*cell.slope_x+int64_t(std::min(unsigned(std::max(0,ny-2)),growth_cap))*cell.slope_y+end.second;
+                }else{value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);if(horizontal)value+=horizontal->correction(index[port],end.first,ry,dx,growth_cap);}base=std::min(base,Distance(std::max<int64_t>(0,value)));}
             best=std::min(best,base+Distance(nx)*125+Distance(ny)*(dy>0?127:125));
         };
         if(!envelope){candidate(x,y,qx,qy);return best;}
@@ -42,6 +49,18 @@ class CoreTemplateModel {
         return best;
     }
 public:
+    void enable_joint_layout(){
+        if(!vertical || !horizontal || envelope || shell_x || shell_y)throw std::runtime_error("Joint layout requires both original-anchor transients");
+        joint.resize(size_t(160)*160*480);
+        for(unsigned source=0;source<160;++source)for(unsigned target=0;target<160;++target)for(unsigned ix=0;ix<20;++ix)for(unsigned iy=0;iy<24;++iy){
+            int sx=ix<10?-1:1,sy=iy<12?-1:1,x=sx*(20+ix%10),y=sy*(24+iy%12);
+            int32_t h[2]={horizontal->correction(source,target,y,sx*(30+ix%10),growth_cap),horizontal->correction(source,target,y,sx*(40+ix%10),growth_cap)};
+            int32_t v[2]={vertical->correction(source,target,x,sy*(36+iy%12),growth_cap),vertical->correction(source,target,x,sy*(48+iy%12),growth_cap)};
+            auto& cell=joint[(size_t(source)*160+target)*480+ix*24+iy];
+            for(unsigned a=0;a<2;++a)for(unsigned b=0;b<2;++b)cell.base[a*2+b]=int32_t(at(source,target,x,y))+h[a]+v[b];
+            cell.slope_x=std::max(0,h[1]-h[0]);cell.slope_y=std::max(0,v[1]-v[0]);
+        }
+    }
     std::pair<float,float>gap_features(Node source,Node target)const{
         auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
         return {float(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x]))),float(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])))};
