@@ -1,0 +1,219 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "source_port_indices": [
+    0,
+    80,
+    159
+  ],
+  "targets": 160,
+  "vertical_offsets": [
+    -35,
+    -24,
+    -12,
+    0,
+    12,
+    24,
+    35
+  ],
+  "rows": 561120,
+  "bands": [
+    {
+      "sign": -1,
+      "distance_band": [
+        30,
+        39
+      ],
+      "exact_periodic_fraction": 0.17416666666666666,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.17416666666666666,
+          "mean_abs_error_ps": 6.418809523809524,
+          "max_abs_error_ps": 172
+        }
+      }
+    },
+    {
+      "sign": -1,
+      "distance_band": [
+        40,
+        49
+      ],
+      "exact_periodic_fraction": 0.24663690476190475,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.16029761904761905,
+          "mean_abs_error_ps": 10.115803571428572,
+          "max_abs_error_ps": 172
+        }
+      }
+    },
+    {
+      "sign": -1,
+      "distance_band": [
+        50,
+        59
+      ],
+      "exact_periodic_fraction": 0.3097916666666667,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.15648809523809523,
+          "mean_abs_error_ps": 13.020654761904762,
+          "max_abs_error_ps": 172
+        },
+        "anchor40_measured_slope": {
+          "rows": 33600,
+          "exact_fraction": 0.6646130952380952,
+          "mean_abs_error_ps": 1.3188690476190477,
+          "max_abs_error_ps": 40
+        }
+      }
+    },
+    {
+      "sign": -1,
+      "distance_band": [
+        60,
+        69
+      ],
+      "exact_periodic_fraction": 0.37470238095238095,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.15488095238095237,
+          "mean_abs_error_ps": 15.736994047619048,
+          "max_abs_error_ps": 172
+        },
+        "anchor40_measured_slope": {
+          "rows": 33600,
+          "exact_fraction": 0.620625,
+          "mean_abs_error_ps": 2.482797619047619,
+          "max_abs_error_ps": 47
+        }
+      }
+    },
+    {
+      "sign": -1,
+      "distance_band": [
+        70,
+        79
+      ],
+      "exact_periodic_fraction": 0.4157440476190476,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.15488095238095237,
+          "mean_abs_error_ps": 18.38110119047619,
+          "max_abs_error_ps": 172
+        },
+        "anchor40_measured_slope": {
+          "rows": 33600,
+          "exact_fraction": 0.5937202380952381,
+          "mean_abs_error_ps": 3.7452678571428573,
+          "max_abs_error_ps": 56
+        }
+      }
+    },
+    {
+      "sign": 1,
+      "distance_band": [
+        30,
+        39
+      ],
+      "exact_periodic_fraction": 0.10601190476190477,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.10601190476190477,
+          "mean_abs_error_ps": 5.115744047619048,
+          "max_abs_error_ps": 138
+        }
+      }
+    },
+    {
+      "sign": 1,
+      "distance_band": [
+        40,
+        49
+      ],
+      "exact_periodic_fraction": 0.15154761904761904,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.11675595238095238,
+          "mean_abs_error_ps": 7.715267857142857,
+          "max_abs_error_ps": 138
+        }
+      }
+    },
+    {
+      "sign": 1,
+      "distance_band": [
+        50,
+        59
+      ],
+      "exact_periodic_fraction": 0.19276785714285713,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.10473214285714286,
+          "mean_abs_error_ps": 9.355446428571428,
+          "max_abs_error_ps": 138
+        },
+        "anchor40_measured_slope": {
+          "rows": 33600,
+          "exact_fraction": 0.7303869047619047,
+          "mean_abs_error_ps": 0.9623214285714285,
+          "max_abs_error_ps": 28
+        }
+      }
+    },
+    {
+      "sign": 1,
+      "distance_band": [
+        60,
+        69
+      ],
+      "exact_periodic_fraction": 0.22267857142857142,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.10702380952380952,
+          "mean_abs_error_ps": 10.562321428571428,
+          "max_abs_error_ps": 138
+        },
+        "anchor40_measured_slope": {
+          "rows": 33600,
+          "exact_fraction": 0.7124702380952381,
+          "mean_abs_error_ps": 1.512529761904762,
+          "max_abs_error_ps": 37
+        }
+      }
+    },
+    {
+      "sign": 1,
+      "distance_band": [
+        70,
+        79
+      ],
+      "exact_periodic_fraction": 0.24413690476190475,
+      "methods": {
+        "anchor20_cheapest": {
+          "rows": 33600,
+          "exact_fraction": 0.09925595238095238,
+          "mean_abs_error_ps": 11.593482142857143,
+          "max_abs_error_ps": 138
+        },
+        "anchor40_measured_slope": {
+          "rows": 33600,
+          "exact_fraction": 0.6839285714285714,
+          "mean_abs_error_ps": 2.014464285714286,
+          "max_abs_error_ps": 46
+        }
+      }
+    }
+  ],
+  "scope": "Finite nominal radius112 graph. Measured slopes use20..49, evaluated beyond50. Not physical validation accuracy or path certificate."
+}

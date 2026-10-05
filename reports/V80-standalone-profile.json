@@ -1,0 +1,30 @@
+{
+  "trees": 128,
+  "cache_enabled": false,
+  "validation_score": 98.49208810810073,
+  "full_validation_output_matches": true,
+  "files": [
+    {
+      "name": "estimate",
+      "bytes": 735192,
+      "sha256": "fd9aaa2d338abba3f59c5fb043d3fb4e2c607a7a47416b062bbc3f81a0283bb7"
+    },
+    {
+      "name": "core-template.bin",
+      "bytes": 58928652,
+      "sha256": "2a4b5bce96d45685acc830c2696c952999573ef0794a7260e89033408e1ef1d6"
+    },
+    {
+      "name": "vertical-transients.bin",
+      "bytes": 18774532,
+      "sha256": "eb8e5f3693334bc1e400fd6d5f5372df5234356c632950f91e16f180e5173398"
+    },
+    {
+      "name": "correction.bin",
+      "bytes": 1059356,
+      "sha256": "6d7939f3067a3fd15dcfcaa1b2d75ace330073a7a5aac9b00d1e809620cd3546"
+    }
+  ],
+  "runtime_file_bytes": 79497732,
+  "scope": "Frozen standalone research profile. OfficialLinux environment, full billion performance and99.9 precision goal remain unverified/unachieved."
+}

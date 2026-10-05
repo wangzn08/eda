@@ -1,0 +1,10 @@
+{
+  "architecture_only": true,
+  "source_bytes": 28629558,
+  "asset_bytes": 18774532,
+  "exact_roundtrip": true,
+  "decoded_sha256": "566303d9c44a6ce43383b1bc29c35b84d3d393226abcc3eabfa718177dd95d70",
+  "asset_sha256": "eb8e5f3693334bc1e400fd6d5f5372df5234356c632950f91e16f180e5173398",
+  "cpu_seconds": 5.403912,
+  "scope": "Lossless residual codec only; no changed prediction or billion acceptance."
+}
