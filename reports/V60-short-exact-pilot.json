@@ -1,0 +1,14 @@
+{
+  "rows": 1881,
+  "distance_at_most": 20,
+  "holdout_used": false,
+  "exact_match_fraction": 1.0,
+  "score": 100.0,
+  "query_wall_seconds_sum": 0.861207229,
+  "mean_query_wall_microseconds": 457.8454167995747,
+  "p99_query_wall_microseconds": 3522.590000000003,
+  "mean_settled_states": 1276.6204146730463,
+  "process_log": "rows=1881 cpu_seconds=0.90083 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d",
+  "decision": "Do not integrate distance-only refinement: small score ceiling and costly searches. Explore better mid/long-distance path representation.",
+  "limitations": "One validation subset run, wall timings include instrumentation; not official throughput or billion-request acceptance."
+}
