@@ -1,0 +1,57 @@
+{
+  "holdout_used": false,
+  "candidates": [
+    {
+      "shell_x": 0,
+      "shell_y": 0,
+      "score": 96.34999162187053,
+      "different_from_original_fraction": 0.0,
+      "process_log": "rows=150053 cpu_seconds=0.78316 initialization_seconds=0.563538 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    },
+    {
+      "shell_x": 1,
+      "shell_y": 0,
+      "score": 96.13079012590181,
+      "different_from_original_fraction": 0.5026623926212738,
+      "process_log": "rows=150053 cpu_seconds=0.758416 initialization_seconds=0.536505 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    },
+    {
+      "shell_x": 0,
+      "shell_y": 1,
+      "score": 96.08671285779172,
+      "different_from_original_fraction": 0.7077099424869879,
+      "process_log": "rows=150053 cpu_seconds=0.759648 initialization_seconds=0.53758 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    },
+    {
+      "shell_x": 1,
+      "shell_y": 1,
+      "score": 95.80941226756674,
+      "different_from_original_fraction": 0.8414826761211038,
+      "process_log": "rows=150053 cpu_seconds=0.766146 initialization_seconds=0.54041 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    },
+    {
+      "shell_x": 2,
+      "shell_y": 0,
+      "score": 95.33289960071953,
+      "different_from_original_fraction": 0.5495258342052475,
+      "process_log": "rows=150053 cpu_seconds=0.767858 initialization_seconds=0.538287 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    },
+    {
+      "shell_x": 0,
+      "shell_y": 2,
+      "score": 95.06044786937021,
+      "different_from_original_fraction": 0.8322859256396073,
+      "process_log": "rows=150053 cpu_seconds=0.763291 initialization_seconds=0.540224 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    },
+    {
+      "shell_x": 2,
+      "shell_y": 2,
+      "score": 93.22755924324979,
+      "different_from_original_fraction": 0.9202081931051028,
+      "process_log": "rows=150053 cpu_seconds=0.760995 initialization_seconds=0.539246 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+    }
+  ],
+  "oracle_best_shell_score": 97.6152835554355,
+  "oracle_best_shell_or_v59_score": 98.66586402521851,
+  "scope": "Golden-based selection is only a candidate-diversity ceiling; no trained selector, no certified upper bound or throughput acceptance."
+}

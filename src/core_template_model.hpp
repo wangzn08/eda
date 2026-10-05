@@ -10,11 +10,14 @@ class CoreTemplateModel {
     std::array<Distance,120>xgap{};
     std::array<Distance,550>ygap{};
     bool envelope;
+    unsigned shell_x=0,shell_y=0;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
     }
     Distance nominal(int port,int target,int dx,int dy)const{
         int ax=std::abs(dx),ay=std::abs(dy),qx=ax>29?(ax-20)/10:0,qy=ay>35?(ay-24)/12:0;
+        if(qx)qx+=std::min(shell_x,unsigned((ax-qx*10)/10));
+        if(qy)qy+=std::min(shell_y,unsigned((ay-qy*12)/12));
         int x=(dx<0?-1:1)*(ax-qx*10),y=(dy<0?-1:1)*(ay-qy*12);
         Distance best=INF;
         auto candidate=[&](int rx,int ry,int nx,int ny){
@@ -37,7 +40,8 @@ public:
         auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
         return {float(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x]))),float(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])))};
     }
-    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false):envelope(use_envelope){
+    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0):envelope(use_envelope),shell_x(sx),shell_y(sy){
+        if(sx>2 || sy>2 || (use_envelope && (sx || sy)))throw std::runtime_error("Invalid template shell policy");
         std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated core template");};
         char magic[8],hash[64];std::array<uint16_t,160>ports;uint64_t decoded;
         read(magic,8);read(hash,64);read(ports.data(),320);read(&decoded,8);
