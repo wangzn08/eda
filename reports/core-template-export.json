@@ -1,0 +1,13 @@
+{
+  "scope": "Lossless finite-window architecture asset only; not request precision or runtime acceptance",
+  "file": "out/architecture-benchmark/core-template-zlib.bin",
+  "bytes": 90459669,
+  "sha256": "2b8721588a9f4ae96ede30d535d4b5805b0154c7f25cb9b3dfb0aec18ce5b4ed",
+  "decoded_core_bytes": 214476800,
+  "decoded_core_sha256": "de17069c69c8ab725eba5d5da37c592eed16fb69d0b172a32b5fd199158e30a7",
+  "core_values_compared": 107238400,
+  "roundtrip_mismatch_values": 0,
+  "architecture_sha256": "902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d",
+  "format": "COREZL01, architecture hash64, ports160 uint16, decoded bytes uint64, zlib spatial int16 differences",
+  "limitations": "C++ decoder and inference still pending; zlib dependency availability in official environment unverified; no PDB can be added within 100MB"
+}

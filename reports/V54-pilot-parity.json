@@ -1,0 +1,6 @@
+{
+  "rows": 150053,
+  "mismatch_rows": 12,
+  "max_abs_difference_ps": 1.0,
+  "scope": "Interim epoch40 exporter and C++ comparison; not final architecture score or throughput"
+}

@@ -1,0 +1,36 @@
+{
+  "scope": "Architecture-only lossless storage analysis; no labels, no accuracy claim",
+  "arch_sha256": "902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d",
+  "core_shape": [
+    160,
+    160,
+    59,
+    71
+  ],
+  "codec": "zlib level6 streaming whole core tensor",
+  "payload_bytes": {
+    "spatial2d": 90459269,
+    "spatial2d_target": 103306808,
+    "spatial2d_target_source": 97752483
+  },
+  "transformed_value_ranges": {
+    "spatial2d": [
+      -522,
+      1274
+    ],
+    "spatial2d_target": [
+      -586,
+      1073
+    ],
+    "spatial2d_target_source": [
+      -1074,
+      1050
+    ]
+  },
+  "estimated_asset_bytes": {
+    "spatial2d": 90459661,
+    "spatial2d_target": 103307200,
+    "spatial2d_target_source": 97752875
+  },
+  "limitations": "Must implement inverse cumulative transforms and verify exact reconstruction; target local-arc reconstruction remains unverified; no submitted asset yet"
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "Exact factorization of the finite architecture-only template; not hidden request precision",
+  "arch_sha256": "902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d",
+  "values_compared": 332439040,
+  "mismatch_values": 0,
+  "max_abs_difference_ps": 0,
+  "examples": [],
+  "source_data": "out/architecture-benchmark/periodic-dense.raw.bin",
+  "formula": "min(core target distance, incoming local arc delay + corresponding core distance)"
+}
