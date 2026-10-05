@@ -1,0 +1,27 @@
+{
+  "files": [
+    {
+      "path": "build/macro_oracle_apply",
+      "bytes": 2862064,
+      "sha256": "710f1606c06c44e05858ec7e93ecdccafb5dc8f53c3056fd18f2f0619c24db98"
+    },
+    {
+      "path": "out/architecture-benchmark/phase-bounds-long.bin",
+      "bytes": 10117278,
+      "sha256": "70ff3db105cde6b84f97acca5454d5fe6b81247b98005027dbf799496b0fd680"
+    },
+    {
+      "path": "out/phase-precision-v40/long-tail.bin",
+      "bytes": 11969216,
+      "sha256": "c88f87d9d4e785a2e129fc1c606bc4bc552d6e43100a8822fc70467e0d1735f2"
+    }
+  ],
+  "total_runtime_file_bytes": 24948558,
+  "source_phase_bytes": 47019458,
+  "projected_phase_bytes": 10117278,
+  "decoded_pattern_values": 6339000,
+  "projection_roundtrip": true,
+  "pilot_output_matches_original": true,
+  "holdout_used": false,
+  "scope": "Research macro executable and assets, not final standard-interface submission. Precision/throughput target not achieved."
+}
