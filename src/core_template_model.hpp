@@ -13,12 +13,14 @@ class CoreTemplateModel {
     std::array<std::vector<std::pair<unsigned,unsigned>>,496>terminal;
     std::array<Distance,120>xgap{};
     std::array<Distance,550>ygap{};
-    bool envelope;
+    bool envelope,has_far=false;
     unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX;
     std::unique_ptr<VerticalTransientModel>vertical;
     std::unique_ptr<HorizontalTransientModel>horizontal;
     struct JointCell {int32_t base[4];int32_t slope_x,slope_y;};
     std::vector<JointCell>joint;
+    struct FarJointCell {int32_t base[4],slope_y;};
+    std::vector<FarJointCell>far_joint;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
     }
@@ -33,8 +35,14 @@ class CoreTemplateModel {
             for(auto end:terminal[target]){int64_t value;
                 if(!joint.empty() && nx>0 && ny>0){
                     unsigned ix=(rx>0?10:0)+std::abs(rx)-20,iy=(ry>0?12:0)+std::abs(ry)-24;
-                    const auto& cell=joint[(size_t(index[port])*160+end.first)*480+ix*24+iy];
-                    value=cell.base[(nx>=2?2:0)+(ny>=2?1:0)]+int64_t(std::min(unsigned(std::max(0,nx-2)),growth_cap))*cell.slope_x+int64_t(std::min(unsigned(std::max(0,ny-2)),growth_cap))*cell.slope_y+end.second;
+                    size_t ji=(size_t(index[port])*160+end.first)*480+ix*24+iy;const auto& cell=joint[ji];
+                    int64_t joint_base=cell.base[(nx>=2?2:0)+(ny>=2?1:0)];
+                    if(!far_joint.empty() && ny>=3){const auto& fc=far_joint[ji];unsigned xi=nx>=2?2:0;
+                        if(ny==3)joint_base=cell.base[xi+1]+(fc.base[xi]-cell.base[xi+1])/2;
+                        else if(ny==4)joint_base=fc.base[xi];
+                        else joint_base=fc.base[xi+1]+int64_t(ny-5)*fc.slope_y;
+                    }else joint_base+=int64_t(std::min(unsigned(std::max(0,ny-2)),growth_cap))*cell.slope_y;
+                    value=joint_base+int64_t(std::min(unsigned(std::max(0,nx-2)),growth_cap))*cell.slope_x+end.second;
                 }else{value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);if(horizontal)value+=horizontal->correction(index[port],end.first,ry,dx,growth_cap);}base=std::min(base,Distance(std::max<int64_t>(0,value)));}
             best=std::min(best,base+Distance(nx)*125+Distance(ny)*(dy>0?127:125));
         };
@@ -51,13 +59,18 @@ class CoreTemplateModel {
 public:
     void enable_joint_layout(){
         if(!vertical || !horizontal || envelope || shell_x || shell_y)throw std::runtime_error("Joint layout requires both original-anchor transients");
-        joint.resize(size_t(160)*160*480);
+        joint.resize(size_t(160)*160*480);if(has_far)far_joint.resize(joint.size());
         for(unsigned source=0;source<160;++source)for(unsigned target=0;target<160;++target)for(unsigned ix=0;ix<20;++ix)for(unsigned iy=0;iy<24;++iy){
             int sx=ix<10?-1:1,sy=iy<12?-1:1,x=sx*(20+ix%10),y=sy*(24+iy%12);
             int32_t h[2]={horizontal->correction(source,target,y,sx*(30+ix%10),growth_cap),horizontal->correction(source,target,y,sx*(40+ix%10),growth_cap)};
             int32_t v[2]={vertical->correction(source,target,x,sy*(36+iy%12),growth_cap),vertical->correction(source,target,x,sy*(48+iy%12),growth_cap)};
             auto& cell=joint[(size_t(source)*160+target)*480+ix*24+iy];
             for(unsigned a=0;a<2;++a)for(unsigned b=0;b<2;++b)cell.base[a*2+b]=int32_t(at(source,target,x,y))+h[a]+v[b];
+            if(has_far){auto& fc=far_joint[(size_t(source)*160+target)*480+ix*24+iy];
+                int32_t vf[2]={vertical->correction(source,target,x,sy*(72+iy%12),growth_cap),vertical->correction(source,target,x,sy*(84+iy%12),growth_cap)};
+                for(unsigned a=0;a<2;++a)for(unsigned b=0;b<2;++b)fc.base[a*2+b]=int32_t(at(source,target,x,y))+h[a]+vf[b];
+                fc.slope_y=std::max(0,vf[1]-vf[0]);
+            }
             cell.slope_x=std::max(0,h[1]-h[0]);cell.slope_y=std::max(0,v[1]-v[0]);
         }
     }
@@ -65,7 +78,7 @@ public:
         auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
         return {float(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x]))),float(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])))};
     }
-    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX,const std::string&horizontal_path=""):envelope(use_envelope),shell_x(sx),shell_y(sy),growth_cap(cap){
+    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX,const std::string&horizontal_path="",const std::string&far_path=""):envelope(use_envelope),shell_x(sx),shell_y(sy),growth_cap(cap){
         if(sx>2 || sy>2 || (use_envelope && (sx || sy)))throw std::runtime_error("Invalid template shell policy");
         std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated core template");};
         char magic[8],hash[64];std::array<uint16_t,160>ports;uint64_t decoded;
@@ -74,6 +87,7 @@ public:
         index.fill(-1);for(unsigned i=0;i<160;++i){if(ports[i]>=496 || index[ports[i]]>=0)throw std::runtime_error("Invalid core ports");index[ports[i]]=i;terminal[ports[i]].push_back({i,0});}
         if(!transient_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Transient requires original anchor policy");vertical=std::make_unique<VerticalTransientModel>(transient_path,ports);}
         if(!horizontal_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Horizontal transient requires original anchors");horizontal=std::make_unique<HorizontalTransientModel>(horizontal_path,ports);}
+        if(!far_path.empty()){if(!vertical || cap!=UINT_MAX)throw std::runtime_error("Far delta requires vertical transient and unlimited growth cap");vertical->load_far_delta(far_path,ports);has_far=true;}
         for(auto arc:archdata::ARCS)if(index[arc.from]>=0)terminal[arc.to].push_back({unsigned(index[arc.from]),unsigned(arc.delay)});
         std::vector<unsigned char>compressed((std::istreambuf_iterator<char>(f)),{});
         if(f.bad() || compressed.empty() || compressed.size()>100000000)throw std::runtime_error("Invalid core payload size");
