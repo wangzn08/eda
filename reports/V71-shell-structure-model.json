@@ -1,0 +1,21 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "feature_count": 74,
+  "candidates": [
+    {
+      "trees": 64,
+      "validation_score": 97.5745612641015
+    },
+    {
+      "trees": 128,
+      "validation_score": 97.70079120883538
+    },
+    {
+      "trees": 256,
+      "validation_score": 97.81110318466595
+    }
+  ],
+  "elapsed_seconds": 61.67642650000016,
+  "scope": "Alternative template signed differences as topology features; trained model only, no C++ parity or runtime proof yet. Alternative templates are approximate, not path certificates."
+}
