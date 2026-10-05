@@ -519,5 +519,6 @@ public:
         return result;
     }
     Node trace_site(Node state) const {return state/input_ports.size();}
+    unsigned trace_port(Node state) const {return input_ports[state%input_ports.size()];}
 };
 

@@ -1,0 +1,311 @@
+{
+  "split": "distance_stratified_development_sample",
+  "rows": 24,
+  "holdout_used": false,
+  "exact_delay_matches": 24,
+  "transitions": 312,
+  "compressed_transition_tokens": 183,
+  "token_reduction_fraction": 0.41346153846153844,
+  "frequent_repeated_patterns": [
+    {
+      "transitions": [
+        [
+          309,
+          309,
+          0,
+          -12
+        ]
+      ],
+      "occurrences": 63
+    },
+    {
+      "transitions": [
+        [
+          296,
+          296,
+          0,
+          12
+        ]
+      ],
+      "occurrences": 45
+    },
+    {
+      "transitions": [
+        [
+          310,
+          310,
+          0,
+          -12
+        ]
+      ],
+      "occurrences": 11
+    },
+    {
+      "transitions": [
+        [
+          298,
+          314,
+          -10,
+          0
+        ],
+        [
+          314,
+          298,
+          0,
+          12
+        ]
+      ],
+      "occurrences": 7
+    },
+    {
+      "transitions": [
+        [
+          303,
+          303,
+          0,
+          12
+        ]
+      ],
+      "occurrences": 3
+    },
+    {
+      "transitions": [
+        [
+          312,
+          312,
+          -10,
+          0
+        ]
+      ],
+      "occurrences": 3
+    },
+    {
+      "transitions": [
+        [
+          300,
+          300,
+          0,
+          12
+        ]
+      ],
+      "occurrences": 2
+    },
+    {
+      "transitions": [
+        [
+          301,
+          317,
+          -10,
+          0
+        ],
+        [
+          317,
+          301,
+          0,
+          12
+        ]
+      ],
+      "occurrences": 2
+    },
+    {
+      "transitions": [
+        [
+          289,
+          289,
+          10,
+          0
+        ]
+      ],
+      "occurrences": 2
+    },
+    {
+      "transitions": [
+        [
+          318,
+          310,
+          0,
+          -12
+        ],
+        [
+          310,
+          318,
+          -10,
+          0
+        ]
+      ],
+      "occurrences": 2
+    }
+  ],
+  "queries": [
+    {
+      "row": 1,
+      "delay": 516,
+      "transitions": 5,
+      "compressed_transition_tokens": 5,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 2,
+      "delay": 223,
+      "transitions": 2,
+      "compressed_transition_tokens": 2,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 3,
+      "delay": 223,
+      "transitions": 1,
+      "compressed_transition_tokens": 1,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 4,
+      "delay": 430,
+      "transitions": 2,
+      "compressed_transition_tokens": 2,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 5,
+      "delay": 622,
+      "transitions": 5,
+      "compressed_transition_tokens": 5,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 6,
+      "delay": 629,
+      "transitions": 5,
+      "compressed_transition_tokens": 5,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 7,
+      "delay": 1061,
+      "transitions": 7,
+      "compressed_transition_tokens": 7,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 8,
+      "delay": 881,
+      "transitions": 4,
+      "compressed_transition_tokens": 4,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 9,
+      "delay": 1244,
+      "transitions": 9,
+      "compressed_transition_tokens": 9,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 10,
+      "delay": 710,
+      "transitions": 8,
+      "compressed_transition_tokens": 8,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 11,
+      "delay": 940,
+      "transitions": 6,
+      "compressed_transition_tokens": 6,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 12,
+      "delay": 1236,
+      "transitions": 10,
+      "compressed_transition_tokens": 10,
+      "repeated_transitions": 0
+    },
+    {
+      "row": 13,
+      "delay": 1380,
+      "transitions": 9,
+      "compressed_transition_tokens": 5,
+      "repeated_transitions": 4
+    },
+    {
+      "row": 14,
+      "delay": 1556,
+      "transitions": 14,
+      "compressed_transition_tokens": 11,
+      "repeated_transitions": 3
+    },
+    {
+      "row": 15,
+      "delay": 3345,
+      "transitions": 22,
+      "compressed_transition_tokens": 12,
+      "repeated_transitions": 10
+    },
+    {
+      "row": 16,
+      "delay": 2828,
+      "transitions": 21,
+      "compressed_transition_tokens": 13,
+      "repeated_transitions": 8
+    },
+    {
+      "row": 17,
+      "delay": 2050,
+      "transitions": 14,
+      "compressed_transition_tokens": 11,
+      "repeated_transitions": 3
+    },
+    {
+      "row": 18,
+      "delay": 2826,
+      "transitions": 21,
+      "compressed_transition_tokens": 11,
+      "repeated_transitions": 10
+    },
+    {
+      "row": 19,
+      "delay": 2736,
+      "transitions": 22,
+      "compressed_transition_tokens": 8,
+      "repeated_transitions": 14
+    },
+    {
+      "row": 20,
+      "delay": 3022,
+      "transitions": 23,
+      "compressed_transition_tokens": 11,
+      "repeated_transitions": 12
+    },
+    {
+      "row": 21,
+      "delay": 1552,
+      "transitions": 13,
+      "compressed_transition_tokens": 6,
+      "repeated_transitions": 7
+    },
+    {
+      "row": 22,
+      "delay": 4527,
+      "transitions": 33,
+      "compressed_transition_tokens": 8,
+      "repeated_transitions": 25
+    },
+    {
+      "row": 23,
+      "delay": 4086,
+      "transitions": 27,
+      "compressed_transition_tokens": 15,
+      "repeated_transitions": 12
+    },
+    {
+      "row": 24,
+      "delay": 3788,
+      "transitions": 29,
+      "compressed_transition_tokens": 8,
+      "repeated_transitions": 21
+    }
+  ],
+  "process_log": "row=1 states=6 settled=48459\nrow=2 states=3 settled=777\nrow=3 states=2 settled=639\nrow=4 states=3 settled=10872\nrow=5 states=6 settled=120140\nrow=6 states=6 settled=118379\nrow=7 states=8 settled=574370\nrow=8 states=5 settled=361642\nrow=9 states=10 settled=1102905\nrow=10 states=9 settled=193835\nrow=11 states=7 settled=647140\nrow=12 states=11 settled=918861\nrow=13 states=10 settled=1301285\nrow=14 states=15 settled=1835075\nrow=15 states=23 settled=7518511\nrow=16 states=22 settled=5468859\nrow=17 states=15 settled=2295855\nrow=18 states=22 settled=3280321\nrow=19 states=23 settled=4702588\nrow=20 states=24 settled=2982182\nrow=21 states=14 settled=507259\nrow=22 states=34 settled=9262088\nrow=23 states=28 settled=5941737\nrow=24 states=30 settled=7120995\ncpu_seconds=14.9673\n",
+  "scope": "Greedy exact repeated transition patterns of length1..4; token count excludes repetition metadata. Small stratified sample, not throughput or compression-size proof."
+}
