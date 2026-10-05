@@ -1,0 +1,11 @@
+{
+  "rows": 10000000,
+  "cpu_seconds": 33.6753,
+  "initialization_seconds": 2.63214,
+  "query_cpu_seconds": 31.04316,
+  "requests_per_cpu_second": 322132.1540719437,
+  "maximum_rss_bytes": 507625472,
+  "cache_enabled": false,
+  "standard_entry": "estimate -in requests.csv -out results.csv",
+  "scope": "Actual10m repeated development rows, each computed. Not full billion proof or official acceptance."
+}

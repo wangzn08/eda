@@ -1,0 +1,36 @@
+{
+  "state": "complete",
+  "candidates": [
+    {
+      "trees": 64,
+      "rows": 10000000,
+      "cpu_seconds": 30.4134,
+      "initialization_seconds": 2.65862,
+      "query_cpu_seconds": 27.75478,
+      "requests_per_cpu_second": 360298.29816701845,
+      "runtime_file_bytes": 88822566,
+      "maximum_rss_bytes": 507133952
+    },
+    {
+      "trees": 128,
+      "rows": 10000000,
+      "cpu_seconds": 33.9639,
+      "initialization_seconds": 2.72536,
+      "query_cpu_seconds": 31.238540000000004,
+      "requests_per_cpu_second": 320117.3934505261,
+      "runtime_file_bytes": 89352230,
+      "maximum_rss_bytes": 507691008
+    },
+    {
+      "trees": 256,
+      "rows": 10000000,
+      "cpu_seconds": 40.2768,
+      "initialization_seconds": 2.7323,
+      "query_cpu_seconds": 37.5445,
+      "requests_per_cpu_second": 266350.59729121445,
+      "runtime_file_bytes": 90411558,
+      "maximum_rss_bytes": 508788736
+    }
+  ],
+  "scope": "10m repeated development requests, every row computed with prediction cache disabled, single runs. Actual CPU includes CSV input/output; no full billion proof, arbitrary hidden mix guarantee or official acceptance."
+}

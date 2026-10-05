@@ -1,5 +1,12 @@
+.DEFAULT_GOAL := all
 CXX = c++
 CXXFLAGS = -std=c++17 -O3 -Wall -Wextra -Wpedantic
+XZ_OBJECTS = build/xz/xz_crc32.o build/xz/xz_dec_lzma2.o build/xz/xz_dec_stream.o
+
+build/xz/%.o: src/vendor/xz/%.c src/vendor/xz/xz.h src/vendor/xz/xz_config.h src/vendor/xz/xz_private.h src/vendor/xz/xz_stream.h src/vendor/xz/xz_lzma2.h
+	mkdir -p build/xz
+	$(CC) -std=c99 -O3 -Isrc/vendor/xz -c $< -o $@
+
 ARCH = data/EDA-PANGO-SRB-Arch-Delay/arch
 
 .PHONY: all audit check refresh-architecture
@@ -38,9 +45,9 @@ build/phase_estimate: src/repeat_cycle_jump.hpp src/phase_estimate.cpp src/routi
 	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@
 
 # Direct periodic relaxation; experimental, no per-request graph search.
-build/core_template_estimate: src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
+build/core_template_estimate: $(XZ_OBJECTS) src/xz_decode.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
 	mkdir -p build
-	$(CXX) $(CXXFLAGS) -ffp-contract=off -Isrc src/core_template_estimate.cpp -lz -o $@
+	$(CXX) $(CXXFLAGS) -ffp-contract=off -Isrc src/core_template_estimate.cpp $(XZ_OBJECTS) -lz -o $@
 
 build/phase_fast_estimate: src/phase_fast_estimate.cpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/tiny_route_model.hpp src/periodic_dense_model.hpp src/phase_required_bound.hpp src/routing_search.hpp src/phase_lower_bound.hpp src/architecture_data.hpp src/potential_lower_model.hpp
 	mkdir -p build

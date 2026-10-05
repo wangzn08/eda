@@ -1,6 +1,7 @@
 #pragma once
 #include "routing_search.hpp"
 #include <zlib.h>
+#include "xz_decode.hpp"
 #include <cstring>
 #include "vertical_transient_model.hpp"
 #include <memory>
@@ -48,16 +49,16 @@ public:
         std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated core template");};
         char magic[8],hash[64];std::array<uint16_t,160>ports;uint64_t decoded;
         read(magic,8);read(hash,64);read(ports.data(),320);read(&decoded,8);
-        if(std::string(magic,8)!="COREZL01" || std::string(hash,64)!=archdata::HASH || decoded!=214476800)throw std::runtime_error("Invalid core template header");
+        if((std::string(magic,8)!="COREZL01" && std::string(magic,8)!="COREXZ01") || std::string(hash,64)!=archdata::HASH || decoded!=214476800)throw std::runtime_error("Invalid core template header");
         index.fill(-1);for(unsigned i=0;i<160;++i){if(ports[i]>=496 || index[ports[i]]>=0)throw std::runtime_error("Invalid core ports");index[ports[i]]=i;terminal[ports[i]].push_back({i,0});}
         if(!transient_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Transient requires original anchor policy");vertical=std::make_unique<VerticalTransientModel>(transient_path,ports);}
         for(auto arc:archdata::ARCS)if(index[arc.from]>=0)terminal[arc.to].push_back({unsigned(index[arc.from]),unsigned(arc.delay)});
         std::vector<unsigned char>compressed((std::istreambuf_iterator<char>(f)),{});
         if(f.bad() || compressed.empty() || compressed.size()>100000000)throw std::runtime_error("Invalid core payload size");
-        values.resize(decoded/2);z_stream stream{};stream.next_in=compressed.data();stream.avail_in=unsigned(compressed.size());stream.next_out=reinterpret_cast<Bytef*>(values.data());stream.avail_out=unsigned(decoded);
+        values.resize(decoded/2);if(std::string(magic,8)=="COREXZ01"){if(!decode_xz_exact(compressed.data(),compressed.size(),reinterpret_cast<unsigned char*>(values.data()),decoded))throw std::runtime_error("Invalid core XZ stream");}else{z_stream stream{};stream.next_in=compressed.data();stream.avail_in=unsigned(compressed.size());stream.next_out=reinterpret_cast<Bytef*>(values.data());stream.avail_out=unsigned(decoded);
         if(inflateInit(&stream)!=Z_OK)throw std::runtime_error("Core inflate initialization failed");
         int result=inflate(&stream,Z_FINISH);bool valid=result==Z_STREAM_END && stream.total_out==decoded && stream.avail_in==0;inflateEnd(&stream);
-        if(!valid)throw std::runtime_error("Invalid core compressed stream");
+        if(!valid)throw std::runtime_error("Invalid core compressed stream");}
         for(size_t pair=0;pair<160*160;++pair)for(int x=0;x<59;++x)for(int y=0;y<71;++y){size_t i=pair*4189+x*71+y;int16_t delta;std::memcpy(&delta,&values[i],2);int value=delta;if(x)value+=values[i-71];if(y)value+=values[i-1];if(x && y)value-=values[i-72];if(value<0 || value>65535)throw std::runtime_error("Core inverse transform overflow");values[i]=uint16_t(value);}
         for(auto l:archdata::LINES){if(l.vertical)for(int x=l.site+1;x<120;++x)xgap[x]+=l.delay;else for(int y=l.site+1;y<550;++y)ygap[y]+=l.delay;}
     }

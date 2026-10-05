@@ -1,0 +1,28 @@
+{
+  "rows": 150053,
+  "validation_score": 97.97144301878541,
+  "output_matches_v77": true,
+  "cpu_seconds": 2.92787,
+  "initialization_seconds": 2.57941,
+  "maximum_rss_bytes": 504528896,
+  "runtime_files": [
+    {
+      "path": "build/core_template_estimate",
+      "bytes": 734664,
+      "sha256": "da061f44960c8fbf16a14d8afffbe77356c7b59afa29c8b4f5ab882c49bbb46e"
+    },
+    {
+      "path": "out/architecture-benchmark/core-template-xz.bin",
+      "bytes": 58928652,
+      "sha256": "2a4b5bce96d45685acc830c2696c952999573ef0794a7260e89033408e1ef1d6"
+    },
+    {
+      "path": "out/architecture-benchmark/vertical-transients.bin",
+      "bytes": 28629558,
+      "sha256": "2d5e2a37b7738733abc8a3adabefc0cf483f51684e7199206a973a62efee3e03"
+    }
+  ],
+  "total_runtime_file_bytes": 88292874,
+  "holdout_used": false,
+  "scope": "Linked embedded XZ decoder and complete validation, no final official-interface/runtime acceptance or billion proof."
+}
