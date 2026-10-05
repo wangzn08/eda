@@ -1,0 +1,20 @@
+{
+  "candidates": [
+    {
+      "leaves": 127,
+      "trees": 3072,
+      "score_with_v18_cap": 97.34412207275237
+    },
+    {
+      "leaves": 255,
+      "trees": 1536,
+      "score_with_v18_cap": 97.35601811410835
+    },
+    {
+      "leaves": 255,
+      "trees": 2048,
+      "score_with_v18_cap": 97.35637470798495
+    }
+  ],
+  "holdout_used": false
+}

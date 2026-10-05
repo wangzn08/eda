@@ -80,7 +80,7 @@ public:
             }
         }
     }
-    uint64_t cap(uint32_t source,uint32_t target,uint64_t prediction) const {
+    uint64_t cap(uint32_t source,uint32_t target,uint64_t prediction,bool extra_hops=false) const {
         auto a=archdata::SITES[source/archdata::P],b=archdata::SITES[target/archdata::P];uint64_t best=prediction;
         for(const auto& p:prefixes[source%archdata::P]) {
             int mx=a.x+p.dx1,my=a.y+p.dy1,ex=mx+p.dx2,ey=my+p.dy2;
@@ -99,7 +99,8 @@ public:
             int span=std::abs(first.dx)+std::abs(first.dy);
             if(remaining < -12) continue;
             int hops=remaining>=0?remaining/span:0;
-            for(int q=hops;q<=hops+1;++q) {
+            // A 12-cell local tail can make one fewer long hop cheaper.
+            for(int q=std::max(0,hops-int(extra_hops));q<=hops+1;++q) {
                 int cx=ex+q*first.dx,cy=ey+q*first.dy;auto gap=segment(ex,ey,cx,cy);
                 if(gap==absent) continue;
                 uint64_t prefix=initial+uint64_t(q)*first.cycle+gap;
@@ -112,7 +113,7 @@ public:
                     int length=std::abs(second.dx)+std::abs(second.dy);
                     if(rem < -12) continue;
                     int count=rem>=0?rem/length:0;
-                    for(int n=std::max(1,count);n<=count+1;++n) {
+                    for(int n=std::max(1,count-int(extra_hops));n<=count+1;++n) {
                         int fx=cx+n*second.dx,fy=cy+n*second.dy;
                         if(std::abs(fx-b.x)>12 || std::abs(fy-b.y)>12) continue;
                         uint64_t head=prefix+turn[p.long_index][j]+uint64_t(n-1)*second.cycle;

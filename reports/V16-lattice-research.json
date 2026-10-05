@@ -1,0 +1,412 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline_score": 97.22350366143607,
+  "features": [
+    "source_x",
+    "source_y",
+    "target_x",
+    "target_y",
+    "dx",
+    "dy",
+    "abs_dx",
+    "abs_dy",
+    "manhattan",
+    "v3_delay",
+    "source_port",
+    "target_port",
+    "source_family",
+    "target_family",
+    "x_sign",
+    "y_sign",
+    "source_x_mod10",
+    "target_x_mod10",
+    "source_y_mod12",
+    "target_y_mod12",
+    "vertical_gap_delay",
+    "horizontal_gap_delay",
+    "route_class",
+    "route_detour",
+    "forced_detour",
+    "source_projection",
+    "target_projection",
+    "source_fixed",
+    "target_fixed",
+    "source_y_mod100",
+    "target_y_mod100",
+    "first_dx",
+    "first_dy",
+    "last_dx",
+    "last_dy",
+    "remaining_dx",
+    "remaining_dy",
+    "remaining_abs_dx",
+    "remaining_abs_dy",
+    "remaining_dx_mod12",
+    "remaining_dy_mod12",
+    "remaining_dx_mod4",
+    "remaining_dy_mod4",
+    "source_lane",
+    "target_lane",
+    "relaxed_port_distance",
+    "source_access_e",
+    "source_access_w",
+    "source_access_n",
+    "source_access_s",
+    "target_access_e",
+    "target_access_w",
+    "target_access_n",
+    "target_access_s",
+    "source_boundary_x",
+    "source_boundary_y",
+    "target_boundary_x",
+    "target_boundary_y",
+    "source_adjusted_x_mod10",
+    "target_adjusted_x_mod10",
+    "source_adjusted_y_mod12",
+    "target_adjusted_y_mod12",
+    "remaining_dx_mod10",
+    "remaining_abs_dx_mod10",
+    "remaining_abs_dy_mod12",
+    "long_source_access_e",
+    "long_source_access_w",
+    "long_source_access_n",
+    "long_source_access_s",
+    "long_target_access_e",
+    "long_target_access_w",
+    "long_target_access_n",
+    "long_target_access_s",
+    "route_upper_bound",
+    "bound_available",
+    "bound_to_v6_ratio",
+    "bound_minus_v6",
+    "joint_remainder_10_12",
+    "joint_remainder_4_4",
+    "signed_remainder_class",
+    "horizontal_long_hops",
+    "vertical_long_hops",
+    "hop_balance",
+    "source_phase_10_12",
+    "target_phase_10_12",
+    "port_pair",
+    "family_pair",
+    "source_boundary_phase",
+    "target_boundary_phase",
+    "adjusted_manhattan",
+    "axis_minimum",
+    "axis_maximum",
+    "distance_over_bound",
+    "bound_gap_fraction"
+  ],
+  "hypothesis": "joint long-wire residue phases and endpoint interactions explain medium-range residuals",
+  "candidates": [
+    {
+      "leaves": 127,
+      "trees": 512,
+      "weighted": true,
+      "validation_score": 97.1360680602906,
+      "medium_distance_score": 95.62580742696848,
+      "uncovered_score": 96.12488170067053,
+      "model": "out/v16/lattice-127.txt",
+      "model_text_bytes": 42826991
+    },
+    {
+      "leaves": 127,
+      "trees": 1024,
+      "weighted": true,
+      "validation_score": 97.17544231298521,
+      "medium_distance_score": 95.68947365580769,
+      "uncovered_score": 96.23093735993724,
+      "model": "out/v16/lattice-127.txt",
+      "model_text_bytes": 42826991
+    },
+    {
+      "leaves": 127,
+      "trees": 1536,
+      "weighted": true,
+      "validation_score": 97.19741133693294,
+      "medium_distance_score": 95.72243406991582,
+      "uncovered_score": 96.26847387097995,
+      "model": "out/v16/lattice-127.txt",
+      "model_text_bytes": 42826991
+    },
+    {
+      "leaves": 127,
+      "trees": 2048,
+      "weighted": true,
+      "validation_score": 97.20782886840902,
+      "medium_distance_score": 95.73703948573066,
+      "uncovered_score": 96.28260019966129,
+      "model": "out/v16/lattice-127.txt",
+      "model_text_bytes": 42826991
+    },
+    {
+      "leaves": 127,
+      "trees": 3072,
+      "weighted": true,
+      "validation_score": 97.21096785459588,
+      "medium_distance_score": 95.74115953160576,
+      "uncovered_score": 96.2855470246032,
+      "model": "out/v16/lattice-127.txt",
+      "model_text_bytes": 42826991
+    },
+    {
+      "leaves": 255,
+      "trees": 512,
+      "weighted": true,
+      "validation_score": 97.19912173736898,
+      "medium_distance_score": 95.7147874020043,
+      "uncovered_score": 96.23448747125748,
+      "model": "out/v16/lattice-255.txt",
+      "model_text_bytes": 57388076
+    },
+    {
+      "leaves": 255,
+      "trees": 1024,
+      "weighted": true,
+      "validation_score": 97.2219637459501,
+      "medium_distance_score": 95.74909746008967,
+      "uncovered_score": 96.27389001957752,
+      "model": "out/v16/lattice-255.txt",
+      "model_text_bytes": 57388076
+    },
+    {
+      "leaves": 255,
+      "trees": 1536,
+      "weighted": true,
+      "validation_score": 97.22442565996813,
+      "medium_distance_score": 95.7524886927565,
+      "uncovered_score": 96.27616794580835,
+      "model": "out/v16/lattice-255.txt",
+      "model_text_bytes": 57388076
+    },
+    {
+      "leaves": 255,
+      "trees": 2048,
+      "weighted": true,
+      "validation_score": 97.22490522129084,
+      "medium_distance_score": 95.75257400746143,
+      "uncovered_score": 96.27616794580835,
+      "model": "out/v16/lattice-255.txt",
+      "model_text_bytes": 57388076
+    }
+  ],
+  "lightgbm_version": "4.7.0",
+  "elapsed_seconds": 897.8455901249836,
+  "best": {
+    "leaves": 255,
+    "trees": 2048,
+    "weighted": true,
+    "validation_score": 97.22490522129084,
+    "medium_distance_score": 95.75257400746143,
+    "uncovered_score": 96.27616794580835,
+    "model": "out/v16/lattice-255.txt",
+    "model_text_bytes": 57388076
+  },
+  "feature_importance": {
+    "127": [
+      [
+        "bound_minus_v6",
+        2105878.0424580574
+      ],
+      [
+        "bound_gap_fraction",
+        1411205.492758751
+      ],
+      [
+        "relaxed_port_distance",
+        511274.2844018936
+      ],
+      [
+        "bound_to_v6_ratio",
+        447604.8260817528
+      ],
+      [
+        "remaining_abs_dy_mod12",
+        269195.078417778
+      ],
+      [
+        "joint_remainder_10_12",
+        261263.96276664734
+      ],
+      [
+        "distance_over_bound",
+        229284.27655935287
+      ],
+      [
+        "route_upper_bound",
+        217217.50665283203
+      ],
+      [
+        "joint_remainder_4_4",
+        214171.72521400452
+      ],
+      [
+        "axis_minimum",
+        168247.32003831863
+      ],
+      [
+        "remaining_abs_dx",
+        159930.52103710175
+      ],
+      [
+        "v3_delay",
+        155972.08308196068
+      ],
+      [
+        "remaining_dy_mod4",
+        155662.4251408577
+      ],
+      [
+        "source_projection",
+        148338.0771460533
+      ],
+      [
+        "axis_maximum",
+        147359.80331134796
+      ],
+      [
+        "target_port",
+        127250.83207130432
+      ],
+      [
+        "source_port",
+        123196.49118185043
+      ],
+      [
+        "source_x",
+        122316.4292268753
+      ],
+      [
+        "source_y_mod100",
+        114596.92458581924
+      ],
+      [
+        "target_y_mod100",
+        113692.70096206665
+      ],
+      [
+        "family_pair",
+        108354.89841079712
+      ],
+      [
+        "remaining_dy_mod12",
+        107927.63325309753
+      ],
+      [
+        "remaining_dx",
+        107876.99870252609
+      ],
+      [
+        "signed_remainder_class",
+        101470.76885604858
+      ],
+      [
+        "manhattan",
+        101224.97039556503
+      ]
+    ],
+    "255": [
+      [
+        "bound_minus_v6",
+        2195864.531145096
+      ],
+      [
+        "bound_gap_fraction",
+        1411789.5226278305
+      ],
+      [
+        "relaxed_port_distance",
+        554601.2437705994
+      ],
+      [
+        "bound_to_v6_ratio",
+        448837.1917872429
+      ],
+      [
+        "distance_over_bound",
+        332889.1774778366
+      ],
+      [
+        "joint_remainder_10_12",
+        300831.57353544235
+      ],
+      [
+        "remaining_abs_dy_mod12",
+        285542.1962771416
+      ],
+      [
+        "joint_remainder_4_4",
+        232885.54812335968
+      ],
+      [
+        "route_upper_bound",
+        232377.64919996262
+      ],
+      [
+        "v3_delay",
+        182923.5722784996
+      ],
+      [
+        "source_projection",
+        174198.52076482773
+      ],
+      [
+        "remaining_abs_dx",
+        172915.8588461876
+      ],
+      [
+        "remaining_dy_mod4",
+        156611.20188045502
+      ],
+      [
+        "axis_minimum",
+        155692.32094573975
+      ],
+      [
+        "source_y_mod100",
+        150173.9203248024
+      ],
+      [
+        "axis_maximum",
+        149083.87739610672
+      ],
+      [
+        "source_x",
+        148866.41251468658
+      ],
+      [
+        "target_port",
+        145071.64132213593
+      ],
+      [
+        "target_x",
+        143643.84478330612
+      ],
+      [
+        "target_y_mod100",
+        135125.36050128937
+      ],
+      [
+        "remaining_dy_mod12",
+        133094.77706098557
+      ],
+      [
+        "family_pair",
+        130215.15095949173
+      ],
+      [
+        "source_port",
+        125751.03373765945
+      ],
+      [
+        "port_pair",
+        123640.02324056625
+      ],
+      [
+        "source_lane",
+        122600.9679069519
+      ]
+    ]
+  }
+}

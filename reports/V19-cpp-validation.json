@@ -1,0 +1,32 @@
+{
+  "metrics": {
+    "rows": 150053,
+    "exact_matches": 7334,
+    "positive_delay_score": 97.40821522441175,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.0039603960396039604,
+    "relative_error_p95": 0.02049530315969257,
+    "relative_error_p99": 0.04114285714285714,
+    "max_relative_error": 0.5631313131313131,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "cpp_equals_python": true,
+  "sha256": "6299c29fdd1ed9fd2cd20f0a7f93bd0a563c5243841d55081f37653d1ab75dac",
+  "command": [
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/build/estimate",
+    "-in",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/validation.request.csv",
+    "-out",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/evaluation/validation.v19-cpp.csv",
+    "--algorithm",
+    "v19-tree",
+    "--local-oracle",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/local-oracle/factorized-20-planes.bin",
+    "--cycle-oracle",
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/local-oracle/long-tail-12-dict.bin"
+  ],
+  "holdout_used": false,
+  "wall_seconds": 7.370804250007495,
+  "stderr": "rows=150053 cpu_seconds=7.11937 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d\ncache_hits=0 cache_misses=150053\n"
+}

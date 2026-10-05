@@ -1,0 +1,10 @@
+{
+  "source": "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src/v19_tree_model.hpp",
+  "source_bytes": 10199014,
+  "nodes": 388608,
+  "bytecode_bytes": 3110400,
+  "threshold_policy": "greatest float32 not above original float64 threshold; exact for float32 features",
+  "trees": 1536,
+  "python_validation_score": 97.40821522441175,
+  "holdout_used": false
+}

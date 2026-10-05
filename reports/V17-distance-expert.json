@@ -1,0 +1,95 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "routing_rule": "manhattan distance <150; no label-based gate",
+  "baseline_score": 97.35637470798495,
+  "development_expert_rows": 253269,
+  "validation_expert_rows": 54029,
+  "candidates": [
+    {
+      "target": "absolute",
+      "trees": 512,
+      "validation_score": 97.3099604607374,
+      "expert_score": 95.92652417427738,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-absolute.txt",
+      "model_text_bytes": 28137309
+    },
+    {
+      "target": "absolute",
+      "trees": 1024,
+      "validation_score": 97.32456160137029,
+      "expert_score": 95.96707545146896,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-absolute.txt",
+      "model_text_bytes": 28137309
+    },
+    {
+      "target": "absolute",
+      "trees": 1536,
+      "validation_score": 97.3363154633031,
+      "expert_score": 95.99971907331286,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-absolute.txt",
+      "model_text_bytes": 28137309
+    },
+    {
+      "target": "absolute",
+      "trees": 2048,
+      "validation_score": 97.34227130353068,
+      "expert_score": 96.01626003638216,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-absolute.txt",
+      "model_text_bytes": 28137309
+    },
+    {
+      "target": "relative",
+      "trees": 512,
+      "validation_score": 97.34120004660954,
+      "expert_score": 96.01328486906853,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-relative.txt",
+      "model_text_bytes": 28354323
+    },
+    {
+      "target": "relative",
+      "trees": 1024,
+      "validation_score": 97.35001964864915,
+      "expert_score": 96.037779265501,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-relative.txt",
+      "model_text_bytes": 28354323
+    },
+    {
+      "target": "relative",
+      "trees": 1536,
+      "validation_score": 97.35188151606195,
+      "expert_score": 96.04295016984666,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-relative.txt",
+      "model_text_bytes": 28354323
+    },
+    {
+      "target": "relative",
+      "trees": 2048,
+      "validation_score": 97.35641820689165,
+      "expert_score": 96.05554977504143,
+      "baseline_expert_score": 96.05542896693011,
+      "model": "out/v17/expert-relative.txt",
+      "model_text_bytes": 28354323
+    }
+  ],
+  "best": {
+    "target": "relative",
+    "trees": 2048,
+    "validation_score": 97.35641820689165,
+    "expert_score": 96.05554977504143,
+    "baseline_expert_score": 96.05542896693011,
+    "model": "out/v17/expert-relative.txt",
+    "model_text_bytes": 28354323
+  },
+  "elapsed_seconds": 242.90349137500743,
+  "baseline_model": "V16 255-leaf/2048-tree candidate capped by V18 bounds",
+  "current_cpp_incumbent_score": 97.35923802126317,
+  "selected_for_cpp": false
+}

@@ -25,6 +25,10 @@ def main():
         source=source.replace(f' && algorithm!="v{version}-tree"','')
         source=source.replace(f' || algorithm=="v{version}-tree"','')
         source=source.replace(f'                algorithm=="v{version}-tree"?v{version}_tree_delay(from,to):\n','')
+    source=source.replace('#include "v19_tree_model.hpp"\n','')
+    source=remove_function(source,'v19_tree_delay')
+    source=source.replace('                algorithm=="v19-tree"?v19_tree_delay(from,to,route_upper):\n','')
+    source=source.replace('|v19-tree','').replace('algorithm=="v19-tree"','false').replace('algorithm!="v19-tree"','true')
     source=source.replace('#include <fstream>','#include <fstream>\n#include <filesystem>')
     source=source.replace('algorithm="v6-pair"','algorithm="v14-tree"')
     source=source.replace('        if(input.empty()', '''        if(algorithm=="v14-tree") {

@@ -1,0 +1,13 @@
+{
+  "fit_used_labels": false,
+  "holdout_used": false,
+  "before_score": 97.22350366143607,
+  "after_score": 97.35923802126318,
+  "bounds_lowered": 39058,
+  "predictions_changed": 4744,
+  "bound_exact_matches_before": 12860,
+  "bound_exact_matches_after": 15114,
+  "upper_bound_violations": 0,
+  "elapsed_seconds": 2.7490584169863723,
+  "proof": "Additional candidates concatenate the same validated entry witnesses, official straight long-wire cycles, turn arcs and translated tail witnesses. Expanded hop enumeration does not relax any boundary/Block/Gap certificate."
+}

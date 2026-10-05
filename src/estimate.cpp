@@ -17,6 +17,7 @@
 #include "v9_tree_model.hpp"
 #include "v10_tree_model.hpp"
 #include "v14_tree_model.hpp"
+#include "v19_tree_model.hpp"
 #include "cycle_path_oracle.hpp"
 #include <cstring>
 #include "local_path_oracle.hpp"
@@ -764,6 +765,30 @@ Distance v14_tree_delay(Node source,Node target,Distance upper) {
     return std::min(upper,static_cast<Distance>(std::max(0.0,std::nearbyint(anchor*(1.0+correction)))));
 }
 
+Distance v19_tree_delay(Node source,Node target,Distance upper) {
+    Distance base=v6_pair_delay(source,target);
+    if(source==target) return base;
+    auto original=topology_features(source,target);
+    std::array<float,77> feature{};std::copy(original.begin(),original.end(),feature.begin());
+    bool available=upper<INF;
+    feature[73]=available?float(upper):0.f;feature[74]=available?1.f:0.f;
+    feature[75]=available?float(double(upper)/std::max(1.0,double(base))):0.f;
+    feature[76]=available?float(double(upper)-double(base)):0.f;
+    double anchor=v19_tree_model::slack_anchor && available?double(upper):double(base);
+    double correction=0.;
+    for(uint32_t root:v19_tree_model::roots) {
+        uint32_t node=root;
+        while(v19_tree_model::code[node]!=255) {
+            auto f=v19_tree_model::code[node];float threshold;
+            std::memcpy(&threshold,v19_tree_model::code.data()+node+3,4);
+            uint32_t right=v19_tree_model::code[node+1]|(uint32_t(v19_tree_model::code[node+2])<<8);
+            node+=feature[f]<=threshold?7:right;
+        }
+        double value;std::memcpy(&value,v19_tree_model::code.data()+node+1,8);correction+=value;
+    }
+    return std::min(upper,static_cast<Distance>(std::max(0.0,std::nearbyint(anchor*(1.0+correction)))));
+}
+
 class Solver {
     const Graph& graph;
     Frontier forward,backward;
@@ -962,12 +987,13 @@ std::string_view trim_view(std::string_view s) {
 int main(int argc,char** argv) {
     try {
         std::string input,output,stats_path,trace_path,oracle_path,cycle_path,algorithm="v6-pair";
-        bool cache_enabled=true;
+        bool cache_enabled=true,cycle_extra_hops=false;
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--no-cache] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree|v19-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--cycle-extra-hops] [--no-cache] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
+            if(arg=="--cycle-extra-hops") {cycle_extra_hops=true;continue;}
             if(arg=="--no-cache") {cache_enabled=false;continue;}
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
             if(arg=="-in") input=argv[++i];
@@ -983,7 +1009,7 @@ int main(int argc,char** argv) {
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
         if(!trace_path.empty() && (algorithm!="compressed" || trace_path==input || trace_path==output || trace_path==stats_path))
             throw std::runtime_error("Trace requires compressed algorithm and a distinct file");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused" && algorithm!="v6-pair" && algorithm!="v7-tree" && algorithm!="v9-tree" && algorithm!="v10-tree" && algorithm!="v14-tree") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused" && algorithm!="v6-pair" && algorithm!="v7-tree" && algorithm!="v9-tree" && algorithm!="v10-tree" && algorithm!="v14-tree" && algorithm!="v19-tree") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
@@ -1005,19 +1031,19 @@ int main(int argc,char** argv) {
             trace<<"row,delay,steps,hops,long_hops,turns,detour\n";
         }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused" || algorithm=="v6-pair" || algorithm=="v7-tree" || algorithm=="v9-tree" || algorithm=="v10-tree" || algorithm=="v14-tree";
+        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused" || algorithm=="v6-pair" || algorithm=="v7-tree" || algorithm=="v9-tree" || algorithm=="v10-tree" || algorithm=="v14-tree" || algorithm=="v19-tree";
         if(!oracle_path.empty() && (!fast || oracle_path==input || oracle_path==output || oracle_path==stats_path))
             throw std::runtime_error("Path oracle requires an estimate algorithm and distinct files");
         std::unique_ptr<LocalPathOracle> local_oracle;
         if(!oracle_path.empty()) local_oracle=std::make_unique<LocalPathOracle>(oracle_path);
         if(!cycle_path.empty() && (!fast || cycle_path==input || cycle_path==output || cycle_path==stats_path))
             throw std::runtime_error("Cycle oracle requires an estimate algorithm and distinct files");
-        if(algorithm=="v14-tree" && (oracle_path.empty() || cycle_path.empty()))
-            throw std::runtime_error("V14 requires --local-oracle and --cycle-oracle assets");
+        if((algorithm=="v14-tree" || algorithm=="v19-tree") && (oracle_path.empty() || cycle_path.empty()))
+            throw std::runtime_error("Tree route model requires --local-oracle and --cycle-oracle assets");
         std::unique_ptr<CyclePathOracle> cycle_oracle;
         if(!cycle_path.empty()) cycle_oracle=std::make_unique<CyclePathOracle>(cycle_path);
         std::unique_ptr<PredictionCache> cache;
-        if(cache_enabled && algorithm=="v14-tree") cache=std::make_unique<PredictionCache>();
+        if(cache_enabled && (algorithm=="v14-tree" || algorithm=="v19-tree")) cache=std::make_unique<PredictionCache>();
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
         if(!fast) graph=std::make_unique<Graph>();
@@ -1042,9 +1068,9 @@ int main(int argc,char** argv) {
             Distance d=INF;uint64_t cache_key=(uint64_t(from)<<32)|to;
             if(!cache || !cache->get(cache_key,d)) {
             Distance route_upper=INF;
-            if(algorithm=="v14-tree") {
+            if(algorithm=="v14-tree" || algorithm=="v19-tree") {
                 route_upper=std::min(route_upper,local_oracle->upper_bound(from,to));
-                route_upper=cycle_oracle->cap(from,to,route_upper);
+                route_upper=cycle_oracle->cap(from,to,route_upper,algorithm=="v19-tree");
             }
             d=trace.is_open()?route.delay:
                 algorithm=="approximate"?lookup_delay(from,to):
@@ -1066,9 +1092,11 @@ int main(int argc,char** argv) {
                 algorithm=="v9-tree"?v9_tree_delay(from,to):
                 algorithm=="v10-tree"?v10_tree_delay(from,to):
                 algorithm=="v14-tree"?v14_tree_delay(from,to,route_upper):
+                algorithm=="v19-tree"?v19_tree_delay(from,to,route_upper):
                 compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
-            if(local_oracle && algorithm!="v14-tree") d=std::min(d,local_oracle->upper_bound(from,to));
-            if(cycle_oracle && algorithm!="v14-tree") d=cycle_oracle->cap(from,to,d);
+            if(local_oracle && algorithm!="v14-tree" && algorithm!="v19-tree") d=std::min(d,local_oracle->upper_bound(from,to));
+            if(cycle_oracle && algorithm!="v14-tree" && algorithm!="v19-tree") d=cycle_oracle->cap(from,to,d);
+                if(cycle_extra_hops && cycle_oracle) d=cycle_oracle->cap(from,to,d,true);
                 if(cache) cache->put(cache_key,d);
             }
             if(d>=INF) throw std::runtime_error("Unreachable query: "+std::string(s)+" -> "+std::string(t)+"; official output convention unspecified");
