@@ -1,0 +1,11 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "nonzero_fraction": 0.06939460021627825,
+  "asset_bytes": 5505712,
+  "exact_roundtrip": true,
+  "sha256": "d5a6e27d5c21890d54c4526ad8708d2c0b0ad40b53861fae4c4f95b5cb24ac28",
+  "v86_64_files_plus_increment_bytes": 103118524,
+  "cpu_seconds": 1.617201,
+  "scope": "New third-band storage feasibility; current runtime cannot load TRVFI001. No validation or throughput claim."
+}

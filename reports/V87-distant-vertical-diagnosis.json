@@ -1,0 +1,99 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "bands": [
+    96,
+    108
+  ],
+  "domain_radius": 144,
+  "cost_limit": 5000,
+  "recurrence_comparison": [
+    {
+      "direction": "south",
+      "periods": 6,
+      "method": "near",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 4.109409979696328,
+      "p95_absolute_error_ps": 24.0,
+      "exact_fraction": 0.6917724885240113,
+      "mean_signed_error_ps": 1.5269802701271187
+    },
+    {
+      "direction": "south",
+      "periods": 6,
+      "method": "far",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 0.2307569738700565,
+      "p95_absolute_error_ps": 2.0,
+      "exact_fraction": 0.927676608845339,
+      "mean_signed_error_ps": 0.2276320842161017
+    },
+    {
+      "direction": "south",
+      "periods": 7,
+      "method": "near",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 5.520244802701272,
+      "p95_absolute_error_ps": 30.0,
+      "exact_fraction": 0.6682195665607344,
+      "mean_signed_error_ps": 2.4383756510416665
+    },
+    {
+      "direction": "south",
+      "periods": 7,
+      "method": "far",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 0.6666715770656779,
+      "p95_absolute_error_ps": 6.0,
+      "exact_fraction": 0.8944695113877119,
+      "mean_signed_error_ps": 0.6612210341631356
+    },
+    {
+      "direction": "north",
+      "periods": 6,
+      "method": "near",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 1.8074571305614406,
+      "p95_absolute_error_ps": 11.0,
+      "exact_fraction": 0.7634160376942091,
+      "mean_signed_error_ps": 0.4543944760769774
+    },
+    {
+      "direction": "north",
+      "periods": 6,
+      "method": "far",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 0.07658440368997176,
+      "p95_absolute_error_ps": 0.0,
+      "exact_fraction": 0.96068083509887,
+      "mean_signed_error_ps": 0.07415921830861581
+    },
+    {
+      "direction": "north",
+      "periods": 7,
+      "method": "near",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 2.373088254766949,
+      "p95_absolute_error_ps": 15.0,
+      "exact_fraction": 0.747769575388418,
+      "mean_signed_error_ps": 0.7073296257062147
+    },
+    {
+      "direction": "north",
+      "periods": 7,
+      "method": "far",
+      "entries": 18124800,
+      "mean_absolute_error_ps": 0.2176716984463277,
+      "p95_absolute_error_ps": 1.0,
+      "exact_fraction": 0.9395946438029661,
+      "mean_signed_error_ps": 0.21297713629943502
+    }
+  ],
+  "growth_slope_change_fraction_from_far": 0.08293807379943503,
+  "asset_bytes": 14904576,
+  "asset_sha256": "45e74ef686bb071aef1ef161e46ebd6b5844d4866a12ee320ead98d72b82278a",
+  "exact_roundtrip": true,
+  "compression_cpu_seconds": 4.598145000000001,
+  "v86_64_files_if_replacing_patch_bytes": 100061564,
+  "scope": "Finite nominal architecture evidence, not physical route or validation improvement; TRVFD002 stores firstperiod6 and is not yet supported by runtime."
+}

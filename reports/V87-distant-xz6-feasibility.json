@@ -1,0 +1,9 @@
+{
+  "source_bytes": 14904576,
+  "asset_bytes": 10775132,
+  "exact_roundtrip": true,
+  "asset_sha256": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+  "compression_cpu_seconds": 33.496348,
+  "v86_64_files_if_replacing_patch_bytes": 95932120,
+  "scope": "Offline lossless compression feasibility only, unchanged decoded architecture coefficients; no runtime validation or accuracy improvement."
+}
