@@ -1,0 +1,27 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline_score": 98.56154968244421,
+  "candidates": [
+    {
+      "trees": 64,
+      "python_score": 98.91670490807434,
+      "cpp_score": 98.91670490807434,
+      "prediction_mismatches": 0
+    },
+    {
+      "trees": 128,
+      "python_score": 98.93797862675395,
+      "cpp_score": 98.93797862675395,
+      "prediction_mismatches": 0
+    },
+    {
+      "trees": 256,
+      "python_score": 98.9591603250425,
+      "cpp_score": 98.9591603250425,
+      "prediction_mismatches": 0
+    }
+  ],
+  "elapsed_seconds": 90.2276463750004,
+  "scope": "New transient-baseline residual models; full validation and C++ parity, no standalone throughput or official acceptance yet."
+}

@@ -14,7 +14,7 @@ class CoreTemplateModel {
     std::array<Distance,120>xgap{};
     std::array<Distance,550>ygap{};
     bool envelope,has_far=false;
-    unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX;
+    unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX,far_period=4;
     std::unique_ptr<VerticalTransientModel>vertical;
     std::unique_ptr<HorizontalTransientModel>horizontal;
     struct JointCell {int32_t base[4];int32_t slope_x,slope_y;};
@@ -41,8 +41,8 @@ class CoreTemplateModel {
                     unsigned iy=(ry>0?12:0)+std::abs(ry)-24;
                     const auto& cell=short_vertical[((size_t(index[port])*160+end.first)*59+rx+29)*24+iy];
                     if(ny==1)value=cell.base[0];else if(ny==2)value=cell.base[1];
-                    else if(ny==3)value=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))/2;
-                    else if(ny==4)value=cell.base[2];else value=cell.base[3]+int64_t(ny-5)*cell.slope;
+                    else if(unsigned(ny)<far_period)value=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))*(ny-2)/int(far_period-2);
+                    else if(unsigned(ny)==far_period)value=cell.base[2];else value=cell.base[3]+(int64_t(ny)-far_period-1)*cell.slope;
                     value+=end.second;
                 }else if((!joint.empty() || !far_joint.empty()) && nx>0 && ny>0){
                     unsigned ix=(rx>0?10:0)+std::abs(rx)-20,iy=(ry>0?12:0)+std::abs(ry)-24;
@@ -51,9 +51,9 @@ class CoreTemplateModel {
                         const auto& cell=far_joint[ji];int64_t v;
                         if(ny==1)v=cell.base[0];
                         else if(ny==2)v=cell.base[1];
-                        else if(ny==3)v=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))/2;
-                        else if(ny==4)v=cell.base[2];
-                        else v=cell.base[3]+int64_t(ny-5)*cell.slope_far_y;
+                        else if(unsigned(ny)<far_period)v=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))*(ny-2)/int(far_period-2);
+                        else if(unsigned(ny)==far_period)v=cell.base[2];
+                        else v=cell.base[3]+(int64_t(ny)-far_period-1)*cell.slope_far_y;
                         if(nx>=2)v+=cell.horizontal_delta+int64_t(nx-2)*cell.slope_x;
                         value=v+end.second;
                     }else{
@@ -79,7 +79,7 @@ public:
         short_vertical.resize(size_t(160)*160*59*24);
         for(unsigned s=0;s<160;++s)for(unsigned t=0;t<160;++t)for(int x=-29;x<=29;++x)for(unsigned iy=0;iy<24;++iy){
             int sy=iy<12?-1:1,r=iy%12,y=sy*(24+r);auto& cell=short_vertical[((size_t(s)*160+t)*59+x+29)*24+iy];
-            unsigned bands[4]={36,48,72,84};int v[4];
+            unsigned bands[4]={36,48,24+12*far_period,36+12*far_period};int v[4];
             for(unsigned b=0;b<4;++b){v[b]=vertical->correction(s,t,x,sy*(bands[b]+r),growth_cap);int base=int(at(s,t,x,y))+v[b];if(base<0 || base>65535)throw std::runtime_error("Short joint base overflow");cell.base[b]=uint16_t(base);}
             int slope=std::max(0,v[3]-v[2]);if(slope>65535)throw std::runtime_error("Short joint slope overflow");cell.slope=uint16_t(slope);
         }
@@ -94,7 +94,7 @@ public:
             size_t ji=(size_t(source)*160+target)*480+ix*24+iy;
             if(has_far){
                 auto& fc=far_joint[ji];
-                int32_t vf[2]={vertical->correction(source,target,x,sy*(72+iy%12),growth_cap),vertical->correction(source,target,x,sy*(84+iy%12),growth_cap)};
+                int32_t vf[2]={vertical->correction(source,target,x,sy*(24+12*int(far_period)+int(iy%12)),growth_cap),vertical->correction(source,target,x,sy*(36+12*int(far_period)+int(iy%12)),growth_cap)};
                 int32_t bases[4]={int32_t(at(source,target,x,y))+h[0]+v[0],int32_t(at(source,target,x,y))+h[0]+v[1],int32_t(at(source,target,x,y))+h[0]+vf[0],int32_t(at(source,target,x,y))+h[0]+vf[1]};
                 for(unsigned b=0;b<4;++b){if(bases[b]<0 || bases[b]>65535)throw std::runtime_error("Compact joint base overflow");fc.base[b]=uint16_t(bases[b]);}
                 int delta=h[1]-h[0];if(delta < -32768 || delta>32767)throw std::runtime_error("Compact joint delta overflow");fc.horizontal_delta=int16_t(delta);
@@ -120,7 +120,7 @@ public:
         index.fill(-1);for(unsigned i=0;i<160;++i){if(ports[i]>=496 || index[ports[i]]>=0)throw std::runtime_error("Invalid core ports");index[ports[i]]=i;terminal[ports[i]].push_back({i,0});}
         if(!transient_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Transient requires original anchor policy");vertical=std::make_unique<VerticalTransientModel>(transient_path,ports);}
         if(!horizontal_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Horizontal transient requires original anchors");horizontal=std::make_unique<HorizontalTransientModel>(horizontal_path,ports);}
-        if(!far_path.empty()){if(!vertical || cap!=UINT_MAX)throw std::runtime_error("Far delta requires vertical transient and unlimited growth cap");vertical->load_far_delta(far_path,ports);has_far=true;}
+        if(!far_path.empty()){if(!vertical || cap!=UINT_MAX)throw std::runtime_error("Far delta requires vertical transient and unlimited growth cap");vertical->load_far_delta(far_path,ports);far_period=vertical->first_far_period();has_far=true;}
         for(auto arc:archdata::ARCS)if(index[arc.from]>=0)terminal[arc.to].push_back({unsigned(index[arc.from]),unsigned(arc.delay)});
         std::vector<unsigned char>compressed((std::istreambuf_iterator<char>(f)),{});
         if(f.bad() || compressed.empty() || compressed.size()>100000000)throw std::runtime_error("Invalid core payload size");
