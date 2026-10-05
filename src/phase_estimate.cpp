@@ -13,10 +13,10 @@ int main(int argc,char** argv) {
  try {
     auto directory=std::filesystem::absolute(argv[0]).parent_path();
     std::string input,output,phase=(directory/"phase-bounds.bin").string(),tail=(directory/"long-tail.bin").string(),certificate;
-    double error=.00024,weight=1;bool use_cache=true,progress=false;
+    double error=.00024,weight=1;bool use_cache=true,progress=false,dense=false;
     for(int i=1;i<argc;++i) {
         std::string arg=argv[i];if(arg=="--help"){std::cout<<"phase_estimate -in requests.csv -out result.csv [--phase-bounds file] [--cycle-oracle file] [--relative-error number] [--weighted factor (research, no certificate)] [--no-cache] [--certificate file (no-cache)] [--progress]\n";return 0;}
-        if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--progress"){progress=true;continue;}
+        if(arg=="--dense-phase"){dense=true;continue;}if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--progress"){progress=true;continue;}
         if(i+1==argc)throw std::runtime_error("Missing argument");
         if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--phase-bounds")phase=argv[++i];else if(arg=="--cycle-oracle")tail=argv[++i];else if(arg=="--weighted")weight=std::stod(argv[++i]);else if(arg=="--relative-error")error=std::stod(argv[++i]);else if(arg=="--certificate")certificate=argv[++i];else throw std::runtime_error("Unknown option");
     }
@@ -25,7 +25,8 @@ int main(int argc,char** argv) {
     auto normalized=[](const std::string& p){return std::filesystem::weakly_canonical(std::filesystem::absolute(p));};
     if(normalized(output)==normalized(input) || normalized(output)==normalized(phase) || normalized(output)==normalized(tail))throw std::runtime_error("Output must be distinct from inputs/assets");
     if(!certificate.empty() && (use_cache || normalized(certificate)==normalized(input) || normalized(certificate)==normalized(output) || normalized(certificate)==normalized(phase) || normalized(certificate)==normalized(tail)))throw std::runtime_error("Certificates require --no-cache and distinct files");
-    auto begin=std::clock();PhaseLowerBound bounds(phase);CyclePathOracle upper(tail);Graph graph;CompactSolver solver(graph);FastPinParser parser;
+    auto begin=std::clock();PhaseLowerBound bounds(phase,dense);CyclePathOracle upper(tail);Graph graph;CompactSolver solver(graph);FastPinParser parser;
+    double initialization=double(std::clock()-begin)/CLOCKS_PER_SEC;
     std::unique_ptr<PredictionCache> cache;if(use_cache)cache=std::make_unique<PredictionCache>();
     std::ifstream in(input);std::ofstream out(output),cert;std::vector<char> buffer(1<<20);out.rdbuf()->pubsetbuf(buffer.data(),buffer.size());
     if(!certificate.empty()){cert.open(certificate);cert<<"row,lower,upper,settled,relaxations\n";}
@@ -41,6 +42,6 @@ int main(int argc,char** argv) {
         if(progress && rows%1000==0)std::cerr<<"progress="<<rows<<" cpu="<<double(std::clock()-begin)/CLOCKS_PER_SEC<<'\n';
     }
     out.flush();if(cert.is_open())cert.flush();if(in.bad() || !out || (cert.is_open() && !cert))throw std::runtime_error("CSV I/O failure");
-    std::cerr<<"rows="<<rows<<" cpu_seconds="<<double(std::clock()-begin)/CLOCKS_PER_SEC<<" arch_sha256="<<archdata::HASH<<'\n';if(cache)std::cerr<<"cache_hits="<<cache->hits<<" cache_misses="<<cache->misses<<'\n';
+    std::cerr<<"rows="<<rows<<" cpu_seconds="<<double(std::clock()-begin)/CLOCKS_PER_SEC<<" initialization_seconds="<<initialization<<" arch_sha256="<<archdata::HASH<<'\n';if(cache)std::cerr<<"cache_hits="<<cache->hits<<" cache_misses="<<cache->misses<<'\n';
  }catch(const std::exception& e){std::cerr<<"error: "<<e.what()<<'\n';return 1;}
 }

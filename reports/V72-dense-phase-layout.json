@@ -1,0 +1,63 @@
+{
+  "rows": 1001,
+  "holdout_used": false,
+  "runs": [
+    {
+      "dense_layout": false,
+      "cpu_seconds": 3.43004,
+      "initialization_seconds": 0.154466,
+      "query_cpu_seconds": 3.2755739999999998,
+      "maximum_rss_bytes": 381894656,
+      "prediction_sha256": "0c9810733b7e76bde14018515b8fb6b2c10a5a5d0ac64d8063b03b59fa6e588c",
+      "certificate_sha256": "015e101e41bb33d553e8e38e253b3e7756361dce7f5d38407359d64498933ac9"
+    },
+    {
+      "dense_layout": true,
+      "cpu_seconds": 3.25765,
+      "initialization_seconds": 0.152287,
+      "query_cpu_seconds": 3.105363,
+      "maximum_rss_bytes": 534593536,
+      "prediction_sha256": "0c9810733b7e76bde14018515b8fb6b2c10a5a5d0ac64d8063b03b59fa6e588c",
+      "certificate_sha256": "015e101e41bb33d553e8e38e253b3e7756361dce7f5d38407359d64498933ac9"
+    },
+    {
+      "dense_layout": false,
+      "cpu_seconds": 3.44253,
+      "initialization_seconds": 0.121941,
+      "query_cpu_seconds": 3.320589,
+      "maximum_rss_bytes": 382271488,
+      "prediction_sha256": "0c9810733b7e76bde14018515b8fb6b2c10a5a5d0ac64d8063b03b59fa6e588c",
+      "certificate_sha256": "015e101e41bb33d553e8e38e253b3e7756361dce7f5d38407359d64498933ac9"
+    },
+    {
+      "dense_layout": true,
+      "cpu_seconds": 3.2664,
+      "initialization_seconds": 0.15339,
+      "query_cpu_seconds": 3.11301,
+      "maximum_rss_bytes": 534544384,
+      "prediction_sha256": "0c9810733b7e76bde14018515b8fb6b2c10a5a5d0ac64d8063b03b59fa6e588c",
+      "certificate_sha256": "015e101e41bb33d553e8e38e253b3e7756361dce7f5d38407359d64498933ac9"
+    },
+    {
+      "dense_layout": false,
+      "cpu_seconds": 3.50499,
+      "initialization_seconds": 0.12414,
+      "query_cpu_seconds": 3.3808499999999997,
+      "maximum_rss_bytes": 383713280,
+      "prediction_sha256": "0c9810733b7e76bde14018515b8fb6b2c10a5a5d0ac64d8063b03b59fa6e588c",
+      "certificate_sha256": "015e101e41bb33d553e8e38e253b3e7756361dce7f5d38407359d64498933ac9"
+    },
+    {
+      "dense_layout": true,
+      "cpu_seconds": 3.29672,
+      "initialization_seconds": 0.156115,
+      "query_cpu_seconds": 3.140605,
+      "maximum_rss_bytes": 534593536,
+      "prediction_sha256": "0c9810733b7e76bde14018515b8fb6b2c10a5a5d0ac64d8063b03b59fa6e588c",
+      "certificate_sha256": "015e101e41bb33d553e8e38e253b3e7756361dce7f5d38407359d64498933ac9"
+    }
+  ],
+  "scope": "Fixed validation pilot, same certified search and .00024 bound. Timing is actual pilot CPU; no billion extrapolation or official acceptance.",
+  "identical_predictions": true,
+  "identical_certificates": true
+}

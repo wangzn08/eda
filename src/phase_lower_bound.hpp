@@ -16,11 +16,12 @@ class PhaseLowerBound {
     std::array<Group,2> groups;
     std::array<int,archdata::P> input_index;
     unsigned input_count=160;
+    std::vector<std::array<int32_t,4>> dense;
 
     std::array<uint64_t,archdata::WIDTH> xgap{};
     std::array<uint64_t,archdata::HEIGHT> ygap{};
 public:
-    explicit PhaseLowerBound(const std::string& path) {
+    explicit PhaseLowerBound(const std::string& path,bool dense_layout=false) {
         std::ifstream f(path,std::ios::binary);if(!f)throw std::runtime_error("Cannot open phase bounds");
         auto read=[&](void* p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated phase bounds");};
         char magic[8],hash[64];read(magic,8);read(hash,64);
@@ -46,6 +47,7 @@ public:
             int value=prediction+delta;if(value<0 || value>65535)throw std::runtime_error("Invalid decoded phase value");g.values[n]=uint16_t(value);
         }
         if(zeros || cursor!=stream.size())throw std::runtime_error("Trailing phase data");
+        if(dense_layout){dense.resize(size_t(archdata::P)*input_count*120);for(unsigned target=0;target<archdata::P;++target)for(unsigned pi=0;pi<input_count;++pi)for(unsigned phase=0;phase<120;++phase)for(unsigned k=0;k<4;++k){size_t row=(k*archdata::P+target)*input_count+pi;dense[(size_t(target)*input_count+pi)*120+phase][k]=int32_t(g.base[row])+g.values[g.ids[row]*120+phase];}}
         for(const auto& b:archdata::BLOCKS)if(b.vcross || (b.hcross && (b.left!=76 || b.right!=89 || b.hdelay<292)))throw std::runtime_error("Phase proof requires official crossing geometry");
         for(const auto& line:archdata::LINES) {if(line.vertical){for(int x=line.site+1;x<archdata::WIDTH;++x)if(x>=0)xgap[x]+=line.delay;}else{for(int y=line.site+1;y<archdata::HEIGHT;++y)if(y>=0)ygap[y]+=line.delay;}}
     }
@@ -58,7 +60,7 @@ public:
         unsigned phase=unsigned(mod(a.x-b.x,int(g.px))*12+mod(a.y-b.y,12));int64_t h=0;
         for(size_t k=0;k<4;++k) {
             size_t row=(k*archdata::P+target)*input_count+pi;
-            int64_t residual=int64_t(g.base[row])+g.values[g.ids[row]*g.px*12+phase];
+            int64_t residual=dense.empty()?int64_t(g.base[row])+g.values[g.ids[row]*g.px*12+phase]:dense[(size_t(target)*input_count+pi)*120+phase][k];
             int64_t value=int64_t(potential_lower_model::ax[k])*dx+int64_t(potential_lower_model::ay[k])*dy+residual;
             h=std::max(h,(value+11)/12);
         }
