@@ -1,0 +1,101 @@
+{
+  "fit_split": "development",
+  "selection_split": "validation",
+  "holdout_used": false,
+  "baseline_score": 96.93292509763232,
+  "scope": "Distance specialists anchored at the same PDB; CPU export pending",
+  "candidates": [
+    {
+      "ceiling": 50,
+      "trees": 64,
+      "training_rows": 44193,
+      "validation_rows_routed": 9182,
+      "score": 96.84400069553469
+    },
+    {
+      "ceiling": 50,
+      "trees": 128,
+      "training_rows": 44193,
+      "validation_rows_routed": 9182,
+      "score": 96.88031685317914
+    },
+    {
+      "ceiling": 50,
+      "trees": 256,
+      "training_rows": 44193,
+      "validation_rows_routed": 9182,
+      "score": 96.89892503693889
+    },
+    {
+      "ceiling": 50,
+      "trees": 512,
+      "training_rows": 44193,
+      "validation_rows_routed": 9182,
+      "score": 96.916639931652
+    },
+    {
+      "ceiling": 100,
+      "trees": 64,
+      "training_rows": 143978,
+      "validation_rows_routed": 30537,
+      "score": 96.64931125553777
+    },
+    {
+      "ceiling": 100,
+      "trees": 128,
+      "training_rows": 143978,
+      "validation_rows_routed": 30537,
+      "score": 96.77069765687985
+    },
+    {
+      "ceiling": 100,
+      "trees": 256,
+      "training_rows": 143978,
+      "validation_rows_routed": 30537,
+      "score": 96.86207934115943
+    },
+    {
+      "ceiling": 100,
+      "trees": 512,
+      "training_rows": 143978,
+      "validation_rows_routed": 30537,
+      "score": 96.91498138213123
+    },
+    {
+      "ceiling": 200,
+      "trees": 64,
+      "training_rows": 352061,
+      "validation_rows_routed": 75189,
+      "score": 96.37268696031786
+    },
+    {
+      "ceiling": 200,
+      "trees": 128,
+      "training_rows": 352061,
+      "validation_rows_routed": 75189,
+      "score": 96.57153920767415
+    },
+    {
+      "ceiling": 200,
+      "trees": 256,
+      "training_rows": 352061,
+      "validation_rows_routed": 75189,
+      "score": 96.76535837542968
+    },
+    {
+      "ceiling": 200,
+      "trees": 512,
+      "training_rows": 352061,
+      "validation_rows_routed": 75189,
+      "score": 96.88521624482068
+    }
+  ],
+  "best": {
+    "ceiling": 50,
+    "trees": 512,
+    "training_rows": 44193,
+    "validation_rows_routed": 9182,
+    "score": 96.916639931652
+  },
+  "state": "complete"
+}

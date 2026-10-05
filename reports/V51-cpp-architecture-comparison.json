@@ -1,0 +1,99 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "architecture": "Small PDB anchored latent route model; precompiled endpoint phases, int16 tables, hard minimum, vectorized output-channel loops",
+  "scope": "Approximate research models, not per-query certified; 10m no-cache throughput is not billion or official acceptance",
+  "candidates": [
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 88,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 96.64027476320852,
+        "exact_fraction": 0.03741344724863881,
+        "mean_relative_error": 0.008558150989710545,
+        "p99_relative_error": 0.08021308326742795,
+        "runtime": {
+          "cpu_seconds": 0.475073,
+          "rss_bytes": 171540480,
+          "initialization_seconds": 0.18446
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "unquantized_python_mismatch_rows": 558,
+        "unquantized_python_max_abs_difference_ps": 1.0
+      },
+      "speed10m_cpu_seconds": 19.6999,
+      "model_bytes": 30543252,
+      "runtime_file_bytes": 78260278,
+      "model_sha256": "17c89005c831c0eae909be8822c9dd3f21dde078aebf2c8221c9c2ba59b3e275",
+      "within_10m_36s_budget": true,
+      "model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 88,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 96.78528316324332,
+        "exact_fraction": 0.039992535970623716,
+        "mean_relative_error": 0.00818716353786328,
+        "p99_relative_error": 0.07649477683691822,
+        "runtime": {
+          "cpu_seconds": 0.722536,
+          "rss_bytes": 171638784,
+          "initialization_seconds": 0.165625
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "unquantized_python_mismatch_rows": 615,
+        "unquantized_python_max_abs_difference_ps": 1.0
+      },
+      "speed10m_cpu_seconds": 38.6684,
+      "model_bytes": 30643860,
+      "runtime_file_bytes": 78360886,
+      "model_sha256": "7dab79b76dae8cd36187eac16631122e7889727492ae8dd710e3739cc02fc933",
+      "within_10m_36s_budget": false,
+      "model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 88,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 96.77206502893864,
+        "exact_fraction": 0.03732014688143523,
+        "mean_relative_error": 0.008226884165326718,
+        "p99_relative_error": 0.07898220463268991,
+        "runtime": {
+          "cpu_seconds": 0.425408,
+          "rss_bytes": 163938304,
+          "initialization_seconds": 0.160964
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "unquantized_python_mismatch_rows": 568,
+        "unquantized_python_max_abs_difference_ps": 1.0
+      },
+      "speed10m_cpu_seconds": 17.3083,
+      "model_bytes": 15289492,
+      "runtime_file_bytes": 63006518,
+      "model_sha256": "65ae4bdaab9a91057b41371cf27e64b8fbbdd2ead335f18dc3da0ce505759331",
+      "within_10m_36s_budget": true,
+      "model": "out/v51/h64-r64.bin"
+    }
+  ],
+  "state": "complete"
+}

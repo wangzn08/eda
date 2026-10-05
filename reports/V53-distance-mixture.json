@@ -1,0 +1,161 @@
+{
+  "fit_split": "development",
+  "gate_selection_split": "validation",
+  "holdout_used": false,
+  "baseline_score": 96.93292509763232,
+  "scope": "Exploratory gate selection on reused validation; CPU not yet measured",
+  "candidates": [
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 50,
+      "score": 96.84350890310331,
+      "route_rows": 140871,
+      "route_model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 100,
+      "score": 97.05667032038922,
+      "route_rows": 119516,
+      "route_model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 150,
+      "score": 97.10885551658305,
+      "route_rows": 96024,
+      "route_model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 200,
+      "score": 97.08153492210779,
+      "route_rows": 74864,
+      "route_model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 250,
+      "score": 97.0514747514003,
+      "route_rows": 56243,
+      "route_model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 300,
+      "score": 97.01790666811993,
+      "route_rows": 40467,
+      "route_model": "out/v51/h64-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 50,
+      "score": 96.95409659149912,
+      "route_rows": 140871,
+      "route_model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 100,
+      "score": 97.1207524778892,
+      "route_rows": 119516,
+      "route_model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 150,
+      "score": 97.14698271558156,
+      "route_rows": 96024,
+      "route_model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 200,
+      "score": 97.11217715529632,
+      "route_rows": 74864,
+      "route_model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 250,
+      "score": 97.07135870767476,
+      "route_rows": 56243,
+      "route_model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 300,
+      "score": 97.03242949973806,
+      "route_rows": 40467,
+      "route_model": "out/v51/h128-r128.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 50,
+      "score": 96.94273022039266,
+      "route_rows": 140871,
+      "route_model": "out/v51/h64-r64.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 100,
+      "score": 97.10930867601455,
+      "route_rows": 119516,
+      "route_model": "out/v51/h64-r64.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 150,
+      "score": 97.1350430382625,
+      "route_rows": 96024,
+      "route_model": "out/v51/h64-r64.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 200,
+      "score": 97.09668504901303,
+      "route_rows": 74864,
+      "route_model": "out/v51/h64-r64.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 250,
+      "score": 97.05890013498221,
+      "route_rows": 56243,
+      "route_model": "out/v51/h64-r64.bin"
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 300,
+      "score": 97.02182282111451,
+      "route_rows": 40467,
+      "route_model": "out/v51/h64-r64.bin"
+    }
+  ],
+  "best": {
+    "hidden": 128,
+    "routes": 128,
+    "route_min_distance": 150,
+    "score": 97.14698271558156,
+    "route_rows": 96024,
+    "route_model": "out/v51/h128-r128.bin"
+  }
+}

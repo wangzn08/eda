@@ -1,0 +1,97 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "scope": "Validation-selected mixtures; no per-query certificates; billion CPU is extrapolated",
+  "candidates": [
+    {
+      "hidden": 64,
+      "routes": 128,
+      "route_min_distance": 150,
+      "score": 97.10885551658305,
+      "route_rows": 96024,
+      "route_model": "out/v51/h64-r128.bin",
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.10885538881526,
+        "exact_fraction": 0.0362671855944233,
+        "mean_relative_error": 0.007315440568653358,
+        "p99_relative_error": 0.06413247873710416,
+        "runtime": {
+          "cpu_seconds": 0.516976,
+          "rss_bytes": 174948352,
+          "initialization_seconds": 0.213721
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance."
+      },
+      "reference_mismatch_rows": 2,
+      "reference_max_abs_difference_ps": 1,
+      "speed10m_cpu_seconds": 20.1838,
+      "estimated_billion_cpu_seconds": 1998.2905240000002,
+      "runtime_file_bytes": 80399730
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "route_min_distance": 150,
+      "score": 97.14698271558156,
+      "route_rows": 96024,
+      "route_model": "out/v51/h128-r128.bin",
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.14698271558156,
+        "exact_fraction": 0.03837977248039026,
+        "mean_relative_error": 0.0072198275255287055,
+        "p99_relative_error": 0.06411789576719945,
+        "runtime": {
+          "cpu_seconds": 0.664553,
+          "rss_bytes": 175013888,
+          "initialization_seconds": 0.203993
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance."
+      },
+      "reference_mismatch_rows": 0,
+      "reference_max_abs_difference_ps": 0,
+      "speed10m_cpu_seconds": 30.8894,
+      "estimated_billion_cpu_seconds": 3068.7158839999997,
+      "runtime_file_bytes": 80500338
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "route_min_distance": 150,
+      "score": 97.1350430382625,
+      "route_rows": 96024,
+      "route_model": "out/v51/h64-r64.bin",
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.13504250722768,
+        "exact_fraction": 0.036273849906366416,
+        "mean_relative_error": 0.007249689177711509,
+        "p99_relative_error": 0.0640989428822129,
+        "runtime": {
+          "cpu_seconds": 0.481084,
+          "rss_bytes": 167313408,
+          "initialization_seconds": 0.200568
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance."
+      },
+      "reference_mismatch_rows": 1,
+      "reference_max_abs_difference_ps": 1,
+      "speed10m_cpu_seconds": 19.2259,
+      "estimated_billion_cpu_seconds": 1902.7781200000002,
+      "runtime_file_bytes": 65145970
+    }
+  ]
+}
