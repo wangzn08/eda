@@ -1,0 +1,50 @@
+{
+  "scope": "Architecture-only finite-window exact storage; extrapolated distances remain approximate",
+  "source": "out/architecture-benchmark/periodic-dense.raw.bin",
+  "arch_sha256": "902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d",
+  "source_core_ports": 160,
+  "target_core_ports": 160,
+  "original_bytes": 664878472,
+  "core_raw_bytes": 214477192,
+  "unreachable_core_values": 0,
+  "residual_plane": "floor(12.5*abs(dx)+(127/12 if dy>0 else 125/12)*abs(dy))",
+  "per_pair_bit_width_histogram": {
+    "8": 2181,
+    "9": 20794,
+    "10": 2625
+  },
+  "estimated_packed_core_bytes": 121295448,
+  "mean_bit_width": 9.01734375,
+  "tiled_residual_storage": {
+    "4": {
+      "payload_bytes": 94414782,
+      "blocks": 6912000,
+      "max_bit_width": 10,
+      "estimated_file_bytes": 142799174
+    },
+    "8": {
+      "payload_bytes": 103598021,
+      "blocks": 1843200,
+      "max_bit_width": 10,
+      "estimated_file_bytes": 116500813
+    },
+    "16": {
+      "payload_bytes": 108612386,
+      "blocks": 512000,
+      "max_bit_width": 10,
+      "estimated_file_bytes": 112196778
+    }
+  },
+  "pairwise_zlib_payload_bytes": {
+    "raw_core_zlib1_pair_bytes": 149414451,
+    "delta2d_zlib1_pair_bytes": 109909556,
+    "delta2d_zlib6_pair_bytes": 106154095
+  },
+  "pairwise_zlib_index_bytes": 205192,
+  "constant_offset_dictionary": {
+    "unique_patterns": 25600,
+    "zlib6_payload_bytes": 106116183,
+    "estimated_file_bytes": 106474975
+  },
+  "limitations": "Destination local-arc reconstruction must be verified before replacing the original model; compression alone does not raise accuracy"
+}

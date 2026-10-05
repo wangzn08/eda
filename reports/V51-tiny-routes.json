@@ -1,0 +1,531 @@
+{
+  "fit_split": "development",
+  "selection_split": "validation",
+  "holdout_used": false,
+  "device": "mps",
+  "architecture": "PDB anchored hard-min latent route experts; small ReLU geometry; endpoint-phase factors compiled to int16 lookup tables for CPU inference; latent routes are not path witnesses",
+  "candidates": [
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 1,
+      "validation_score": 94.1284823197698,
+      "weights": "out/v51/h64-r128-e1.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 6.45230116599123
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 8,
+      "validation_score": 92.9258892424102,
+      "weights": "out/v51/h64-r128-e8.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 31.360540832974948
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 16,
+      "validation_score": 92.8804050276907,
+      "weights": "out/v51/h64-r128-e16.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 59.902847207995364
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 24,
+      "validation_score": 93.04803600436706,
+      "weights": "out/v51/h64-r128-e24.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 88.39078575000167
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 32,
+      "validation_score": 93.29268043682231,
+      "weights": "out/v51/h64-r128-e32.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 116.87984399998095
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 40,
+      "validation_score": 93.6658427495939,
+      "weights": "out/v51/h64-r128-e40.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 145.97813899998437
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 48,
+      "validation_score": 94.11767627271875,
+      "weights": "out/v51/h64-r128-e48.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 176.89538516598986
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 56,
+      "validation_score": 94.8412694976195,
+      "weights": "out/v51/h64-r128-e56.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 209.53712954098592
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 64,
+      "validation_score": 95.51375848401183,
+      "weights": "out/v51/h64-r128-e64.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 242.14105058298446
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 72,
+      "validation_score": 96.16693348114923,
+      "weights": "out/v51/h64-r128-e72.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 274.60621908298344
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 80,
+      "validation_score": 96.55014778844256,
+      "weights": "out/v51/h64-r128-e80.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 307.13498058298137
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 88,
+      "validation_score": 96.64029273696723,
+      "weights": "out/v51/h64-r128-e88.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 339.41728933298145
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 96,
+      "validation_score": 96.62227072271486,
+      "weights": "out/v51/h64-r128-e96.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 371.367859082995
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 104,
+      "validation_score": 96.62022301182863,
+      "weights": "out/v51/h64-r128-e104.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 403.17878295798437
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 112,
+      "validation_score": 96.6199929650495,
+      "weights": "out/v51/h64-r128-e112.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 435.1251092499879
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 120,
+      "validation_score": 96.61756199246403,
+      "weights": "out/v51/h64-r128-e120.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 466.98607341598836
+    },
+    {
+      "hidden": 64,
+      "routes": 128,
+      "epoch": 128,
+      "validation_score": 96.61429974231777,
+      "weights": "out/v51/h64-r128-e128.pt",
+      "unquantized_weights_bytes": 793721,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 498.7932541659975
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 1,
+      "validation_score": 94.09941952003801,
+      "weights": "out/v51/h128-r128-e1.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 503.2624837499752
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 8,
+      "validation_score": 92.91024326321563,
+      "weights": "out/v51/h128-r128-e8.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 532.2663009160024
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 16,
+      "validation_score": 92.9354803155838,
+      "weights": "out/v51/h128-r128-e16.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 565.5508404579887
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 24,
+      "validation_score": 93.11172012693481,
+      "weights": "out/v51/h128-r128-e24.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 599.2235689160007
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 32,
+      "validation_score": 93.32412214320662,
+      "weights": "out/v51/h128-r128-e32.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 633.5541337079776
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 40,
+      "validation_score": 93.78404906436776,
+      "weights": "out/v51/h128-r128-e40.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 667.5230155829922
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 48,
+      "validation_score": 94.22386343300535,
+      "weights": "out/v51/h128-r128-e48.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 701.8258409159898
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 56,
+      "validation_score": 94.87859417040688,
+      "weights": "out/v51/h128-r128-e56.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 735.6280054579838
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 64,
+      "validation_score": 95.64112980442323,
+      "weights": "out/v51/h128-r128-e64.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 770.2978122909844
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 72,
+      "validation_score": 96.23675282059097,
+      "weights": "out/v51/h128-r128-e72.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 805.7312450829777
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 80,
+      "validation_score": 96.70047825852714,
+      "weights": "out/v51/h128-r128-e80.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 842.2008787079831
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 88,
+      "validation_score": 96.78530501958801,
+      "weights": "out/v51/h128-r128-e88.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 876.1073829160014
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 96,
+      "validation_score": 96.77425684398065,
+      "weights": "out/v51/h128-r128-e96.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 908.9002146249986
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 104,
+      "validation_score": 96.76838715523537,
+      "weights": "out/v51/h128-r128-e104.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 943.7479379159922
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 112,
+      "validation_score": 96.7666850805775,
+      "weights": "out/v51/h128-r128-e112.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 973.7103203329898
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 120,
+      "validation_score": 96.76782018372167,
+      "weights": "out/v51/h128-r128-e120.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 1003.1822536659893
+    },
+    {
+      "hidden": 128,
+      "routes": 128,
+      "epoch": 128,
+      "validation_score": 96.76427238492367,
+      "weights": "out/v51/h128-r128-e128.pt",
+      "unquantized_weights_bytes": 894329,
+      "estimated_int16_phase_table_bytes": 30474240,
+      "elapsed_seconds": 1032.6831372499873
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 1,
+      "validation_score": 94.2099732786477,
+      "weights": "out/v51/h64-r64-e1.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1034.7109194999794
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 8,
+      "validation_score": 93.20074753908906,
+      "weights": "out/v51/h64-r64-e8.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1047.9687224999943
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 16,
+      "validation_score": 93.3571789350382,
+      "weights": "out/v51/h64-r64-e16.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1062.9757779999927
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 24,
+      "validation_score": 93.43765020249334,
+      "weights": "out/v51/h64-r64-e24.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1077.9262576659967
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 32,
+      "validation_score": 93.6515789038015,
+      "weights": "out/v51/h64-r64-e32.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1092.9943835829908
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 40,
+      "validation_score": 94.08695545084866,
+      "weights": "out/v51/h64-r64-e40.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1108.1910471659794
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 48,
+      "validation_score": 94.51472234052558,
+      "weights": "out/v51/h64-r64-e48.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1122.9708435829962
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 56,
+      "validation_score": 95.13880753455578,
+      "weights": "out/v51/h64-r64-e56.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1137.819088499993
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 64,
+      "validation_score": 95.7516023052992,
+      "weights": "out/v51/h64-r64-e64.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1152.6350164159958
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 72,
+      "validation_score": 96.30885637238934,
+      "weights": "out/v51/h64-r64-e72.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1167.5511947499763
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 80,
+      "validation_score": 96.66996143070804,
+      "weights": "out/v51/h64-r64-e80.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1183.2075503749948
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 88,
+      "validation_score": 96.7720437086865,
+      "weights": "out/v51/h64-r64-e88.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1197.868527374987
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 96,
+      "validation_score": 96.76261848576335,
+      "weights": "out/v51/h64-r64-e96.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1212.64478379098
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 104,
+      "validation_score": 96.76799539552518,
+      "weights": "out/v51/h64-r64-e104.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1227.4681249159912
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 112,
+      "validation_score": 96.76755325774333,
+      "weights": "out/v51/h64-r64-e112.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1241.9272581659898
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 120,
+      "validation_score": 96.76429938049951,
+      "weights": "out/v51/h64-r64-e120.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1257.8836509159883
+    },
+    {
+      "hidden": 64,
+      "routes": 64,
+      "epoch": 128,
+      "validation_score": 96.76353940901927,
+      "weights": "out/v51/h64-r64-e128.pt",
+      "unquantized_weights_bytes": 433017,
+      "estimated_int16_phase_table_bytes": 15237120,
+      "elapsed_seconds": 1273.8181039999763
+    }
+  ],
+  "best": {
+    "hidden": 128,
+    "routes": 128,
+    "epoch": 88,
+    "validation_score": 96.78530501958801,
+    "weights": "out/v51/h128-r128-e88.pt",
+    "unquantized_weights_bytes": 894329,
+    "estimated_int16_phase_table_bytes": 30474240,
+    "elapsed_seconds": 876.1073829160014
+  },
+  "state": "complete",
+  "elapsed_seconds": 1273.819324207987
+}
