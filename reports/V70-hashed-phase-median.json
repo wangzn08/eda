@@ -1,0 +1,57 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline_score": 97.88730487461888,
+  "candidates": [
+    {
+      "bits": 14,
+      "epochs": 1,
+      "table_bytes": 327680,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 14,
+      "epochs": 2,
+      "table_bytes": 327680,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 14,
+      "epochs": 3,
+      "table_bytes": 327680,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 14,
+      "epochs": 4,
+      "table_bytes": 327680,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 16,
+      "epochs": 1,
+      "table_bytes": 1310720,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 16,
+      "epochs": 2,
+      "table_bytes": 1310720,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 16,
+      "epochs": 3,
+      "table_bytes": 1310720,
+      "validation_score": 97.88730487461888
+    },
+    {
+      "bits": 16,
+      "epochs": 4,
+      "table_bytes": 1310720,
+      "validation_score": 97.88730487461888
+    }
+  ],
+  "elapsed_seconds": 6.0385362500001065,
+  "scope": "Additive hashed residuals keyed by port/period/distance/obstacle phase, regularized development fitting. Validation selection optimistic; no C++ throughput evidence yet."
+}
