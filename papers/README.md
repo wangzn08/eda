@@ -53,3 +53,15 @@ Petelin, Betz, *The Speed of Diversity: Exploring Complex FPGA Routing Topologie
 [作者公开稿](https://www.eecg.utoronto.ca/~vaughn/papers/fpl2016_complex_routing.pdf)，已下载 `Petelin_Betz_2016_Complex_Routing.pdf`。重点阅读第 II-D 与 IV-D 节及图 4：从少量参考导线运行按延时排序的 Dijkstra，并按导线类型、方向和相对位移建立路由前瞻表。
 
 该文说明导线类型、连接拓扑和长导线入口对延时估算的重要性；这些基本思路已有研究依据。本项目新增候选集中在逐端口可行路径的平移证书、入口路径银行、可重复长导线组合，以及由有效上界约束学习模型。前瞻估计与本题的最短路标签、逐条误差评分任务不同，不能把论文结论直接当成本题性能。现代 [VTR 路由前瞻文档](https://docs.verilogtorouting.org/en/latest/api/vprinternals/router_lookahead/) 可用于核对已有实现概念。
+
+## 2026-10-05 新架构参考（已下载，已阅读相关方法章节）
+
+| 论文 | 本地 PDF | 本轮用途 |
+|---|---|---|
+| [CatBoost (NeurIPS 2018)](https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.html) | `CatBoost_2018.pdf` | 类别端口/端口对模型对照 |
+| [Revisiting Deep Learning Models for Tabular Data (2021)](https://arxiv.org/abs/2106.11959) | `Tabular_DL_2021.pdf` | 表格残差神经网络参照 |
+| [Min-Max-Plus Neural Networks (2021)](https://arxiv.org/abs/2102.06358) | `Min_Max_Plus_NN_2021.pdf` | 结构化 min/max-plus 学习思路 |
+| [Min-plus algebraic low rank matrix approximation (2017)](https://arxiv.org/abs/1708.06552) | `Min_Plus_Low_Rank_2017.pdf` | 潜在路线和距离分解 |
+| [Transit Node Routing Reconsidered (2013)](https://arxiv.org/abs/1302.5611) | `Transit_Node_Routing_2013.pdf` | 长线中转节点、入口/出口分解 |
+
+方法差异、实际实验与创新边界见 [V20–V35 研究报告](../reports/V20-V35-architecture-research.md)。不能把参考论文的基础方法宣称为我们的原创。

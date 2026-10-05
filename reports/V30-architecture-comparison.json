@@ -1,0 +1,192 @@
+{
+  "fit_split": "development",
+  "selection_split": "validation",
+  "holdout_used": false,
+  "macro_budget": 65536,
+  "lower_bound_violations": 0,
+  "upper_bound_violations": 0,
+  "models": {
+    "phase": {
+      "epoch": 104,
+      "tau": 0.1583122325612065,
+      "v19_weight": 0.25,
+      "validation_score": 97.83965039269918,
+      "model": "out/v27/minplus-104.pt",
+      "model_bytes": 930678
+    },
+    "minplus": {
+      "epoch": 88,
+      "tau": 0.03800743082206897,
+      "v19_weight": 0.25,
+      "validation_score": 97.67981691870192,
+      "model": "out/v24/minplus-88.pt",
+      "model_bytes": 807305
+    },
+    "interval": {
+      "routes": 128,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.25,
+      "validation_score": 97.65357786878901,
+      "model": "out/v26/interval-128-88.pt",
+      "model_bytes": 1131145
+    },
+    "mlp": {
+      "graph_embedding": true,
+      "epoch": 36,
+      "v19_weight": 0.5,
+      "validation_score": 97.51713232387,
+      "model": "out/v21/neural-1-36.pt",
+      "model_bytes": 1504886
+    },
+    "transit": {
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.5,
+      "validation_score": 97.55361475146111,
+      "model": "out/v28/minplus-104.pt",
+      "model_bytes": 685005
+    }
+  },
+  "candidates": [
+    {
+      "name": "phase-macro",
+      "validation_score": 97.91918859412645,
+      "weights": {
+        "phase": 1
+      }
+    },
+    {
+      "name": "minplus-macro",
+      "validation_score": 97.76889439011002,
+      "weights": {
+        "minplus": 1
+      }
+    },
+    {
+      "name": "interval-macro",
+      "validation_score": 97.74468481602365,
+      "weights": {
+        "interval": 1
+      }
+    },
+    {
+      "name": "mlp-macro",
+      "validation_score": 97.6227669421233,
+      "weights": {
+        "mlp": 1
+      }
+    },
+    {
+      "name": "transit-macro",
+      "validation_score": 97.65587799698483,
+      "weights": {
+        "transit": 1
+      }
+    },
+    {
+      "name": "phase-minplus-0.25",
+      "validation_score": 97.94726150212504,
+      "weights": {
+        "phase": 0.75,
+        "minplus": 0.25
+      }
+    },
+    {
+      "name": "phase-minplus-0.5",
+      "validation_score": 97.92944382576582,
+      "weights": {
+        "phase": 0.5,
+        "minplus": 0.5
+      }
+    },
+    {
+      "name": "phase-minplus-0.75",
+      "validation_score": 97.86847478687008,
+      "weights": {
+        "phase": 0.25,
+        "minplus": 0.75
+      }
+    },
+    {
+      "name": "phase-interval-0.25",
+      "validation_score": 97.95210771532452,
+      "weights": {
+        "phase": 0.75,
+        "interval": 0.25
+      }
+    },
+    {
+      "name": "phase-interval-0.5",
+      "validation_score": 97.93065996728475,
+      "weights": {
+        "phase": 0.5,
+        "interval": 0.5
+      }
+    },
+    {
+      "name": "phase-interval-0.75",
+      "validation_score": 97.85915706821288,
+      "weights": {
+        "phase": 0.25,
+        "interval": 0.75
+      }
+    },
+    {
+      "name": "phase-mlp-0.25",
+      "validation_score": 97.9194548823254,
+      "weights": {
+        "phase": 0.75,
+        "mlp": 0.25
+      }
+    },
+    {
+      "name": "phase-mlp-0.5",
+      "validation_score": 97.8640272228295,
+      "weights": {
+        "phase": 0.5,
+        "mlp": 0.5
+      }
+    },
+    {
+      "name": "phase-mlp-0.75",
+      "validation_score": 97.76331424534085,
+      "weights": {
+        "phase": 0.25,
+        "mlp": 0.75
+      }
+    },
+    {
+      "name": "phase-transit-0.25",
+      "validation_score": 97.92294638178454,
+      "weights": {
+        "phase": 0.75,
+        "transit": 0.25
+      }
+    },
+    {
+      "name": "phase-transit-0.5",
+      "validation_score": 97.87579024034704,
+      "weights": {
+        "phase": 0.5,
+        "transit": 0.5
+      }
+    },
+    {
+      "name": "phase-transit-0.75",
+      "validation_score": 97.78438737543594,
+      "weights": {
+        "phase": 0.25,
+        "transit": 0.75
+      }
+    }
+  ],
+  "best": {
+    "name": "phase-interval-0.25",
+    "validation_score": 97.95210771532452,
+    "weights": {
+      "phase": 0.75,
+      "interval": 0.25
+    }
+  }
+}

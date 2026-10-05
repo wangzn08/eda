@@ -1,0 +1,722 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "device": "mps",
+  "baseline": 97.40821522441175,
+  "architecture": "Port embeddings with multiplicative endpoint interaction, optional graph spectral embeddings, Fourier numerical features and two residual MLP blocks.",
+  "candidates": [
+    {
+      "graph_embedding": false,
+      "epoch": 1,
+      "v19_weight": 0.0,
+      "validation_score": 96.6116269677428,
+      "model": "out/v21/neural-0-1.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 1,
+      "v19_weight": 0.25,
+      "validation_score": 96.86443340684552,
+      "model": "out/v21/neural-0-1.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 1,
+      "v19_weight": 0.5,
+      "validation_score": 97.0876633948705,
+      "model": "out/v21/neural-0-1.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 1,
+      "v19_weight": 0.75,
+      "validation_score": 97.27311776502722,
+      "model": "out/v21/neural-0-1.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 4,
+      "v19_weight": 0.0,
+      "validation_score": 96.95035211366105,
+      "model": "out/v21/neural-0-4.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 4,
+      "v19_weight": 0.25,
+      "validation_score": 97.10637280749371,
+      "model": "out/v21/neural-0-4.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 4,
+      "v19_weight": 0.5,
+      "validation_score": 97.23706283326409,
+      "model": "out/v21/neural-0-4.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 4,
+      "v19_weight": 0.75,
+      "validation_score": 97.33899513335315,
+      "model": "out/v21/neural-0-4.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 8,
+      "v19_weight": 0.0,
+      "validation_score": 97.04961823471204,
+      "model": "out/v21/neural-0-8.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 8,
+      "v19_weight": 0.25,
+      "validation_score": 97.18275528897796,
+      "model": "out/v21/neural-0-8.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 8,
+      "v19_weight": 0.5,
+      "validation_score": 97.28881404711395,
+      "model": "out/v21/neural-0-8.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 8,
+      "v19_weight": 0.75,
+      "validation_score": 97.36450965064142,
+      "model": "out/v21/neural-0-8.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 12,
+      "v19_weight": 0.0,
+      "validation_score": 97.17523165452104,
+      "model": "out/v21/neural-0-12.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 12,
+      "v19_weight": 0.25,
+      "validation_score": 97.28047400533231,
+      "model": "out/v21/neural-0-12.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 12,
+      "v19_weight": 0.5,
+      "validation_score": 97.35582176210859,
+      "model": "out/v21/neural-0-12.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 12,
+      "v19_weight": 0.75,
+      "validation_score": 97.39921014001422,
+      "model": "out/v21/neural-0-12.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 16,
+      "v19_weight": 0.0,
+      "validation_score": 97.29146252604627,
+      "model": "out/v21/neural-0-16.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 16,
+      "v19_weight": 0.25,
+      "validation_score": 97.3773678626508,
+      "model": "out/v21/neural-0-16.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 16,
+      "v19_weight": 0.5,
+      "validation_score": 97.42607440054084,
+      "model": "out/v21/neural-0-16.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 16,
+      "v19_weight": 0.75,
+      "validation_score": 97.43648737561071,
+      "model": "out/v21/neural-0-16.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 20,
+      "v19_weight": 0.0,
+      "validation_score": 97.31376715993581,
+      "model": "out/v21/neural-0-20.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 20,
+      "v19_weight": 0.25,
+      "validation_score": 97.39622295772816,
+      "model": "out/v21/neural-0-20.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 20,
+      "v19_weight": 0.5,
+      "validation_score": 97.43956702548539,
+      "model": "out/v21/neural-0-20.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 20,
+      "v19_weight": 0.75,
+      "validation_score": 97.44375867895512,
+      "model": "out/v21/neural-0-20.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 24,
+      "v19_weight": 0.0,
+      "validation_score": 97.31482699551893,
+      "model": "out/v21/neural-0-24.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 24,
+      "v19_weight": 0.25,
+      "validation_score": 97.40269999400411,
+      "model": "out/v21/neural-0-24.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 24,
+      "v19_weight": 0.5,
+      "validation_score": 97.44772248436418,
+      "model": "out/v21/neural-0-24.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 24,
+      "v19_weight": 0.75,
+      "validation_score": 97.44940677413872,
+      "model": "out/v21/neural-0-24.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 28,
+      "v19_weight": 0.0,
+      "validation_score": 97.36786241650377,
+      "model": "out/v21/neural-0-28.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 28,
+      "v19_weight": 0.25,
+      "validation_score": 97.44626948737086,
+      "model": "out/v21/neural-0-28.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 28,
+      "v19_weight": 0.5,
+      "validation_score": 97.47811262474734,
+      "model": "out/v21/neural-0-28.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 28,
+      "v19_weight": 0.75,
+      "validation_score": 97.46474693504732,
+      "model": "out/v21/neural-0-28.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 32,
+      "v19_weight": 0.0,
+      "validation_score": 97.4067387618389,
+      "model": "out/v21/neural-0-32.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 32,
+      "v19_weight": 0.25,
+      "validation_score": 97.47969273311328,
+      "model": "out/v21/neural-0-32.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 32,
+      "v19_weight": 0.5,
+      "validation_score": 97.50291942215527,
+      "model": "out/v21/neural-0-32.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 32,
+      "v19_weight": 0.75,
+      "validation_score": 97.47827968629605,
+      "model": "out/v21/neural-0-32.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 36,
+      "v19_weight": 0.0,
+      "validation_score": 97.40752282909581,
+      "model": "out/v21/neural-0-36.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 36,
+      "v19_weight": 0.25,
+      "validation_score": 97.48218755356778,
+      "model": "out/v21/neural-0-36.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 36,
+      "v19_weight": 0.5,
+      "validation_score": 97.50637012935294,
+      "model": "out/v21/neural-0-36.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 36,
+      "v19_weight": 0.75,
+      "validation_score": 97.48079011006169,
+      "model": "out/v21/neural-0-36.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 40,
+      "v19_weight": 0.0,
+      "validation_score": 97.41608735794863,
+      "model": "out/v21/neural-0-40.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 40,
+      "v19_weight": 0.25,
+      "validation_score": 97.48867401255421,
+      "model": "out/v21/neural-0-40.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 40,
+      "v19_weight": 0.5,
+      "validation_score": 97.5101472087964,
+      "model": "out/v21/neural-0-40.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": false,
+      "epoch": 40,
+      "v19_weight": 0.75,
+      "validation_score": 97.48240754974553,
+      "model": "out/v21/neural-0-40.pt",
+      "model_bytes": 1375862
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 1,
+      "v19_weight": 0.0,
+      "validation_score": 96.54954037267942,
+      "model": "out/v21/neural-1-1.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 1,
+      "v19_weight": 0.25,
+      "validation_score": 96.82484882103373,
+      "model": "out/v21/neural-1-1.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 1,
+      "v19_weight": 0.5,
+      "validation_score": 97.0671585120493,
+      "model": "out/v21/neural-1-1.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 1,
+      "v19_weight": 0.75,
+      "validation_score": 97.26666724727401,
+      "model": "out/v21/neural-1-1.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 4,
+      "v19_weight": 0.0,
+      "validation_score": 96.9927354958247,
+      "model": "out/v21/neural-1-4.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 4,
+      "v19_weight": 0.25,
+      "validation_score": 97.14642658910104,
+      "model": "out/v21/neural-1-4.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 4,
+      "v19_weight": 0.5,
+      "validation_score": 97.26964917669723,
+      "model": "out/v21/neural-1-4.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 4,
+      "v19_weight": 0.75,
+      "validation_score": 97.35794531381215,
+      "model": "out/v21/neural-1-4.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 8,
+      "v19_weight": 0.0,
+      "validation_score": 97.12908827833598,
+      "model": "out/v21/neural-1-8.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 8,
+      "v19_weight": 0.25,
+      "validation_score": 97.24739120086694,
+      "model": "out/v21/neural-1-8.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 8,
+      "v19_weight": 0.5,
+      "validation_score": 97.33516358398836,
+      "model": "out/v21/neural-1-8.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 8,
+      "v19_weight": 0.75,
+      "validation_score": 97.38976479945264,
+      "model": "out/v21/neural-1-8.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 12,
+      "v19_weight": 0.0,
+      "validation_score": 97.19077443272725,
+      "model": "out/v21/neural-1-12.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 12,
+      "v19_weight": 0.25,
+      "validation_score": 97.30459995973695,
+      "model": "out/v21/neural-1-12.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 12,
+      "v19_weight": 0.5,
+      "validation_score": 97.38059681881049,
+      "model": "out/v21/neural-1-12.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 12,
+      "v19_weight": 0.75,
+      "validation_score": 97.41608643562371,
+      "model": "out/v21/neural-1-12.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 16,
+      "v19_weight": 0.0,
+      "validation_score": 97.30159347909692,
+      "model": "out/v21/neural-1-16.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 16,
+      "v19_weight": 0.25,
+      "validation_score": 97.40066454143629,
+      "model": "out/v21/neural-1-16.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 16,
+      "v19_weight": 0.5,
+      "validation_score": 97.45151023299879,
+      "model": "out/v21/neural-1-16.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 16,
+      "v19_weight": 0.75,
+      "validation_score": 97.45427225407941,
+      "model": "out/v21/neural-1-16.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 20,
+      "v19_weight": 0.0,
+      "validation_score": 97.35516071061504,
+      "model": "out/v21/neural-1-20.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 20,
+      "v19_weight": 0.25,
+      "validation_score": 97.439934609532,
+      "model": "out/v21/neural-1-20.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 20,
+      "v19_weight": 0.5,
+      "validation_score": 97.47635823299947,
+      "model": "out/v21/neural-1-20.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 20,
+      "v19_weight": 0.75,
+      "validation_score": 97.46544026338222,
+      "model": "out/v21/neural-1-20.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 24,
+      "v19_weight": 0.0,
+      "validation_score": 97.31175885105304,
+      "model": "out/v21/neural-1-24.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 24,
+      "v19_weight": 0.25,
+      "validation_score": 97.41319082904322,
+      "model": "out/v21/neural-1-24.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 24,
+      "v19_weight": 0.5,
+      "validation_score": 97.46386407132837,
+      "model": "out/v21/neural-1-24.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 24,
+      "v19_weight": 0.75,
+      "validation_score": 97.46240528925233,
+      "model": "out/v21/neural-1-24.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 28,
+      "v19_weight": 0.0,
+      "validation_score": 97.39191029928466,
+      "model": "out/v21/neural-1-28.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 28,
+      "v19_weight": 0.25,
+      "validation_score": 97.47430949744627,
+      "model": "out/v21/neural-1-28.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 28,
+      "v19_weight": 0.5,
+      "validation_score": 97.50465733166892,
+      "model": "out/v21/neural-1-28.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 28,
+      "v19_weight": 0.75,
+      "validation_score": 97.48200972519544,
+      "model": "out/v21/neural-1-28.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 32,
+      "v19_weight": 0.0,
+      "validation_score": 97.3780116706678,
+      "model": "out/v21/neural-1-32.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 32,
+      "v19_weight": 0.25,
+      "validation_score": 97.46976596842043,
+      "model": "out/v21/neural-1-32.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 32,
+      "v19_weight": 0.5,
+      "validation_score": 97.50591974155081,
+      "model": "out/v21/neural-1-32.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 32,
+      "v19_weight": 0.75,
+      "validation_score": 97.48499985043695,
+      "model": "out/v21/neural-1-32.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 36,
+      "v19_weight": 0.0,
+      "validation_score": 97.3952841144246,
+      "model": "out/v21/neural-1-36.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 36,
+      "v19_weight": 0.25,
+      "validation_score": 97.48534051983553,
+      "model": "out/v21/neural-1-36.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 36,
+      "v19_weight": 0.5,
+      "validation_score": 97.51713232387,
+      "model": "out/v21/neural-1-36.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 36,
+      "v19_weight": 0.75,
+      "validation_score": 97.49100483421621,
+      "model": "out/v21/neural-1-36.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 40,
+      "v19_weight": 0.0,
+      "validation_score": 97.38785984097916,
+      "model": "out/v21/neural-1-40.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 40,
+      "v19_weight": 0.25,
+      "validation_score": 97.47995604405877,
+      "model": "out/v21/neural-1-40.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 40,
+      "v19_weight": 0.5,
+      "validation_score": 97.5143551840916,
+      "model": "out/v21/neural-1-40.pt",
+      "model_bytes": 1504886
+    },
+    {
+      "graph_embedding": true,
+      "epoch": 40,
+      "v19_weight": 0.75,
+      "validation_score": 97.49021092097931,
+      "model": "out/v21/neural-1-40.pt",
+      "model_bytes": 1504886
+    }
+  ],
+  "best": {
+    "graph_embedding": true,
+    "epoch": 36,
+    "v19_weight": 0.5,
+    "validation_score": 97.51713232387,
+    "model": "out/v21/neural-1-36.pt",
+    "model_bytes": 1504886
+  },
+  "elapsed_seconds": 110.52239779100637
+}

@@ -1,0 +1,19 @@
+{
+  "metrics": {
+    "rows": 150053,
+    "exact_matches": 6398,
+    "positive_delay_score": 97.87428645708057,
+    "zero_golden_rows": 0,
+    "zero_exact_matches": 0,
+    "relative_error_p50": 0.003067484662576687,
+    "relative_error_p95": 0.01748112832737386,
+    "relative_error_p99": 0.03611111111111111,
+    "max_relative_error": 0.4671717171717172,
+    "zero_policy": "Excluded from official-formula score because V0.3 does not define division by zero; correctness reported separately."
+  },
+  "python_cpp_different_rows": 4,
+  "maximum_difference_ps": 1.0,
+  "holdout_used": false,
+  "macro_budget": 0,
+  "stderr": "rows=150053 cpu_seconds=21.4331 arch_sha256=902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d\ncache_hits=0 cache_misses=150053\n"
+}

@@ -1,0 +1,434 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "device": "mps",
+  "architecture": "64 latent route costs: source potential + target potential + geometry cost; annealed soft minimum; predicted costs are estimates, not witnessed paths.",
+  "baseline": 97.40821522441175,
+  "candidates": [
+    {
+      "epoch": 1,
+      "tau": 0.4998741780569459,
+      "v19_weight": 0.0,
+      "validation_score": 94.37090651645451,
+      "model": "out/v24/minplus-1.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 1,
+      "tau": 0.4998741780569459,
+      "v19_weight": 0.25,
+      "validation_score": 95.41584919299862,
+      "model": "out/v24/minplus-1.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 1,
+      "tau": 0.4998741780569459,
+      "v19_weight": 0.5,
+      "validation_score": 96.35379917350906,
+      "model": "out/v24/minplus-1.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 1,
+      "tau": 0.4998741780569459,
+      "v19_weight": 0.75,
+      "validation_score": 97.08284123816655,
+      "model": "out/v24/minplus-1.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 8,
+      "tau": 0.491992569177931,
+      "v19_weight": 0.0,
+      "validation_score": 96.29639273856121,
+      "model": "out/v24/minplus-8.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 8,
+      "tau": 0.491992569177931,
+      "v19_weight": 0.25,
+      "validation_score": 96.77605711659844,
+      "model": "out/v24/minplus-8.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 8,
+      "tau": 0.491992569177931,
+      "v19_weight": 0.5,
+      "validation_score": 97.15012117213341,
+      "model": "out/v24/minplus-8.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 8,
+      "tau": 0.491992569177931,
+      "v19_weight": 0.75,
+      "validation_score": 97.37495182363618,
+      "model": "out/v24/minplus-8.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 16,
+      "tau": 0.4685159698893431,
+      "v19_weight": 0.0,
+      "validation_score": 96.66657874817236,
+      "model": "out/v24/minplus-16.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 16,
+      "tau": 0.4685159698893431,
+      "v19_weight": 0.25,
+      "validation_score": 96.99764229514562,
+      "model": "out/v24/minplus-16.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 16,
+      "tau": 0.4685159698893431,
+      "v19_weight": 0.5,
+      "validation_score": 97.24792459826044,
+      "model": "out/v24/minplus-16.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 16,
+      "tau": 0.4685159698893431,
+      "v19_weight": 0.75,
+      "validation_score": 97.39387087462032,
+      "model": "out/v24/minplus-16.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 24,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.0,
+      "validation_score": 96.81653758319636,
+      "model": "out/v24/minplus-24.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 24,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.25,
+      "validation_score": 97.0945183193638,
+      "model": "out/v24/minplus-24.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 24,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.5,
+      "validation_score": 97.29748752953847,
+      "model": "out/v24/minplus-24.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 24,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.75,
+      "validation_score": 97.40816846120765,
+      "model": "out/v24/minplus-24.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 32,
+      "tau": 0.38249999999999995,
+      "v19_weight": 0.0,
+      "validation_score": 97.27316271532517,
+      "model": "out/v24/minplus-32.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 32,
+      "tau": 0.38249999999999995,
+      "v19_weight": 0.25,
+      "validation_score": 97.41536172935572,
+      "model": "out/v24/minplus-32.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 32,
+      "tau": 0.38249999999999995,
+      "v19_weight": 0.5,
+      "validation_score": 97.48883275260982,
+      "model": "out/v24/minplus-32.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 32,
+      "tau": 0.38249999999999995,
+      "v19_weight": 0.75,
+      "validation_score": 97.48700226516861,
+      "model": "out/v24/minplus-32.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 40,
+      "tau": 0.3258224755990924,
+      "v19_weight": 0.0,
+      "validation_score": 97.24536687944853,
+      "model": "out/v24/minplus-40.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 40,
+      "tau": 0.3258224755990924,
+      "v19_weight": 0.25,
+      "validation_score": 97.3967983924737,
+      "model": "out/v24/minplus-40.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 40,
+      "tau": 0.3258224755990924,
+      "v19_weight": 0.5,
+      "validation_score": 97.4779186922659,
+      "model": "out/v24/minplus-40.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 40,
+      "tau": 0.3258224755990924,
+      "v19_weight": 0.75,
+      "validation_score": 97.48210332940336,
+      "model": "out/v24/minplus-40.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 48,
+      "tau": 0.265,
+      "v19_weight": 0.0,
+      "validation_score": 97.38194300524883,
+      "model": "out/v24/minplus-48.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 48,
+      "tau": 0.265,
+      "v19_weight": 0.25,
+      "validation_score": 97.49983511824964,
+      "model": "out/v24/minplus-48.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 48,
+      "tau": 0.265,
+      "v19_weight": 0.5,
+      "validation_score": 97.54420458588442,
+      "model": "out/v24/minplus-48.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 48,
+      "tau": 0.265,
+      "v19_weight": 0.75,
+      "validation_score": 97.51368287853876,
+      "model": "out/v24/minplus-48.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 56,
+      "tau": 0.20417752440090764,
+      "v19_weight": 0.0,
+      "validation_score": 97.49098886406087,
+      "model": "out/v24/minplus-56.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 56,
+      "tau": 0.20417752440090764,
+      "v19_weight": 0.25,
+      "validation_score": 97.57781436058657,
+      "model": "out/v24/minplus-56.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 56,
+      "tau": 0.20417752440090764,
+      "v19_weight": 0.5,
+      "validation_score": 97.59197790630093,
+      "model": "out/v24/minplus-56.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 56,
+      "tau": 0.20417752440090764,
+      "v19_weight": 0.75,
+      "validation_score": 97.5328729972731,
+      "model": "out/v24/minplus-56.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 64,
+      "tau": 0.14750000000000005,
+      "v19_weight": 0.0,
+      "validation_score": 97.56938069735267,
+      "model": "out/v24/minplus-64.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 64,
+      "tau": 0.14750000000000005,
+      "v19_weight": 0.25,
+      "validation_score": 97.6354116639537,
+      "model": "out/v24/minplus-64.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 64,
+      "tau": 0.14750000000000005,
+      "v19_weight": 0.5,
+      "validation_score": 97.62838220211088,
+      "model": "out/v24/minplus-64.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 64,
+      "tau": 0.14750000000000005,
+      "v19_weight": 0.75,
+      "validation_score": 97.55010354947427,
+      "model": "out/v24/minplus-64.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 72,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.0,
+      "validation_score": 97.5941964231032,
+      "model": "out/v24/minplus-72.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 72,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.25,
+      "validation_score": 97.65410957053236,
+      "model": "out/v24/minplus-72.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 72,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.5,
+      "validation_score": 97.63981559234492,
+      "model": "out/v24/minplus-72.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 72,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.75,
+      "validation_score": 97.55516067758731,
+      "model": "out/v24/minplus-72.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 80,
+      "tau": 0.0614840301106569,
+      "v19_weight": 0.0,
+      "validation_score": 97.56157710264016,
+      "model": "out/v24/minplus-80.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 80,
+      "tau": 0.0614840301106569,
+      "v19_weight": 0.25,
+      "validation_score": 97.63264893948352,
+      "model": "out/v24/minplus-80.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 80,
+      "tau": 0.0614840301106569,
+      "v19_weight": 0.5,
+      "validation_score": 97.6285937927051,
+      "model": "out/v24/minplus-80.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 80,
+      "tau": 0.0614840301106569,
+      "v19_weight": 0.75,
+      "validation_score": 97.55152313802682,
+      "model": "out/v24/minplus-80.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 88,
+      "tau": 0.03800743082206897,
+      "v19_weight": 0.0,
+      "validation_score": 97.62694529178403,
+      "model": "out/v24/minplus-88.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 88,
+      "tau": 0.03800743082206897,
+      "v19_weight": 0.25,
+      "validation_score": 97.67981691870192,
+      "model": "out/v24/minplus-88.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 88,
+      "tau": 0.03800743082206897,
+      "v19_weight": 0.5,
+      "validation_score": 97.65755241457896,
+      "model": "out/v24/minplus-88.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 88,
+      "tau": 0.03800743082206897,
+      "v19_weight": 0.75,
+      "validation_score": 97.56440030305495,
+      "model": "out/v24/minplus-88.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 96,
+      "tau": 0.03,
+      "v19_weight": 0.0,
+      "validation_score": 97.6164076082722,
+      "model": "out/v24/minplus-96.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 96,
+      "tau": 0.03,
+      "v19_weight": 0.25,
+      "validation_score": 97.67319265560447,
+      "model": "out/v24/minplus-96.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 96,
+      "tau": 0.03,
+      "v19_weight": 0.5,
+      "validation_score": 97.65433592730615,
+      "model": "out/v24/minplus-96.pt",
+      "model_bytes": 807305
+    },
+    {
+      "epoch": 96,
+      "tau": 0.03,
+      "v19_weight": 0.75,
+      "validation_score": 97.56280553038187,
+      "model": "out/v24/minplus-96.pt",
+      "model_bytes": 807305
+    }
+  ],
+  "best": {
+    "epoch": 88,
+    "tau": 0.03800743082206897,
+    "v19_weight": 0.25,
+    "validation_score": 97.67981691870192,
+    "model": "out/v24/minplus-88.pt",
+    "model_bytes": 807305
+  },
+  "elapsed_seconds": 157.69812229200033
+}

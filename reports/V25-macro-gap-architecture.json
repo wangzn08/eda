@@ -1,0 +1,10 @@
+{
+  "holdout_used": false,
+  "search_budget": 16384,
+  "lower_bound_violations": 0,
+  "upper_bound_violations": 0,
+  "minplus_hybrid_score": 97.67981691870192,
+  "combined_score": 97.7688921837014,
+  "upper_exact_matches": 21505,
+  "lower_exact_matches": 22
+}

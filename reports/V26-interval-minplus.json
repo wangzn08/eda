@@ -1,0 +1,1244 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "device": "mps",
+  "architecture": "Certified folded-port/line-gap lower bound + learned nonnegative min-plus optimality gap, clipped to witnessed upper bound.",
+  "lower_bound_violations": 0,
+  "baseline": 97.40821522441175,
+  "candidates": [
+    {
+      "routes": 64,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.0,
+      "validation_score": 96.35096873647868,
+      "model": "out/v26/interval-64-1.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.25,
+      "validation_score": 96.72913947825819,
+      "model": "out/v26/interval-64-1.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.5,
+      "validation_score": 97.04837582265512,
+      "model": "out/v26/interval-64-1.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.75,
+      "validation_score": 97.2864636431129,
+      "model": "out/v26/interval-64-1.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.0,
+      "validation_score": 97.00419311842008,
+      "model": "out/v26/interval-64-8.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.25,
+      "validation_score": 97.17846416332979,
+      "model": "out/v26/interval-64-8.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.5,
+      "validation_score": 97.30934950093912,
+      "model": "out/v26/interval-64-8.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.75,
+      "validation_score": 97.38878639273408,
+      "model": "out/v26/interval-64-8.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.0,
+      "validation_score": 97.18444370698379,
+      "model": "out/v26/interval-64-16.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.25,
+      "validation_score": 97.31535475463178,
+      "model": "out/v26/interval-64-16.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.5,
+      "validation_score": 97.39997010306175,
+      "model": "out/v26/interval-64-16.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.75,
+      "validation_score": 97.43225478621326,
+      "model": "out/v26/interval-64-16.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.0,
+      "validation_score": 97.2416590849704,
+      "model": "out/v26/interval-64-24.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.25,
+      "validation_score": 97.36102902623384,
+      "model": "out/v26/interval-64-24.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.5,
+      "validation_score": 97.43199721019903,
+      "model": "out/v26/interval-64-24.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.75,
+      "validation_score": 97.44838835060433,
+      "model": "out/v26/interval-64-24.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.0,
+      "validation_score": 97.35011125689225,
+      "model": "out/v26/interval-64-32.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.25,
+      "validation_score": 97.44731780874483,
+      "model": "out/v26/interval-64-32.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.5,
+      "validation_score": 97.49019291433996,
+      "model": "out/v26/interval-64-32.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.75,
+      "validation_score": 97.47718398435238,
+      "model": "out/v26/interval-64-32.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.0,
+      "validation_score": 97.34446539098775,
+      "model": "out/v26/interval-64-40.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.25,
+      "validation_score": 97.44949686147339,
+      "model": "out/v26/interval-64-40.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.5,
+      "validation_score": 97.49747868853716,
+      "model": "out/v26/interval-64-40.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.75,
+      "validation_score": 97.48366923819175,
+      "model": "out/v26/interval-64-40.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.0,
+      "validation_score": 97.42049084821844,
+      "model": "out/v26/interval-64-48.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.25,
+      "validation_score": 97.50973356938215,
+      "model": "out/v26/interval-64-48.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.5,
+      "validation_score": 97.53771285506143,
+      "model": "out/v26/interval-64-48.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.75,
+      "validation_score": 97.50256554748597,
+      "model": "out/v26/interval-64-48.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.0,
+      "validation_score": 97.48881881564957,
+      "model": "out/v26/interval-64-56.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.25,
+      "validation_score": 97.56382645227649,
+      "model": "out/v26/interval-64-56.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.5,
+      "validation_score": 97.57453383125174,
+      "model": "out/v26/interval-64-56.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.75,
+      "validation_score": 97.52083964582997,
+      "model": "out/v26/interval-64-56.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.0,
+      "validation_score": 97.51422039750283,
+      "model": "out/v26/interval-64-64.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.25,
+      "validation_score": 97.58883241640139,
+      "model": "out/v26/interval-64-64.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.5,
+      "validation_score": 97.59450490810941,
+      "model": "out/v26/interval-64-64.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.75,
+      "validation_score": 97.53236998245475,
+      "model": "out/v26/interval-64-64.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.0,
+      "validation_score": 97.51374865718448,
+      "model": "out/v26/interval-64-72.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.25,
+      "validation_score": 97.59115039305338,
+      "model": "out/v26/interval-64-72.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.5,
+      "validation_score": 97.59748862961482,
+      "model": "out/v26/interval-64-72.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.75,
+      "validation_score": 97.53466654854257,
+      "model": "out/v26/interval-64-72.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.0,
+      "validation_score": 97.57022867033052,
+      "model": "out/v26/interval-64-80.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.25,
+      "validation_score": 97.64027427988022,
+      "model": "out/v26/interval-64-80.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.5,
+      "validation_score": 97.6343669118289,
+      "model": "out/v26/interval-64-80.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.75,
+      "validation_score": 97.55403372318848,
+      "model": "out/v26/interval-64-80.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.0,
+      "validation_score": 97.56349128714065,
+      "model": "out/v26/interval-64-88.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.25,
+      "validation_score": 97.63818939575167,
+      "model": "out/v26/interval-64-88.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.5,
+      "validation_score": 97.63527393080835,
+      "model": "out/v26/interval-64-88.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.75,
+      "validation_score": 97.55563799287717,
+      "model": "out/v26/interval-64-88.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.0,
+      "validation_score": 97.56235658594227,
+      "model": "out/v26/interval-64-96.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.25,
+      "validation_score": 97.64029373560733,
+      "model": "out/v26/interval-64-96.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.5,
+      "validation_score": 97.63806587114935,
+      "model": "out/v26/interval-64-96.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.75,
+      "validation_score": 97.55821762772919,
+      "model": "out/v26/interval-64-96.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.0,
+      "validation_score": 97.5501643385292,
+      "model": "out/v26/interval-64-104.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.25,
+      "validation_score": 97.63406160375642,
+      "model": "out/v26/interval-64-104.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.5,
+      "validation_score": 97.63698874265084,
+      "model": "out/v26/interval-64-104.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.75,
+      "validation_score": 97.55896180506438,
+      "model": "out/v26/interval-64-104.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.0,
+      "validation_score": 97.53667364958723,
+      "model": "out/v26/interval-64-112.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.25,
+      "validation_score": 97.62728526459306,
+      "model": "out/v26/interval-64-112.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.5,
+      "validation_score": 97.63510303031295,
+      "model": "out/v26/interval-64-112.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.75,
+      "validation_score": 97.55950213405147,
+      "model": "out/v26/interval-64-112.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.0,
+      "validation_score": 97.53432110429694,
+      "model": "out/v26/interval-64-120.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.25,
+      "validation_score": 97.62577524891385,
+      "model": "out/v26/interval-64-120.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.5,
+      "validation_score": 97.63452259044665,
+      "model": "out/v26/interval-64-120.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.75,
+      "validation_score": 97.55908761815756,
+      "model": "out/v26/interval-64-120.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.0,
+      "validation_score": 97.53634689506596,
+      "model": "out/v26/interval-64-128.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.25,
+      "validation_score": 97.62807249850762,
+      "model": "out/v26/interval-64-128.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.5,
+      "validation_score": 97.63611645143071,
+      "model": "out/v26/interval-64-128.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 64,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.75,
+      "validation_score": 97.56003639798611,
+      "model": "out/v26/interval-64-128.pt",
+      "model_bytes": 811401
+    },
+    {
+      "routes": 128,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.0,
+      "validation_score": 96.2687794586431,
+      "model": "out/v26/interval-128-1.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.25,
+      "validation_score": 96.67178473337734,
+      "model": "out/v26/interval-128-1.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.5,
+      "validation_score": 97.01520181413424,
+      "model": "out/v26/interval-128-1.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 1,
+      "tau": 0.49992922239360793,
+      "v19_weight": 0.75,
+      "validation_score": 97.27437693789253,
+      "model": "out/v26/interval-128-1.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.0,
+      "validation_score": 96.96688053747081,
+      "model": "out/v26/interval-128-8.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.25,
+      "validation_score": 97.15325040041891,
+      "model": "out/v26/interval-128-8.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.5,
+      "validation_score": 97.29524359242674,
+      "model": "out/v26/interval-128-8.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 8,
+      "tau": 0.49548454089475913,
+      "v19_weight": 0.75,
+      "validation_score": 97.38326808970204,
+      "model": "out/v26/interval-128-8.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.0,
+      "validation_score": 97.2022681948419,
+      "model": "out/v26/interval-128-16.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.25,
+      "validation_score": 97.32827042831231,
+      "model": "out/v26/interval-128-16.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.5,
+      "validation_score": 97.407213615154,
+      "model": "out/v26/interval-128-16.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 16,
+      "tau": 0.4821116901401523,
+      "v19_weight": 0.75,
+      "validation_score": 97.4350685247319,
+      "model": "out/v26/interval-128-16.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.0,
+      "validation_score": 97.22546747087407,
+      "model": "out/v26/interval-128-24.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.25,
+      "validation_score": 97.3549690929049,
+      "model": "out/v26/interval-128-24.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.5,
+      "validation_score": 97.43213635974666,
+      "model": "out/v26/interval-128-24.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 24,
+      "tau": 0.46039535889109817,
+      "v19_weight": 0.75,
+      "validation_score": 97.45073624852614,
+      "model": "out/v26/interval-128-24.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.0,
+      "validation_score": 97.34743998484541,
+      "model": "out/v26/interval-128-32.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.25,
+      "validation_score": 97.44613206578363,
+      "model": "out/v26/interval-128-32.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.5,
+      "validation_score": 97.49012733532412,
+      "model": "out/v26/interval-128-32.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 32,
+      "tau": 0.4311700935788386,
+      "v19_weight": 0.75,
+      "validation_score": 97.47750201575195,
+      "model": "out/v26/interval-128-32.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.0,
+      "validation_score": 97.30507291418887,
+      "model": "out/v26/interval-128-40.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.25,
+      "validation_score": 97.42585964636095,
+      "model": "out/v26/interval-128-40.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.5,
+      "validation_score": 97.48599154045492,
+      "model": "out/v26/interval-128-40.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 40,
+      "tau": 0.3955590047596065,
+      "v19_weight": 0.75,
+      "validation_score": 97.48037791083786,
+      "model": "out/v26/interval-128-40.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.0,
+      "validation_score": 97.41776961871375,
+      "model": "out/v26/interval-128-48.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.25,
+      "validation_score": 97.5048234178874,
+      "model": "out/v26/interval-128-48.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.5,
+      "validation_score": 97.53254766540829,
+      "model": "out/v26/interval-128-48.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 48,
+      "tau": 0.3549306066057961,
+      "v19_weight": 0.75,
+      "validation_score": 97.49968284730535,
+      "model": "out/v26/interval-128-48.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.0,
+      "validation_score": 97.46057403228747,
+      "model": "out/v26/interval-128-56.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.25,
+      "validation_score": 97.54433309208426,
+      "model": "out/v26/interval-128-56.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.5,
+      "validation_score": 97.56293497077095,
+      "model": "out/v26/interval-128-56.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 56,
+      "tau": 0.31084622567379017,
+      "v19_weight": 0.75,
+      "validation_score": 97.51574075089094,
+      "model": "out/v26/interval-128-56.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.0,
+      "validation_score": 97.49163491757912,
+      "model": "out/v26/interval-128-64.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.25,
+      "validation_score": 97.57128429925417,
+      "model": "out/v26/interval-128-64.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.5,
+      "validation_score": 97.58313825316459,
+      "model": "out/v26/interval-128-64.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 64,
+      "tau": 0.265,
+      "v19_weight": 0.75,
+      "validation_score": 97.52672649087235,
+      "model": "out/v26/interval-128-64.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.0,
+      "validation_score": 97.55610705975215,
+      "model": "out/v26/interval-128-72.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.25,
+      "validation_score": 97.6198213206336,
+      "model": "out/v26/interval-128-72.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.5,
+      "validation_score": 97.61435617159052,
+      "model": "out/v26/interval-128-72.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 72,
+      "tau": 0.21915377432620986,
+      "v19_weight": 0.75,
+      "validation_score": 97.54198035446142,
+      "model": "out/v26/interval-128-72.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.0,
+      "validation_score": 97.59270869610022,
+      "model": "out/v26/interval-128-80.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.25,
+      "validation_score": 97.6501613232337,
+      "model": "out/v26/interval-128-80.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.5,
+      "validation_score": 97.63608495199394,
+      "model": "out/v26/interval-128-80.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 80,
+      "tau": 0.1750693933942039,
+      "v19_weight": 0.75,
+      "validation_score": 97.55281181179399,
+      "model": "out/v26/interval-128-80.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.0,
+      "validation_score": 97.59113683160578,
+      "model": "out/v26/interval-128-88.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.25,
+      "validation_score": 97.65357786878901,
+      "model": "out/v26/interval-128-88.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.5,
+      "validation_score": 97.6407851167697,
+      "model": "out/v26/interval-128-88.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 88,
+      "tau": 0.13444099524039355,
+      "v19_weight": 0.75,
+      "validation_score": 97.55583074726464,
+      "model": "out/v26/interval-128-88.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.0,
+      "validation_score": 97.57990238299769,
+      "model": "out/v26/interval-128-96.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.25,
+      "validation_score": 97.6514974885509,
+      "model": "out/v26/interval-128-96.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.5,
+      "validation_score": 97.64361825691971,
+      "model": "out/v26/interval-128-96.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 96,
+      "tau": 0.09882990642116134,
+      "v19_weight": 0.75,
+      "validation_score": 97.55977153665707,
+      "model": "out/v26/interval-128-96.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.0,
+      "validation_score": 97.56583274390445,
+      "model": "out/v26/interval-128-104.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.25,
+      "validation_score": 97.6455153946022,
+      "model": "out/v26/interval-128-104.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.5,
+      "validation_score": 97.64237731691513,
+      "model": "out/v26/interval-128-104.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 104,
+      "tau": 0.06960464110890184,
+      "v19_weight": 0.75,
+      "validation_score": 97.5606919070501,
+      "model": "out/v26/interval-128-104.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.0,
+      "validation_score": 97.55423717751697,
+      "model": "out/v26/interval-128-112.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.25,
+      "validation_score": 97.6384068363866,
+      "model": "out/v26/interval-128-112.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.5,
+      "validation_score": 97.63981246679145,
+      "model": "out/v26/interval-128-112.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 112,
+      "tau": 0.047888309859847614,
+      "v19_weight": 0.75,
+      "validation_score": 97.5604866657001,
+      "model": "out/v26/interval-128-112.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.0,
+      "validation_score": 97.54660447722878,
+      "model": "out/v26/interval-128-120.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.25,
+      "validation_score": 97.63534292018278,
+      "model": "out/v26/interval-128-120.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.5,
+      "validation_score": 97.63912105167408,
+      "model": "out/v26/interval-128-120.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 120,
+      "tau": 0.03451545910524085,
+      "v19_weight": 0.75,
+      "validation_score": 97.56088736051377,
+      "model": "out/v26/interval-128-120.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.0,
+      "validation_score": 97.53828004050995,
+      "model": "out/v26/interval-128-128.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.25,
+      "validation_score": 97.62926269813592,
+      "model": "out/v26/interval-128-128.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.5,
+      "validation_score": 97.63531496532067,
+      "model": "out/v26/interval-128-128.pt",
+      "model_bytes": 1131145
+    },
+    {
+      "routes": 128,
+      "epoch": 128,
+      "tau": 0.03,
+      "v19_weight": 0.75,
+      "validation_score": 97.55904980670383,
+      "model": "out/v26/interval-128-128.pt",
+      "model_bytes": 1131145
+    }
+  ],
+  "best": {
+    "routes": 128,
+    "epoch": 88,
+    "tau": 0.13444099524039355,
+    "v19_weight": 0.25,
+    "validation_score": 97.65357786878901,
+    "model": "out/v26/interval-128-88.pt",
+    "model_bytes": 1131145
+  },
+  "elapsed_seconds": 202.09009933299967
+}

@@ -1,0 +1,39 @@
+{
+  "models": [
+    {
+      "source": {
+        "epoch": 104,
+        "tau": 0.1583122325612065,
+        "v19_weight": 0.25,
+        "validation_score": 97.83965039269918,
+        "model": "out/v27/minplus-104.pt",
+        "model_bytes": 930678
+      },
+      "file": "models/phase-route.bin",
+      "kind": 1,
+      "numeric_features": 89,
+      "routes": 64,
+      "bytes": 926957,
+      "sha256": "3bff7021486b89aedc31567caf20cbf7e0532cfa3f3f0306ae9b104138daf8b1"
+    },
+    {
+      "source": {
+        "routes": 128,
+        "epoch": 88,
+        "tau": 0.13444099524039355,
+        "v19_weight": 0.25,
+        "validation_score": 97.65357786878901,
+        "model": "out/v26/interval-128-88.pt",
+        "model_bytes": 1131145
+      },
+      "file": "models/interval-route.bin",
+      "kind": 2,
+      "numeric_features": 93,
+      "routes": 128,
+      "bytes": 1128879,
+      "sha256": "db1ad087d95e6998fe6231402780827a063da57bb78b4036d20fcae756586080"
+    }
+  ],
+  "combined_bytes": 2055836,
+  "holdout_used": false
+}

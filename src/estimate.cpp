@@ -19,6 +19,8 @@
 #include "v14_tree_model.hpp"
 #include "v19_tree_model.hpp"
 #include "cycle_path_oracle.hpp"
+#include "macro_path_oracle.hpp"
+#include "phase_route_model.hpp"
 #include <cstring>
 #include "local_path_oracle.hpp"
 #include <algorithm>
@@ -238,6 +240,12 @@ public:
     bool empty() const { return heap.empty(); }
     Distance top() const { return heap.empty()?INF:distances[heap[0]]; }
     Distance get(Node n) const { return positions[n]==NONE?INF:distances[n]; }
+    // A* keeps its own queue; retain distances and touched-state reset here.
+    bool record(Node n,Distance value) {
+        if(value>=get(n))return false;
+        if(positions[n]==NONE)touched.push_back(n);
+        positions[n]=SETTLED;distances[n]=value;return true;
+    }
     bool improve(Node n,Distance value) {
         if(positions[n]==SETTLED || value>=get(n)) return false;
         size_t at;
@@ -934,6 +942,32 @@ public:
         }
         return best;
     }
+    Distance solve_astar(Node source,Node target,SearchStats& stats,Distance certified_upper=INF) {
+        forward.reset();backward.reset();if(source==target)return 0;
+        Distance best=certified_upper;
+        if(source/archdata::P==target/archdata::P)for(auto edge:graph.local_out(source%archdata::P))if(edge.port==target%archdata::P)best=std::min(best,Distance(edge.delay));
+        start(source);finish(target);auto target_xy=archdata::SITES[target/archdata::P];int tp=target%archdata::P;
+        static const auto xgap=[] {std::array<uint64_t,archdata::WIDTH> a{};for(const auto& line:archdata::LINES)if(line.vertical)for(int x=line.site+1;x<archdata::WIDTH;++x)if(x>=0)a[x]+=line.delay;return a;}();
+        static const auto ygap=[] {std::array<uint64_t,archdata::HEIGHT> a{};for(const auto& line:archdata::LINES)if(!line.vertical)for(int y=line.site+1;y<archdata::HEIGHT;++y)if(y>=0)a[y]+=line.delay;return a;}();
+        auto heuristic=[&](Node node) {
+            auto xy=archdata::SITES[node/input_ports.size()];int port=input_ports[node%input_ports.size()];auto phi=[](int x){return x-std::clamp(x-76,0,14);};
+            int dx=phi(target_xy.x)-phi(xy.x),dy=target_xy.y-xy.y;int64_t lower=0;
+            for(size_t k=0;k<4;++k) {int64_t value=int64_t(potential_lower_model::ax[k])*dx+int64_t(potential_lower_model::ay[k])*dy+potential_lower_model::distance[k*archdata::P*archdata::P+port*archdata::P+tp];lower=std::max(lower,(value+11)/12);}
+            return Distance(lower)+uint64_t(std::llabs(int64_t(xgap[target_xy.x])-int64_t(xgap[xy.x])))+uint64_t(std::llabs(int64_t(ygap[target_xy.y])-int64_t(ygap[xy.y])));
+        };
+        struct Item {Distance f,g;Node node;bool operator<(const Item& a)const{return f>a.f || (f==a.f && node>a.node);}};
+        std::priority_queue<Item> queue;
+        while(!forward.empty()) {Node node=forward.pop();Distance g=forward.get(node);if(g+heuristic(node)<best)queue.push({g+heuristic(node),g,node});}
+        while(!queue.empty()) {
+            auto item=queue.top();queue.pop();if(item.f>=best)break;if(item.g!=forward.get(item.node))continue;++stats.settled;
+            Distance terminal=backward.get(item.node);if(terminal<INF)best=std::min(best,item.g+terminal);
+            neighbors(item.node,false,[&](Node next,uint32_t cost) {
+                ++stats.relaxations;Distance g=item.g+cost;if(g>=best)return;Distance h=heuristic(next);if(g+h>=best)return;
+                if(forward.record(next,g))queue.push({g+h,g,next});
+            });
+        }
+        return best;
+    }
     Trace trace(Node source,Node target,SearchStats& stats) {
         forward.reset();
         if(trace_parent.empty()) trace_parent.resize(graph.sites()*input_ports.size(),NONE);
@@ -986,13 +1020,14 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,trace_path,oracle_path,cycle_path,algorithm="v6-pair";
-        bool cache_enabled=true,cycle_extra_hops=false;
+        std::string input,output,stats_path,trace_path,oracle_path,cycle_path,neural_path,neural_second_path,algorithm="v6-pair";
+        bool cache_enabled=true,cycle_extra_hops=false,exact_astar=false;unsigned macro_budget=0,exact_short_distance=0;double neural_second_weight=.25,exact_uncertainty=0;uint64_t exact_short_queries=0,exact_uncertain_queries=0;
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree|v19-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--cycle-extra-hops] [--no-cache] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree|v19-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--neural-model model.bin] [--neural-model-second model.bin] [--neural-second-weight value] [--macro-budget nodes] [--cycle-extra-hops] [--no-cache] [--exact-short-distance cells] [--exact-uncertainty fraction] [--exact-astar] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
+            if(arg=="--exact-astar") {exact_astar=true;continue;}
             if(arg=="--cycle-extra-hops") {cycle_extra_hops=true;continue;}
             if(arg=="--no-cache") {cache_enabled=false;continue;}
             if(i+1>=argc) throw std::runtime_error("Missing argument value");
@@ -1000,6 +1035,12 @@ int main(int argc,char** argv) {
             else if(arg=="-out") output=argv[++i];
             else if(arg=="--stats") stats_path=argv[++i];
             else if(arg=="--trace") trace_path=argv[++i];
+            else if(arg=="--exact-short-distance") exact_short_distance=std::stoul(argv[++i]);
+            else if(arg=="--exact-uncertainty") exact_uncertainty=std::stod(argv[++i]);
+            else if(arg=="--neural-model-second") neural_second_path=argv[++i];
+            else if(arg=="--neural-second-weight") neural_second_weight=std::stod(argv[++i]);
+            else if(arg=="--neural-model") neural_path=argv[++i];
+            else if(arg=="--macro-budget") macro_budget=std::stoul(argv[++i]);
             else if(arg=="--cycle-oracle") cycle_path=argv[++i];
             else if(arg=="--local-oracle") oracle_path=argv[++i];
             else if(arg=="--algorithm") algorithm=argv[++i];
@@ -1042,14 +1083,20 @@ int main(int argc,char** argv) {
             throw std::runtime_error("Tree route model requires --local-oracle and --cycle-oracle assets");
         std::unique_ptr<CyclePathOracle> cycle_oracle;
         if(!cycle_path.empty()) cycle_oracle=std::make_unique<CyclePathOracle>(cycle_path);
+        if((!neural_path.empty() || !neural_second_path.empty() || macro_budget) && algorithm!="v19-tree") throw std::runtime_error("Neural/macro options require v19-tree");
+        std::unique_ptr<PhaseRouteModel> neural;if(!neural_path.empty())neural=std::make_unique<PhaseRouteModel>(neural_path);
+        if(!neural_second_path.empty() && (neural_path.empty() || !std::isfinite(neural_second_weight) || neural_second_weight<0 || neural_second_weight>1))throw std::runtime_error("Invalid neural ensemble");
+        std::unique_ptr<PhaseRouteModel> neural_second;if(!neural_second_path.empty())neural_second=std::make_unique<PhaseRouteModel>(neural_second_path);
+        if((exact_short_distance || exact_uncertainty) && (algorithm!="v19-tree" || !std::isfinite(exact_uncertainty) || exact_uncertainty<0 || exact_uncertainty>1 || (exact_uncertainty && !neural_second)))throw std::runtime_error("Invalid exact refinement options");
+        std::unique_ptr<MacroPathOracle> macro;if(macro_budget)macro=std::make_unique<MacroPathOracle>(cycle_path,true);
         std::unique_ptr<PredictionCache> cache;
         if(cache_enabled && (algorithm=="v14-tree" || algorithm=="v19-tree")) cache=std::make_unique<PredictionCache>();
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
-        if(!fast) graph=std::make_unique<Graph>();
+        if(!fast || exact_short_distance || exact_uncertainty) graph=std::make_unique<Graph>();
         std::unique_ptr<Solver> solver;
         std::unique_ptr<CompactSolver> compact_solver;
-        if(algorithm=="compressed") compact_solver=std::make_unique<CompactSolver>(*graph);
+        if(algorithm=="compressed" || exact_short_distance || exact_uncertainty) compact_solver=std::make_unique<CompactSolver>(*graph);
         else if(!fast) solver=std::make_unique<Solver>(*graph);
         out<<"From,To,delay\n";
         std::string line; uint64_t row=0;
@@ -1093,9 +1140,21 @@ int main(int argc,char** argv) {
                 algorithm=="v10-tree"?v10_tree_delay(from,to):
                 algorithm=="v14-tree"?v14_tree_delay(from,to,route_upper):
                 algorithm=="v19-tree"?v19_tree_delay(from,to,route_upper):
-                compact_solver?compact_solver->solve(from,to,counters):solver->solve(from,to,algorithm=="bidirectional",counters);
+                compact_solver?(exact_astar?compact_solver->solve_astar(from,to,counters):compact_solver->solve(from,to,counters)):solver->solve(from,to,algorithm=="bidirectional",counters);
             if(local_oracle && algorithm!="v14-tree" && algorithm!="v19-tree") d=std::min(d,local_oracle->upper_bound(from,to));
             if(cycle_oracle && algorithm!="v14-tree" && algorithm!="v19-tree") d=cycle_oracle->cap(from,to,d);
+                bool exact_candidate=false,refined=false;
+                if(neural) {
+                    auto feature=topology_features(from,to);auto a=archdata::SITES[from/archdata::P],b=archdata::SITES[to/archdata::P];auto base=v6_pair_delay(from,to);
+                    auto first=neural->predict(feature,a,b,base,route_upper,d);
+                    if(neural_second) {auto second=neural_second->predict(feature,a,b,base,route_upper,d);exact_candidate=exact_uncertainty && 2*std::abs(double(first)-double(second))>exact_uncertainty*std::max(2.,double(first)+double(second));d=uint64_t(std::nearbyint((1-neural_second_weight)*double(first)+neural_second_weight*double(second)));}
+                    else d=first;
+                    d=std::min(route_upper,std::max(d,PhaseRouteModel::lower_bound(feature,a,b)));
+                }
+                auto xy1=archdata::SITES[from/archdata::P],xy2=archdata::SITES[to/archdata::P];
+                if(exact_short_distance && unsigned(std::abs(xy1.x-xy2.x)+std::abs(xy1.y-xy2.y))<exact_short_distance) {d=compact_solver->solve_astar(from,to,counters,route_upper);refined=true;++exact_short_queries;}
+                else if(exact_candidate) {d=compact_solver->solve_astar(from,to,counters,route_upper);refined=true;++exact_uncertain_queries;}
+                if(macro && !refined) d=std::min(d,macro->cap(from,to,route_upper,macro_budget));
                 if(cycle_extra_hops && cycle_oracle) d=cycle_oracle->cap(from,to,d,true);
                 if(cache) cache->put(cache_key,d);
             }
@@ -1136,6 +1195,7 @@ int main(int argc,char** argv) {
         out.flush();
         if(in.bad() || !out || (stats.is_open() && !stats) || (trace.is_open() && !trace)) throw std::runtime_error("File I/O failed");
         std::cerr<<"rows="<<row<<" cpu_seconds="<<double(std::clock()-cpu_start)/CLOCKS_PER_SEC<<" arch_sha256="<<archdata::HASH<<'\n';
+        if(exact_short_distance || exact_uncertainty) std::cerr<<"exact_short_queries="<<exact_short_queries<<" exact_uncertain_queries="<<exact_uncertain_queries<<'\n';
         if(cache) std::cerr<<"cache_hits="<<cache->hits<<" cache_misses="<<cache->misses<<'\n';
         return 0;
     } catch(const std::exception& e) { std::cerr<<"error: "<<e.what()<<'\n'; return 1; }

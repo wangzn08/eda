@@ -42,7 +42,7 @@ def main():
     for name in re.findall(r'#include "([^"]+)"',source):
         shutil.copy2(ROOT/'src'/name,folder/name)
     # Transitive dependencies of the path components.
-    for name in ('local_path_oracle.hpp','cycle_prefix_bank.hpp'):
+    for name in ('local_path_oracle.hpp','cycle_prefix_bank.hpp','potential_lower_model.hpp'):
         shutil.copy2(ROOT/'src'/name,folder/name)
     assets={'local-paths.bin':ROOT/'out/local-oracle/factorized-20-planes.bin',
             'long-tail.bin':ROOT/'out/local-oracle/long-tail-12-dict.bin'}

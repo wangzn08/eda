@@ -1,0 +1,45 @@
+{
+  "fit_used_labels": false,
+  "holdout_used": false,
+  "baseline_v19": 97.40821522441175,
+  "baseline_neural_hybrid": 97.51713232387,
+  "candidates": [
+    {
+      "budget": 256,
+      "wall_seconds": 5.5264560830255505,
+      "upper_bound_violations": 0,
+      "bound_exact_matches": 16029,
+      "v19_capped_score": 97.42805518565294,
+      "neural_hybrid_capped_score": 97.53643223965943,
+      "log": "rows=150053 changed=7072 expanded=34457132 finished=8187 cpu=5.37113"
+    },
+    {
+      "budget": 1024,
+      "wall_seconds": 16.275377291982295,
+      "upper_bound_violations": 0,
+      "bound_exact_matches": 17447,
+      "v19_capped_score": 97.4513685037779,
+      "neural_hybrid_capped_score": 97.55920274706637,
+      "log": "rows=150053 changed=20767 expanded=117323244 finished=26483 cpu=16.054"
+    },
+    {
+      "budget": 4096,
+      "wall_seconds": 96.65896991701447,
+      "upper_bound_violations": 0,
+      "bound_exact_matches": 19359,
+      "v19_capped_score": 97.48217172333533,
+      "neural_hybrid_capped_score": 97.58889401337419,
+      "log": "rows=150053 changed=42797 expanded=344492176 finished=60709 cpu=95.7024"
+    }
+  ],
+  "best": {
+    "budget": 4096,
+    "wall_seconds": 96.65896991701447,
+    "upper_bound_violations": 0,
+    "bound_exact_matches": 19359,
+    "v19_capped_score": 97.48217172333533,
+    "neural_hybrid_capped_score": 97.58889401337419,
+    "log": "rows=150053 changed=42797 expanded=344492176 finished=60709 cpu=95.7024"
+  },
+  "scope": "Bounded A* on long-input transit vertices with certified local and official arc/net edges; a subset of full routing graph, not an exact solver for every query."
+}

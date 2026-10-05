@@ -1,0 +1,70 @@
+{
+  "fit_split": "development",
+  "selection_split": "validation",
+  "holdout_used": false,
+  "variants": {
+    "validation.v19-cpp.csv": {
+      "rows": 150053,
+      "validation_score": 97.40821522441175,
+      "exact_match_fraction": 0.04887606379079392,
+      "mean_relative_error": 0.0065183169552911835,
+      "p99_relative_error": 0.04113308136688554
+    },
+    "validation.v30-final-cpp.csv": {
+      "rows": 150053,
+      "validation_score": 97.95210965779164,
+      "exact_match_fraction": 0.06217136611730522,
+      "mean_relative_error": 0.005143717107761244,
+      "p99_relative_error": 0.03537137597791084
+    },
+    "validation.v35-optimized.csv": {
+      "rows": 150053,
+      "validation_score": 98.38782081118734,
+      "exact_match_fraction": 0.13595862795145716,
+      "mean_relative_error": 0.004037924664958569,
+      "p99_relative_error": 0.025558141970322804
+    }
+  },
+  "exact_reference_checks": {
+    "validation.v33-short-exact.csv": {
+      "rows": 2602,
+      "golden_mismatches": 0,
+      "max_abs_error_ps": 0
+    },
+    "validation.v34-short-astar.csv": {
+      "rows": 2602,
+      "golden_mismatches": 0,
+      "max_abs_error_ps": 0
+    },
+    "validation.v34-uncertain-exact.csv": {
+      "rows": 9444,
+      "golden_mismatches": 0,
+      "max_abs_error_ps": 0
+    }
+  },
+  "runtime": {
+    "cpu_seconds": 346.566,
+    "max_rss_bytes": 869203968,
+    "short_exact_queries": 2602,
+    "uncertain_exact_queries": 9444
+  },
+  "selection": {
+    "short_manhattan_less_than": 25,
+    "model_relative_disagreement_greater_than": 0.01,
+    "neural_phase_weight": 0.75,
+    "neural_interval_weight": 0.25,
+    "macro_expansion_budget": 65536
+  },
+  "caveats": [
+    "Validation selected candidates; this is not an independent final score.",
+    "Adaptive result includes exact A* fallback; it is not neural-only accuracy.",
+    "No holdout or billion-request acceptance was run.",
+    "Unique-query throughput is not competition compliant."
+  ],
+  "optimized_output_byte_identical_to_first_run": true,
+  "output_sha256": "a188186db12c8bef17b35b3716dd944fd55e4f62308b2d69e007c6291f873d62",
+  "first_run_runtime": {
+    "cpu_seconds": 356.58,
+    "max_rss_bytes": 866664448
+  }
+}

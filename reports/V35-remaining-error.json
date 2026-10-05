@@ -1,0 +1,217 @@
+{
+  "validation_only": true,
+  "purpose": "Choose next research direction, not a trained gating rule",
+  "total_score": 98.38782081118734,
+  "top_family_pairs": [
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZLS",
+      "rows": 778,
+      "group_score": 98.08034795859383,
+      "total_score_loss": 0.009953078500356576
+    },
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZLN",
+      "rows": 680,
+      "group_score": 97.8702722830994,
+      "total_score_loss": 0.009651355504337876
+    },
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZLW",
+      "rows": 647,
+      "group_score": 98.01434754482689,
+      "total_score_loss": 0.008561755769608078
+    },
+    {
+      "source_family": "ZSNB",
+      "target_family": "ZLS",
+      "rows": 644,
+      "group_score": 98.07890213397312,
+      "total_score_loss": 0.008245000271379537
+    },
+    {
+      "source_family": "ZSNA",
+      "target_family": "ZLN",
+      "rows": 638,
+      "group_score": 98.08564591469049,
+      "total_score_loss": 0.008139510082620588
+    },
+    {
+      "source_family": "ZSSA",
+      "target_family": "ZLS",
+      "rows": 642,
+      "group_score": 98.1188614687964,
+      "total_score_loss": 0.008048429135256985
+    },
+    {
+      "source_family": "ZLS",
+      "target_family": "ZLS",
+      "rows": 608,
+      "group_score": 98.0320238030901,
+      "total_score_loss": 0.00797404602188042
+    },
+    {
+      "source_family": "ZDS",
+      "target_family": "ZLS",
+      "rows": 629,
+      "group_score": 98.10747239071507,
+      "total_score_loss": 0.007933196045665303
+    },
+    {
+      "source_family": "ZSSA",
+      "target_family": "ZLN",
+      "rows": 605,
+      "group_score": 98.0530025322654,
+      "total_score_loss": 0.007850116078848363
+    },
+    {
+      "source_family": "ZSNA",
+      "target_family": "ZLS",
+      "rows": 642,
+      "group_score": 98.20238714003018,
+      "total_score_loss": 0.007691065530849883
+    },
+    {
+      "source_family": "ZSNB",
+      "target_family": "ZLN",
+      "rows": 622,
+      "group_score": 98.16957850292079,
+      "total_score_loss": 0.007587466902916099
+    },
+    {
+      "source_family": "ZSNB",
+      "target_family": "ZLW",
+      "rows": 554,
+      "group_score": 98.00297148511518,
+      "total_score_loss": 0.007373086824296657
+    },
+    {
+      "source_family": "ZDS",
+      "target_family": "ZLN",
+      "rows": 581,
+      "group_score": 98.12444577966738,
+      "total_score_loss": 0.007262080744891805
+    },
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZLE",
+      "rows": 563,
+      "group_score": 98.0906022258442,
+      "total_score_loss": 0.007164075005829394
+    },
+    {
+      "source_family": "ZDS",
+      "target_family": "ZLW",
+      "rows": 576,
+      "group_score": 98.14236829972633,
+      "total_score_loss": 0.007130786184598997
+    },
+    {
+      "source_family": "ZLS",
+      "target_family": "ZLN",
+      "rows": 568,
+      "group_score": 98.11711590611542,
+      "total_score_loss": 0.007127336110084085
+    },
+    {
+      "source_family": "ZSNA",
+      "target_family": "ZLW",
+      "rows": 519,
+      "group_score": 97.98095495954787,
+      "total_score_loss": 0.006983428361943129
+    },
+    {
+      "source_family": "ZLS",
+      "target_family": "ZLE",
+      "rows": 512,
+      "group_score": 98.02556723816868,
+      "total_score_loss": 0.006737016747800012
+    },
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZSNA",
+      "rows": 600,
+      "group_score": 98.34983649982476,
+      "total_score_loss": 0.0065983225933846056
+    },
+    {
+      "source_family": "ZDE",
+      "target_family": "ZLS",
+      "rows": 489,
+      "group_score": 98.09924654577577,
+      "total_score_loss": 0.006194267619545431
+    },
+    {
+      "source_family": "ZSSA",
+      "target_family": "ZLW",
+      "rows": 522,
+      "group_score": 98.23101482672149,
+      "total_score_loss": 0.006153894027119639
+    },
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZSNB",
+      "rows": 516,
+      "group_score": 98.21254740671908,
+      "total_score_loss": 0.006146665099217946
+    },
+    {
+      "source_family": "ZSNA",
+      "target_family": "ZLE",
+      "rows": 515,
+      "group_score": 98.21676591324614,
+      "total_score_loss": 0.006120274534186213
+    },
+    {
+      "source_family": "ZDE",
+      "target_family": "ZLN",
+      "rows": 479,
+      "group_score": 98.09700840533348,
+      "total_score_loss": 0.006074740084138684
+    },
+    {
+      "source_family": "ZSEA",
+      "target_family": "ZLN",
+      "rows": 396,
+      "group_score": 97.71071965077658,
+      "total_score_loss": 0.006041565435495971
+    },
+    {
+      "source_family": "ZDS",
+      "target_family": "ZLE",
+      "rows": 490,
+      "group_score": 98.15699530278278,
+      "total_score_loss": 0.006018355525290675
+    },
+    {
+      "source_family": "ZLW",
+      "target_family": "ZLN",
+      "rows": 439,
+      "group_score": 97.94407278912745,
+      "total_score_loss": 0.006014888376593933
+    },
+    {
+      "source_family": "ZSWA",
+      "target_family": "ZSSA",
+      "rows": 557,
+      "group_score": 98.42262695621098,
+      "total_score_loss": 0.005855243050058892
+    },
+    {
+      "source_family": "ZLS",
+      "target_family": "ZSNA",
+      "rows": 488,
+      "group_score": 98.20793281848641,
+      "total_score_loss": 0.0058281326236638365
+    },
+    {
+      "source_family": "ZSSA",
+      "target_family": "ZLE",
+      "rows": 482,
+      "group_score": 98.20705729048349,
+      "total_score_loss": 0.00575928762495224
+    }
+  ]
+}

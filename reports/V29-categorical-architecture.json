@@ -1,0 +1,153 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline": 97.40821522441175,
+  "categorical_features": [
+    "source_port",
+    "target_port",
+    "source_family",
+    "target_family",
+    "route_class",
+    "port_pair",
+    "direction_class"
+  ],
+  "candidates": [
+    {
+      "depth": 8,
+      "trees": 256,
+      "v19_weight": 0.0,
+      "validation_score": 97.0815519499694,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 256,
+      "v19_weight": 0.25,
+      "validation_score": 97.18556449637472,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 256,
+      "v19_weight": 0.5,
+      "validation_score": 97.27595584079087,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 256,
+      "v19_weight": 0.75,
+      "validation_score": 97.35069590524058,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 512,
+      "v19_weight": 0.0,
+      "validation_score": 97.22527998416936,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 512,
+      "v19_weight": 0.25,
+      "validation_score": 97.28596056093484,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 512,
+      "v19_weight": 0.5,
+      "validation_score": 97.33711917095329,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 512,
+      "v19_weight": 0.75,
+      "validation_score": 97.37834609776996,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 768,
+      "v19_weight": 0.0,
+      "validation_score": 97.29223659595736,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 768,
+      "v19_weight": 0.25,
+      "validation_score": 97.3342886879801,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 768,
+      "v19_weight": 0.5,
+      "validation_score": 97.36758215016394,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 768,
+      "v19_weight": 0.75,
+      "validation_score": 97.39241291672539,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 1024,
+      "v19_weight": 0.0,
+      "validation_score": 97.33299138868995,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 1024,
+      "v19_weight": 0.25,
+      "validation_score": 97.36398729419516,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 1024,
+      "v19_weight": 0.5,
+      "validation_score": 97.38700383211625,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    },
+    {
+      "depth": 8,
+      "trees": 1024,
+      "v19_weight": 0.75,
+      "validation_score": 97.40165157952416,
+      "model": "out/v29/categorical-8.cbm",
+      "model_bytes": 6197316
+    }
+  ],
+  "best": {
+    "depth": 8,
+    "trees": 1024,
+    "v19_weight": 0.75,
+    "validation_score": 97.40165157952416,
+    "model": "out/v29/categorical-8.cbm",
+    "model_bytes": 6197316
+  },
+  "elapsed_seconds": 311.1629166669736
+}

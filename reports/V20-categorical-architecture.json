@@ -1,0 +1,154 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline": 97.40821522441175,
+  "categorical_features": [
+    "source_port",
+    "target_port",
+    "source_family",
+    "target_family",
+    "route_class",
+    "port_pair",
+    "direction_class"
+  ],
+  "candidates": [
+    {
+      "depth": 6,
+      "trees": 512,
+      "v19_weight": 0.0,
+      "validation_score": 97.12247360751438,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 512,
+      "v19_weight": 0.25,
+      "validation_score": 97.21372883078487,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 512,
+      "v19_weight": 0.5,
+      "validation_score": 97.29267395532156,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 512,
+      "v19_weight": 0.75,
+      "validation_score": 97.35821826184234,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1024,
+      "v19_weight": 0.0,
+      "validation_score": 97.23726214055809,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1024,
+      "v19_weight": 0.25,
+      "validation_score": 97.29482967200151,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1024,
+      "v19_weight": 0.5,
+      "validation_score": 97.3422992393577,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1024,
+      "v19_weight": 0.75,
+      "validation_score": 97.38034195366164,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1536,
+      "v19_weight": 0.0,
+      "validation_score": 97.29181966085243,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1536,
+      "v19_weight": 0.25,
+      "validation_score": 97.33407284028732,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1536,
+      "v19_weight": 0.5,
+      "validation_score": 97.36729306836972,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 1536,
+      "v19_weight": 0.75,
+      "validation_score": 97.39223041177456,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 2048,
+      "v19_weight": 0.0,
+      "validation_score": 97.32809990301425,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 2048,
+      "v19_weight": 0.25,
+      "validation_score": 97.36059029330916,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 2048,
+      "v19_weight": 0.5,
+      "validation_score": 97.38455254571038,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    },
+    {
+      "depth": 6,
+      "trees": 2048,
+      "v19_weight": 0.75,
+      "validation_score": 97.40068158223153,
+      "model": "out/v20/categorical-6.cbm",
+      "model_bytes": 107983232
+    }
+  ],
+  "best": {
+    "depth": 6,
+    "trees": 2048,
+    "v19_weight": 0.75,
+    "validation_score": 97.40068158223153,
+    "model": "out/v20/categorical-6.cbm",
+    "model_bytes": 107983232
+  },
+  "elapsed_seconds": 1443.4579557499965,
+  "depth8_discontinued": "Depth6 model 107.98MB and best score below V19; superseded by a compact configuration with single-feature categorical statistics."
+}
