@@ -1,0 +1,40 @@
+{
+  "state": "complete",
+  "rows_expected": 1000000000,
+  "profile": "V50 256 trees",
+  "cache": false,
+  "single_thread_solver": true,
+  "machine": "macOS-26.6.2-arm64-arm-64bit",
+  "command": [
+    "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/phase-fast-v50/estimate",
+    "-in",
+    "out/evaluation/time-goal1b.request.csv",
+    "-out",
+    "out/evaluation/time-goal1b-v50.result.csv",
+    "--no-cache",
+    "--progress"
+  ],
+  "binary_sha256": "e7efa2a9b384bdcbbd304bbfe79a16b3f6059e1baf0c32e77878314169976983",
+  "input_bytes": 36394618757,
+  "scope": "Development requests repeated; no result cache, every row predicted; not arbitrary unique hidden requests or official platform acceptance.",
+  "pid": 35559,
+  "cpu_seconds": 1856.13,
+  "wall_seconds": 1857.9558594170085,
+  "rss_bytes": 127991808,
+  "output_bytes": 40332731116,
+  "rows_written": 1000000000,
+  "output_sha256": "ce8bd5bdf44d51aea3f038daf9bae742f98eca1c59a6bfd0e97aabc3c72a0942",
+  "within_one_hour_cpu": true,
+  "within_2GB": true,
+  "input_generation": {
+    "rows": 1000000000,
+    "out": "out/evaluation/time-goal1b.request.csv",
+    "bytes": 36394618757,
+    "sha256": "04a2ef7c6bbb70bf6235e3b9d3bfafca3ac72e0dcdee5c361d9256bfedd92263",
+    "repetitions": 1427,
+    "tail_rows": 93965,
+    "elapsed_seconds": 22.277685582987033,
+    "source": "development.request.csv; no golden labels"
+  },
+  "large_files_cleaned_after_verification": true
+}

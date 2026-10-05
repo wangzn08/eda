@@ -38,7 +38,7 @@ build/phase_estimate: src/phase_estimate.cpp src/routing_search.hpp src/phase_lo
 	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@
 
 # Direct periodic relaxation; experimental, no per-request graph search.
-build/phase_fast_estimate: src/phase_fast_estimate.cpp src/fast_residual_model.hpp src/periodic_dense_model.hpp src/phase_required_bound.hpp src/routing_search.hpp src/phase_lower_bound.hpp src/architecture_data.hpp src/potential_lower_model.hpp
+build/phase_fast_estimate: src/phase_fast_estimate.cpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/periodic_dense_model.hpp src/phase_required_bound.hpp src/routing_search.hpp src/phase_lower_bound.hpp src/architecture_data.hpp src/potential_lower_model.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -ffp-contract=off -Isrc src/phase_fast_estimate.cpp -o $@
 
@@ -61,3 +61,8 @@ build/build_periodic_conditioned: src/build_periodic_conditioned.cpp src/archite
 build/compress_periodic_dense: src/compress_periodic_dense.cpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -Isrc src/compress_periodic_dense.cpp -o $@
+
+# Small min-plus experts; output channels are contiguous for SIMD evaluation.
+build/tiny_route_estimate: src/tiny_route_estimate.cpp src/tiny_route_model.hpp src/direct_phase_bound.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/phase_lower_bound.hpp src/architecture_data.hpp src/potential_lower_model.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -ffp-contract=fast -Isrc src/tiny_route_estimate.cpp -o $@

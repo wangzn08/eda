@@ -28,23 +28,25 @@ Distance direct_lower(const Graph& graph,const PhaseLowerBound& bounds,const Pha
 int main(int argc,char** argv) {
  try {
     auto directory=std::filesystem::absolute(argv[0]).parent_path();
-    std::string input,output,phase,required_path,dense_path,conditioned_path,residual_path;
+    std::string input,output,phase,required_path,dense_path,conditioned_path,residual_path,distance_path;
     if(std::filesystem::exists(directory/"phase-bounds.bin"))phase=(directory/"phase-bounds.bin").string();
     if(std::filesystem::exists(directory/"residual.bin"))residual_path=(directory/"residual.bin").string();
-    unsigned trees=256;bool use_cache=false,progress=false;
+    unsigned trees=256,distance_trees=128,distance_limit=100;bool use_cache=false,progress=false;
     for(int i=1;i<argc;++i){std::string arg=argv[i];
-        if(arg=="--help"){std::cout<<"phase_fast_estimate -in requests.csv -out result.csv [--dense-model file [--conditioned-model file]] [--phase-bounds file [--required-phase file]] [--residual-model file --trees count (phase bounds required)] [--cache] [--no-cache] [--progress]\nExperimental approximate predictor; no error certificates.\n";return 0;}
+        if(arg=="--help"){std::cout<<"phase_fast_estimate -in requests.csv -out result.csv [--dense-model file [--conditioned-model file]] [--phase-bounds file [--required-phase file]] [--residual-model file --trees count (phase bounds required)] [--distance-model file --distance-limit cells --distance-trees count] [--cache] [--no-cache] [--progress]\nExperimental approximate predictor; no error certificates.\n";return 0;}
         if(arg=="--cache"){use_cache=true;continue;}if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--progress"){progress=true;continue;}
         if(i+1==argc)throw std::runtime_error("Missing argument");
-        if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--residual-model")residual_path=argv[++i];else if(arg=="--trees")trees=std::stoul(argv[++i]);else if(arg=="--phase-bounds")phase=argv[++i];else if(arg=="--required-phase")required_path=argv[++i];else if(arg=="--dense-model")dense_path=argv[++i];else if(arg=="--conditioned-model")conditioned_path=argv[++i];else throw std::runtime_error("Unknown option");
+        if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--residual-model")residual_path=argv[++i];else if(arg=="--trees")trees=std::stoul(argv[++i]);else if(arg=="--distance-model")distance_path=argv[++i];else if(arg=="--distance-limit")distance_limit=std::stoul(argv[++i]);else if(arg=="--distance-trees")distance_trees=std::stoul(argv[++i]);else if(arg=="--phase-bounds")phase=argv[++i];else if(arg=="--required-phase")required_path=argv[++i];else if(arg=="--dense-model")dense_path=argv[++i];else if(arg=="--conditioned-model")conditioned_path=argv[++i];else throw std::runtime_error("Unknown option");
     }
     if(input.empty() || output.empty() || (phase.empty() && dense_path.empty()) || (!required_path.empty() && phase.empty()) || (!conditioned_path.empty() && dense_path.empty()) || (!residual_path.empty() && (phase.empty() || !dense_path.empty())))throw std::runtime_error("Invalid inputs or model dependencies");
+    if(!distance_path.empty() && (residual_path.empty() || !distance_limit))throw std::runtime_error("Distance model requires base residual model and positive distance limit");
     auto normalized=[](const std::string&p){return std::filesystem::weakly_canonical(std::filesystem::absolute(p));};
-    for(auto&path:{input,phase,required_path,dense_path,conditioned_path,residual_path})if(!path.empty() && normalized(output)==normalized(path))throw std::runtime_error("Output must be distinct from inputs/assets");
+    for(auto&path:{input,phase,required_path,dense_path,conditioned_path,residual_path,distance_path})if(!path.empty() && normalized(output)==normalized(path))throw std::runtime_error("Output must be distinct from inputs/assets");
     auto begin=std::clock();std::unique_ptr<PhaseLowerBound>bounds;if(!phase.empty())bounds=std::make_unique<PhaseLowerBound>(phase);
     std::unique_ptr<PhaseRequiredBound>required;if(!required_path.empty())required=std::make_unique<PhaseRequiredBound>(required_path);
     Graph graph;std::unique_ptr<PeriodicDenseModel>dense;if(!dense_path.empty())dense=std::make_unique<PeriodicDenseModel>(dense_path);if(!conditioned_path.empty())dense->load_conditioned(conditioned_path);FastPinParser parser;
     std::unique_ptr<FastResidualModel>residual;if(!residual_path.empty())residual=std::make_unique<FastResidualModel>(residual_path,trees);
+    std::unique_ptr<FastResidualModel>distance_model;if(!distance_path.empty())distance_model=std::make_unique<FastResidualModel>(distance_path,distance_trees);
     double init=double(std::clock()-begin)/CLOCKS_PER_SEC;
     std::unique_ptr<PredictionCache>cache;if(use_cache)cache=std::make_unique<PredictionCache>();
     std::ifstream in(input);std::ofstream out(output);std::vector<char>buffer(1<<20);out.rdbuf()->pubsetbuf(buffer.data(),buffer.size());
@@ -52,7 +54,7 @@ int main(int argc,char** argv) {
     out<<"From,To,delay\n";uint64_t rows=0;
     while(std::getline(in,line)){auto text=strip(line);if(text.empty())continue;auto comma=text.find(',');if(comma==text.npos || text.find(',',comma+1)!=text.npos)throw std::runtime_error("Invalid request row");
         auto s=strip(text.substr(0,comma)),t=strip(text.substr(comma+1));Node from=parser.pin(s),to=parser.pin(t);Distance delay=INF;uint64_t key=(uint64_t(from)<<32)|to;
-        if(!cache || !cache->get(key,delay)){delay=dense?dense->predict(graph,from,to):direct_lower(graph,*bounds,required.get(),from,to);if(residual)delay=residual->predict(from,to,delay,*bounds);if(cache)cache->put(key,delay);}
+        if(!cache || !cache->get(key,delay)){delay=dense?dense->predict(graph,from,to):direct_lower(graph,*bounds,required.get(),from,to);if(residual){auto*selected=residual.get();if(distance_model){auto a=archdata::SITES[from/archdata::P],b=archdata::SITES[to/archdata::P];if(unsigned(std::abs(int(a.x)-int(b.x))+std::abs(int(a.y)-int(b.y)))<distance_limit)selected=distance_model.get();}delay=selected->predict(from,to,delay,*bounds);}if(cache)cache->put(key,delay);}
         if(delay>=INF)throw std::runtime_error("Unreachable query");
         out.write(s.data(),s.size());out.put(',');out.write(t.data(),t.size());out.put(',');char digits[32];auto end=std::to_chars(digits,digits+sizeof(digits),delay);if(end.ec!=std::errc())throw std::runtime_error("Delay formatting failed");out.write(digits,end.ptr-digits);out.put('\n');++rows;
         if(progress && rows%100000==0)std::cerr<<"progress="<<rows<<" cpu="<<double(std::clock()-begin)/CLOCKS_PER_SEC<<'\n';
