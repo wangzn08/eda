@@ -5,7 +5,9 @@
 #include <iostream>
 std::string_view strip(std::string_view s){auto a=s.find_first_not_of(" \r\n\t"),b=s.find_last_not_of(" \r\n\t");return a==s.npos?std::string_view{}:s.substr(a,b-a+1);}
 int main(int argc,char**argv){try{
+ // Research profiles may provide a matching signed correction beside the executable.
  auto directory=std::filesystem::absolute(argv[0]).parent_path();std::string input,output,residual,model=(directory/"core-template.bin").string();unsigned trees=256,near_distance=50,middle_distance=150,far_trees=256;bool adaptive=false;bool use_cache=false,progress=false,envelope=false;
+ if(std::filesystem::exists(directory/"correction.bin"))residual=(directory/"correction.bin").string();
  for(int i=1;i<argc;++i){std::string arg=argv[i];if(arg=="--help"){std::cout<<"core_template_estimate -in requests.csv -out result.csv [--model file] [--envelope] [--residual-model file --trees count] [--cache|--no-cache] [--progress]\nApproximate learned predictor; no error certificate.\n";return 0;}
   if(arg=="--adaptive-trees"){adaptive=true;continue;}if(arg=="--envelope"){envelope=true;continue;}if(arg=="--no-cache"){use_cache=false;continue;}if(arg=="--cache"){use_cache=true;continue;}if(arg=="--progress"){progress=true;continue;}if(i+1==argc)throw std::runtime_error("Missing argument");
   if(arg=="-in")input=argv[++i];else if(arg=="-out")output=argv[++i];else if(arg=="--model")model=argv[++i];else if(arg=="--residual-model")residual=argv[++i];else if(arg=="--trees")trees=std::stoul(argv[++i]);else if(arg=="--near-distance")near_distance=std::stoul(argv[++i]);else if(arg=="--middle-distance")middle_distance=std::stoul(argv[++i]);else if(arg=="--far-trees")far_trees=std::stoul(argv[++i]);else throw std::runtime_error("Unknown option");

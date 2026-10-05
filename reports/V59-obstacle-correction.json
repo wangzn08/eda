@@ -1,0 +1,109 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline_score": 96.34999162187053,
+  "scope": "Obstacle y-period100 replaces duplicate endpoint mod8 features27/28; signed template correction; no holdout, billion estimated",
+  "candidates": [
+    {
+      "trees": 64,
+      "python_validation_score": 97.5511327864606,
+      "runtime_file_bytes": 91688969,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.5511327864606,
+        "exact_fraction": 0.08435686057592984,
+        "mean_relative_error": 0.006156766712476428,
+        "p99_relative_error": 0.0422789007354627,
+        "runtime": {
+          "cpu_seconds": 0.944502,
+          "rss_bytes": 458735616,
+          "initialization_seconds": 0.654858
+        },
+        "machine": "macOS-27.0.1-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 19.6157,
+      "estimated_billion_cpu_seconds": 1900.1537660000001
+    },
+    {
+      "trees": 128,
+      "python_validation_score": 97.68404554516043,
+      "runtime_file_bytes": 92218633,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.68404554516043,
+        "exact_fraction": 0.08359046470247179,
+        "mean_relative_error": 0.005821968679750867,
+        "p99_relative_error": 0.04076118826608706,
+        "runtime": {
+          "cpu_seconds": 0.970637,
+          "rss_bytes": 459636736,
+          "initialization_seconds": 0.634139
+        },
+        "machine": "macOS-27.0.1-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 22.9147,
+      "estimated_billion_cpu_seconds": 2229.081388
+    },
+    {
+      "trees": 256,
+      "python_validation_score": 97.88730718324194,
+      "runtime_file_bytes": 93277961,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.88730718324194,
+        "exact_fraction": 0.0837437438771634,
+        "mean_relative_error": 0.005311928662392815,
+        "p99_relative_error": 0.03963354474982396,
+        "runtime": {
+          "cpu_seconds": 1.06029,
+          "rss_bytes": 460783616,
+          "initialization_seconds": 0.63285
+        },
+        "machine": "macOS-27.0.1-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 28.7012,
+      "estimated_billion_cpu_seconds": 2808.477254
+    },
+    {
+      "trees": 512,
+      "python_validation_score": 98.0283526771689,
+      "runtime_file_bytes": 95396617,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 98.0283526771689,
+        "exact_fraction": 0.07905873258115466,
+        "mean_relative_error": 0.0049560105885552075,
+        "p99_relative_error": 0.037391749764764524,
+        "runtime": {
+          "cpu_seconds": 1.25076,
+          "rss_bytes": 462946304,
+          "initialization_seconds": 0.629928
+        },
+        "machine": "macOS-27.0.1-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 42.0376,
+      "estimated_billion_cpu_seconds": 4141.863418
+    }
+  ]
+}

@@ -20,7 +20,8 @@ def main():
               'scope': 'Geometric endpoint slices only; do not identify actual chosen path', 'models': {}}
     for name, filename in [('template', 'validation.v55-core.csv'),
                            ('template_correction256', 'validation.v56-correction-256.csv'),
-                           ('template_correction1024', 'validation.v56-correction-1024.csv')]:
+                           ('template_correction1024', 'validation.v56-correction-1024.csv'),
+                           ('obstacle_correction256', 'validation.v59-correction-256.csv')]:
         with (ROOT/'out/evaluation'/filename).open() as f:
             p = np.array([int(row['delay']) for row in csv.DictReader(f)], dtype=np.float64)
         assert len(p) == len(y)

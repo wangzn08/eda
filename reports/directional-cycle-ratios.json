@@ -1,0 +1,101 @@
+{
+  "scope": "Architecture-only directional cycles; mixed-direction cycles not covered",
+  "directions": {
+    "east": {
+      "ports": 40,
+      "edges": 336,
+      "cycle_cost_ps": 125,
+      "cycle_displacement": 10,
+      "ps_per_cell": 12.5,
+      "cycle": [
+        {
+          "from": "ILE[5]",
+          "to": "ILE[5]",
+          "arc": {
+            "from": "ILE[5]",
+            "to": "ZLE[5]",
+            "delay": 125
+          },
+          "net": {
+            "from": "ZLE[5]",
+            "to": "ILE[5]",
+            "delta x": 10,
+            "delta y": 0
+          }
+        }
+      ]
+    },
+    "west": {
+      "ports": 40,
+      "edges": 336,
+      "cycle_cost_ps": 125,
+      "cycle_displacement": 10,
+      "ps_per_cell": 12.5,
+      "cycle": [
+        {
+          "from": "ILW[3]",
+          "to": "ILW[3]",
+          "arc": {
+            "from": "ILW[3]",
+            "to": "ZLW[3]",
+            "delay": 125
+          },
+          "net": {
+            "from": "ZLW[3]",
+            "to": "ILW[3]",
+            "delta x": -10,
+            "delta y": 0
+          }
+        }
+      ]
+    },
+    "north": {
+      "ports": 40,
+      "edges": 336,
+      "cycle_cost_ps": 127,
+      "cycle_displacement": 12,
+      "ps_per_cell": 10.583333333333334,
+      "cycle": [
+        {
+          "from": "ILN[7]",
+          "to": "ILN[7]",
+          "arc": {
+            "from": "ILN[7]",
+            "to": "ZLN[7]",
+            "delay": 127
+          },
+          "net": {
+            "from": "ZLN[7]",
+            "to": "ILN[7]",
+            "delta x": 0,
+            "delta y": 12
+          }
+        }
+      ]
+    },
+    "south": {
+      "ports": 40,
+      "edges": 336,
+      "cycle_cost_ps": 125,
+      "cycle_displacement": 12,
+      "ps_per_cell": 10.416666666666666,
+      "cycle": [
+        {
+          "from": "ILS[6]",
+          "to": "ILS[6]",
+          "arc": {
+            "from": "ILS[6]",
+            "to": "ZLS[6]",
+            "delay": 125
+          },
+          "net": {
+            "from": "ZLS[6]",
+            "to": "ILS[6]",
+            "delta x": 0,
+            "delta y": -12
+          }
+        }
+      ]
+    }
+  }
+}

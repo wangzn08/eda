@@ -113,6 +113,43 @@
         "total_loss_fraction": 0.30195594587291336,
         "underprediction_fraction": 0.4712659744408946
       }
+    },
+    "obstacle_correction256": {
+      "all": {
+        "rows": 150053,
+        "score": 97.88730718324196,
+        "mean_absolute_ps": 14.877223381072021,
+        "total_loss_fraction": 1.0,
+        "underprediction_fraction": 0.45515251277881813
+      },
+      "no_wall_crossing": {
+        "rows": 94930,
+        "score": 97.92550357267547,
+        "mean_absolute_ps": 13.837353839671337,
+        "total_loss_fraction": 0.6212052733229034,
+        "underprediction_fraction": 0.4422311176656484
+      },
+      "cross_same_blocked_band": {
+        "rows": 2757,
+        "score": 92.93482495894587,
+        "mean_absolute_ps": 31.756619513964456,
+        "total_loss_fraction": 0.06144388303895634,
+        "underprediction_fraction": 0.5738121146173377
+      },
+      "cross_same_open_band": {
+        "rows": 2286,
+        "score": 98.05019367828007,
+        "mean_absolute_ps": 9.203412073490814,
+        "total_loss_fraction": 0.014060043418882378,
+        "underprediction_fraction": 0.4221347331583552
+      },
+      "cross_different_bands": {
+        "rows": 50080,
+        "score": 98.08011173028277,
+        "mean_absolute_ps": 16.17811501597444,
+        "total_loss_fraction": 0.3032908002192578,
+        "underprediction_fraction": 0.47462060702875397
+      }
     }
   }
 }
