@@ -1,0 +1,134 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline_score": 96.34999162187053,
+  "scope": "Signed correction of architecture templates; no PDB asset, no path certificate; billion estimated",
+  "candidates": [
+    {
+      "trees": 64,
+      "python_validation_score": 97.37340005377155,
+      "runtime_file_bytes": 91688585,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.37340005377155,
+        "exact_fraction": 0.08219762350636109,
+        "mean_relative_error": 0.006615904927167445,
+        "p99_relative_error": 0.05150930816196588,
+        "runtime": {
+          "cpu_seconds": 0.94295,
+          "rss_bytes": 458735616,
+          "initialization_seconds": 0.646696
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 20.298,
+      "estimated_billion_cpu_seconds": 1967.2025969999997
+    },
+    {
+      "trees": 128,
+      "python_validation_score": 97.47985143751282,
+      "runtime_file_bytes": 92218249,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.47985143751282,
+        "exact_fraction": 0.08069815331916057,
+        "mean_relative_error": 0.006342750512596343,
+        "p99_relative_error": 0.04755224315553102,
+        "runtime": {
+          "cpu_seconds": 0.950506,
+          "rss_bytes": 459276288,
+          "initialization_seconds": 0.623481
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 22.6016,
+      "estimated_billion_cpu_seconds": 2197.8970190000005
+    },
+    {
+      "trees": 256,
+      "python_validation_score": 97.69764117967856,
+      "runtime_file_bytes": 93277577,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.69764117967856,
+        "exact_fraction": 0.07657960853831647,
+        "mean_relative_error": 0.005795603281019129,
+        "p99_relative_error": 0.046238134656282806,
+        "runtime": {
+          "cpu_seconds": 1.03823,
+          "rss_bytes": 460423168,
+          "initialization_seconds": 0.623731
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 28.4025,
+      "estimated_billion_cpu_seconds": 2778.821688
+    },
+    {
+      "trees": 512,
+      "python_validation_score": 97.93459722471216,
+      "runtime_file_bytes": 95396233,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.93459722471216,
+        "exact_fraction": 0.07443370009263393,
+        "mean_relative_error": 0.005194048180728547,
+        "p99_relative_error": 0.04012179496842092,
+        "runtime": {
+          "cpu_seconds": 1.27986,
+          "rss_bytes": 462569472,
+          "initialization_seconds": 0.637782
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 41.363,
+      "estimated_billion_cpu_seconds": 4073.3683730000007
+    },
+    {
+      "trees": 1024,
+      "python_validation_score": 98.02351628106881,
+      "runtime_file_bytes": 99633545,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 98.02351628106881,
+        "exact_fraction": 0.06810260374667618,
+        "mean_relative_error": 0.004968323990212024,
+        "p99_relative_error": 0.03813659170305263,
+        "runtime": {
+          "cpu_seconds": 1.58,
+          "rss_bytes": 467091456,
+          "initialization_seconds": 0.623855
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 64.3374,
+      "estimated_billion_cpu_seconds": 6371.925687
+    }
+  ]
+}

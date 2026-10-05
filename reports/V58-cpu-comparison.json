@@ -1,0 +1,75 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "scope": "Validation-selected compute allocation; billion timing extrapolated, not official acceptance",
+  "candidates": [
+    {
+      "near_distance": 20,
+      "middle_distance": 100,
+      "far_trees": 256,
+      "score": 97.77035979781816,
+      "mean_trees": 313.9498710455639,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 119516,
+        "512": 28822,
+        "1024": 1715
+      },
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.77035979781816,
+        "exact_fraction": 0.06905560035454139,
+        "mean_relative_error": 0.00560624208404666,
+        "p99_relative_error": 0.04213600618374895,
+        "runtime": {
+          "cpu_seconds": 1.39651,
+          "rss_bytes": 468287488,
+          "initialization_seconds": 0.721195
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 41.6695,
+      "estimated_billion_cpu_seconds": 4095.087286,
+      "runtime_file_bytes": 99633929
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 200,
+      "far_trees": 256,
+      "score": 97.83532612641524,
+      "mean_trees": 390.12903440784254,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 74864,
+        "512": 73474,
+        "1024": 1715
+      },
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 97.83532612641524,
+        "exact_fraction": 0.07030849099984672,
+        "mean_relative_error": 0.005442507175532999,
+        "p99_relative_error": 0.0406840569762076,
+        "runtime": {
+          "cpu_seconds": 1.24076,
+          "rss_bytes": 467042304,
+          "initialization_seconds": 0.651897
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+        "python_cpp_mismatch_rows": 0
+      },
+      "speed10m_cpu_seconds": 53.9719,
+      "estimated_billion_cpu_seconds": 5334.126109,
+      "runtime_file_bytes": 99633929
+    }
+  ]
+}

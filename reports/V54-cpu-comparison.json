@@ -1,0 +1,109 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "scope": "Joint-phase factors trained with continuous official-score loss; fixed validation selection; billion estimate only",
+  "candidates": [
+    {
+      "hidden": 32,
+      "routes": 128,
+      "epoch": 88,
+      "validation_score": 95.91728655047118,
+      "distance150_mixed_score": 96.81597435822312,
+      "weights": "out/v54/h32-r128-e88.pt",
+      "weights_bytes": 1558015,
+      "elapsed_seconds": 172.98746783399838,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 96.81597373879039,
+        "exact_fraction": 0.03164881741784569,
+        "mean_relative_error": 0.0080488731808614,
+        "p99_relative_error": 0.06427527543846258,
+        "runtime": {
+          "cpu_seconds": 0.460335,
+          "rss_bytes": 130678784,
+          "initialization_seconds": 0.196517
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance."
+      },
+      "reference_mismatch_rows": 7,
+      "reference_max_abs_difference_ps": 1,
+      "speed10m_cpu_seconds": 17.6056,
+      "estimated_billion_cpu_seconds": 1740.479038,
+      "estimate_formula": "initialization + 100*(measured_10m_cpu - initialization)",
+      "runtime_file_bytes": 51426650,
+      "model_sha256": "efd318d86f75e6e7b682053d8223210562368436d71c7865543c0594140beba2"
+    },
+    {
+      "hidden": 32,
+      "routes": 256,
+      "epoch": 88,
+      "validation_score": 95.75448296174694,
+      "distance150_mixed_score": 96.69598800517495,
+      "weights": "out/v54/h32-r256-e88.pt",
+      "weights_bytes": 3065919,
+      "elapsed_seconds": 619.1657637919998,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 96.69599337925257,
+        "exact_fraction": 0.030195997414246965,
+        "mean_relative_error": 0.00834929827533672,
+        "p99_relative_error": 0.06440855599141444,
+        "runtime": {
+          "cpu_seconds": 0.517352,
+          "rss_bytes": 132235264,
+          "initialization_seconds": 0.196774
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance."
+      },
+      "reference_mismatch_rows": 12,
+      "reference_max_abs_difference_ps": 1,
+      "speed10m_cpu_seconds": 20.759,
+      "estimated_billion_cpu_seconds": 2056.409573,
+      "estimate_formula": "initialization + 100*(measured_10m_cpu - initialization)",
+      "runtime_file_bytes": 52934490,
+      "model_sha256": "46ce002c8d73c53204acedebbaad00ff9ae12f494ac3eddd2279fe6fe37ed9bb"
+    },
+    {
+      "hidden": 64,
+      "routes": 256,
+      "epoch": 88,
+      "validation_score": 95.95412132466429,
+      "distance150_mixed_score": 96.7773560174434,
+      "weights": "out/v54/h64-r256-e88.pt",
+      "weights_bytes": 3120319,
+      "elapsed_seconds": 1186.3024000420119,
+      "cpp_evaluation": {
+        "fit_split": "development",
+        "selection_split": "validation",
+        "holdout_used": false,
+        "rows": 150053,
+        "validation_score": 96.77735352488865,
+        "exact_fraction": 0.0314022378759505,
+        "mean_relative_error": 0.008145254895397332,
+        "p99_relative_error": 0.0640989428822129,
+        "runtime": {
+          "cpu_seconds": 0.59156,
+          "rss_bytes": 132284416,
+          "initialization_seconds": 0.198235
+        },
+        "machine": "macOS-26.6.2-arm64-arm-64bit",
+        "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance."
+      },
+      "reference_mismatch_rows": 15,
+      "reference_max_abs_difference_ps": 1,
+      "speed10m_cpu_seconds": 26.4149,
+      "estimated_billion_cpu_seconds": 2622.1498549999997,
+      "estimate_formula": "initialization + 100*(measured_10m_cpu - initialization)",
+      "runtime_file_bytes": 52988890,
+      "model_sha256": "049b653ac35aa20f2354f636a822c85536c123b7cec7e7d76c163db04f6249df"
+    }
+  ]
+}

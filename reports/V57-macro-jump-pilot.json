@@ -1,0 +1,23 @@
+{
+  "scope": "First 1001 validation requests; not full accuracy or no-interference throughput; external incumbent from architecture V18 paths; missing paths receive zero scoring credit; float64 prevents sentinel overflow",
+  "candidates": [
+    {
+      "name": "base32",
+      "rows": 1001,
+      "covered": 949,
+      "score_with_missing_zero_credit": 87.74107802458417,
+      "score_covered": 92.54880832730113,
+      "under_golden": 0,
+      "log": "rows=1001 changed=40 expanded=28637 finished=42 cpu=0.015563\n"
+    },
+    {
+      "name": "jump32",
+      "rows": 1001,
+      "covered": 952,
+      "score_with_missing_zero_credit": 88.11993471964045,
+      "score_covered": 92.65551959491607,
+      "under_golden": 0,
+      "log": "rows=1001 changed=47 expanded=28572 finished=53 cpu=0.024756\n"
+    }
+  ]
+}

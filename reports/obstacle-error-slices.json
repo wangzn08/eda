@@ -1,0 +1,118 @@
+{
+  "split": "validation",
+  "holdout_used": false,
+  "scope": "Geometric endpoint slices only; do not identify actual chosen path",
+  "models": {
+    "template": {
+      "all": {
+        "rows": 150053,
+        "score": 96.34999162187053,
+        "mean_absolute_ps": 26.70664365257609,
+        "total_loss_fraction": 1.0,
+        "underprediction_fraction": 0.6897829433600128
+      },
+      "no_wall_crossing": {
+        "rows": 94930,
+        "score": 96.73780620447938,
+        "mean_absolute_ps": 23.048193405667334,
+        "total_loss_fraction": 0.5654245932238795,
+        "underprediction_fraction": 0.6095649425892763
+      },
+      "cross_same_blocked_band": {
+        "rows": 2757,
+        "score": 76.26948279231847,
+        "mean_absolute_ps": 110.5727239753355,
+        "total_loss_fraction": 0.11945530071016655,
+        "underprediction_fraction": 0.9822270583968081
+      },
+      "cross_same_open_band": {
+        "rows": 2286,
+        "score": 97.52373515139767,
+        "mean_absolute_ps": 11.937445319335083,
+        "total_loss_fraction": 0.01033557814210436,
+        "underprediction_fraction": 0.5656167979002624
+      },
+      "cross_different_bands": {
+        "rows": 50080,
+        "score": 96.66675573543915,
+        "mean_absolute_ps": 29.69866214057508,
+        "total_loss_fraction": 0.3047845279238495,
+        "underprediction_fraction": 0.8314097444089457
+      }
+    },
+    "template_correction256": {
+      "all": {
+        "rows": 150053,
+        "score": 97.69764117967856,
+        "mean_absolute_ps": 15.930577862488587,
+        "total_loss_fraction": 1.0,
+        "underprediction_fraction": 0.4586446122370096
+      },
+      "no_wall_crossing": {
+        "rows": 94930,
+        "score": 97.86067534376684,
+        "mean_absolute_ps": 14.281344148319814,
+        "total_loss_fraction": 0.5878445360313471,
+        "underprediction_fraction": 0.4452333298219741
+      },
+      "cross_same_blocked_band": {
+        "rows": 2757,
+        "score": 87.05552453622228,
+        "mean_absolute_ps": 59.06347479143997,
+        "total_loss_fraction": 0.1033007634352753,
+        "underprediction_fraction": 0.8846572361262242
+      },
+      "cross_same_open_band": {
+        "rows": 2286,
+        "score": 97.50105514484221,
+        "mean_absolute_ps": 11.11023622047244,
+        "total_loss_fraction": 0.016535419106357977,
+        "underprediction_fraction": 0.2615923009623797
+      },
+      "cross_different_bands": {
+        "rows": 50080,
+        "score": 97.98344146052409,
+        "mean_absolute_ps": 16.902296325878595,
+        "total_loss_fraction": 0.2923192814270197,
+        "underprediction_fraction": 0.4696086261980831
+      }
+    },
+    "template_correction1024": {
+      "all": {
+        "rows": 150053,
+        "score": 98.02351628106881,
+        "mean_absolute_ps": 13.462463262980414,
+        "total_loss_fraction": 1.0,
+        "underprediction_fraction": 0.463602860322686
+      },
+      "no_wall_crossing": {
+        "rows": 94930,
+        "score": 98.09553135460526,
+        "mean_absolute_ps": 12.316696513220268,
+        "total_loss_fraction": 0.6095921755008448,
+        "underprediction_fraction": 0.45503002212156324
+      },
+      "cross_same_blocked_band": {
+        "rows": 2757,
+        "score": 92.29250971907594,
+        "mean_absolute_ps": 34.268407689517595,
+        "total_loss_fraction": 0.07164927957131076,
+        "underprediction_fraction": 0.7138193688792165
+      },
+      "cross_same_open_band": {
+        "rows": 2286,
+        "score": 97.8200920150771,
+        "mean_absolute_ps": 9.591426071741033,
+        "total_loss_fraction": 0.016802599054931037,
+        "underprediction_fraction": 0.34995625546806647
+      },
+      "cross_different_bands": {
+        "rows": 50080,
+        "score": 98.21179547501163,
+        "mean_absolute_ps": 14.665634984025559,
+        "total_loss_fraction": 0.30195594587291336,
+        "underprediction_fraction": 0.4712659744408946
+      }
+    }
+  }
+}

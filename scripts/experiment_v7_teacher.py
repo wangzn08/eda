@@ -8,6 +8,8 @@ from architecture import ROOT
 from v4_features import NAMES
 
 def score(y,p):
+    # Large unreachable sentinels can overflow int64 when multiplied by four.
+    y=np.asarray(y,dtype=np.float64);p=np.asarray(p,dtype=np.float64)
     m=y>0
     return float(np.mean(100*(1-np.tanh(4*np.abs(y[m]-p[m])/y[m])),dtype=np.float64))
 

@@ -1,0 +1,307 @@
+{
+  "fit_split": "development",
+  "gate_selection_split": "validation",
+  "holdout_used": false,
+  "scope": "Offline mixed tree-prefix prediction; live throughput pending; reused validation selection",
+  "candidates": [
+    {
+      "near_distance": 20,
+      "middle_distance": 100,
+      "far_trees": 128,
+      "score": 97.56041830484074,
+      "mean_trees": 211.99890705284133,
+      "rows_by_tree_count": {
+        "128": 119516,
+        "256": 0,
+        "512": 28822,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 100,
+      "far_trees": 256,
+      "score": 97.77035979781816,
+      "mean_trees": 313.9498710455639,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 119516,
+        "512": 28822,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 150,
+      "far_trees": 128,
+      "score": 97.62288259964986,
+      "mean_trees": 272.1171852612077,
+      "rows_by_tree_count": {
+        "128": 96024,
+        "256": 0,
+        "512": 52314,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 150,
+      "far_trees": 256,
+      "score": 97.81140886087718,
+      "mean_trees": 354.0287231844748,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 96024,
+        "512": 52314,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 200,
+      "far_trees": 128,
+      "score": 97.67649972351293,
+      "mean_trees": 326.2676520962593,
+      "rows_by_tree_count": {
+        "128": 74864,
+        "256": 0,
+        "512": 73474,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 200,
+      "far_trees": 256,
+      "score": 97.83532612641524,
+      "mean_trees": 390.12903440784254,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 74864,
+        "512": 73474,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 250,
+      "far_trees": 128,
+      "score": 97.73357628222115,
+      "mean_trees": 373.920574730262,
+      "rows_by_tree_count": {
+        "128": 56243,
+        "256": 0,
+        "512": 92095,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 20,
+      "middle_distance": 250,
+      "far_trees": 256,
+      "score": 97.85733447960644,
+      "mean_trees": 421.89764949717767,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 56243,
+        "512": 92095,
+        "1024": 1715
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 100,
+      "far_trees": 128,
+      "score": 97.55733668282268,
+      "mean_trees": 237.47726469980606,
+      "rows_by_tree_count": {
+        "128": 119516,
+        "256": 0,
+        "512": 21355,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 100,
+      "far_trees": 256,
+      "score": 97.76727817580009,
+      "mean_trees": 339.42822869252865,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 119516,
+        "512": 21355,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 150,
+      "far_trees": 128,
+      "score": 97.61980097763178,
+      "mean_trees": 297.59554290817243,
+      "rows_by_tree_count": {
+        "128": 96024,
+        "256": 0,
+        "512": 44847,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 150,
+      "far_trees": 256,
+      "score": 97.8083272388591,
+      "mean_trees": 379.50708083143957,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 96024,
+        "512": 44847,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 200,
+      "far_trees": 128,
+      "score": 97.67341810149487,
+      "mean_trees": 351.7460097432241,
+      "rows_by_tree_count": {
+        "128": 74864,
+        "256": 0,
+        "512": 66007,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 200,
+      "far_trees": 256,
+      "score": 97.83224450439715,
+      "mean_trees": 415.6073920548073,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 74864,
+        "512": 66007,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 250,
+      "far_trees": 128,
+      "score": 97.73049466020308,
+      "mean_trees": 399.3989323772267,
+      "rows_by_tree_count": {
+        "128": 56243,
+        "256": 0,
+        "512": 84628,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 50,
+      "middle_distance": 250,
+      "far_trees": 256,
+      "score": 97.85425285758835,
+      "mean_trees": 447.3760071441424,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 56243,
+        "512": 84628,
+        "1024": 9182
+      }
+    },
+    {
+      "near_distance": 100,
+      "middle_distance": 150,
+      "far_trees": 128,
+      "score": 97.63593097599359,
+      "mean_trees": 370.4615302593084,
+      "rows_by_tree_count": {
+        "128": 96024,
+        "256": 0,
+        "512": 23492,
+        "1024": 30537
+      }
+    },
+    {
+      "near_distance": 100,
+      "middle_distance": 150,
+      "far_trees": 256,
+      "score": 97.82445723722091,
+      "mean_trees": 452.3730681825755,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 96024,
+        "512": 23492,
+        "1024": 30537
+      }
+    },
+    {
+      "near_distance": 100,
+      "middle_distance": 200,
+      "far_trees": 128,
+      "score": 97.6895480998567,
+      "mean_trees": 424.61199709436,
+      "rows_by_tree_count": {
+        "128": 74864,
+        "256": 0,
+        "512": 44652,
+        "1024": 30537
+      }
+    },
+    {
+      "near_distance": 100,
+      "middle_distance": 200,
+      "far_trees": 256,
+      "score": 97.84837450275897,
+      "mean_trees": 488.4733794059432,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 74864,
+        "512": 44652,
+        "1024": 30537
+      }
+    },
+    {
+      "near_distance": 100,
+      "middle_distance": 250,
+      "far_trees": 128,
+      "score": 97.7466246585649,
+      "mean_trees": 472.26491972836266,
+      "rows_by_tree_count": {
+        "128": 56243,
+        "256": 0,
+        "512": 63273,
+        "1024": 30537
+      }
+    },
+    {
+      "near_distance": 100,
+      "middle_distance": 250,
+      "far_trees": 256,
+      "score": 97.87038285595017,
+      "mean_trees": 520.2419944952784,
+      "rows_by_tree_count": {
+        "128": 0,
+        "256": 56243,
+        "512": 63273,
+        "1024": 30537
+      }
+    }
+  ],
+  "best": {
+    "near_distance": 100,
+    "middle_distance": 250,
+    "far_trees": 256,
+    "score": 97.87038285595017,
+    "mean_trees": 520.2419944952784,
+    "rows_by_tree_count": {
+      "128": 0,
+      "256": 56243,
+      "512": 63273,
+      "1024": 30537
+    }
+  }
+}

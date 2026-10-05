@@ -1,0 +1,68 @@
+{
+  "scope": "First 1001 validation rows only; external V18 architecture-path incumbent initialization is not timed here; no billion throughput claim",
+  "incumbent": "out/evaluation/v57-pilot.bound.csv",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "base32",
+      "budget": 32,
+      "priority_weight": 1,
+      "repeat_jumps": false,
+      "rows": 1001,
+      "covered": 949,
+      "under_golden": 0,
+      "score_with_missing_zero_credit": 87.74107802458417,
+      "score_covered": 92.54880832730113,
+      "log": "rows=1001 changed=40 expanded=28637 finished=42 cpu=0.012347\n        0.78 real         0.14 user         0.02 sys\n           166543360  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               10345  page reclaims\n                   1  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   0  voluntary context switches\n                  14  involuntary context switches\n          1735249084  instructions retired\n           582824735  cycles elapsed\n           165183944  peak memory footprint\n"
+    },
+    {
+      "name": "jump32",
+      "budget": 32,
+      "priority_weight": 1,
+      "repeat_jumps": true,
+      "rows": 1001,
+      "covered": 952,
+      "under_golden": 0,
+      "score_with_missing_zero_credit": 88.11993471964045,
+      "score_covered": 92.65551959491607,
+      "log": "rows=1001 changed=47 expanded=28572 finished=53 cpu=0.01975\n        0.14 real         0.13 user         0.01 sys\n           166494208  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               10342  page reclaims\n                   1  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   0  voluntary context switches\n                  23  involuntary context switches\n          1759212341  instructions retired\n           603347272  cycles elapsed\n           165134792  peak memory footprint\n"
+    },
+    {
+      "name": "jump8-w105",
+      "budget": 8,
+      "priority_weight": 1.05,
+      "repeat_jumps": true,
+      "rows": 1001,
+      "covered": 955,
+      "under_golden": 0,
+      "score_with_missing_zero_credit": 88.48302611580006,
+      "score_covered": 92.74503575069723,
+      "log": "rows=1001 changed=85 expanded=7676 finished=88 cpu=0.011598\n        0.14 real         0.12 user         0.01 sys\n           166494208  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               10342  page reclaims\n                   1  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   0  voluntary context switches\n                  76  involuntary context switches\n          1703389956  instructions retired\n           570476045  cycles elapsed\n           165134792  peak memory footprint\n"
+    },
+    {
+      "name": "jump32-w105",
+      "budget": 32,
+      "priority_weight": 1.05,
+      "repeat_jumps": true,
+      "rows": 1001,
+      "covered": 972,
+      "under_golden": 0,
+      "score_with_missing_zero_credit": 90.69682608386707,
+      "score_covered": 93.40280134768614,
+      "log": "rows=1001 changed=216 expanded=28692 finished=309 cpu=0.017666\n        0.14 real         0.13 user         0.01 sys\n           166461440  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               10340  page reclaims\n                   1  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   0  voluntary context switches\n                  33  involuntary context switches\n          1762707605  instructions retired\n           591383768  cycles elapsed\n           165102024  peak memory footprint\n"
+    },
+    {
+      "name": "jump128-w105",
+      "budget": 128,
+      "priority_weight": 1.05,
+      "repeat_jumps": true,
+      "rows": 1001,
+      "covered": 985,
+      "under_golden": 0,
+      "score_with_missing_zero_credit": 92.37055610194136,
+      "score_covered": 93.87099153100844,
+      "log": "rows=1001 changed=355 expanded=95837 finished=698 cpu=0.032074\n        0.16 real         0.14 user         0.01 sys\n           166526976  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               10344  page reclaims\n                   1  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                   0  voluntary context switches\n                  12  involuntary context switches\n          1940200267  instructions retired\n           646607993  cycles elapsed\n           165167560  peak memory footprint\n"
+    }
+  ],
+  "state": "complete"
+}
