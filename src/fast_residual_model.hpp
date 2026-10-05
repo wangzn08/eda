@@ -6,6 +6,11 @@ class FastResidualModel {
  struct Split{uint16_t feature,border;};struct Tree{std::vector<Split>split;std::vector<double>leaf;};
  std::vector<Tree>trees;static constexpr int features=71;std::array<std::vector<float>,features>borders;double scale=1,bias=0;
  std::unique_ptr<FastArchitectureFeatures>feature_builder;
+ double value(const std::array<float,features>&x)const{
+  std::array<uint16_t,features>bin;for(int i=0;i<features;++i)bin[i]=std::lower_bound(borders[i].begin(),borders[i].end(),x[i])-borders[i].begin();double result=0;
+  for(const auto&t:trees){unsigned leaf=0;for(size_t k=0;k<t.split.size();++k)leaf|=unsigned(bin[t.split[k].feature]>t.split[k].border)<<k;result+=t.leaf[leaf];}
+  return scale*result+bias;
+ }
 public:
  explicit FastResidualModel(const std::string&path,unsigned count){
   std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated residual model");};char magic[8];uint32_t total;read(magic,8);read(&total,4);read(&scale,8);read(&bias,8);if(std::string(magic,8)!="FASTRES1" || !count || count>total || total>4096)throw std::runtime_error("Invalid residual model");
@@ -18,8 +23,10 @@ public:
  }
  Distance predict(Node source,Node target,Distance lower,const PhaseLowerBound&bounds)const {
   if(source==target)return 0;auto x=feature_builder->get(source,target,lower,bounds);
-  std::array<uint16_t,features>bin;for(int i=0;i<features;++i)bin[i]=std::lower_bound(borders[i].begin(),borders[i].end(),x[i])-borders[i].begin();double value=0;
-  for(const auto&t:trees){unsigned leaf=0;for(size_t k=0;k<t.split.size();++k)leaf|=unsigned(bin[t.split[k].feature]>t.split[k].border)<<k;value+=t.leaf[leaf];}
-  value=scale*value+bias;return Distance(std::nearbyint(double(lower)+std::max(0.,100*value)));
+  return Distance(std::nearbyint(double(lower)+std::max(0.,100*value(x))));
+ }
+ Distance correct_template(Node source,Node target,Distance base,float vg,float hg)const{
+  if(source==target)return 0;
+  return Distance(std::nearbyint(std::max(0.,double(base)+100*value(feature_builder->get(source,target,base,vg,hg)))));
  }
 };

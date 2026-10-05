@@ -23,7 +23,11 @@ public:
   std::vector<std::string>names;std::array<std::string,496>portfamily;for(int p=0;p<496;++p){std::string s=archdata::PORTS[p];portfamily[p]=s[0]=='Z'?s.substr(0,s.find('[')):s.substr(0,1);names.push_back(portfamily[p]);}std::sort(names.begin(),names.end());names.erase(std::unique(names.begin(),names.end()),names.end());for(int p=0;p<496;++p)family[p]=std::lower_bound(names.begin(),names.end(),portfamily[p])-names.begin();
  }
  std::array<float,71> get(Node source,Node target,Distance lower,const PhaseLowerBound&bounds)const {
-  auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];int dx=b.x-a.x,dy=b.y-a.y,sp=source%496,tp=target%496;float vg=float(bounds.gaps(a,{b.x,a.y})),hg=float(bounds.gaps(a,{a.x,b.y}));auto mod=[](int n,int p){return (n%p+p)%p;};
+  auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
+  return get(source,target,lower,float(bounds.gaps(a,{b.x,a.y})),float(bounds.gaps(a,{a.x,b.y})));
+ }
+ std::array<float,71> get(Node source,Node target,Distance lower,float vg,float hg)const {
+  auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];int dx=b.x-a.x,dy=b.y-a.y,sp=source%496,tp=target%496;auto mod=[](int n,int p){return (n%p+p)%p;};
   std::array<float,71>x={float(a.x),float(a.y),float(b.x),float(b.y),float(dx),float(dy),float(std::abs(dx)),float(std::abs(dy)),float(std::abs(dx)+std::abs(dy)),float(sp),float(tp),float(family[sp]),float(family[tp]),float((dx>0)-(dx<0)),float((dy>0)-(dy<0)),float(a.x%10),float(b.x%10),float(a.y%12),float(b.y%12),vg,hg,float(lower),float(lower)-12.5f*std::abs(dx)-(125.f/12)*std::abs(dy)-vg-hg,float(mod(dx,10)),float(mod(dy,12)),float(mod(dx,4)),float(mod(dy,4)),float(sp%8),float(tp%8)};
   augment(x,source,target);
   return x;
