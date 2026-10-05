@@ -19,7 +19,8 @@ class CoreTemplateModel {
     std::unique_ptr<HorizontalTransientModel>horizontal;
     struct JointCell {int32_t base[4];int32_t slope_x,slope_y;};
     std::vector<JointCell>joint;
-    struct FarJointCell {int32_t base[4],slope_y;};
+    struct FarJointCell {uint16_t base[4];int16_t horizontal_delta;uint16_t slope_x,slope_near_y,slope_far_y;};
+    static_assert(sizeof(FarJointCell)==16,"Compact piecewise cell size");
     std::vector<FarJointCell>far_joint;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
@@ -33,16 +34,22 @@ class CoreTemplateModel {
         auto candidate=[&](int rx,int ry,int nx,int ny){
             Distance base=INF;
             for(auto end:terminal[target]){int64_t value;
-                if(!joint.empty() && nx>0 && ny>0){
+                if((!joint.empty() || !far_joint.empty()) && nx>0 && ny>0){
                     unsigned ix=(rx>0?10:0)+std::abs(rx)-20,iy=(ry>0?12:0)+std::abs(ry)-24;
-                    size_t ji=(size_t(index[port])*160+end.first)*480+ix*24+iy;const auto& cell=joint[ji];
-                    int64_t joint_base=cell.base[(nx>=2?2:0)+(ny>=2?1:0)];
-                    if(!far_joint.empty() && ny>=3){const auto& fc=far_joint[ji];unsigned xi=nx>=2?2:0;
-                        if(ny==3)joint_base=cell.base[xi+1]+(fc.base[xi]-cell.base[xi+1])/2;
-                        else if(ny==4)joint_base=fc.base[xi];
-                        else joint_base=fc.base[xi+1]+int64_t(ny-5)*fc.slope_y;
-                    }else joint_base+=int64_t(std::min(unsigned(std::max(0,ny-2)),growth_cap))*cell.slope_y;
-                    value=joint_base+int64_t(std::min(unsigned(std::max(0,nx-2)),growth_cap))*cell.slope_x+end.second;
+                    size_t ji=(size_t(index[port])*160+end.first)*480+ix*24+iy;
+                    if(!far_joint.empty()){
+                        const auto& cell=far_joint[ji];int64_t v;
+                        if(ny==1)v=cell.base[0];
+                        else if(ny==2)v=cell.base[1];
+                        else if(ny==3)v=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))/2;
+                        else if(ny==4)v=cell.base[2];
+                        else v=cell.base[3]+int64_t(ny-5)*cell.slope_far_y;
+                        if(nx>=2)v+=cell.horizontal_delta+int64_t(nx-2)*cell.slope_x;
+                        value=v+end.second;
+                    }else{
+                        const auto& cell=joint[ji];
+                        value=cell.base[(nx>=2?2:0)+(ny>=2?1:0)]+int64_t(std::min(unsigned(std::max(0,nx-2)),growth_cap))*cell.slope_x+int64_t(std::min(unsigned(std::max(0,ny-2)),growth_cap))*cell.slope_y+end.second;
+                    }
                 }else{value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);if(horizontal)value+=horizontal->correction(index[port],end.first,ry,dx,growth_cap);}base=std::min(base,Distance(std::max<int64_t>(0,value)));}
             best=std::min(best,base+Distance(nx)*125+Distance(ny)*(dy>0?127:125));
         };
@@ -59,19 +66,25 @@ class CoreTemplateModel {
 public:
     void enable_joint_layout(){
         if(!vertical || !horizontal || envelope || shell_x || shell_y)throw std::runtime_error("Joint layout requires both original-anchor transients");
-        joint.resize(size_t(160)*160*480);if(has_far)far_joint.resize(joint.size());
+        if(has_far)far_joint.resize(size_t(160)*160*480);else joint.resize(size_t(160)*160*480);
         for(unsigned source=0;source<160;++source)for(unsigned target=0;target<160;++target)for(unsigned ix=0;ix<20;++ix)for(unsigned iy=0;iy<24;++iy){
             int sx=ix<10?-1:1,sy=iy<12?-1:1,x=sx*(20+ix%10),y=sy*(24+iy%12);
             int32_t h[2]={horizontal->correction(source,target,y,sx*(30+ix%10),growth_cap),horizontal->correction(source,target,y,sx*(40+ix%10),growth_cap)};
             int32_t v[2]={vertical->correction(source,target,x,sy*(36+iy%12),growth_cap),vertical->correction(source,target,x,sy*(48+iy%12),growth_cap)};
-            auto& cell=joint[(size_t(source)*160+target)*480+ix*24+iy];
-            for(unsigned a=0;a<2;++a)for(unsigned b=0;b<2;++b)cell.base[a*2+b]=int32_t(at(source,target,x,y))+h[a]+v[b];
-            if(has_far){auto& fc=far_joint[(size_t(source)*160+target)*480+ix*24+iy];
+            size_t ji=(size_t(source)*160+target)*480+ix*24+iy;
+            if(has_far){
+                auto& fc=far_joint[ji];
                 int32_t vf[2]={vertical->correction(source,target,x,sy*(72+iy%12),growth_cap),vertical->correction(source,target,x,sy*(84+iy%12),growth_cap)};
-                for(unsigned a=0;a<2;++a)for(unsigned b=0;b<2;++b)fc.base[a*2+b]=int32_t(at(source,target,x,y))+h[a]+vf[b];
-                fc.slope_y=std::max(0,vf[1]-vf[0]);
+                int32_t bases[4]={int32_t(at(source,target,x,y))+h[0]+v[0],int32_t(at(source,target,x,y))+h[0]+v[1],int32_t(at(source,target,x,y))+h[0]+vf[0],int32_t(at(source,target,x,y))+h[0]+vf[1]};
+                for(unsigned b=0;b<4;++b){if(bases[b]<0 || bases[b]>65535)throw std::runtime_error("Compact joint base overflow");fc.base[b]=uint16_t(bases[b]);}
+                int delta=h[1]-h[0];if(delta < -32768 || delta>32767)throw std::runtime_error("Compact joint delta overflow");fc.horizontal_delta=int16_t(delta);
+                auto slope=[](int d){if(d>65535)throw std::runtime_error("Compact joint slope overflow");return uint16_t(std::max(0,d));};
+                fc.slope_x=slope(delta);fc.slope_near_y=slope(v[1]-v[0]);fc.slope_far_y=slope(vf[1]-vf[0]);
+            }else{
+                auto& cell=joint[ji];
+                for(unsigned a=0;a<2;++a)for(unsigned b=0;b<2;++b)cell.base[a*2+b]=int32_t(at(source,target,x,y))+h[a]+v[b];
+                cell.slope_x=std::max(0,h[1]-h[0]);cell.slope_y=std::max(0,v[1]-v[0]);
             }
-            cell.slope_x=std::max(0,h[1]-h[0]);cell.slope_y=std::max(0,v[1]-v[0]);
         }
     }
     std::pair<float,float>gap_features(Node source,Node target)const{

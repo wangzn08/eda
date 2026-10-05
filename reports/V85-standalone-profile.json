@@ -1,0 +1,40 @@
+{
+  "trees": 128,
+  "cache_enabled": false,
+  "validation_score": 98.89646091732914,
+  "full_validation_output_matches": true,
+  "files": [
+    {
+      "name": "estimate",
+      "bytes": 736200,
+      "sha256": "240174a6422018ca2fcba3fea49bc32ededaaa76eb7d2dcdeeb8017853e2b5af"
+    },
+    {
+      "name": "core-template.bin",
+      "bytes": 42083456,
+      "sha256": "ef0dd8146b0b9a0a3d331f06fefd004d82cae417c034d2eafc495160a5956621"
+    },
+    {
+      "name": "vertical-transients.bin",
+      "bytes": 18774532,
+      "sha256": "eb8e5f3693334bc1e400fd6d5f5372df5234356c632950f91e16f180e5173398"
+    },
+    {
+      "name": "correction.bin",
+      "bytes": 1059356,
+      "sha256": "d9635cf48392a8bb2755e185b23761a775f34ff8d473baf9cee6c417eb49d9d4"
+    },
+    {
+      "name": "horizontal-transients.bin",
+      "bytes": 23032644,
+      "sha256": "36a07734d7d306661b2f18260d294cfbafaebc15f426ef47e10b75fa22383268"
+    },
+    {
+      "name": "vertical-far-delta.bin",
+      "bytes": 12455824,
+      "sha256": "a2c20cae7c8b257f8bd0a4683f7e3e92a20f715c3301b99dfd777e2325d2e3f3"
+    }
+  ],
+  "runtime_file_bytes": 98142012,
+  "scope": "Frozen standalone research profile. OfficialLinux environment, full billion performance and99.9 precision goal remain unverified/unachieved."
+}

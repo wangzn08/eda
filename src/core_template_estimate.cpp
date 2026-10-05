@@ -6,10 +6,14 @@
 #ifndef CORE_DEFAULT_TREES
 #define CORE_DEFAULT_TREES 256
 #endif
+#ifndef CORE_DEFAULT_JOINT
+#define CORE_DEFAULT_JOINT 0
+#endif
 std::string_view strip(std::string_view s){auto a=s.find_first_not_of(" \r\n\t"),b=s.find_last_not_of(" \r\n\t");return a==s.npos?std::string_view{}:s.substr(a,b-a+1);}
 int main(int argc,char**argv){try{
  // Research profiles may provide a matching signed correction beside the executable.
- auto directory=std::filesystem::absolute(argv[0]).parent_path();std::string input,output,residual,transient,horizontal,far,model=(directory/"core-template.bin").string();unsigned growth_cap=UINT_MAX,shell_x=0,shell_y=0,trees=CORE_DEFAULT_TREES,near_distance=50,middle_distance=150,far_trees=256;bool joint_layout=false;bool adaptive=false;bool use_cache=false,progress=false,envelope=false;
+ auto directory=std::filesystem::absolute(argv[0]).parent_path();std::string input,output,residual,transient,horizontal,far,model=(directory/"core-template.bin").string();unsigned growth_cap=UINT_MAX,shell_x=0,shell_y=0,trees=CORE_DEFAULT_TREES,near_distance=50,middle_distance=150,far_trees=256;bool joint_layout=CORE_DEFAULT_JOINT;bool adaptive=false;bool use_cache=false,progress=false,envelope=false;
+ if(std::filesystem::exists(directory/"vertical-far-delta.bin"))far=(directory/"vertical-far-delta.bin").string();
  if(std::filesystem::exists(directory/"horizontal-transients.bin"))horizontal=(directory/"horizontal-transients.bin").string();
  if(std::filesystem::exists(directory/"vertical-transients.bin"))transient=(directory/"vertical-transients.bin").string();
  if(std::filesystem::exists(directory/"correction.bin"))residual=(directory/"correction.bin").string();

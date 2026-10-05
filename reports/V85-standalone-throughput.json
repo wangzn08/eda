@@ -1,0 +1,12 @@
+{
+  "rows": 10000000,
+  "cpu_seconds": 52.2472,
+  "initialization_seconds": 5.30717,
+  "query_cpu_seconds": 46.94003,
+  "requests_per_cpu_second": 213037.78459451348,
+  "maximum_rss_bytes": 977895424,
+  "validation_score": 98.89646091732914,
+  "runtime_file_bytes": 98142012,
+  "cache_enabled": false,
+  "scope": "Actual standard-interface10m repeated development requests, each recomputed. Single run, no full-billion or hidden workload guarantee."
+}
