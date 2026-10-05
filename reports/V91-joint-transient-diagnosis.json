@@ -1,0 +1,140 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "source_indices": [
+    0,
+    80,
+    159
+  ],
+  "target_ports": 160,
+  "domain_radius": 144,
+  "cost_limit": 5000,
+  "comparisons": [
+    {
+      "group": "vertical_long",
+      "x_direction": -1,
+      "y_direction": -1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 0.0,
+      "mean_signed_error_ps": 0.0,
+      "p95_absolute_error_ps": 0.0,
+      "exact_fraction": 1.0
+    },
+    {
+      "group": "vertical_long",
+      "x_direction": -1,
+      "y_direction": 1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 0.0,
+      "mean_signed_error_ps": 0.0,
+      "p95_absolute_error_ps": 0.0,
+      "exact_fraction": 1.0
+    },
+    {
+      "group": "vertical_long",
+      "x_direction": 1,
+      "y_direction": -1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 0.0,
+      "mean_signed_error_ps": 0.0,
+      "p95_absolute_error_ps": 0.0,
+      "exact_fraction": 1.0
+    },
+    {
+      "group": "vertical_long",
+      "x_direction": 1,
+      "y_direction": 1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 0.0,
+      "mean_signed_error_ps": 0.0,
+      "p95_absolute_error_ps": 0.0,
+      "exact_fraction": 1.0
+    },
+    {
+      "group": "horizontal_long",
+      "x_direction": -1,
+      "y_direction": -1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 3.5069270833333333,
+      "mean_signed_error_ps": 0.1270659722222222,
+      "p95_absolute_error_ps": 17.0,
+      "exact_fraction": 0.5844618055555556
+    },
+    {
+      "group": "horizontal_long",
+      "x_direction": -1,
+      "y_direction": 1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 3.3516319444444442,
+      "mean_signed_error_ps": 0.4977083333333333,
+      "p95_absolute_error_ps": 16.0,
+      "exact_fraction": 0.6122048611111112
+    },
+    {
+      "group": "horizontal_long",
+      "x_direction": 1,
+      "y_direction": -1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 1.7455555555555555,
+      "mean_signed_error_ps": 0.7248611111111111,
+      "p95_absolute_error_ps": 11.0,
+      "exact_fraction": 0.7344791666666667
+    },
+    {
+      "group": "horizontal_long",
+      "x_direction": 1,
+      "y_direction": 1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 1.4828993055555555,
+      "mean_signed_error_ps": 0.6874131944444445,
+      "p95_absolute_error_ps": 9.0,
+      "exact_fraction": 0.7488368055555555
+    },
+    {
+      "group": "both_long",
+      "x_direction": -1,
+      "y_direction": -1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 11.90251736111111,
+      "mean_signed_error_ps": 6.436024305555556,
+      "p95_absolute_error_ps": 43.0,
+      "exact_fraction": 0.1846701388888889
+    },
+    {
+      "group": "both_long",
+      "x_direction": -1,
+      "y_direction": 1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 9.64045138888889,
+      "mean_signed_error_ps": 7.359340277777778,
+      "p95_absolute_error_ps": 28.0,
+      "exact_fraction": 0.14548611111111112
+    },
+    {
+      "group": "both_long",
+      "x_direction": 1,
+      "y_direction": -1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 11.205763888888889,
+      "mean_signed_error_ps": 9.678333333333333,
+      "p95_absolute_error_ps": 47.0,
+      "exact_fraction": 0.22633680555555555
+    },
+    {
+      "group": "both_long",
+      "x_direction": 1,
+      "y_direction": 1,
+      "rows": 57600,
+      "mean_absolute_error_ps": 5.292413194444444,
+      "mean_signed_error_ps": 3.2736631944444445,
+      "p95_absolute_error_ps": 28.0,
+      "exact_fraction": 0.49039930555555555
+    }
+  ],
+  "joint_error_beyond_controls": {
+    "mean_absolute_ps": 8.724973958333333,
+    "mean_signed_ps": 6.177578125,
+    "p95_absolute_ps": 34.0
+  },
+  "scope": "691200 independent nominal finite-graph cases atx70..79/y96..107 and directional controls. Three source ports only, no physical route or full-validation accuracy claim; extra error is diagnostic, not proof of unique causal decomposition."
+}

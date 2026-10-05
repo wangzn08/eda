@@ -75,6 +75,13 @@ class CoreTemplateModel {
         return best;
     }
 public:
+    // Research-only nominal recurrence probe; excludes physical gaps and blocks.
+    int64_t direct_nominal_probe(int source_port,int target_port,int dx,int dy)const{
+        int ax=std::abs(dx),ay=std::abs(dy),qx=ax>29?(ax-20)/10:0,qy=ay>35?(ay-24)/12:0;
+        int x=(dx<0?-1:1)*(ax-qx*10),y=(dy<0?-1:1)*(ay-qy*12);unsigned s=index[source_port],t=index[target_port];
+        int64_t v=at(s,t,x,y)+qx*125+qy*(dy>0?127:125);if(vertical)v+=vertical->correction(s,t,x,dy,growth_cap);if(horizontal)v+=horizontal->correction(s,t,y,dx,growth_cap);return v;
+    }
+    Distance nominal_probe(int source_port,int target_port,int dx,int dy)const{return nominal(source_port,target_port,dx,dy);}
     void enable_corridor_hubs(unsigned count){
         if(!corridor_geometry || !count || count>32)throw std::runtime_error("Corridor hubs require geometry and1..32 hubs");
         std::vector<std::pair<unsigned,int>>ports;

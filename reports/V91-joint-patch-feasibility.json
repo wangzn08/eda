@@ -1,0 +1,38 @@
+{
+  "architecture_only": true,
+  "golden_labels_used": false,
+  "anchor_bands": [
+    70,
+    96
+  ],
+  "sources": 160,
+  "targets": 160,
+  "decoded_bytes": 24576000,
+  "nonzero_fraction": 0.737007568359375,
+  "mean_absolute_delta_ps": 9.376764567057291,
+  "baseline_assets": {
+    "core-template-xz6.bin": "ef0dd8146b0b9a0a3d331f06fefd004d82cae417c034d2eafc495160a5956621",
+    "vertical-transients-xz.bin": "eb8e5f3693334bc1e400fd6d5f5372df5234356c632950f91e16f180e5173398",
+    "horizontal-transients.bin": "36a07734d7d306661b2f18260d294cfbafaebc15f426ef47e10b75fa22383268",
+    "vertical-distant-delta-xz6.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1"
+  },
+  "recipe_sha256": "70ef07de45b1a045913cfac20cfe9cb84e97c5d70954dfe039f04d1d6b57e830",
+  "choices": [
+    {
+      "preset": 3,
+      "asset_bytes": 5059944,
+      "sha256": "4e8f0c52244b0d8b9a0305db6a1d068d5eec83897d69219aa0bb18fc6d4b3e22",
+      "cpu_seconds": 1.537356,
+      "v90_64_total_bytes": 101010448
+    },
+    {
+      "preset": 6,
+      "asset_bytes": 3861388,
+      "sha256": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+      "cpu_seconds": 7.561657,
+      "v90_64_total_bytes": 99811892
+    }
+  ],
+  "exact_roundtrip": true,
+  "scope": "All-port nominal finite-graph interaction coefficients at one distance pair; no runtime integration, independent distance-band generalization, full validation or throughput evidence yet."
+}
