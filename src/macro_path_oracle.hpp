@@ -5,6 +5,7 @@
 #include "routing_search.hpp"
 #include "repeat_cycle_jump.hpp"
 #include <memory>
+#include <tuple>
 #include <array>
 #include <queue>
 #include <vector>
@@ -30,6 +31,8 @@ class MacroPathOracle {
     std::array<int,archdata::P> index;
     std::array<std::vector<Edge>,archdata::P> entries;
     std::vector<std::vector<Edge>> edges;
+    struct Connector{int first,second,target;uint32_t cost;int dx,dy;};
+    std::vector<std::vector<Connector>> connectors;
     std::vector<uint64_t> distance;
     std::vector<uint32_t> stamp;
     uint32_t epoch=0;
@@ -47,7 +50,7 @@ class MacroPathOracle {
     }
 public:
     uint64_t total_expanded=0,total_finished=0;
-    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false,bool all_ports=false,bool short_jumps=false):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
+    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false,bool all_ports=false,bool short_jumps=false,unsigned connector_limit=0):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
         if(!std::isfinite(weight) || weight<1 || weight>2)throw std::runtime_error("Invalid macro priority weight");
         short_repeat_jumps=short_jumps;all_net_ports=all_ports;include_gaps=gap_heuristic;xgap.resize(archdata::WIDTH);ygap.resize(archdata::HEIGHT);
         for(const auto& line:archdata::LINES) {auto& prefix=line.vertical?xgap:ygap;for(size_t coordinate=0;coordinate<prefix.size();++coordinate)if(int(coordinate)>line.site)prefix[coordinate]+=line.delay;}
@@ -69,6 +72,16 @@ public:
                     auto v=archdata::VECTORS[net.vector];auto cost=uint32_t(arc.delay+net.delay);
                     if(cost<16383) edges[i].push_back({index[net.to],v.x,v.y,cost|(1u<<30)|(1u<<31)});
                 }
+        }
+        if(connector_limit){
+            if(connector_limit>256 || all_ports)throw std::runtime_error("Invalid connector configuration");
+            connectors.resize(ports.size());
+            for(size_t i=0;i<ports.size();++i){auto& list=connectors[i];
+                for(auto first:repeat_graph.local_out(ports[i])){int n1=repeat_graph.net_out(first.port);if(n1<0)continue;auto a=archdata::NETS[n1];auto av=archdata::VECTORS[a.vector];if(std::abs(av.x)+std::abs(av.y)>=10)continue;
+                    for(auto second:repeat_graph.local_out(a.to)){int n2=repeat_graph.net_out(second.port);if(n2<0)continue;auto b=archdata::NETS[n2];if(index[b.to]<0)continue;auto bv=archdata::VECTORS[b.vector];list.push_back({n1,n2,index[b.to],uint32_t(first.delay+second.delay+a.delay+b.delay),av.x+bv.x,av.y+bv.y});}}
+                std::sort(list.begin(),list.end(),[](const Connector&a,const Connector&b){auto rank=[](const Connector&c){return int64_t(c.cost)*12-150*std::abs(c.dx)-125*std::abs(c.dy);};auto ra=rank(a),rb=rank(b);return ra!=rb?ra<rb:std::tie(a.target,a.dx,a.dy,a.first,a.second)<std::tie(b.target,b.dx,b.dy,b.first,b.second);});
+                if(list.size()>connector_limit)list.resize(connector_limit);
+            }
         }
         distance.resize(grid.size()*ports.size());stamp.resize(distance.size());
         if(doubling){if(!jumps)throw std::runtime_error("Doubling requires repeat jumps");cycle_jumps=std::make_unique<RepeatCycleJump>(repeat_graph);}
@@ -100,6 +113,7 @@ public:
                 auto cost=tail.upper_bound(uint32_t(grid[coordinate])*archdata::P+ports[li],target);
                 if(cost!=absent && current.g+cost<best) {best=current.g+cost;++total_finished;}
             }
+            if(!connectors.empty())for(auto edge:connectors[li]){auto first=repeat_graph.net_move(uint32_t(grid[coordinate]),edge.first,false);if(first.site==NONE)continue;auto second=repeat_graph.net_move(first.site,edge.second,false);if(second.site==NONE)continue;auto pos=archdata::SITES[second.site];push(pos.x,pos.y,edge.target,current.g+edge.cost+first.delay+second.delay);}
             if(all_net_ports){
                 if(x==b.x && y==b.y){if(ports[li]==tp)best=std::min(best,current.g);for(auto arc:repeat_graph.local_out(ports[li]))if(arc.port==tp)best=std::min(best,current.g+arc.delay);}
                 for(auto arc:repeat_graph.local_out(ports[li])){int ni=repeat_graph.net_out(arc.port);if(ni<0)continue;auto net=archdata::NETS[ni];auto move=repeat_graph.net_move(uint32_t(grid[coordinate]),ni,false);if(move.site==NONE)continue;auto pos=archdata::SITES[move.site];push(pos.x,pos.y,index[net.to],current.g+arc.delay+net.delay+move.delay);}

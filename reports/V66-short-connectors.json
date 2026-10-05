@@ -1,0 +1,67 @@
+{
+  "holdout_used": false,
+  "rows": 1001,
+  "candidates": [
+    {
+      "connectors_per_port": 0,
+      "budget": 32,
+      "covered": 972,
+      "exact_matches": 117,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 90.6987691715361,
+      "query_cpu_seconds": 0.015543,
+      "log": "rows=1001 changed=216 expanded=28692 finished=309 cpu=0.015543"
+    },
+    {
+      "connectors_per_port": 16,
+      "budget": 32,
+      "covered": 973,
+      "exact_matches": 182,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 92.74055652355418,
+      "query_cpu_seconds": 0.025221,
+      "log": "rows=1001 changed=475 expanded=29311 finished=814 cpu=0.025221"
+    },
+    {
+      "connectors_per_port": 64,
+      "budget": 32,
+      "covered": 973,
+      "exact_matches": 182,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 92.74055652355418,
+      "query_cpu_seconds": 0.027901,
+      "log": "rows=1001 changed=475 expanded=29311 finished=814 cpu=0.027901"
+    },
+    {
+      "connectors_per_port": 16,
+      "budget": 128,
+      "covered": 983,
+      "exact_matches": 251,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 94.87344093775407,
+      "query_cpu_seconds": 0.050451,
+      "log": "rows=1001 changed=651 expanded=101966 finished=1637 cpu=0.050451"
+    },
+    {
+      "connectors_per_port": 64,
+      "budget": 128,
+      "covered": 983,
+      "exact_matches": 251,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 94.87344093775407,
+      "query_cpu_seconds": 0.050031,
+      "log": "rows=1001 changed=651 expanded=101966 finished=1637 cpu=0.050031"
+    },
+    {
+      "connectors_per_port": 256,
+      "budget": 128,
+      "covered": 983,
+      "exact_matches": 251,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 94.87344093775407,
+      "query_cpu_seconds": 0.051405,
+      "log": "rows=1001 changed=651 expanded=101966 finished=1637 cpu=0.051405"
+    }
+  ],
+  "scope": "Two actual Arc/Net moves contracted through short-wire input; architecture-only rank selection, initial oracle upper bound construction excluded, single pilot runs; not full throughput acceptance."
+}

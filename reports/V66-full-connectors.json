@@ -1,0 +1,14 @@
+{
+  "rows": 150053,
+  "holdout_used": false,
+  "covered": 148186,
+  "exact_matches": 39601,
+  "valid_under_golden": 0,
+  "path_score_with_missing_zero": 95.4491484093725,
+  "v59_score": 97.88730718324194,
+  "v59_clipped_to_feasible_upper_score": 98.2385353171689,
+  "clipped_rows": 29421,
+  "query_cpu_seconds": 6.7913,
+  "maximum_rss_bytes": 166952960,
+  "scope": "Complete validation, architecture witness upper candidates. CPU excludes initialization and initial upper construction; clipping score is offline analysis, no matching standalone hybrid runtime yet. No billion acceptance."
+}
