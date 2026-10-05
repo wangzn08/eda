@@ -1,0 +1,8 @@
+{
+  "covered": 975,
+  "exact_matches": 293,
+  "valid_under_golden": 0,
+  "score_with_missing_zero": 93.84739976064053,
+  "process_log": "rows=1001 changed=571 expanded=114335 finished=1248 cpu=0.113531\n",
+  "scope": "Long repeat jumps only, all160 net ports,128 expansions; validation pilot, no holdout or complete throughput acceptance."
+}

@@ -19,6 +19,8 @@ class MacroPathOracle {
     const PhaseLowerBound* phase=nullptr;
     bool repeat_jumps=false;
     bool local_bridges=false;
+    bool all_net_ports=false;
+    bool short_repeat_jumps=false;
     double priority_weight=1;
     struct Repeat{int net,dx,dy;uint32_t arc_cost;};
     std::vector<std::vector<Repeat>> repeats;
@@ -45,14 +47,14 @@ class MacroPathOracle {
     }
 public:
     uint64_t total_expanded=0,total_finished=0;
-    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
+    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false,bool all_ports=false,bool short_jumps=false):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
         if(!std::isfinite(weight) || weight<1 || weight>2)throw std::runtime_error("Invalid macro priority weight");
-        include_gaps=gap_heuristic;xgap.resize(archdata::WIDTH);ygap.resize(archdata::HEIGHT);
+        short_repeat_jumps=short_jumps;all_net_ports=all_ports;include_gaps=gap_heuristic;xgap.resize(archdata::WIDTH);ygap.resize(archdata::HEIGHT);
         for(const auto& line:archdata::LINES) {auto& prefix=line.vertical?xgap:ygap;for(size_t coordinate=0;coordinate<prefix.size();++coordinate)if(int(coordinate)>line.site)prefix[coordinate]+=line.delay;}
         index.fill(-1);
         for(const auto& net:archdata::NETS) {
             auto v=archdata::VECTORS[net.vector];
-            if(std::abs(v.x)+std::abs(v.y)>=10 && index[net.to]<0) {index[net.to]=ports.size();ports.push_back(net.to);}
+            if((all_ports || std::abs(v.x)+std::abs(v.y)>=10) && index[net.to]<0) {index[net.to]=ports.size();ports.push_back(net.to);}
         }
         for(size_t i=0;i<std::size(archdata::SITES);++i) {auto p=archdata::SITES[i];grid[p.x*archdata::HEIGHT+p.y]=int(i);}
         for(const auto& e:cycle_prefix_bank::entries) if(index[e.target]>=0)
@@ -98,12 +100,17 @@ public:
                 auto cost=tail.upper_bound(uint32_t(grid[coordinate])*archdata::P+ports[li],target);
                 if(cost!=absent && current.g+cost<best) {best=current.g+cost;++total_finished;}
             }
+            if(all_net_ports){
+                if(x==b.x && y==b.y){if(ports[li]==tp)best=std::min(best,current.g);for(auto arc:repeat_graph.local_out(ports[li]))if(arc.port==tp)best=std::min(best,current.g+arc.delay);}
+                for(auto arc:repeat_graph.local_out(ports[li])){int ni=repeat_graph.net_out(arc.port);if(ni<0)continue;auto net=archdata::NETS[ni];auto move=repeat_graph.net_move(uint32_t(grid[coordinate]),ni,false);if(move.site==NONE)continue;auto pos=archdata::SITES[move.site];push(pos.x,pos.y,index[net.to],current.g+arc.delay+net.delay+move.delay);}
+            }
             if(repeat_jumps)for(auto repeat:repeats[li]){
+                if(!short_repeat_jumps && std::abs(repeat.dx)+std::abs(repeat.dy)<10)continue;
                 auto phi=[](int a){return a-std::clamp(a-76,0,14);};
                 int remaining=repeat.dx?(phi(b.x)-phi(x))*(repeat.dx>0?1:-1):(b.y-y)*(repeat.dy>0?1:-1);
                 if(remaining<=0)continue;
                 int hops=remaining/(std::abs(repeat.dx)+std::abs(repeat.dy));
-                if(cycle_jumps && hops>=8){
+                if(cycle_jumps && hops>=8 && std::abs(repeat.dx)+std::abs(repeat.dy)>=10){
                     unsigned ci=0;while(ci<cycle_jumps->cycles.size() && cycle_jumps->cycles[ci].net!=repeat.net)++ci;
                     if(ci==cycle_jumps->cycles.size())throw std::runtime_error("Missing repeat cycle");
                     for(int q=std::max(1,hops-2);q<=std::min(63,hops+2);++q){auto move=cycle_jumps->jump(ci,uint32_t(grid[coordinate]),q);if(move.site==NONE)break;auto pos=archdata::SITES[move.site];push(pos.x,pos.y,li,current.g+move.delay);}continue;

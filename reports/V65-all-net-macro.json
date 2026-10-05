@@ -1,0 +1,27 @@
+{
+  "holdout_used": false,
+  "rows": 1001,
+  "scope": "All160 net-arrival ports and actual Arc/Net transitions; preexisting feasible initial bounds, bounded weighted search, no accuracy certificate. Pilot only.",
+  "candidates": [
+    {
+      "budget": 32,
+      "covered": 964,
+      "exact_matches": 190,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 91.3237554065588,
+      "score_on_covered_only": 94.8263460280082,
+      "query_cpu_seconds": 0.046143,
+      "process_log": "rows=1001 changed=386 expanded=30513 finished=574 cpu=0.046143"
+    },
+    {
+      "budget": 128,
+      "covered": 975,
+      "exact_matches": 293,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 93.84817730535,
+      "score_on_covered_only": 96.34900683279683,
+      "query_cpu_seconds": 0.119144,
+      "process_log": "rows=1001 changed=570 expanded=114335 finished=1245 cpu=0.119144"
+    }
+  ]
+}
