@@ -22,6 +22,9 @@ class CoreTemplateModel {
     struct FarJointCell {uint16_t base[4];int16_t horizontal_delta;uint16_t slope_x,slope_near_y,slope_far_y;};
     static_assert(sizeof(FarJointCell)==16,"Compact piecewise cell size");
     std::vector<FarJointCell>far_joint;
+    struct ShortVerticalCell {uint16_t base[4],slope;};
+    static_assert(sizeof(ShortVerticalCell)==10,"Short vertical cell size");
+    std::vector<ShortVerticalCell>short_vertical;
     Distance at(unsigned source,unsigned target,int x,int y)const{
         return values[((source*160+target)*59+x+29)*71+y+35];
     }
@@ -34,7 +37,14 @@ class CoreTemplateModel {
         auto candidate=[&](int rx,int ry,int nx,int ny){
             Distance base=INF;
             for(auto end:terminal[target]){int64_t value;
-                if((!joint.empty() || !far_joint.empty()) && nx>0 && ny>0){
+                if(!short_vertical.empty() && nx==0 && ny>0){
+                    unsigned iy=(ry>0?12:0)+std::abs(ry)-24;
+                    const auto& cell=short_vertical[((size_t(index[port])*160+end.first)*59+rx+29)*24+iy];
+                    if(ny==1)value=cell.base[0];else if(ny==2)value=cell.base[1];
+                    else if(ny==3)value=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))/2;
+                    else if(ny==4)value=cell.base[2];else value=cell.base[3]+int64_t(ny-5)*cell.slope;
+                    value+=end.second;
+                }else if((!joint.empty() || !far_joint.empty()) && nx>0 && ny>0){
                     unsigned ix=(rx>0?10:0)+std::abs(rx)-20,iy=(ry>0?12:0)+std::abs(ry)-24;
                     size_t ji=(size_t(index[port])*160+end.first)*480+ix*24+iy;
                     if(!far_joint.empty()){
@@ -64,6 +74,16 @@ class CoreTemplateModel {
         return best;
     }
 public:
+    void enable_short_vertical_layout(){
+        if(!has_far || far_joint.empty())throw std::runtime_error("Wide joint layout requires far joint layout");
+        short_vertical.resize(size_t(160)*160*59*24);
+        for(unsigned s=0;s<160;++s)for(unsigned t=0;t<160;++t)for(int x=-29;x<=29;++x)for(unsigned iy=0;iy<24;++iy){
+            int sy=iy<12?-1:1,r=iy%12,y=sy*(24+r);auto& cell=short_vertical[((size_t(s)*160+t)*59+x+29)*24+iy];
+            unsigned bands[4]={36,48,72,84};int v[4];
+            for(unsigned b=0;b<4;++b){v[b]=vertical->correction(s,t,x,sy*(bands[b]+r),growth_cap);int base=int(at(s,t,x,y))+v[b];if(base<0 || base>65535)throw std::runtime_error("Short joint base overflow");cell.base[b]=uint16_t(base);}
+            int slope=std::max(0,v[3]-v[2]);if(slope>65535)throw std::runtime_error("Short joint slope overflow");cell.slope=uint16_t(slope);
+        }
+    }
     void enable_joint_layout(){
         if(!vertical || !horizontal || envelope || shell_x || shell_y)throw std::runtime_error("Joint layout requires both original-anchor transients");
         if(has_far)far_joint.resize(size_t(160)*160*480);else joint.resize(size_t(160)*160*480);

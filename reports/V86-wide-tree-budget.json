@@ -1,0 +1,30 @@
+{
+  "state": "complete",
+  "candidates": [
+    {
+      "trees": 64,
+      "validation_score": 98.87616691585565,
+      "full_validation_byte_exact": true,
+      "rows": 10000000,
+      "cpu_seconds": 40.4107,
+      "initialization_seconds": 5.62344,
+      "query_cpu_seconds": 34.787259999999996,
+      "requests_per_cpu_second": 287461.5592029956,
+      "maximum_rss_bytes": 1339932672,
+      "runtime_file_bytes": 97612812
+    },
+    {
+      "trees": 256,
+      "validation_score": 98.92434608399789,
+      "full_validation_byte_exact": true,
+      "rows": 10000000,
+      "cpu_seconds": 51.0559,
+      "initialization_seconds": 5.74843,
+      "query_cpu_seconds": 45.30747,
+      "requests_per_cpu_second": 220714.1559658926,
+      "maximum_rss_bytes": 1341636608,
+      "runtime_file_bytes": 99201804
+    }
+  ],
+  "scope": "Actual10m repeated development requests with cache off, single runs; no final-billion, hidden-mix or officialLinux proof."
+}

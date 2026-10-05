@@ -1,0 +1,17 @@
+{
+  "state": "complete",
+  "candidates": [
+    {
+      "joint_layout": true,
+      "trees": 128,
+      "rows": 10000000,
+      "cpu_seconds": 43.8587,
+      "initialization_seconds": 5.62646,
+      "query_cpu_seconds": 38.23224,
+      "requests_per_cpu_second": 261559.35409486864,
+      "runtime_file_bytes": 98142476,
+      "maximum_rss_bytes": 1340522496
+    }
+  ],
+  "scope": "10m repeated development requests, every row computed with prediction cache disabled, single runs. Actual CPU includes CSV input/output; no full billion proof, arbitrary hidden mix guarantee or official acceptance."
+}
