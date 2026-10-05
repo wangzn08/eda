@@ -1,0 +1,7 @@
+#include "repeat_cycle_jump.hpp"
+#include <iostream>
+#include <ctime>
+int main(int argc,char**argv){unsigned modulus=argc>1?std::stoul(argv[1]):64;if(!modulus || modulus>64)return 2;Graph graph;auto begin=std::clock();RepeatCycleJump jumps(graph);double init=double(std::clock()-begin)/CLOCKS_PER_SEC;constexpr unsigned rows=1000000;std::vector<RepeatCycleJump::Result>reference;reference.reserve(rows);begin=std::clock();
+for(unsigned i=0;i<rows;++i){unsigned c=i%jumps.cycles.size(),n=(i*17u)%modulus;Node s=(uint64_t(i)*7919)%graph.sites();RepeatCycleJump::Result r{s,0};for(unsigned k=0;k<n;++k){auto m=graph.net_move(r.site,jumps.cycles[c].net,false);if(m.site==NONE){r={};break;}r.site=m.site;r.delay+=m.delay+jumps.cycles[c].cost;}reference.push_back(r);}double direct=double(std::clock()-begin)/CLOCKS_PER_SEC;begin=std::clock();uint64_t mismatch=0,checksum=0,valid=0;
+for(unsigned i=0;i<rows;++i){auto r=jumps.jump(i%jumps.cycles.size(),(uint64_t(i)*7919)%graph.sites(),(i*17u)%modulus);mismatch+=r.site!=reference[i].site || r.delay!=reference[i].delay;valid+=r.site!=NONE;checksum+=uint64_t(r.site)+r.delay;}double fast=double(std::clock()-begin)/CLOCKS_PER_SEC;
+std::cout<<"{\"rows\":"<<rows<<",\"repetition_modulus\":"<<modulus<<",\"valid_results\":"<<valid<<",\"cycles\":"<<jumps.cycles.size()<<",\"table_bytes\":"<<jumps.bytes()<<",\"initialization_cpu_seconds\":"<<init<<",\"direct_cpu_seconds\":"<<direct<<",\"jump_cpu_seconds\":"<<fast<<",\"mismatches\":"<<mismatch<<",\"checksum\":"<<checksum<<"}\n";return mismatch?1:0;}

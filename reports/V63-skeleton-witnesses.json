@@ -1,0 +1,249 @@
+{
+  "development_paths_replayed": 24,
+  "exact_cost_matches": 24,
+  "holdout_used": false,
+  "closed_port_cycles": [
+    {
+      "port": "ILS[5]",
+      "observed_displacement": [
+        0,
+        -12
+      ],
+      "development_occurrences": 63,
+      "arc_delay_ps": 125,
+      "net_vector": [
+        0,
+        -12
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 942,
+      "changed_displacement_translations": 0,
+      "translated_cost_histogram": {
+        "133": 174,
+        "125": 768
+      }
+    },
+    {
+      "port": "ILN[0]",
+      "observed_displacement": [
+        0,
+        12
+      ],
+      "development_occurrences": 45,
+      "arc_delay_ps": 127,
+      "net_vector": [
+        0,
+        12
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 978,
+      "changed_displacement_translations": 0,
+      "translated_cost_histogram": {
+        "127": 895,
+        "135": 83
+      }
+    },
+    {
+      "port": "ILS[6]",
+      "observed_displacement": [
+        0,
+        -12
+      ],
+      "development_occurrences": 11,
+      "arc_delay_ps": 125,
+      "net_vector": [
+        0,
+        -12
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 942,
+      "changed_displacement_translations": 0,
+      "translated_cost_histogram": {
+        "133": 174,
+        "125": 768
+      }
+    },
+    {
+      "port": "ILN[7]",
+      "observed_displacement": [
+        0,
+        12
+      ],
+      "development_occurrences": 4,
+      "arc_delay_ps": 127,
+      "net_vector": [
+        0,
+        12
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 978,
+      "changed_displacement_translations": 0,
+      "translated_cost_histogram": {
+        "127": 895,
+        "135": 83
+      }
+    },
+    {
+      "port": "ILW[0]",
+      "observed_displacement": [
+        -10,
+        0
+      ],
+      "development_occurrences": 3,
+      "arc_delay_ps": 129,
+      "net_vector": [
+        -10,
+        0
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 913,
+      "changed_displacement_translations": 50,
+      "translated_cost_histogram": {
+        "207": 265,
+        "129": 103,
+        "138": 91,
+        "216": 130,
+        "285": 74,
+        "305": 37,
+        "227": 34,
+        "236": 37,
+        "499": 20,
+        "421": 10,
+        "519": 20,
+        "404": 55,
+        "315": 37
+      }
+    },
+    {
+      "port": "ILN[4]",
+      "observed_displacement": [
+        0,
+        12
+      ],
+      "development_occurrences": 2,
+      "arc_delay_ps": 132,
+      "net_vector": [
+        0,
+        12
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 978,
+      "changed_displacement_translations": 0,
+      "translated_cost_histogram": {
+        "132": 895,
+        "140": 83
+      }
+    },
+    {
+      "port": "ILE[1]",
+      "observed_displacement": [
+        10,
+        0
+      ],
+      "development_occurrences": 2,
+      "arc_delay_ps": 126,
+      "net_vector": [
+        10,
+        0
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 912,
+      "changed_displacement_translations": 50,
+      "translated_cost_histogram": {
+        "204": 268,
+        "126": 104,
+        "135": 93,
+        "213": 126,
+        "282": 72,
+        "302": 36,
+        "224": 36,
+        "233": 36,
+        "496": 20,
+        "418": 10,
+        "516": 20,
+        "401": 55,
+        "312": 36
+      }
+    },
+    {
+      "port": "IQE[5]",
+      "observed_displacement": [
+        4,
+        0
+      ],
+      "development_occurrences": 1,
+      "arc_delay_ps": 96,
+      "net_vector": [
+        4,
+        0
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 967,
+      "changed_displacement_translations": 20,
+      "translated_cost_histogram": {
+        "96": 465,
+        "174": 247,
+        "105": 126,
+        "194": 73,
+        "388": 20,
+        "273": 36
+      }
+    },
+    {
+      "port": "IDE[1]",
+      "observed_displacement": [
+        2,
+        0
+      ],
+      "development_occurrences": 1,
+      "arc_delay_ps": 82,
+      "net_vector": [
+        2,
+        0
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 985,
+      "changed_displacement_translations": 10,
+      "translated_cost_histogram": {
+        "82": 725,
+        "160": 123,
+        "91": 72,
+        "180": 37,
+        "374": 10,
+        "259": 18
+      }
+    },
+    {
+      "port": "ILW[6]",
+      "observed_displacement": [
+        -10,
+        0
+      ],
+      "development_occurrences": 1,
+      "arc_delay_ps": 131,
+      "net_vector": [
+        -10,
+        0
+      ],
+      "translation_sites": 1004,
+      "valid_translations": 913,
+      "changed_displacement_translations": 50,
+      "translated_cost_histogram": {
+        "209": 265,
+        "131": 103,
+        "140": 91,
+        "218": 130,
+        "287": 74,
+        "307": 37,
+        "229": 34,
+        "238": 37,
+        "501": 20,
+        "423": 10,
+        "521": 20,
+        "406": 55,
+        "317": 37
+      }
+    }
+  ],
+  "scope": "Every sampled path replayed with actual arc/net moves; translation sample is geometric evidence, not exhaustive proof or query-time benchmark."
+}

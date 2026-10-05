@@ -1,0 +1,1 @@
+{"rows":1000000,"repetition_modulus":8,"valid_results":783371,"cycles":32,"table_bytes":92467200,"initialization_cpu_seconds":0.011019,"direct_cpu_seconds":0.006224,"jump_cpu_seconds":0.014762,"mismatches":0,"checksum":930437538885321}
