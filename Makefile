@@ -20,7 +20,7 @@ check: build/estimate
 	python3 scripts/verify_baseline.py
 
 # Architecture research utility; all returned bounds have path witnesses.
-build/macro_oracle_apply: src/macro_oracle_apply.cpp src/macro_path_oracle.hpp src/repeat_cycle_jump.hpp src/potential_lower_model.hpp src/cycle_path_oracle.hpp src/local_path_oracle.hpp src/cycle_prefix_bank.hpp src/architecture_data.hpp
+build/macro_oracle_apply: src/cycle_path_oracle.hpp src/macro_oracle_apply.cpp src/macro_path_oracle.hpp src/repeat_cycle_jump.hpp src/potential_lower_model.hpp src/cycle_path_oracle.hpp src/local_path_oracle.hpp src/cycle_prefix_bank.hpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -Isrc src/macro_oracle_apply.cpp -o $@
 

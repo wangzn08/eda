@@ -1,0 +1,74 @@
+{
+  "holdout_used": false,
+  "external_initial_upper_used": false,
+  "rows": 1001,
+  "candidates": [
+    {
+      "internal_cycle_initial_upper": false,
+      "phase_bound": false,
+      "budget": 32,
+      "covered": 531,
+      "exact_matches": 66,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 48.79550502109415,
+      "query_cpu_seconds": 0.037898,
+      "maximum_rss_bytes": 61833216
+    },
+    {
+      "internal_cycle_initial_upper": false,
+      "phase_bound": false,
+      "budget": 128,
+      "covered": 634,
+      "exact_matches": 117,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 59.71883753149435,
+      "query_cpu_seconds": 0.058324,
+      "maximum_rss_bytes": 61865984
+    },
+    {
+      "internal_cycle_initial_upper": false,
+      "phase_bound": false,
+      "budget": 512,
+      "covered": 712,
+      "exact_matches": 185,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 68.24006851070249,
+      "query_cpu_seconds": 0.179502,
+      "maximum_rss_bytes": 61816832
+    },
+    {
+      "internal_cycle_initial_upper": false,
+      "phase_bound": true,
+      "budget": 128,
+      "covered": 929,
+      "exact_matches": 235,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 89.06683980565761,
+      "query_cpu_seconds": 0.058713,
+      "maximum_rss_bytes": 166805504
+    },
+    {
+      "internal_cycle_initial_upper": true,
+      "phase_bound": false,
+      "budget": 128,
+      "covered": 950,
+      "exact_matches": 153,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 89.30612071876645,
+      "query_cpu_seconds": 0.075152,
+      "maximum_rss_bytes": 75235328
+    },
+    {
+      "internal_cycle_initial_upper": true,
+      "phase_bound": true,
+      "budget": 128,
+      "covered": 983,
+      "exact_matches": 245,
+      "valid_under_golden": 0,
+      "score_with_missing_zero": 94.6383883410859,
+      "query_cpu_seconds": 0.07727,
+      "maximum_rss_bytes": 180207616
+    }
+  ],
+  "scope": "Every query starts with infinity; score uses golden only after inference. Query CPU excludes architecture/tail initialization; pilot only, no final throughput proof."
+}
