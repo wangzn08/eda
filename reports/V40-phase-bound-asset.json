@@ -1,0 +1,11 @@
+{
+  "architecture_only": true,
+  "golden_used": false,
+  "file": "models/phase-bounds-safe.bin",
+  "bytes": 47019458,
+  "sha256": "303df80c6467385ee161a1ff0f43bd616a3efb1b123901b1e8066acbe02d44c9",
+  "all_pattern_values_roundtrip_verified": true,
+  "format": "PHASELB4",
+  "decoded_group": "safe global periodic relaxation, original-coordinate potentials, Block skip transitions",
+  "architecture_sha256": "902dfe32890419b477f7810722e2da947d37160ef23bc02969b091937951c18d"
+}

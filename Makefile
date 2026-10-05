@@ -8,7 +8,7 @@ all: build/estimate
 refresh-architecture:
 	python3 scripts/generate_architecture.py --arch "$(ARCH)" --out src/architecture_data.hpp
 
-build/estimate: src/estimate.cpp src/architecture_data.hpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp src/source_x_model.hpp src/target_x_model.hpp src/dx_model.hpp src/route_v3_model.hpp src/forced_route_model.hpp src/route_v3_final_model.hpp src/v4_tree_model.hpp src/v4_table_model.hpp src/v4_horizontal_model.hpp src/v5_geometry_model.hpp src/v6_pair_model.hpp src/v7_tree_model.hpp src/v9_tree_model.hpp src/v10_tree_model.hpp src/v14_tree_model.hpp src/v19_tree_model.hpp src/local_path_oracle.hpp src/cycle_path_oracle.hpp src/cycle_prefix_bank.hpp src/macro_path_oracle.hpp src/phase_route_model.hpp src/potential_lower_model.hpp
+build/estimate: src/estimate.cpp src/architecture_data.hpp src/lookup_model.hpp src/spatial_model.hpp src/port_model.hpp src/source_x_model.hpp src/target_x_model.hpp src/dx_model.hpp src/route_v3_model.hpp src/forced_route_model.hpp src/route_v3_final_model.hpp src/v4_tree_model.hpp src/v4_table_model.hpp src/v4_horizontal_model.hpp src/v5_geometry_model.hpp src/v6_pair_model.hpp src/v7_tree_model.hpp src/v9_tree_model.hpp src/v10_tree_model.hpp src/v14_tree_model.hpp src/v19_tree_model.hpp src/local_path_oracle.hpp src/cycle_path_oracle.hpp src/cycle_prefix_bank.hpp src/macro_path_oracle.hpp src/phase_route_model.hpp src/phase_lower_bound.hpp src/routing_search.hpp src/potential_lower_model.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) src/estimate.cpp -o $@
 
@@ -23,3 +23,16 @@ check: build/estimate
 build/macro_oracle_apply: src/macro_oracle_apply.cpp src/macro_path_oracle.hpp src/potential_lower_model.hpp src/cycle_path_oracle.hpp src/local_path_oracle.hpp src/cycle_prefix_bank.hpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -Isrc src/macro_oracle_apply.cpp -o $@
+
+# Periodic relaxed-graph assets. No request or golden data are used.
+build/build_phase_bounds: src/build_phase_bounds.cpp src/architecture_data.hpp src/potential_lower_model.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/build_phase_bounds.cpp -o $@
+
+build/compress_phase_bounds: src/compress_phase_bounds.cpp src/architecture_data.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/compress_phase_bounds.cpp -o $@
+
+build/phase_estimate: src/phase_estimate.cpp src/routing_search.hpp src/phase_lower_bound.hpp src/cycle_path_oracle.hpp src/cycle_prefix_bank.hpp src/local_path_oracle.hpp src/potential_lower_model.hpp src/architecture_data.hpp
+	mkdir -p build
+	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@

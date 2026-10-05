@@ -1,0 +1,22 @@
+{
+  "fit_used_labels": false,
+  "holdout_used": false,
+  "rows": 150053,
+  "validation_score": 99.99637563009382,
+  "mean_relative_error": 9.06092678030477e-06,
+  "max_relative_error": 0.0002399232245681382,
+  "p99_relative_error": 0.00022366360993066427,
+  "exact_match_fraction": 0.9545094066763077,
+  "exact_certificate_fraction": 0.9475918508793559,
+  "invalid_intervals": 0,
+  "prediction_outside_interval": 0,
+  "all_error_certificates_verified": true,
+  "relative_error_limit": 0.00024,
+  "certified_minimum_score": 99.90400002949119,
+  "runtime": {
+    "cpu_seconds": 447.952,
+    "max_rss_bytes": 530497536,
+    "mean_settled": 5187.796198676468
+  },
+  "scope": "Full fixed validation, not official hidden evaluation; search-based precision mode, not neural-only score; no billion-request acceptance."
+}

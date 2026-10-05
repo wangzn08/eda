@@ -21,6 +21,8 @@
 #include "cycle_path_oracle.hpp"
 #include "macro_path_oracle.hpp"
 #include "phase_route_model.hpp"
+#include "phase_lower_bound.hpp"
+#include "routing_search.hpp"
 #include <cstring>
 #include "local_path_oracle.hpp"
 #include <algorithm>
@@ -40,239 +42,6 @@
 #include <unordered_map>
 #include <vector>
 
-using Node = uint32_t;
-using Distance = uint64_t;
-constexpr Node NONE = std::numeric_limits<Node>::max();
-constexpr Node SETTLED = NONE - 1;
-constexpr Distance INF = std::numeric_limits<Distance>::max()/4;
-
-struct Move { Node site=NONE; uint32_t delay=0; };
-struct LocalEdge { uint16_t port; uint32_t delay; };
-
-// Memoization contains predictions computed in this process, never answers.
-class PredictionCache {
-    struct Entry {uint64_t key=UINT64_MAX,value=0;};
-    std::vector<Entry> entries;
-    size_t used=0;
-    static uint64_t hash(uint64_t x) {
-        x^=x>>30;x*=0xbf58476d1ce4e5b9ULL;x^=x>>27;x*=0x94d049bb133111ebULL;return x^(x>>31);
-    }
-public:
-    uint64_t hits=0,misses=0;
-    PredictionCache():entries(1u<<21) {}
-    bool get(uint64_t key,Distance& value) {
-        size_t slot=hash(key)&(entries.size()-1);
-        for(unsigned probe=0;probe<64;++probe,slot=(slot+1)&(entries.size()-1)) {
-            if(entries[slot].key==key) {value=entries[slot].value;++hits;return true;}
-            if(entries[slot].key==UINT64_MAX) break;
-        }
-        ++misses;return false;
-    }
-    void put(uint64_t key,Distance value) {
-        if(used>=entries.size()*3/4) return;
-        size_t slot=hash(key)&(entries.size()-1);
-        for(unsigned probe=0;probe<64;++probe,slot=(slot+1)&(entries.size()-1)) {
-            if(entries[slot].key==UINT64_MAX) {entries[slot]={key,value};++used;return;}
-            if(entries[slot].key==key) return;
-        }
-    }
-};
-
-class FastPinParser {
-    std::vector<int> grid;
-    std::unordered_map<std::string_view,unsigned> ports;
-public:
-    FastPinParser():grid(archdata::WIDTH*archdata::HEIGHT,-1) {
-        for(size_t i=0;i<std::size(archdata::SITES);++i) {
-            const auto& p=archdata::SITES[i];
-            grid[p.x*archdata::HEIGHT+p.y]=static_cast<int>(i);
-        }
-        ports.reserve(archdata::P);
-        for(int i=0;i<archdata::P;++i) ports.emplace(archdata::PORTS[i],i);
-    }
-    Node pin(std::string_view text) const {
-        if(text.substr(0,4)!="SRB_") throw std::runtime_error("Invalid pin: "+std::string(text));
-        size_t under=text.find('_',4),slash=text.find('/',4);
-        if(under==text.npos || slash==text.npos || under>=slash)
-            throw std::runtime_error("Invalid pin: "+std::string(text));
-        int x=-1,y=-1;
-        auto px=std::from_chars(text.data()+4,text.data()+under,x);
-        auto py=std::from_chars(text.data()+under+1,text.data()+slash,y);
-        if(px.ec!=std::errc() || py.ec!=std::errc() || px.ptr!=text.data()+under || py.ptr!=text.data()+slash
-           || x<0 || x>=archdata::WIDTH || y<0 || y>=archdata::HEIGHT)
-            throw std::runtime_error("Invalid coordinates: "+std::string(text));
-        int site=grid[x*archdata::HEIGHT+y];
-        auto found=ports.find(text.substr(slash+1));
-        if(site<0 || found==ports.end()) throw std::runtime_error("Unknown pin: "+std::string(text));
-        return static_cast<Node>(site)*archdata::P+found->second;
-    }
-};
-
-class Graph {
-    std::vector<int> grid;
-    std::vector<Move> forward, backward;
-    std::array<std::vector<LocalEdge>, archdata::P> arcs, reverse_arcs;
-    std::array<int, archdata::P> net_from, net_to;
-    std::unordered_map<std::string, unsigned> port_ids;
-
-    int site_at(int x, int y) const {
-        if(x<0 || x>=archdata::WIDTH || y<0 || y>=archdata::HEIGHT) return -1;
-        return grid[x*archdata::HEIGHT+y];
-    }
-
-    // V0.3: only crossable Blocks are skipped while counting wire span.
-    Move move(int x, int y, int dx, int dy) const {
-        const int ox=x, oy=y, sx=(dx>0)-(dx<0), sy=(dy>0)-(dy<0);
-        int remaining=std::abs(dx)+std::abs(dy);
-        uint32_t cost=0;
-        uint64_t crossed=0;
-        while(remaining) {
-            x+=sx; y+=sy;
-            if(x<0 || x>=archdata::WIDTH || y<0 || y>=archdata::HEIGHT) return {};
-            bool skip=false;
-            for(size_t i=0;i<std::size(archdata::BLOCKS);++i) {
-                const auto& b=archdata::BLOCKS[i];
-                if(x>=b.left && x<=b.right && y>=b.lower && y<=b.upper && (dx?b.hcross:b.vcross)) {
-                    skip=true;
-                    if(!(crossed&(uint64_t(1)<<i))) {
-                        cost+=dx?b.hdelay:b.vdelay;
-                        crossed|=uint64_t(1)<<i;
-                    }
-                    break;
-                }
-            }
-            if(!skip) --remaining;
-        }
-        int destination=site_at(x,y);
-        if(destination<0) return {};
-        for(const auto& line:archdata::LINES) {
-            const int u=line.vertical?ox:oy, v=line.vertical?x:y;
-            if(std::min(u,v)<=line.site && line.site<std::max(u,v)) cost+=line.delay;
-        }
-        return {static_cast<Node>(destination),cost};
-    }
-
-public:
-    Node nodes() const { return std::size(archdata::SITES)*archdata::P; }
-    Node sites() const { return std::size(archdata::SITES); }
-    Graph():grid(archdata::WIDTH*archdata::HEIGHT,-1),
-            forward(std::size(archdata::SITES)*archdata::K), backward(forward.size()) {
-        static_assert(std::size(archdata::BLOCKS)<=64);
-        net_from.fill(-1); net_to.fill(-1);
-        for(size_t i=0;i<std::size(archdata::SITES);++i) {
-            const auto& p=archdata::SITES[i];
-            grid[p.x*archdata::HEIGHT+p.y]=static_cast<int>(i);
-        }
-        for(int i=0;i<archdata::P;++i) port_ids.emplace(archdata::PORTS[i],i);
-        for(const auto& a:archdata::ARCS) {
-            if(a.delay<0) throw std::runtime_error("Negative arc weight");
-            arcs[a.from].push_back({static_cast<uint16_t>(a.to),static_cast<uint32_t>(a.delay)});
-            reverse_arcs[a.to].push_back({static_cast<uint16_t>(a.from),static_cast<uint32_t>(a.delay)});
-        }
-        for(size_t i=0;i<std::size(archdata::NETS);++i) {
-            const auto& n=archdata::NETS[i];
-            if(net_from[n.from]>=0 || net_to[n.to]>=0) throw std::runtime_error("Baseline requires unique Net per inter-port");
-            net_from[n.from]=net_to[n.to]=static_cast<int>(i);
-        }
-        for(size_t i=0;i<std::size(archdata::SITES);++i) {
-            const auto& p=archdata::SITES[i];
-            for(int k=0;k<archdata::K;++k) {
-                auto v=archdata::VECTORS[k];
-                auto m=move(p.x,p.y,v.x,v.y);
-                forward[i*archdata::K+k]=m;
-                if(m.site!=NONE) {
-                    auto& reverse=backward[m.site*archdata::K+k];
-                    if(reverse.site!=NONE) throw std::runtime_error("Non-injective Net mapping; reverse adjacency needs extension");
-                    reverse={static_cast<Node>(i),m.delay};
-                }
-            }
-        }
-    }
-
-    Node pin(const std::string& s) const {
-        if(s.compare(0,4,"SRB_")!=0) throw std::runtime_error("Invalid pin: "+s);
-        auto under=s.find('_',4), slash=s.find('/',4);
-        if(under==std::string::npos || slash==std::string::npos || under>=slash) throw std::runtime_error("Invalid pin: "+s);
-        int x=-1,y=-1;
-        auto px=std::from_chars(s.data()+4,s.data()+under,x);
-        auto py=std::from_chars(s.data()+under+1,s.data()+slash,y);
-        if(px.ec!=std::errc() || py.ec!=std::errc() || px.ptr!=s.data()+under || py.ptr!=s.data()+slash) throw std::runtime_error("Invalid coordinates: "+s);
-        int site=site_at(x,y);
-        auto it=port_ids.find(s.substr(slash+1));
-        if(site<0 || it==port_ids.end()) throw std::runtime_error("Unknown pin: "+s);
-        return static_cast<Node>(site)*archdata::P+it->second;
-    }
-
-    const std::vector<LocalEdge>& local_out(unsigned p) const { return arcs[p]; }
-    const std::vector<LocalEdge>& local_in(unsigned p) const { return reverse_arcs[p]; }
-    int net_out(unsigned p) const { return net_from[p]; }
-    int net_in(unsigned p) const { return net_to[p]; }
-    Move net_move(Node site,int net,bool reverse) const {
-        return (reverse?backward:forward)[site*archdata::K+archdata::NETS[net].vector];
-    }
-
-    template<class Visitor> void neighbors(Node u,bool reverse,Visitor visit) const {
-        Node site=u/archdata::P, p=u%archdata::P;
-        const auto& local=reverse?reverse_arcs[p]:arcs[p];
-        for(auto e:local) visit(site*archdata::P+e.port,e.delay);
-        int ni=reverse?net_to[p]:net_from[p];
-        if(ni>=0) {
-            const auto& n=archdata::NETS[ni];
-            auto m=(reverse?backward:forward)[site*archdata::K+n.vector];
-            if(m.site!=NONE) visit(m.site*archdata::P+(reverse?n.from:n.to),m.delay+n.delay);
-        }
-    }
-};
-
-// Addressable binary heap: at most one live entry per node, avoiding stale-entry growth.
-class Frontier {
-    std::vector<Distance> distances;
-    std::vector<Node> positions, heap, touched;
-    bool less(Node a,Node b) const {
-        return distances[a]<distances[b] || (distances[a]==distances[b] && a<b);
-    }
-    void swap_positions(size_t a,size_t b) {
-        std::swap(heap[a],heap[b]); positions[heap[a]]=a; positions[heap[b]]=b;
-    }
-public:
-    explicit Frontier(size_t n):distances(n),positions(n,NONE) {}
-    void reset() { for(Node n:touched) positions[n]=NONE; touched.clear(); heap.clear(); }
-    bool empty() const { return heap.empty(); }
-    Distance top() const { return heap.empty()?INF:distances[heap[0]]; }
-    Distance get(Node n) const { return positions[n]==NONE?INF:distances[n]; }
-    // A* keeps its own queue; retain distances and touched-state reset here.
-    bool record(Node n,Distance value) {
-        if(value>=get(n))return false;
-        if(positions[n]==NONE)touched.push_back(n);
-        positions[n]=SETTLED;distances[n]=value;return true;
-    }
-    bool improve(Node n,Distance value) {
-        if(positions[n]==SETTLED || value>=get(n)) return false;
-        size_t at;
-        if(positions[n]==NONE) {
-            at=heap.size(); positions[n]=at; heap.push_back(n); touched.push_back(n);
-        } else at=positions[n];
-        distances[n]=value;
-        while(at && less(heap[at],heap[(at-1)/2])) {
-            size_t parent=(at-1)/2; swap_positions(at,parent); at=parent;
-        }
-        return true;
-    }
-    Node pop() {
-        Node result=heap[0];
-        swap_positions(0,heap.size()-1); heap.pop_back(); positions[result]=SETTLED;
-        size_t at=0;
-        while(at*2+1<heap.size()) {
-            size_t child=at*2+1;
-            if(child+1<heap.size() && less(heap[child+1],heap[child])) ++child;
-            if(!less(heap[child],heap[at])) break;
-            swap_positions(child,at); at=child;
-        }
-        return result;
-    }
-};
-
-struct SearchStats {uint64_t settled=0, relaxations=0;};
 
 // Offline-fitted, constant-time approximate oracle. All inputs are public
 // architecture constants and the request endpoints; no labels are read here.
@@ -839,175 +608,6 @@ public:
 
 // Arc edges always go Input -> Output; Net edges always Output -> Input.
 // Interior vertices can therefore be reduced to 160 inter-SRB Input ports.
-class CompactSolver {
-    const Graph& graph;
-    std::array<int,archdata::P> input_index;
-    std::vector<uint16_t> input_ports;
-    Frontier forward,backward;
-    std::vector<Node> trace_parent;
-    Node state(Node site,int port) const { return site*input_ports.size()+input_index[port]; }
-    template<class Visitor> void neighbors(Node u,bool reverse,Visitor visit) const {
-        const Node site=u/input_ports.size();
-        const auto port=input_ports[u%input_ports.size()];
-        if(!reverse) {
-            for(auto edge:graph.local_out(port)) {
-                const int ni=graph.net_out(edge.port);
-                if(ni<0) continue;
-                auto moved=graph.net_move(site,ni,false);
-                if(moved.site!=NONE) {
-                    const auto& net=archdata::NETS[ni];
-                    visit(state(moved.site,net.to),edge.delay+net.delay+moved.delay);
-                }
-            }
-        } else {
-            const int ni=graph.net_in(port);
-            if(ni<0) throw std::runtime_error("Missing reverse Net for input port");
-            const auto& net=archdata::NETS[ni];
-            auto moved=graph.net_move(site,ni,true);
-            if(moved.site==NONE) return;
-            for(auto edge:graph.local_in(net.from)) {
-                if(input_index[edge.port]>=0)
-                    visit(state(moved.site,edge.port),edge.delay+net.delay+moved.delay);
-            }
-        }
-    }
-    void start(Node pin,bool trace=false) {
-        Node site=pin/archdata::P,port=pin%archdata::P;
-        if(input_index[port]>=0) {
-            Node s=state(site,port);
-            if(forward.improve(s,0) && trace) trace_parent[s]=NONE;
-            return;
-        }
-        int ni=graph.net_out(port);
-        if(ni>=0) {
-            auto m=graph.net_move(site,ni,false);
-            if(m.site!=NONE) {
-                Node s=state(m.site,archdata::NETS[ni].to);
-                if(forward.improve(s,m.delay+archdata::NETS[ni].delay) && trace) trace_parent[s]=NONE;
-            }
-            return;
-        }
-        for(auto edge:graph.local_out(port)) {
-            ni=graph.net_out(edge.port);
-            if(ni<0) continue;
-            auto m=graph.net_move(site,ni,false);
-            if(m.site!=NONE) {
-                Node s=state(m.site,archdata::NETS[ni].to);
-                if(forward.improve(s,edge.delay+m.delay+archdata::NETS[ni].delay) && trace) trace_parent[s]=NONE;
-            }
-        }
-    }
-    void finish(Node pin) {
-        Node site=pin/archdata::P,port=pin%archdata::P;
-        if(input_index[port]>=0) { backward.improve(state(site,port),0); return; }
-        for(auto edge:graph.local_in(port))
-            if(input_index[edge.port]>=0) backward.improve(state(site,edge.port),edge.delay);
-    }
-public:
-    struct Trace {Distance delay=INF; std::vector<Node> states;};
-    explicit CompactSolver(const Graph& g):graph(g),forward(g.sites()*std::size(archdata::NETS)),
-                                             backward(g.sites()*std::size(archdata::NETS)) {
-        input_index.fill(-1);
-        for(const auto& net:archdata::NETS) {
-            if(input_index[net.to]>=0) throw std::runtime_error("Inter-input port has multiple Net templates");
-            input_index[net.to]=input_ports.size();
-            input_ports.push_back(net.to);
-        }
-        if(input_ports.size()!=160) throw std::runtime_error("Unexpected inter-input count");
-    }
-    Distance solve(Node source,Node target,SearchStats& stats) {
-        forward.reset(); backward.reset();
-        if(source==target) return 0;
-        Distance best=INF;
-        // A query can begin on a logic Input and end on a logic Output
-        // inside the same SRB without using a Net.
-        if(source/archdata::P==target/archdata::P)
-            for(auto edge:graph.local_out(source%archdata::P))
-                if(edge.port==target%archdata::P) best=std::min(best,Distance(edge.delay));
-        start(source); finish(target);
-        while(!forward.empty() && !backward.empty()) {
-            if(forward.top()+backward.top()>=best) break;
-            const bool reverse=backward.top()<forward.top();
-            Frontier& current=reverse?backward:forward;
-            Frontier& other=reverse?forward:backward;
-            Node u=current.pop(); ++stats.settled;
-            Distance du=current.get(u);
-            best=std::min(best,du+other.get(u));
-            neighbors(u,reverse,[&](Node v,uint32_t weight) {
-                ++stats.relaxations;
-                Distance dv=du+weight;
-                current.improve(v,dv);
-                best=std::min(best,dv+other.get(v));
-            });
-        }
-        return best;
-    }
-    Distance solve_astar(Node source,Node target,SearchStats& stats,Distance certified_upper=INF) {
-        forward.reset();backward.reset();if(source==target)return 0;
-        Distance best=certified_upper;
-        if(source/archdata::P==target/archdata::P)for(auto edge:graph.local_out(source%archdata::P))if(edge.port==target%archdata::P)best=std::min(best,Distance(edge.delay));
-        start(source);finish(target);auto target_xy=archdata::SITES[target/archdata::P];int tp=target%archdata::P;
-        static const auto xgap=[] {std::array<uint64_t,archdata::WIDTH> a{};for(const auto& line:archdata::LINES)if(line.vertical)for(int x=line.site+1;x<archdata::WIDTH;++x)if(x>=0)a[x]+=line.delay;return a;}();
-        static const auto ygap=[] {std::array<uint64_t,archdata::HEIGHT> a{};for(const auto& line:archdata::LINES)if(!line.vertical)for(int y=line.site+1;y<archdata::HEIGHT;++y)if(y>=0)a[y]+=line.delay;return a;}();
-        auto heuristic=[&](Node node) {
-            auto xy=archdata::SITES[node/input_ports.size()];int port=input_ports[node%input_ports.size()];auto phi=[](int x){return x-std::clamp(x-76,0,14);};
-            int dx=phi(target_xy.x)-phi(xy.x),dy=target_xy.y-xy.y;int64_t lower=0;
-            for(size_t k=0;k<4;++k) {int64_t value=int64_t(potential_lower_model::ax[k])*dx+int64_t(potential_lower_model::ay[k])*dy+potential_lower_model::distance[k*archdata::P*archdata::P+port*archdata::P+tp];lower=std::max(lower,(value+11)/12);}
-            return Distance(lower)+uint64_t(std::llabs(int64_t(xgap[target_xy.x])-int64_t(xgap[xy.x])))+uint64_t(std::llabs(int64_t(ygap[target_xy.y])-int64_t(ygap[xy.y])));
-        };
-        struct Item {Distance f,g;Node node;bool operator<(const Item& a)const{return f>a.f || (f==a.f && node>a.node);}};
-        std::priority_queue<Item> queue;
-        while(!forward.empty()) {Node node=forward.pop();Distance g=forward.get(node);if(g+heuristic(node)<best)queue.push({g+heuristic(node),g,node});}
-        while(!queue.empty()) {
-            auto item=queue.top();queue.pop();if(item.f>=best)break;if(item.g!=forward.get(item.node))continue;++stats.settled;
-            Distance terminal=backward.get(item.node);if(terminal<INF)best=std::min(best,item.g+terminal);
-            neighbors(item.node,false,[&](Node next,uint32_t cost) {
-                ++stats.relaxations;Distance g=item.g+cost;if(g>=best)return;Distance h=heuristic(next);if(g+h>=best)return;
-                if(forward.record(next,g))queue.push({g+h,g,next});
-            });
-        }
-        return best;
-    }
-    Trace trace(Node source,Node target,SearchStats& stats) {
-        forward.reset();
-        if(trace_parent.empty()) trace_parent.resize(graph.sites()*input_ports.size(),NONE);
-        if(source==target) return {0,{}};
-        Distance best=INF;
-        Node terminal=NONE;
-        const Node target_site=target/archdata::P;
-        const int target_port=target%archdata::P;
-        if(source/archdata::P==target_site)
-            for(auto edge:graph.local_out(source%archdata::P))
-                if(edge.port==target_port) best=std::min(best,Distance(edge.delay));
-        start(source,true);
-        while(!forward.empty() && forward.top()<best) {
-            Node u=forward.pop(); ++stats.settled;
-            Distance du=forward.get(u);
-            if(u/input_ports.size()==target_site) {
-                const int port=input_ports[u%input_ports.size()];
-                if(port==target_port && du<best) {best=du;terminal=u;}
-                for(auto edge:graph.local_out(port))
-                    if(edge.port==target_port && du+edge.delay<best) {
-                        best=du+edge.delay;terminal=u;
-                    }
-            }
-            if(du>=best) continue;
-            neighbors(u,false,[&](Node v,uint32_t weight) {
-                ++stats.relaxations;
-                if(forward.improve(v,du+weight)) trace_parent[v]=u;
-            });
-        }
-        Trace result;result.delay=best;
-        while(terminal!=NONE) {
-            result.states.push_back(terminal);
-            terminal=trace_parent[terminal];
-        }
-        std::reverse(result.states.begin(),result.states.end());
-        return result;
-    }
-    Node trace_site(Node state) const {return state/input_ports.size();}
-};
-
 std::string trim(std::string s) {
     auto a=s.find_first_not_of(" \t\r\n"), b=s.find_last_not_of(" \t\r\n");
     return a==std::string::npos?"":s.substr(a,b-a+1);
@@ -1020,13 +620,15 @@ std::string_view trim_view(std::string_view s) {
 
 int main(int argc,char** argv) {
     try {
-        std::string input,output,stats_path,trace_path,oracle_path,cycle_path,neural_path,neural_second_path,algorithm="v6-pair";
-        bool cache_enabled=true,cycle_extra_hops=false,exact_astar=false;unsigned macro_budget=0,exact_short_distance=0;double neural_second_weight=.25,exact_uncertainty=0;uint64_t exact_short_queries=0,exact_uncertain_queries=0;
+        std::string input,output,stats_path,trace_path,certificate_path,phase_bounds_path,oracle_path,cycle_path,neural_path,neural_second_path,algorithm="v6-pair";
+        bool cache_enabled=true,cycle_extra_hops=false,exact_astar=false,balanced_astar=false,progress=false;unsigned macro_budget=0,exact_short_distance=0;double neural_second_weight=.25,exact_uncertainty=0,certified_relative_error=0;uint64_t exact_short_queries=0,exact_uncertain_queries=0;
         for(int i=1;i<argc;++i) {
             std::string arg=argv[i];
             if(arg=="--help") {
-                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree|v19-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--neural-model model.bin] [--neural-model-second model.bin] [--neural-second-weight value] [--macro-budget nodes] [--cycle-extra-hops] [--no-cache] [--exact-short-distance cells] [--exact-uncertainty fraction] [--exact-astar] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
+                std::cout<<"estimate -in requests.csv -out results.csv [--algorithm bidirectional|dijkstra|compressed|phase-certified|approximate|spatial|port|source-x|target-x|v2|v3|v3-forced|v3-final|v4-tree|v4-table|v4-horizontal|v5-geometry|v5-geometry-fused|v6-pair|v7-tree|v9-tree|v10-tree|v14-tree|v19-tree] [--local-oracle dictionary.bin] [--cycle-oracle tail.bin] [--neural-model model.bin] [--neural-model-second model.bin] [--neural-second-weight value] [--macro-budget nodes] [--cycle-extra-hops] [--no-cache] [--exact-short-distance cells] [--exact-uncertainty fraction] [--exact-astar] [--balanced-astar] [--certified-relative-error fraction] [--phase-bounds dictionary.bin] [--progress] [--certificate bounds.csv (certified mode, no-cache)] [--stats stats.csv] [--trace trace.csv (compressed only)]\n";return 0;
             }
+            if(arg=="--progress") {progress=true;continue;}
+            if(arg=="--balanced-astar") {balanced_astar=true;continue;}
             if(arg=="--exact-astar") {exact_astar=true;continue;}
             if(arg=="--cycle-extra-hops") {cycle_extra_hops=true;continue;}
             if(arg=="--no-cache") {cache_enabled=false;continue;}
@@ -1034,8 +636,11 @@ int main(int argc,char** argv) {
             if(arg=="-in") input=argv[++i];
             else if(arg=="-out") output=argv[++i];
             else if(arg=="--stats") stats_path=argv[++i];
+            else if(arg=="--certificate") certificate_path=argv[++i];
             else if(arg=="--trace") trace_path=argv[++i];
             else if(arg=="--exact-short-distance") exact_short_distance=std::stoul(argv[++i]);
+            else if(arg=="--phase-bounds") phase_bounds_path=argv[++i];
+            else if(arg=="--certified-relative-error") certified_relative_error=std::stod(argv[++i]);
             else if(arg=="--exact-uncertainty") exact_uncertainty=std::stod(argv[++i]);
             else if(arg=="--neural-model-second") neural_second_path=argv[++i];
             else if(arg=="--neural-second-weight") neural_second_weight=std::stod(argv[++i]);
@@ -1050,14 +655,14 @@ int main(int argc,char** argv) {
         if(!stats_path.empty() && (stats_path==input || stats_path==output)) throw std::runtime_error("Stats file must differ from input/output");
         if(!trace_path.empty() && (algorithm!="compressed" || trace_path==input || trace_path==output || trace_path==stats_path))
             throw std::runtime_error("Trace requires compressed algorithm and a distinct file");
-        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused" && algorithm!="v6-pair" && algorithm!="v7-tree" && algorithm!="v9-tree" && algorithm!="v10-tree" && algorithm!="v14-tree" && algorithm!="v19-tree") throw std::runtime_error("Unknown algorithm");
+        if(algorithm!="bidirectional" && algorithm!="dijkstra" && algorithm!="compressed" && algorithm!="phase-certified" && algorithm!="approximate" && algorithm!="spatial" && algorithm!="port" && algorithm!="source-x" && algorithm!="target-x" && algorithm!="v2" && algorithm!="v3" && algorithm!="v3-forced" && algorithm!="v3-final" && algorithm!="v4-tree" && algorithm!="v4-table" && algorithm!="v4-horizontal" && algorithm!="v5-geometry" && algorithm!="v5-geometry-fused" && algorithm!="v6-pair" && algorithm!="v7-tree" && algorithm!="v9-tree" && algorithm!="v10-tree" && algorithm!="v14-tree" && algorithm!="v19-tree") throw std::runtime_error("Unknown algorithm");
         std::ifstream in(input);
         if(!in) throw std::runtime_error("Cannot open input");
         std::string header;
         std::getline(in,header);
         if(trim(header)!="From,To") throw std::runtime_error("Expected input header From,To (no golden column)");
         std::vector<char> output_buffer(1<<20);
-        std::ofstream out, stats, trace;
+        std::ofstream out, stats, trace, certificates;
         out.rdbuf()->pubsetbuf(output_buffer.data(),output_buffer.size());
         out.open(output);
         if(!out) throw std::runtime_error("Cannot open output");
@@ -1071,8 +676,12 @@ int main(int argc,char** argv) {
             if(!trace) throw std::runtime_error("Cannot open trace file");
             trace<<"row,delay,steps,hops,long_hops,turns,detour\n";
         }
+        if(!certificate_path.empty()) {
+            if(!certified_relative_error || cache_enabled || certificate_path==input || certificate_path==output || certificate_path==stats_path || certificate_path==trace_path)throw std::runtime_error("Certificates require certified mode, --no-cache, and distinct files");
+            certificates.open(certificate_path);if(!certificates)throw std::runtime_error("Cannot open certificate file");certificates<<"row,lower,upper,settled,relaxations\n";
+        }
         const auto cpu_start=std::clock();
-        const bool fast=algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused" || algorithm=="v6-pair" || algorithm=="v7-tree" || algorithm=="v9-tree" || algorithm=="v10-tree" || algorithm=="v14-tree" || algorithm=="v19-tree";
+        const bool fast=algorithm=="phase-certified" || algorithm=="approximate" || algorithm=="spatial" || algorithm=="port" || algorithm=="source-x" || algorithm=="target-x" || algorithm=="v2" || algorithm=="v3" || algorithm=="v3-forced" || algorithm=="v3-final" || algorithm=="v4-tree" || algorithm=="v4-table" || algorithm=="v4-horizontal" || algorithm=="v5-geometry" || algorithm=="v5-geometry-fused" || algorithm=="v6-pair" || algorithm=="v7-tree" || algorithm=="v9-tree" || algorithm=="v10-tree" || algorithm=="v14-tree" || algorithm=="v19-tree";
         if(!oracle_path.empty() && (!fast || oracle_path==input || oracle_path==output || oracle_path==stats_path))
             throw std::runtime_error("Path oracle requires an estimate algorithm and distinct files");
         std::unique_ptr<LocalPathOracle> local_oracle;
@@ -1088,15 +697,18 @@ int main(int argc,char** argv) {
         if(!neural_second_path.empty() && (neural_path.empty() || !std::isfinite(neural_second_weight) || neural_second_weight<0 || neural_second_weight>1))throw std::runtime_error("Invalid neural ensemble");
         std::unique_ptr<PhaseRouteModel> neural_second;if(!neural_second_path.empty())neural_second=std::make_unique<PhaseRouteModel>(neural_second_path);
         if((exact_short_distance || exact_uncertainty) && (algorithm!="v19-tree" || !std::isfinite(exact_uncertainty) || exact_uncertainty<0 || exact_uncertainty>1 || (exact_uncertainty && !neural_second)))throw std::runtime_error("Invalid exact refinement options");
+        if(certified_relative_error && ((algorithm!="v19-tree" && algorithm!="phase-certified") || !std::isfinite(certified_relative_error) || certified_relative_error<0 || certified_relative_error>.1))throw std::runtime_error("Invalid certified relative error");
+        if(algorithm=="phase-certified" && (!certified_relative_error || phase_bounds_path.empty()))throw std::runtime_error("phase-certified requires --phase-bounds and --certified-relative-error");
+        std::unique_ptr<PhaseLowerBound> phase_bounds;if(!phase_bounds_path.empty()) {if(!certified_relative_error)throw std::runtime_error("Phase bounds require certified mode");phase_bounds=std::make_unique<PhaseLowerBound>(phase_bounds_path);}
         std::unique_ptr<MacroPathOracle> macro;if(macro_budget)macro=std::make_unique<MacroPathOracle>(cycle_path,true);
         std::unique_ptr<PredictionCache> cache;
         if(cache_enabled && (algorithm=="v14-tree" || algorithm=="v19-tree")) cache=std::make_unique<PredictionCache>();
         FastPinParser parser;
         std::unique_ptr<Graph> graph;
-        if(!fast || exact_short_distance || exact_uncertainty) graph=std::make_unique<Graph>();
+        if(!fast || exact_short_distance || exact_uncertainty || certified_relative_error) graph=std::make_unique<Graph>();
         std::unique_ptr<Solver> solver;
         std::unique_ptr<CompactSolver> compact_solver;
-        if(algorithm=="compressed" || exact_short_distance || exact_uncertainty) compact_solver=std::make_unique<CompactSolver>(*graph);
+        if(algorithm=="compressed" || exact_short_distance || exact_uncertainty || certified_relative_error) compact_solver=std::make_unique<CompactSolver>(*graph);
         else if(!fast) solver=std::make_unique<Solver>(*graph);
         out<<"From,To,delay\n";
         std::string line; uint64_t row=0;
@@ -1115,11 +727,13 @@ int main(int argc,char** argv) {
             Distance d=INF;uint64_t cache_key=(uint64_t(from)<<32)|to;
             if(!cache || !cache->get(cache_key,d)) {
             Distance route_upper=INF;
+            if(algorithm=="phase-certified" && cycle_oracle)route_upper=cycle_oracle->cap(from,to,route_upper,true);
             if(algorithm=="v14-tree" || algorithm=="v19-tree") {
                 route_upper=std::min(route_upper,local_oracle->upper_bound(from,to));
                 route_upper=cycle_oracle->cap(from,to,route_upper,algorithm=="v19-tree");
             }
             d=trace.is_open()?route.delay:
+                algorithm=="phase-certified"?INF:
                 algorithm=="approximate"?lookup_delay(from,to):
                 algorithm=="spatial"?spatial_delay(from,to):
                 algorithm=="port"?port_delay(from,to):
@@ -1140,9 +754,9 @@ int main(int argc,char** argv) {
                 algorithm=="v10-tree"?v10_tree_delay(from,to):
                 algorithm=="v14-tree"?v14_tree_delay(from,to,route_upper):
                 algorithm=="v19-tree"?v19_tree_delay(from,to,route_upper):
-                compact_solver?(exact_astar?compact_solver->solve_astar(from,to,counters):compact_solver->solve(from,to,counters)):solver->solve(from,to,algorithm=="bidirectional",counters);
-            if(local_oracle && algorithm!="v14-tree" && algorithm!="v19-tree") d=std::min(d,local_oracle->upper_bound(from,to));
-            if(cycle_oracle && algorithm!="v14-tree" && algorithm!="v19-tree") d=cycle_oracle->cap(from,to,d);
+                compact_solver?(balanced_astar?compact_solver->solve_balanced(from,to,counters):exact_astar?compact_solver->solve_astar(from,to,counters):compact_solver->solve(from,to,counters)):solver->solve(from,to,algorithm=="bidirectional",counters);
+            if(local_oracle && algorithm!="v14-tree" && algorithm!="v19-tree" && algorithm!="phase-certified") d=std::min(d,local_oracle->upper_bound(from,to));
+            if(cycle_oracle && algorithm!="v14-tree" && algorithm!="v19-tree" && algorithm!="phase-certified") d=cycle_oracle->cap(from,to,d);
                 bool exact_candidate=false,refined=false;
                 if(neural) {
                     auto feature=topology_features(from,to);auto a=archdata::SITES[from/archdata::P],b=archdata::SITES[to/archdata::P];auto base=v6_pair_delay(from,to);
@@ -1152,9 +766,10 @@ int main(int argc,char** argv) {
                     d=std::min(route_upper,std::max(d,PhaseRouteModel::lower_bound(feature,a,b)));
                 }
                 auto xy1=archdata::SITES[from/archdata::P],xy2=archdata::SITES[to/archdata::P];
-                if(exact_short_distance && unsigned(std::abs(xy1.x-xy2.x)+std::abs(xy1.y-xy2.y))<exact_short_distance) {d=compact_solver->solve_astar(from,to,counters,route_upper);refined=true;++exact_short_queries;}
-                else if(exact_candidate) {d=compact_solver->solve_astar(from,to,counters,route_upper);refined=true;++exact_uncertain_queries;}
-                if(macro && !refined) d=std::min(d,macro->cap(from,to,route_upper,macro_budget));
+                if(exact_short_distance && unsigned(std::abs(xy1.x-xy2.x)+std::abs(xy1.y-xy2.y))<exact_short_distance) {d=compact_solver->solve_astar(from,to,counters,route_upper);counters.lower=counters.upper=d;refined=true;++exact_short_queries;}
+                else if(exact_candidate) {d=compact_solver->solve_astar(from,to,counters,route_upper);counters.lower=counters.upper=d;refined=true;++exact_uncertain_queries;}
+                if(macro && !refined) {route_upper=macro->cap(from,to,route_upper,macro_budget);d=std::min(d,route_upper);}
+                if(certified_relative_error && !refined)d=phase_bounds?compact_solver->solve_phase(from,to,counters,*phase_bounds,route_upper,certified_relative_error,d):compact_solver->solve_balanced(from,to,counters,route_upper,certified_relative_error,d);
                 if(cycle_extra_hops && cycle_oracle) d=cycle_oracle->cap(from,to,d,true);
                 if(cache) cache->put(cache_key,d);
             }
@@ -1164,6 +779,8 @@ int main(int argc,char** argv) {
             if(end.ec!=std::errc()) throw std::runtime_error("Cannot format delay");
             out.write(digits,end.ptr-digits);out.put('\n');
             ++row;
+            if(progress && row%1000==0)std::cerr<<"progress="<<row<<" cpu="<<double(std::clock()-cpu_start)/CLOCKS_PER_SEC<<'\n';
+            if(certificates.is_open())certificates<<row<<','<<counters.lower<<','<<counters.upper<<','<<counters.settled<<','<<counters.relaxations<<'\n';
             if(collect) {
                 auto ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
                 stats<<row<<','<<d<<','<<ms<<','<<counters.settled<<','<<counters.relaxations<<'\n';
@@ -1193,7 +810,8 @@ int main(int argc,char** argv) {
             }
         }
         out.flush();
-        if(in.bad() || !out || (stats.is_open() && !stats) || (trace.is_open() && !trace)) throw std::runtime_error("File I/O failed");
+        if(certificates.is_open())certificates.flush();
+        if(in.bad() || !out || (certificates.is_open() && !certificates) || (stats.is_open() && !stats) || (trace.is_open() && !trace)) throw std::runtime_error("File I/O failed");
         std::cerr<<"rows="<<row<<" cpu_seconds="<<double(std::clock()-cpu_start)/CLOCKS_PER_SEC<<" arch_sha256="<<archdata::HASH<<'\n';
         if(exact_short_distance || exact_uncertainty) std::cerr<<"exact_short_queries="<<exact_short_queries<<" exact_uncertain_queries="<<exact_uncertain_queries<<'\n';
         if(cache) std::cerr<<"cache_hits="<<cache->hits<<" cache_misses="<<cache->misses<<'\n';

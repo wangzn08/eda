@@ -1,0 +1,22 @@
+{
+  "fit_used_labels": "V27/V26 development-only models provide proposals; phase bound asset uses architecture only",
+  "holdout_used": false,
+  "rows": 150053,
+  "validation_score": 99.99653939395739,
+  "mean_relative_error": 8.65151703351407e-06,
+  "max_relative_error": 0.0002399232245681382,
+  "p99_relative_error": 0.0002229654403567447,
+  "exact_match_fraction": 0.9566086649383885,
+  "exact_certificate_fraction": 0.9475918508793559,
+  "invalid_intervals": 0,
+  "prediction_outside_interval": 0,
+  "all_error_certificates_verified": true,
+  "relative_error_limit": 0.00024,
+  "certified_minimum_score": 99.90400002949119,
+  "runtime": {
+    "cpu_seconds": 473.488,
+    "max_rss_bytes": 737755136,
+    "mean_settled": 5187.75141450021
+  },
+  "scope": "Full fixed validation, not official hidden evaluation; search-based precision mode, not neural-only score; no billion-request acceptance."
+}

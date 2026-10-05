@@ -1,0 +1,23 @@
+{
+  "validation_subset_only": true,
+  "holdout_used": false,
+  "results": {
+    "37": {
+      "rows": 1001,
+      "score": 99.89401984002133,
+      "invalid_intervals": 36,
+      "exact_match_fraction": 0.8691308691308691,
+      "settled_mean": 264624.3256743257,
+      "max_relative_error": 0.05230940456316082
+    },
+    "39": {
+      "rows": 1001,
+      "score": 99.9963499648112,
+      "invalid_intervals": 0,
+      "exact_match_fraction": 0.955044955044955,
+      "settled_mean": 5489.427572427572,
+      "max_relative_error": 0.00023590469450342062
+    }
+  },
+  "V37_disposition": "Rejected: 36 invalid intervals; do not use this cut formulation"
+}

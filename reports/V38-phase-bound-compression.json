@@ -1,0 +1,26 @@
+{
+  "architecture_only": true,
+  "golden_used": false,
+  "source_bytes": 152371556,
+  "compressed_bytes": 119571260,
+  "sha256": "cca5cff976e29fc561d911ccccf1ff94b45eade1323e2f958704d6d2949e4075",
+  "groups": [
+    {
+      "x_period": 10,
+      "patterns": 241170,
+      "base_bytes": 634880,
+      "index_bytes": 1269760,
+      "pattern_bytes": 57880800,
+      "exact_roundtrip": true
+    },
+    {
+      "x_period": 10,
+      "patterns": 241170,
+      "base_bytes": 634880,
+      "index_bytes": 1269760,
+      "pattern_bytes": 57880800,
+      "exact_roundtrip": true
+    }
+  ],
+  "seconds": 1.9922318749886472
+}

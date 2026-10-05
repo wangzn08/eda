@@ -1,0 +1,15 @@
+{
+  "validation.v36-balanced-reference.csv": {
+    "rows": 9444,
+    "mismatches": 0,
+    "score": 100.0
+  },
+  "validation.v36-pilot.csv": {
+    "rows": 1001,
+    "mismatches": 234,
+    "score": 99.98160479303831,
+    "invalid_intervals": 0,
+    "exact_intervals": 766,
+    "settled_mean": 192129.47052947053
+  }
+}

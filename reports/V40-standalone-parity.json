@@ -1,0 +1,27 @@
+{
+  "validation.v40-standalone.csv": {
+    "byte_identical": true,
+    "bytes": 40289
+  },
+  "validation.v40-standalone.bounds.csv": {
+    "byte_identical": true,
+    "bytes": 23745
+  },
+  "runtime_files": [
+    {
+      "file": "models/phase-bounds-safe.bin",
+      "bytes": 47019458
+    },
+    {
+      "file": "out/local-oracle/long-tail-12-dict.bin",
+      "bytes": 11969216
+    },
+    {
+      "file": "build/phase_estimate",
+      "bytes": 862608
+    }
+  ],
+  "combined_runtime_bytes": 59851282,
+  "default_asset_entry_matches": true,
+  "default_output_sha256": "18ee8b71328d2aaf8d0de0cae48e6d8f1016b0057d98dff7c5a5c320f8ca2e7b"
+}

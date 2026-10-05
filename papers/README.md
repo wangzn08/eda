@@ -65,3 +65,14 @@ Petelin, Betz, *The Speed of Diversity: Exploring Complex FPGA Routing Topologie
 | [Transit Node Routing Reconsidered (2013)](https://arxiv.org/abs/1302.5611) | `Transit_Node_Routing_2013.pdf` | 长线中转节点、入口/出口分解 |
 
 方法差异、实际实验与创新边界见 [V20–V35 研究报告](../reports/V20-V35-architecture-research.md)。不能把参考论文的基础方法宣称为我们的原创。
+
+## 2026-10-05 周期下界与误差控制搜索
+
+新增并阅读相关方法章节：
+
+- `Culberson_1998_Pattern_Databases.pdf`：[作者公开稿](https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/compi.pdf)，抽象问题距离与可采纳下界。
+- `Felner_2004_Additive_PDB.pdf`：[论文](https://arxiv.org/abs/1107.0050)，代价分解；当前实现方向下界取最大，并非复现可加PDB。
+- `Anytime_Heuristic_Search_2007.pdf`：[论文](https://arxiv.org/abs/1110.2737)，解质量界与持续改进。
+- `Bidirectional_Bounded_Search_2025.pdf`：[论文](https://arxiv.org/abs/2511.10272)，双向有界搜索参照。
+
+V40按官方架构构造周期模式下界，完整验证99.9963756；算法区别、证明条件和失败路线见 [V36–V40报告](../reports/V36-V40-precision-research.md)。
