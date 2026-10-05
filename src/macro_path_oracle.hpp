@@ -22,6 +22,7 @@ class MacroPathOracle {
     bool local_bridges=false;
     bool all_net_ports=false;
     bool short_repeat_jumps=false;
+    unsigned frontier_limit=0;
     double priority_weight=1;
     struct Repeat{int net,dx,dy;uint32_t arc_cost;};
     std::vector<std::vector<Repeat>> repeats;
@@ -50,9 +51,9 @@ class MacroPathOracle {
     }
 public:
     uint64_t total_expanded=0,total_finished=0;
-    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false,bool all_ports=false,bool short_jumps=false,unsigned connector_limit=0):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
+    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false,bool all_ports=false,bool short_jumps=false,unsigned connector_limit=0,unsigned beam=0):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
         if(!std::isfinite(weight) || weight<1 || weight>2)throw std::runtime_error("Invalid macro priority weight");
-        short_repeat_jumps=short_jumps;all_net_ports=all_ports;include_gaps=gap_heuristic;xgap.resize(archdata::WIDTH);ygap.resize(archdata::HEIGHT);
+        frontier_limit=beam;short_repeat_jumps=short_jumps;all_net_ports=all_ports;include_gaps=gap_heuristic;xgap.resize(archdata::WIDTH);ygap.resize(archdata::HEIGHT);
         for(const auto& line:archdata::LINES) {auto& prefix=line.vertical?xgap:ygap;for(size_t coordinate=0;coordinate<prefix.size();++coordinate)if(int(coordinate)>line.site)prefix[coordinate]+=line.delay;}
         index.fill(-1);
         for(const auto& net:archdata::NETS) {
@@ -153,6 +154,7 @@ public:
                 auto cost=LocalPathOracle::translated_bound(start,end,edge.packed);
                 if(cost!=absent)push(end.x,end.y,edge.target,current.g+cost);
             }
+            if(frontier_limit && heap.size()>frontier_limit){std::priority_queue<Item> retained;unsigned count=0;while(!heap.empty() && count<frontier_limit){auto item=heap.top();heap.pop();if(stamp[item.node]!=epoch || distance[item.node]!=item.g)continue;retained.push(item);++count;}heap.swap(retained);}
         }
         total_expanded+=expanded;return best;
     }
