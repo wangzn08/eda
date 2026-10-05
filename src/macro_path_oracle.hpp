@@ -3,6 +3,8 @@
 #include "cycle_prefix_bank.hpp"
 #include "potential_lower_model.hpp"
 #include "routing_search.hpp"
+#include "repeat_cycle_jump.hpp"
+#include <memory>
 #include <array>
 #include <queue>
 #include <vector>
@@ -13,6 +15,7 @@ class MacroPathOracle {
     struct Item {uint64_t f,g;uint32_t node;bool operator<(const Item& x) const {return f>x.f;}};
     LocalPathOracle tail;
     Graph repeat_graph;
+    std::unique_ptr<RepeatCycleJump> cycle_jumps;
     const PhaseLowerBound* phase=nullptr;
     bool repeat_jumps=false;
     bool local_bridges=false;
@@ -42,7 +45,7 @@ class MacroPathOracle {
     }
 public:
     uint64_t total_expanded=0,total_finished=0;
-    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
+    explicit MacroPathOracle(const std::string& path,bool gap_heuristic=false,bool jumps=false,const PhaseLowerBound* bound=nullptr,bool bridges=false,double weight=1,bool doubling=false):tail(path),phase(bound),repeat_jumps(jumps),local_bridges(bridges),priority_weight(weight),grid(archdata::WIDTH*archdata::HEIGHT,-1) {
         if(!std::isfinite(weight) || weight<1 || weight>2)throw std::runtime_error("Invalid macro priority weight");
         include_gaps=gap_heuristic;xgap.resize(archdata::WIDTH);ygap.resize(archdata::HEIGHT);
         for(const auto& line:archdata::LINES) {auto& prefix=line.vertical?xgap:ygap;for(size_t coordinate=0;coordinate<prefix.size();++coordinate)if(int(coordinate)>line.site)prefix[coordinate]+=line.delay;}
@@ -66,6 +69,7 @@ public:
                 }
         }
         distance.resize(grid.size()*ports.size());stamp.resize(distance.size());
+        if(doubling){if(!jumps)throw std::runtime_error("Doubling requires repeat jumps");cycle_jumps=std::make_unique<RepeatCycleJump>(repeat_graph);}
     }
     uint64_t cap(uint32_t source,uint32_t target,uint64_t upper,unsigned budget=256) {
         auto a=archdata::SITES[source/archdata::P],b=archdata::SITES[target/archdata::P];int tp=target%archdata::P;
@@ -99,6 +103,11 @@ public:
                 int remaining=repeat.dx?(phi(b.x)-phi(x))*(repeat.dx>0?1:-1):(b.y-y)*(repeat.dy>0?1:-1);
                 if(remaining<=0)continue;
                 int hops=remaining/(std::abs(repeat.dx)+std::abs(repeat.dy));
+                if(cycle_jumps && hops>=8){
+                    unsigned ci=0;while(ci<cycle_jumps->cycles.size() && cycle_jumps->cycles[ci].net!=repeat.net)++ci;
+                    if(ci==cycle_jumps->cycles.size())throw std::runtime_error("Missing repeat cycle");
+                    for(int q=std::max(1,hops-2);q<=std::min(63,hops+2);++q){auto move=cycle_jumps->jump(ci,uint32_t(grid[coordinate]),q);if(move.site==NONE)break;auto pos=archdata::SITES[move.site];push(pos.x,pos.y,li,current.g+move.delay);}continue;
+                }
                 Node cursor=uint32_t(grid[coordinate]);uint64_t cost=current.g;
                 for(int q=1;q<=hops+2;++q){auto move=repeat_graph.net_move(cursor,repeat.net,false);if(move.site==NONE)break;cost+=repeat.arc_cost+archdata::NETS[repeat.net].delay+move.delay;cursor=move.site;if(cost>=best)break;
                     if(q>=std::max(1,hops-2)){auto pos=archdata::SITES[cursor];push(pos.x,pos.y,li,cost);}

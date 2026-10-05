@@ -1,0 +1,78 @@
+{
+  "phase_bound": true,
+  "holdout_used": false,
+  "rows": 1001,
+  "budget": 32,
+  "priority_weight": 1.05,
+  "variants": {
+    "direct": {
+      "runs": [
+        {
+          "query_cpu_seconds": 0.015519,
+          "maximum_rss_bytes": 166690816,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.015631,
+          "maximum_rss_bytes": 166756352,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.015633,
+          "maximum_rss_bytes": 166690816,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.01739,
+          "maximum_rss_bytes": 166756352,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.016141,
+          "maximum_rss_bytes": 166772736,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        }
+      ],
+      "covered": 972,
+      "score_with_missing_zero": 90.6987691715361,
+      "valid_path_under_golden": 0,
+      "median_query_cpu_seconds": 0.015633
+    },
+    "doubling": {
+      "runs": [
+        {
+          "query_cpu_seconds": 0.015272,
+          "maximum_rss_bytes": 259244032,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.015375,
+          "maximum_rss_bytes": 259260416,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.015219,
+          "maximum_rss_bytes": 259244032,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.015286,
+          "maximum_rss_bytes": 259244032,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        },
+        {
+          "query_cpu_seconds": 0.015401,
+          "maximum_rss_bytes": 259162112,
+          "output_sha256": "5504b567846f86a066afd65810e617065bc0c7fe293e0659d277a8cd927486f3"
+        }
+      ],
+      "covered": 972,
+      "score_with_missing_zero": 90.6987691715361,
+      "valid_path_under_golden": 0,
+      "median_query_cpu_seconds": 0.015286
+    }
+  },
+  "identical_outputs": true,
+  "scope": "1001-request validation pilot; initial feasible bounds supplied by earlier architecture oracle, whose construction cost is excluded. No full billion acceptance.",
+  "decision": "Retain optional doubling accelerator; macro route coverage/precision still insufficient, do not replace V59."
+}
