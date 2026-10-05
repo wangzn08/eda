@@ -256,6 +256,7 @@ class CompactSolver {
     Frontier forward,backward;
     std::vector<Node> trace_parent;
     std::vector<int32_t> balanced_potentials;std::vector<uint32_t> balanced_stamps;uint32_t balanced_epoch=0;
+    std::vector<Distance> phase_cached_lower;std::vector<uint32_t> phase_cached_stamp;uint32_t phase_cached_epoch=0;
     Node state(Node site,int port) const { return site*input_ports.size()+input_index[port]; }
     template<class Visitor> void neighbors(Node u,bool reverse,Visitor visit) const {
         const Node site=u/input_ports.size();
@@ -431,12 +432,13 @@ public:
             });
         }
     }
-    Distance solve_phase(Node source,Node target,SearchStats& stats,const PhaseLowerBound& phase,Distance certified_upper=INF,double relative_error=0,Distance proposal=INF) {
+    Distance solve_phase(Node source,Node target,SearchStats& stats,const PhaseLowerBound& phase,Distance certified_upper=INF,double relative_error=0,Distance proposal=INF,bool memo=false) {
         forward.reset();backward.reset();if(source==target){stats.lower=stats.upper=0;return 0;}
         Distance best=certified_upper;
         if(source/archdata::P==target/archdata::P)for(auto edge:graph.local_out(source%archdata::P))if(edge.port==target%archdata::P)best=std::min(best,Distance(edge.delay));
         start(source);finish(target);auto b=archdata::SITES[target/archdata::P];int tp=target%archdata::P;
-        auto heuristic=[&](Node u){return phase.lower(archdata::SITES[u/input_ports.size()],input_ports[u%input_ports.size()],b,tp);};
+        if(memo){if(phase_cached_lower.empty()){phase_cached_lower.resize(graph.sites()*input_ports.size());phase_cached_stamp.resize(phase_cached_lower.size());}if(++phase_cached_epoch==0){std::fill(phase_cached_stamp.begin(),phase_cached_stamp.end(),0);++phase_cached_epoch;}}
+        auto heuristic=[&](Node u){if(memo && phase_cached_stamp[u]==phase_cached_epoch)return phase_cached_lower[u];auto h=phase.lower(archdata::SITES[u/input_ports.size()],input_ports[u%input_ports.size()],b,tp);if(memo){phase_cached_lower[u]=h;phase_cached_stamp[u]=phase_cached_epoch;}return h;};
         struct Item {Distance f,g;Node node;bool operator<(const Item& a)const{return f>a.f || (f==a.f && (g<a.g || (g==a.g && node>a.node)));}};
         std::priority_queue<Item> queue;
         while(!forward.empty()) {Node u=forward.pop();Distance g=forward.get(u);best=std::min(best,g+backward.get(u));Distance h=heuristic(u);if(g+h<best)queue.push({g+h,g,u});}
