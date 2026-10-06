@@ -5,7 +5,12 @@
 #include <cstring>
 #include "vertical_transient_model.hpp"
 #include "horizontal_transient_model.hpp"
+#include "joint_interaction_model.hpp"
 #include <memory>
+#ifndef JOINT_CELL_ALIGN
+#define JOINT_CELL_ALIGN 2
+#endif
+static_assert(JOINT_CELL_ALIGN==2 || JOINT_CELL_ALIGN==32,"Supported joint alignment");
 // Exact finite-template storage; periodic extension remains approximate.
 class CoreTemplateModel {
     std::array<int,496>index;
@@ -17,10 +22,11 @@ class CoreTemplateModel {
     unsigned shell_x=0,shell_y=0,growth_cap=UINT_MAX,far_period=4;
     std::unique_ptr<VerticalTransientModel>vertical;
     std::unique_ptr<HorizontalTransientModel>horizontal;
+    std::unique_ptr<JointInteractionModel>interaction;
     struct JointCell {int32_t base[4];int32_t slope_x,slope_y;};
     std::vector<JointCell>joint;
-    struct FarJointCell {uint16_t base[4];int16_t horizontal_delta;uint16_t slope_x,slope_near_y,slope_far_y;};
-    static_assert(sizeof(FarJointCell)==16,"Compact piecewise cell size");
+    struct alignas(JOINT_CELL_ALIGN) FarJointCell {uint16_t base[4];int16_t horizontal_delta;uint16_t slope_x,slope_near_y,slope_far_y;int16_t interaction_delta;};
+    static_assert(sizeof(FarJointCell)==((18+JOINT_CELL_ALIGN-1)/JOINT_CELL_ALIGN)*JOINT_CELL_ALIGN,"Compact piecewise cell size");
     std::vector<FarJointCell>far_joint;
     struct ShortVerticalCell {uint16_t base[4],slope;};
     static_assert(sizeof(ShortVerticalCell)==10,"Short vertical cell size");
@@ -56,12 +62,13 @@ class CoreTemplateModel {
                         else if(unsigned(ny)==far_period)v=cell.base[2];
                         else v=cell.base[3]+(int64_t(ny)-far_period-1)*cell.slope_far_y;
                         if(nx>=2)v+=cell.horizontal_delta+int64_t(nx-2)*cell.slope_x;
+                        if(interaction)v+=int(cell.interaction_delta)*int(std::min(std::min(unsigned(nx),5u)*6,std::min(unsigned(ny),6u)*5))/30;
                         value=v+end.second;
                     }else{
                         const auto& cell=joint[ji];
                         value=cell.base[(nx>=2?2:0)+(ny>=2?1:0)]+int64_t(std::min(unsigned(std::max(0,nx-2)),growth_cap))*cell.slope_x+int64_t(std::min(unsigned(std::max(0,ny-2)),growth_cap))*cell.slope_y+end.second;
                     }
-                }else{value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);if(horizontal)value+=horizontal->correction(index[port],end.first,ry,dx,growth_cap);}base=std::min(base,Distance(std::max<int64_t>(0,value)));}
+                }else{value=int64_t(at(index[port],end.first,rx,ry))+end.second;if(vertical)value+=vertical->correction(index[port],end.first,rx,dy,growth_cap);if(horizontal)value+=horizontal->correction(index[port],end.first,ry,dx,growth_cap);}if(interaction && (far_joint.empty() || nx==0 || ny==0))value+=interaction->correction(index[port],end.first,rx,ry,dx,dy);base=std::min(base,Distance(std::max<int64_t>(0,value)));}
             best=std::min(best,base+Distance(nx)*125+Distance(ny)*(dy>0?127:125));
         };
         if(!envelope){candidate(x,y,qx,qy);return best;}
@@ -113,6 +120,7 @@ public:
                 for(unsigned b=0;b<4;++b){if(bases[b]<0 || bases[b]>65535)throw std::runtime_error("Compact joint base overflow");fc.base[b]=uint16_t(bases[b]);}
                 int delta=h[1]-h[0];if(delta < -32768 || delta>32767)throw std::runtime_error("Compact joint delta overflow");fc.horizontal_delta=int16_t(delta);
                 auto slope=[](int d){if(d>65535)throw std::runtime_error("Compact joint slope overflow");return uint16_t(std::max(0,d));};
+                fc.interaction_delta=interaction?int16_t(interaction->raw_delta(source,target,x,y)):0;
                 fc.slope_x=slope(delta);fc.slope_near_y=slope(v[1]-v[0]);fc.slope_far_y=slope(vf[1]-vf[0]);
             }else{
                 auto& cell=joint[ji];
@@ -125,7 +133,7 @@ public:
         auto a=archdata::SITES[source/496],b=archdata::SITES[target/496];
         return {float(std::llabs(int64_t(xgap[a.x])-int64_t(xgap[b.x]))),float(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])))};
     }
-    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX,const std::string&horizontal_path="",const std::string&far_path="",bool use_corridor=false):envelope(use_envelope),corridor_geometry(use_corridor),shell_x(sx),shell_y(sy),growth_cap(cap){
+    explicit CoreTemplateModel(const std::string&path,bool use_envelope=false,unsigned sx=0,unsigned sy=0,const std::string&transient_path="",unsigned cap=UINT_MAX,const std::string&horizontal_path="",const std::string&far_path="",bool use_corridor=false,const std::string&interaction_path=""):envelope(use_envelope),corridor_geometry(use_corridor),shell_x(sx),shell_y(sy),growth_cap(cap){
         if(sx>2 || sy>2 || (use_envelope && (sx || sy)))throw std::runtime_error("Invalid template shell policy");
         std::ifstream f(path,std::ios::binary);auto read=[&](void*p,size_t n){if(!f.read(static_cast<char*>(p),n))throw std::runtime_error("Truncated core template");};
         char magic[8],hash[64];std::array<uint16_t,160>ports;uint64_t decoded;
@@ -135,6 +143,7 @@ public:
         if(!transient_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Transient requires original anchor policy");vertical=std::make_unique<VerticalTransientModel>(transient_path,ports);}
         if(!horizontal_path.empty()){if(sx || sy || use_envelope)throw std::runtime_error("Horizontal transient requires original anchors");horizontal=std::make_unique<HorizontalTransientModel>(horizontal_path,ports);}
         if(!far_path.empty()){if(!vertical || cap!=UINT_MAX)throw std::runtime_error("Far delta requires vertical transient and unlimited growth cap");vertical->load_far_delta(far_path,ports);far_period=vertical->first_far_period();has_far=true;}
+        if(!interaction_path.empty()){if(!has_far || far_period!=6 || !horizontal)throw std::runtime_error("Interaction requires distant6 and horizontal baseline");interaction=std::make_unique<JointInteractionModel>(interaction_path,ports);}
         for(auto arc:archdata::ARCS)if(index[arc.from]>=0)terminal[arc.to].push_back({unsigned(index[arc.from]),unsigned(arc.delay)});
         std::vector<unsigned char>compressed((std::istreambuf_iterator<char>(f)),{});
         if(f.bad() || compressed.empty() || compressed.size()>100000000)throw std::runtime_error("Invalid core payload size");
