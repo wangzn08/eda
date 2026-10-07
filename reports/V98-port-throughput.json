@@ -1,0 +1,18 @@
+{
+  "state": "complete",
+  "candidates": [
+    {
+      "trees": 64,
+      "validation_score": 99.16677855252483,
+      "full_validation_byte_exact": true,
+      "rows": 10000000,
+      "cpu_seconds": 47.8148,
+      "initialization_seconds": 6.02462,
+      "query_cpu_seconds": 41.79018,
+      "requests_per_cpu_second": 239290.66589327925,
+      "maximum_rss_bytes": 1389920256,
+      "runtime_file_bytes": 99814036
+    }
+  ],
+  "scope": "Actual10m repeated development requests with cache off, single runs; no final-billion, hidden-mix or officialLinux proof."
+}

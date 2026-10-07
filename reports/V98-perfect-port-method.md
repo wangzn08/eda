@@ -1,0 +1,16 @@
+# V98: collision-free index for fixed architecture port names
+
+## Change
+Optional --perfect-ports precomputes a65536-entry uint16 index for496 fixed port names. Initialization computes std::hash<string_view> for every architecture name, searches1..4096mix seeds until allport slots aredistinct, and verifiescollisions duringconstruction. Querycomputesoneslot,loadsportid,andcomparesthecompleteoriginalname beforeacceptance. Unknownnamesandinvalidsitesstillthrow. std::hashisplatformdependentbutmappingisrebuiltlocally; noserializedseedorassumptionofcrossplatformhashstability. AddedRAM128KiB,noassetfile.
+
+This cachesarchitecture-name identifiers,notrequestanswersorendpointpairs. Sourcecoordinatescontinue strictfrom_charsparsing. Existingdefaultunorderedlookup remains available. Thecommon FastPinParser usedbyotherexecutablesisunchangedunlessenable_perfect_port_index iscalled.
+
+## Evidence
+benchmark_perfect_ports.py verifiesfull150,053CSVbyteparityagainstV93trees64beforeactual10mmeasurement. Same99.1667785525score,integerbinsandbufferedoutputenabledasV97baseline. Cacheoff;allrequestscomputed. BaselineV97query38.35834s. Do notassumethenameindexisfasterbeforeactualmeasurement. Theseareimplementationchanges,notnewdelayestimationalgorithms.
+
+Goal99.9andone-hourbillionstillactive;notfinalLinuxacceptanceorhiddenworkloadproof. No fullbillionrun.
+
+## Actual outcome and decision
+Indexenabled:10m totalCPU47.8148s/init6.02462s/query41.79018s,239,290.67/s,RSS1,389,920,256bytes,files99,814,036bytes. Samebinaryindexdisabledcontrol: total47.0965s/init5.97884s/query41.11766s,243,204.50/s,RSS1,389,871,104bytes,samefilebytes. Bothfullvalidationbyte-exact. Enabledis1.64%slowerthanpairedcontrol, sonotadoptedasdefault. EarlierV97query38.35834swas6.71%lowerthanthiscontrol; observedrunvariationmeansnotallhistoricaltimedifferencescanbeassignedtothecodechange. No statisticalperformanceclaimor1-hourproof.
+
+UpdatedretainedV93trees64errorgroups: crossing55,123rows score98.87611 contributes0.41287loss, noncrossing94,930rows score99.33556 contributes0.42035. Bothlong75,084rows score99.17477 contributes0.41293; shortxlongy56,285rows99.22113 contributes0.29215;shorty18,684rows98.97090 contributes0.12814. Groups overlap. Afterinteractionpatch,errorisroughlyequalbetweencrossing/noncrossing,sofutureaccuracyworkshouldalsoinspectfiniteboundaryandendpointlineeffects,notonlycorridorhubs. Goal99.9androbust1-hourthroughputunmet. Alljobsterminal.

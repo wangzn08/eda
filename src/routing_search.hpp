@@ -57,7 +57,18 @@ public:
 class FastPinParser {
     std::vector<int> grid;
     std::unordered_map<std::string_view,unsigned> ports;
+    std::vector<uint16_t>perfect_ports;uint64_t perfect_seed=0;
+    static uint64_t mix_port(uint64_t x){x^=x>>30;x*=0xbf58476d1ce4e5b9ULL;x^=x>>27;x*=0x94d049bb133111ebULL;return x^(x>>31);}
 public:
+    void enable_perfect_port_index(){
+        perfect_ports.resize(65536);std::array<uint64_t,archdata::P>hashes;
+        for(unsigned i=0;i<archdata::P;++i)hashes[i]=std::hash<std::string_view>{}(archdata::PORTS[i]);
+        for(perfect_seed=1;perfect_seed<=4096;++perfect_seed){std::fill(perfect_ports.begin(),perfect_ports.end(),65535);bool collision=false;
+            for(unsigned i=0;i<archdata::P;++i){auto slot=mix_port(hashes[i]^perfect_seed)&65535;if(perfect_ports[slot]!=65535){collision=true;break;}perfect_ports[slot]=uint16_t(i);}
+            if(!collision)return;
+        }
+        throw std::runtime_error("No perfect port seed found");
+    }
     FastPinParser():grid(archdata::WIDTH*archdata::HEIGHT,-1) {
         for(size_t i=0;i<std::size(archdata::SITES);++i) {
             const auto& p=archdata::SITES[i];
@@ -78,9 +89,11 @@ public:
            || x<0 || x>=archdata::WIDTH || y<0 || y>=archdata::HEIGHT)
             throw std::runtime_error("Invalid coordinates: "+std::string(text));
         int site=grid[x*archdata::HEIGHT+y];
-        auto found=ports.find(text.substr(slash+1));
-        if(site<0 || found==ports.end()) throw std::runtime_error("Unknown pin: "+std::string(text));
-        return static_cast<Node>(site)*archdata::P+found->second;
+        auto name=text.substr(slash+1);unsigned port;
+        if(!perfect_ports.empty()){port=perfect_ports[mix_port(std::hash<std::string_view>{}(name)^perfect_seed)&65535];if(port>=archdata::P || name!=archdata::PORTS[port])throw std::runtime_error("Unknown pin: "+std::string(text));}
+        else{auto found=ports.find(name);if(found==ports.end())throw std::runtime_error("Unknown pin: "+std::string(text));port=found->second;}
+        if(site<0)throw std::runtime_error("Unknown pin: "+std::string(text));
+        return static_cast<Node>(site)*archdata::P+port;
     }
 };
 
