@@ -43,26 +43,30 @@ class CoreTemplateModel {
         Distance best=INF;
         auto candidate=[&](int rx,int ry,int nx,int ny){
             Distance base=INF;
+            const bool short_layout=!short_vertical.empty() && nx==0 && ny>0;
+            const bool long_layout=(!joint.empty() || !far_joint.empty()) && nx>0 && ny>0;
+            const unsigned ix=long_layout?unsigned((rx>0?10:0)+std::abs(rx)-20):0,iy=ny>0?unsigned((ry>0?12:0)+std::abs(ry)-24):0;
+            const size_t source_pair=size_t(index[port])*160;
+            const int interaction_weight=interaction && nx>0 && ny>0?int(std::min(std::min(unsigned(nx),5u)*6,std::min(unsigned(ny),6u)*5)):0;
+            auto interpolate=[&](int difference){int v=difference*(ny-2);return far_period==6?v/4:v/2;};
             for(auto end:terminal[target]){int64_t value;
-                if(!short_vertical.empty() && nx==0 && ny>0){
-                    unsigned iy=(ry>0?12:0)+std::abs(ry)-24;
-                    const auto& cell=short_vertical[((size_t(index[port])*160+end.first)*59+rx+29)*24+iy];
+                if(short_layout){
+                    const auto& cell=short_vertical[((source_pair+end.first)*59+rx+29)*24+iy];
                     if(ny==1)value=cell.base[0];else if(ny==2)value=cell.base[1];
-                    else if(unsigned(ny)<far_period)value=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))*(ny-2)/int(far_period-2);
+                    else if(unsigned(ny)<far_period)value=int(cell.base[1])+interpolate(int(cell.base[2])-int(cell.base[1]));
                     else if(unsigned(ny)==far_period)value=cell.base[2];else value=cell.base[3]+(int64_t(ny)-far_period-1)*cell.slope;
                     value+=end.second;
-                }else if((!joint.empty() || !far_joint.empty()) && nx>0 && ny>0){
-                    unsigned ix=(rx>0?10:0)+std::abs(rx)-20,iy=(ry>0?12:0)+std::abs(ry)-24;
-                    size_t ji=(size_t(index[port])*160+end.first)*480+ix*24+iy;
+                }else if(long_layout){
+                    size_t ji=(source_pair+end.first)*480+ix*24+iy;
                     if(!far_joint.empty()){
                         const auto& cell=far_joint[ji];int64_t v;
                         if(ny==1)v=cell.base[0];
                         else if(ny==2)v=cell.base[1];
-                        else if(unsigned(ny)<far_period)v=int(cell.base[1])+(int(cell.base[2])-int(cell.base[1]))*(ny-2)/int(far_period-2);
+                        else if(unsigned(ny)<far_period)v=int(cell.base[1])+interpolate(int(cell.base[2])-int(cell.base[1]));
                         else if(unsigned(ny)==far_period)v=cell.base[2];
                         else v=cell.base[3]+(int64_t(ny)-far_period-1)*cell.slope_far_y;
                         if(nx>=2)v+=cell.horizontal_delta+int64_t(nx-2)*cell.slope_x;
-                        if(interaction)v+=int(cell.interaction_delta)*int(std::min(std::min(unsigned(nx),5u)*6,std::min(unsigned(ny),6u)*5))/30;
+                        if(interaction)v+=interaction_weight==30?int(cell.interaction_delta):int(cell.interaction_delta)*interaction_weight/30;
                         value=v+end.second;
                     }else{
                         const auto& cell=joint[ji];

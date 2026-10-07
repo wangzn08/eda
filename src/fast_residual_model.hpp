@@ -4,16 +4,16 @@
 #include "fast_architecture_features.hpp"
 class FastResidualModel {
  struct Split{uint16_t feature,border;};struct Tree{std::vector<Split>split;std::vector<double>leaf;};
- std::vector<Tree>trees;static constexpr int features=71;std::array<std::vector<float>,features>borders;double scale=1,bias=0;
+ std::vector<Tree>trees;static constexpr int features=71;std::array<std::vector<float>,features>borders;std::vector<unsigned>active_features;double scale=1,bias=0;
  std::unique_ptr<FastArchitectureFeatures>feature_builder;
  bool obstacle_phase=false;
  struct PrefixQuantizer{std::array<std::vector<float>,features>border;std::array<std::vector<uint16_t>,features>rank;};
  std::array<std::unique_ptr<PrefixQuantizer>,4>prefix_quantizer;
  double value(const std::array<float,features>&x,unsigned count=UINT_MAX)const{
   const PrefixQuantizer*q=count==64?prefix_quantizer[0].get():count==128?prefix_quantizer[1].get():count==256?prefix_quantizer[2].get():count==512?prefix_quantizer[3].get():nullptr;
-  std::array<uint16_t,features>bin;for(int i=0;i<features;++i){if(q){auto position=std::lower_bound(q->border[i].begin(),q->border[i].end(),x[i])-q->border[i].begin();bin[i]=q->rank[i][position];}else bin[i]=std::lower_bound(borders[i].begin(),borders[i].end(),x[i])-borders[i].begin();}double result=0;
+  std::array<uint16_t,features>bin;for(unsigned i:active_features){if(q){auto position=std::lower_bound(q->border[i].begin(),q->border[i].end(),x[i])-q->border[i].begin();bin[i]=q->rank[i][position];}else bin[i]=std::lower_bound(borders[i].begin(),borders[i].end(),x[i])-borders[i].begin();}double result=0;
   const unsigned limit=std::min<size_t>(count,trees.size());
-  for(unsigned i=0;i<limit;++i){const auto&t=trees[i];unsigned leaf=0;for(size_t k=0;k<t.split.size();++k)leaf|=unsigned(bin[t.split[k].feature]>t.split[k].border)<<k;result+=t.leaf[leaf];}
+  for(unsigned i=0;i<limit;++i){const auto&t=trees[i];unsigned leaf=0;if(t.split.size()==10){auto bit=[&](unsigned k){return unsigned(bin[t.split[k].feature]>t.split[k].border)<<k;};leaf=bit(0)|bit(1)|bit(2)|bit(3)|bit(4)|bit(5)|bit(6)|bit(7)|bit(8)|bit(9);}else for(size_t k=0;k<t.split.size();++k)leaf|=unsigned(bin[t.split[k].feature]>t.split[k].border)<<k;result+=t.leaf[leaf];}
   return scale*result+bias;
  }
 public:
@@ -23,6 +23,7 @@ public:
   for(auto&t:raw){uint32_t depth;read(&depth,4);if(depth>12)throw std::runtime_error("Invalid residual depth");for(unsigned i=0;i<depth;++i){uint32_t feature;float border;read(&feature,4);read(&border,4);if(feature>=features || !std::isfinite(border))throw std::runtime_error("Invalid residual split");t.split.push_back({feature,border});borders[feature].push_back(border);}t.leaf.resize(1u<<depth);read(t.leaf.data(),t.leaf.size()*8);}
   bool needs_topology=false;for(int i=29;i<features;++i)needs_topology|=!borders[i].empty();feature_builder=std::make_unique<FastArchitectureFeatures>(needs_topology);
   for(auto&b:borders){std::sort(b.begin(),b.end());b.erase(std::unique(b.begin(),b.end()),b.end());}
+  for(unsigned i=0;i<features;++i)if(!borders[i].empty())active_features.push_back(i);
   const unsigned limits[]={64,128,256,512};
   for(int level=0;level<4;++level)if(limits[level]<count){auto q=std::make_unique<PrefixQuantizer>();for(unsigned i=0;i<limits[level];++i)for(auto split:raw[i].split)q->border[split.first].push_back(split.second);
    for(int i=0;i<features;++i){auto&b=q->border[i];std::sort(b.begin(),b.end());b.erase(std::unique(b.begin(),b.end()),b.end());for(float threshold:b)q->rank[i].push_back(std::lower_bound(borders[i].begin(),borders[i].end(),threshold)-borders[i].begin());q->rank[i].push_back(borders[i].size());}prefix_quantizer[level]=std::move(q);}
