@@ -1,0 +1,34 @@
+{
+  "state": "complete",
+  "scope": "Architecture-aware terminal legality; shared-initialization research prototype, not standard submission throughput",
+  "rows": 150053,
+  "holdout_used": false,
+  "init_cpu_seconds": 88.212,
+  "cases": [
+    {
+      "name": "h1-legal-depth0",
+      "score": 99.12690358754685,
+      "cpu_query_seconds": 0.147623,
+      "sha256": "ab79466bb00609f3ef949da55a25619153f2f9419d8b9fb738b4e911e2286167"
+    },
+    {
+      "name": "h1-legal-depth4",
+      "score": 99.52494240128871,
+      "cpu_query_seconds": 17.6481,
+      "sha256": "ec1365bd54ebc1110505bd05764c3d7c32b89ee09a314c4d61999fe1fff5ca2a"
+    },
+    {
+      "name": "h8-legal-depth0",
+      "score": 99.12936618623533,
+      "cpu_query_seconds": 0.160084,
+      "sha256": "f62651ab6a19a7c5432c866cc16911d2cee4be6220261fdc56e8697cc3cf8abb"
+    },
+    {
+      "name": "h8-legal-depth4",
+      "score": 99.52621508834258,
+      "cpu_query_seconds": 18.7636,
+      "sha256": "f050f4357ee34828cc53bf2b6ebdb7971306852de69b7b370a903ca6bbfd39d5"
+    }
+  ],
+  "joint_goal_met": false
+}

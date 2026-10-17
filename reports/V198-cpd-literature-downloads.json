@@ -1,0 +1,26 @@
+{
+  "state": "complete",
+  "papers": [
+    {
+      "file": "papers/Botea_2012_Fast_Optimal_Pathfinding_CPD.pdf",
+      "source": "https://ojs.aaai.org/index.php/SOCS/article/download/18251/18042/21767",
+      "bytes": 317066,
+      "sha256": "41f59753494c5265a0ad606419918dc134f488d7eef27f826b536d2a9344daa5",
+      "reading_scope": "Read the two-page method description via web PDF extraction."
+    },
+    {
+      "file": "papers/Zhao_2020_Bounded_Suboptimal_CPD.pdf",
+      "source": "https://ojs.aaai.org/index.php/ICAPS/article/download/6678/6532/9907",
+      "bytes": 546820,
+      "sha256": "b7222c495267a081e0b18857a00dd350224f53a86410f7d9674748c665d5d1c4",
+      "reading_scope": "Read introduction, centroid theorem, construction and reverse-CPD methods; experiments and other proofs not fully read."
+    },
+    {
+      "file": "papers/Botea_Strasser_Harabor_2015_CPD_Complexity.pdf",
+      "source": "https://pathfinding.ai/pdf/sbh-aaai15.pdf",
+      "bytes": 639941,
+      "sha256": "529203e997b098a1dd6a2b6d4e401cf0582febc7a599dadc9221dac3f59f5bcf",
+      "reading_scope": "Read abstract and introduction only; no claim of full proof reading."
+    }
+  ]
+}

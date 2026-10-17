@@ -1,0 +1,80 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "scope": "Required cycle-family approximation; not a physical-path certificate",
+  "candidates": [
+    {
+      "name": "x30-y36-mode0",
+      "score": 93.31970842592484,
+      "cpu_seconds": 4.55495,
+      "init_seconds": 4.49452,
+      "query_seconds": 0.060430000000000206,
+      "rss_bytes": 1072889856,
+      "exact_fraction": 0.1704131206973536
+    },
+    {
+      "name": "x30-y36-mode2",
+      "score": 93.45573469093056,
+      "cpu_seconds": 4.56716,
+      "init_seconds": 4.49653,
+      "query_seconds": 0.07063000000000041,
+      "rss_bytes": 1073119232,
+      "exact_fraction": 0.17439837923933543
+    },
+    {
+      "name": "x50-y72-mode0",
+      "score": 94.76917600798986,
+      "cpu_seconds": 4.55606,
+      "init_seconds": 4.49442,
+      "query_seconds": 0.06164000000000058,
+      "rss_bytes": 1073135616,
+      "exact_fraction": 0.17151939647991044
+    },
+    {
+      "name": "x50-y72-mode2",
+      "score": 95.01735324362541,
+      "cpu_seconds": 4.58447,
+      "init_seconds": 4.51215,
+      "query_seconds": 0.0723199999999995,
+      "rss_bytes": 1073152000,
+      "exact_fraction": 0.17545134052634737
+    },
+    {
+      "name": "x70-y120-mode0",
+      "score": 95.31435978120228,
+      "cpu_seconds": 4.57578,
+      "init_seconds": 4.51921,
+      "query_seconds": 0.05656999999999979,
+      "rss_bytes": 1073119232,
+      "exact_fraction": 0.15783756406069854
+    },
+    {
+      "name": "x70-y120-mode2",
+      "score": 95.63851186828282,
+      "cpu_seconds": 4.55889,
+      "init_seconds": 4.48934,
+      "query_seconds": 0.06954999999999956,
+      "rss_bytes": 1073152000,
+      "exact_fraction": 0.16156957874884206
+    },
+    {
+      "name": "x1000-y1000-mode0",
+      "score": 94.18532044958103,
+      "cpu_seconds": 4.59156,
+      "init_seconds": 4.52897,
+      "query_seconds": 0.06259000000000015,
+      "rss_bytes": 1073135616,
+      "exact_fraction": 0.10053114566186615
+    },
+    {
+      "name": "x1000-y1000-mode2",
+      "score": 94.54637923129307,
+      "cpu_seconds": 4.71858,
+      "init_seconds": 4.64699,
+      "query_seconds": 0.07159000000000049,
+      "rss_bytes": 1073135616,
+      "exact_fraction": 0.10401658080811446
+    }
+  ]
+}

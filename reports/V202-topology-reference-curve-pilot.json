@@ -1,0 +1,45 @@
+{
+  "state": "complete",
+  "scope": "Lossless reference-curve residual storage pilot on random architecture table entries; no weight-symmetry or performance claim",
+  "holdout_used": false,
+  "golden_used": false,
+  "elapsed_seconds": 0.12607504200423136,
+  "candidates": [
+    {
+      "reference": "lane_zero_absolute",
+      "samples": 100000,
+      "zero_curve_fraction": 0.31072,
+      "zero_curve_fraction_excluding_source_lane_zero": 0.28389951633374116,
+      "minimum_residual": -250,
+      "maximum_residual": 228,
+      "all_entries_fit_int8_fraction": 0.98058,
+      "sample_unique_residual_curves": 27049,
+      "sample_unique_absolute_curves": 10270,
+      "sample_reconstruction_exact": true
+    },
+    {
+      "reference": "lane_zero_topology_rotation",
+      "samples": 100000,
+      "zero_curve_fraction": 0.3715,
+      "zero_curve_fraction_excluding_source_lane_zero": 0.2813611260390821,
+      "minimum_residual": -247,
+      "maximum_residual": 228,
+      "all_entries_fit_int8_fraction": 0.97677,
+      "sample_unique_residual_curves": 24189,
+      "sample_unique_absolute_curves": 10270,
+      "sample_reconstruction_exact": true
+    },
+    {
+      "reference": "previous_source_lane",
+      "samples": 100000,
+      "zero_curve_fraction": 0.42834,
+      "zero_curve_fraction_excluding_source_lane_zero": 0.4196805287169695,
+      "minimum_residual": -218,
+      "maximum_residual": 235,
+      "all_entries_fit_int8_fraction": 0.99643,
+      "sample_unique_residual_curves": 29377,
+      "sample_unique_absolute_curves": 10270,
+      "sample_reconstruction_exact": true
+    }
+  ]
+}

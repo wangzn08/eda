@@ -1,0 +1,11 @@
+{
+  "state": "complete",
+  "teacher_rows": 850758,
+  "teacher_states": 4876513,
+  "teacher_csv_parity": true,
+  "native_action_parity_samples_per_model": 10042,
+  "policy_training_scope": "Development architecture actions only; no golden target used",
+  "policy_native_accuracy_accepted": false,
+  "frozen_submission": "V158 unchanged",
+  "scope": "V184 value surrogate and V186 action policy rejected for insufficient accuracy"
+}

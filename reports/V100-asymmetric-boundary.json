@@ -1,0 +1,55 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Python asymmetric-tree prototype; not measured C++ submission",
+  "candidates": [
+    {
+      "leaves": 31,
+      "trees": 64,
+      "score": 99.14805184909233,
+      "elapsed_seconds": 68.9761204589995
+    },
+    {
+      "leaves": 31,
+      "trees": 128,
+      "score": 99.1569632367552,
+      "elapsed_seconds": 69.2463315419991
+    },
+    {
+      "leaves": 31,
+      "trees": 256,
+      "score": 99.16341422085281,
+      "elapsed_seconds": 69.75055545899886
+    },
+    {
+      "leaves": 31,
+      "trees": 512,
+      "score": 99.16489637422751,
+      "elapsed_seconds": 70.73623658400174
+    },
+    {
+      "leaves": 127,
+      "trees": 64,
+      "score": 99.18991806719325,
+      "elapsed_seconds": 152.38421799999924
+    },
+    {
+      "leaves": 127,
+      "trees": 128,
+      "score": 99.20026839944212,
+      "elapsed_seconds": 153.03322504199969
+    },
+    {
+      "leaves": 127,
+      "trees": 256,
+      "score": 99.21038705403488,
+      "elapsed_seconds": 153.99097262500072
+    },
+    {
+      "leaves": 127,
+      "trees": 512,
+      "score": 99.21241501425452,
+      "elapsed_seconds": 155.41793754199898
+    }
+  ]
+}

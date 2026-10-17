@@ -1,0 +1,2 @@
+#include "runtime_short_kernel.hpp"
+int main(int argc,char**argv){try{if(argc!=5)throw std::runtime_error("Reference full curves, anchors, source count, research output required");std::vector<int>a;for(char c:std::string(argv[2]))a.push_back(c-'0');RuntimeShortKernel model(a,std::stoul(argv[3]),132,argv[1]);model.save(argv[4]);return 0;}catch(const std::exception&e){std::cerr<<e.what()<<'\n';return 1;}}

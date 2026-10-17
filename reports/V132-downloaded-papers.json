@@ -1,0 +1,13 @@
+{
+  "downloaded": {
+    "Akiba2013-Pruned-Landmark-Labeling.pdf": {
+      "bytes": 904777,
+      "sha256": "11aa6c43bec94cbcd41395fd3c69adc8caef8187d06b66e859f523f0d828bfe7"
+    },
+    "Alabi2019-Learning-to-Prune.pdf": {
+      "bytes": 2020733,
+      "sha256": "6055caaa0d2177991e86da6165c23a0262e3754cfd3f59239e468512101b47f5"
+    }
+  },
+  "other_pdf_downloads": "CRP403,HHLtimeout,KFL403; related content read via web tools or official code"
+}

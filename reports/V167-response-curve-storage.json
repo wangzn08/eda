@@ -1,0 +1,22 @@
+{
+  "state": "complete",
+  "scope": "Four ideal-graph source cores only; whole-bank size and accuracy are unverified",
+  "source_indices": [
+    0,
+    53,
+    106,
+    159
+  ],
+  "curves": 3671040,
+  "unique_normalized_curves": 1298709,
+  "index_bytes": 4,
+  "raw_bytes": 352420272,
+  "dictionary_xz_bytes": 12097008,
+  "naive_40x_size_estimate_bytes": 483880320,
+  "naive_estimate_warning": "Not a guarantee: unseen sources may introduce new patterns and different compression ratios",
+  "roundtrip_exact": true,
+  "raw_sha256": "f222afd391b13cb95498d4e73130e509193820d7982000a2a34c43d393329f76",
+  "fraction_curves_with_slope_change_after_period6": 0.500112502179219,
+  "mean_slope_change_count": 3.6791173618375175,
+  "elapsed_seconds": 11.913441417003924
+}

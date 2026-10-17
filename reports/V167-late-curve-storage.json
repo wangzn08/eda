@@ -1,0 +1,36 @@
+{
+  "state": "complete",
+  "scope": "Four-source lossless feasibility only; naive40x projection is not a guarantee",
+  "cases": [
+    {
+      "name": "all-late8",
+      "first_period": 8,
+      "curves": 3671040,
+      "unique_patterns": 90416,
+      "xz_bytes": 4323492,
+      "naive40x_bytes": 172939680,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 22.65456487499614
+    },
+    {
+      "name": "near-late8",
+      "first_period": 8,
+      "curves": 906240,
+      "unique_patterns": 13380,
+      "xz_bytes": 1067548,
+      "naive40x_bytes": 42701920,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 27.81155366699386
+    },
+    {
+      "name": "all-late20",
+      "first_period": 20,
+      "curves": 3671040,
+      "unique_patterns": 4391,
+      "xz_bytes": 2907532,
+      "naive40x_bytes": 116301280,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 45.56354862499575
+    }
+  ]
+}

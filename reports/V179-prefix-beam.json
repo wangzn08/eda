@@ -1,0 +1,22 @@
+{
+  "state": "complete",
+  "scope": "Four physical steps with nominal-cost heuristic shortlisting; query-only research timing, not final billion throughput",
+  "cases": [
+    {
+      "beam": 1,
+      "score": 99.2323941985172,
+      "cpu_seconds": 3.90076
+    },
+    {
+      "beam": 2,
+      "score": 99.46887593155834,
+      "cpu_seconds": 9.78788
+    },
+    {
+      "beam": 4,
+      "score": 99.52948541422548,
+      "cpu_seconds": 26.974
+    }
+  ],
+  "joint_goal_met": false
+}

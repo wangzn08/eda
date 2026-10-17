@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "bytes": 11339928,
+  "unique_response_vectors": 40603,
+  "index_bytes": 2,
+  "decoded_bytes": 72824024,
+  "lossless_roundtrip": true,
+  "decoded_original_sha256": "39c5b86a0c00623bea56bbc816cc47115add9bdf265e577d61b3ddc1cf2a3ecb",
+  "asset_sha256": "60bb5037095bc1730ed2983afe4078847069ac07422e75e32849f7ce59dcd5d8",
+  "cpu_seconds": 20.730298,
+  "scope": "Architecture-only response dictionary; native decoder and total budget pending"
+}

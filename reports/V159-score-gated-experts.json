@@ -1,0 +1,363 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Lightweight score-sensitive three-action prototype; not a native timing result",
+  "reference": "TabularDL2021 for tabular embeddings; adapted cost-sensitive gate and positive/negative residual experts",
+  "features": [
+    114,
+    22,
+    123,
+    21,
+    43,
+    28,
+    27,
+    119,
+    2,
+    109,
+    113,
+    112,
+    55,
+    8,
+    53,
+    118,
+    36,
+    7,
+    50,
+    107,
+    0,
+    35,
+    65,
+    51,
+    19,
+    90,
+    121,
+    64,
+    49,
+    101,
+    5,
+    6
+  ],
+  "candidates": [
+    {
+      "width": 64,
+      "epoch": 16,
+      "policy": "hard",
+      "score": 99.05729103715973,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 11.199150667001959
+    },
+    {
+      "width": 64,
+      "epoch": 16,
+      "policy": "mean",
+      "score": 99.06957569774764,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 11.2005918750001
+    },
+    {
+      "width": 64,
+      "epoch": 16,
+      "policy": "conf55",
+      "score": 99.05975439260322,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 11.20199712500471
+    },
+    {
+      "width": 64,
+      "epoch": 16,
+      "policy": "conf65",
+      "score": 99.06132600038383,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 11.203235959001177
+    },
+    {
+      "width": 64,
+      "epoch": 32,
+      "policy": "hard",
+      "score": 99.07064869725608,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 19.30849933400168
+    },
+    {
+      "width": 64,
+      "epoch": 32,
+      "policy": "mean",
+      "score": 99.08280946927482,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 19.310016834002454
+    },
+    {
+      "width": 64,
+      "epoch": 32,
+      "policy": "conf55",
+      "score": 99.07243036139943,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 19.311373042000923
+    },
+    {
+      "width": 64,
+      "epoch": 32,
+      "policy": "conf65",
+      "score": 99.07495422146917,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 19.312878042001103
+    },
+    {
+      "width": 64,
+      "epoch": 48,
+      "policy": "hard",
+      "score": 99.082134944877,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 27.025508792001347
+    },
+    {
+      "width": 64,
+      "epoch": 48,
+      "policy": "mean",
+      "score": 99.0937302369769,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 27.026880167002673
+    },
+    {
+      "width": 64,
+      "epoch": 48,
+      "policy": "conf55",
+      "score": 99.08559905441659,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 27.02821304200188
+    },
+    {
+      "width": 64,
+      "epoch": 48,
+      "policy": "conf65",
+      "score": 99.08797982776359,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 27.029501625002013
+    },
+    {
+      "width": 64,
+      "epoch": 64,
+      "policy": "hard",
+      "score": 99.08945106763976,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 34.07362808399921
+    },
+    {
+      "width": 64,
+      "epoch": 64,
+      "policy": "mean",
+      "score": 99.10100091681507,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 34.07534937500168
+    },
+    {
+      "width": 64,
+      "epoch": 64,
+      "policy": "conf55",
+      "score": 99.09212674211037,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 34.076766750004026
+    },
+    {
+      "width": 64,
+      "epoch": 64,
+      "policy": "conf65",
+      "score": 99.09188208705707,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 34.07807850000245
+    },
+    {
+      "width": 64,
+      "epoch": 80,
+      "policy": "hard",
+      "score": 99.08893279650566,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 41.02071829199849
+    },
+    {
+      "width": 64,
+      "epoch": 80,
+      "policy": "mean",
+      "score": 99.10120871774299,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 41.02206479199958
+    },
+    {
+      "width": 64,
+      "epoch": 80,
+      "policy": "conf55",
+      "score": 99.09186959782636,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 41.02336720900348
+    },
+    {
+      "width": 64,
+      "epoch": 80,
+      "policy": "conf65",
+      "score": 99.09278321473276,
+      "parameter_float32_bytes": 67668,
+      "elapsed_seconds": 41.02463933399849
+    },
+    {
+      "width": 128,
+      "epoch": 16,
+      "policy": "hard",
+      "score": 99.0683438267694,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 48.67914991699945
+    },
+    {
+      "width": 128,
+      "epoch": 16,
+      "policy": "mean",
+      "score": 99.0819371939422,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 48.68052237500524
+    },
+    {
+      "width": 128,
+      "epoch": 16,
+      "policy": "conf55",
+      "score": 99.07239257376253,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 48.68182266700023
+    },
+    {
+      "width": 128,
+      "epoch": 16,
+      "policy": "conf65",
+      "score": 99.07481266788771,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 48.683101209004235
+    },
+    {
+      "width": 128,
+      "epoch": 32,
+      "policy": "hard",
+      "score": 99.06286183108661,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 56.202409709003405
+    },
+    {
+      "width": 128,
+      "epoch": 32,
+      "policy": "mean",
+      "score": 99.07721849604391,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 56.20378108400473
+    },
+    {
+      "width": 128,
+      "epoch": 32,
+      "policy": "conf55",
+      "score": 99.07003389332469,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 56.20577449999837
+    },
+    {
+      "width": 128,
+      "epoch": 32,
+      "policy": "conf65",
+      "score": 99.07532994381785,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 56.207039084001735
+    },
+    {
+      "width": 128,
+      "epoch": 48,
+      "policy": "hard",
+      "score": 99.09170559018109,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 63.969398583998554
+    },
+    {
+      "width": 128,
+      "epoch": 48,
+      "policy": "mean",
+      "score": 99.10375802937432,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 63.970781333999184
+    },
+    {
+      "width": 128,
+      "epoch": 48,
+      "policy": "conf55",
+      "score": 99.09580540532716,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 63.97208758399938
+    },
+    {
+      "width": 128,
+      "epoch": 48,
+      "policy": "conf65",
+      "score": 99.09567151018581,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 63.97336220899888
+    },
+    {
+      "width": 128,
+      "epoch": 64,
+      "policy": "hard",
+      "score": 99.0948301084054,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 71.54951562500355
+    },
+    {
+      "width": 128,
+      "epoch": 64,
+      "policy": "mean",
+      "score": 99.10514746976219,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 71.5508906670002
+    },
+    {
+      "width": 128,
+      "epoch": 64,
+      "policy": "conf55",
+      "score": 99.0971481712294,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 71.55219712500548
+    },
+    {
+      "width": 128,
+      "epoch": 64,
+      "policy": "conf65",
+      "score": 99.09854377096367,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 71.55348950000189
+    },
+    {
+      "width": 128,
+      "epoch": 80,
+      "policy": "hard",
+      "score": 99.08838831190839,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 79.15048229200329
+    },
+    {
+      "width": 128,
+      "epoch": 80,
+      "policy": "mean",
+      "score": 99.10187276612292,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 79.15188995900098
+    },
+    {
+      "width": 128,
+      "epoch": 80,
+      "policy": "conf55",
+      "score": 99.09361534467612,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 79.15320649999921
+    },
+    {
+      "width": 128,
+      "epoch": 80,
+      "policy": "conf65",
+      "score": 99.09560230959046,
+      "parameter_float32_bytes": 92500,
+      "elapsed_seconds": 79.15448070900311
+    }
+  ]
+}

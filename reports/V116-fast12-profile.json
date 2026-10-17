@@ -1,0 +1,48 @@
+{
+  "state": "complete",
+  "scope": "Apple M4/macOS local; actual10m repeated development requests with CSV I/O, init once; billion extrapolation, not official Linux",
+  "target_seconds": 720,
+  "validation_floor": 99,
+  "single_thread": true,
+  "prediction_cache": false,
+  "holdout_used": false,
+  "runtime_file_bytes": 99295621,
+  "runs": [
+    {
+      "name": "validation",
+      "rows": 150053,
+      "cpu_seconds": 72.1963,
+      "init_seconds": 72.1038,
+      "query_seconds": 0.09249999999998693,
+      "rss_bytes": 1622949888,
+      "output_sha256": "3ea7a8aea722fd870cad499fb3742069fe9e467e9a3a9914325cbb1a7bb3c52c",
+      "score": 99.0256649430261,
+      "matches_reference_candidate": true
+    },
+    {
+      "name": "speed10m-1",
+      "rows": 10000000,
+      "cpu_seconds": 77.8413,
+      "init_seconds": 71.7175,
+      "query_seconds": 6.123800000000003,
+      "rss_bytes": 1624555520,
+      "output_sha256": "e64d087e4364c141c8925fe563c07ad7ab983287ffb49301db01bac3f41e8e89",
+      "billion_estimate_seconds": 684.0975000000003
+    },
+    {
+      "name": "speed10m-2",
+      "rows": 10000000,
+      "cpu_seconds": 78.2187,
+      "init_seconds": 72.045,
+      "query_seconds": 6.173699999999997,
+      "rss_bytes": 1624539136,
+      "output_sha256": "e64d087e4364c141c8925fe563c07ad7ab983287ffb49301db01bac3f41e8e89",
+      "billion_estimate_seconds": 689.4149999999996
+    }
+  ],
+  "validation_score": 99.0256649430261,
+  "peak_rss_bytes": 1624555520,
+  "speed_outputs_match": true,
+  "goal_met": true,
+  "runtime_asset_hashes_verified": true
+}

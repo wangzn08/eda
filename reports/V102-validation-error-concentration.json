@@ -1,0 +1,23 @@
+{
+  "retained-v93-64": {
+    "exact_fraction": 0.5063677500616449,
+    "score": 99.16677855252485,
+    "loss_share_top_1_percent": 0.25974655146469244,
+    "loss_share_top_5_percent": 0.5763840735002072,
+    "loss_share_top_10_percent": 0.7389525235595096
+  },
+  "boundary-d10-t64": {
+    "exact_fraction": 0.5073673968531119,
+    "score": 99.1811271497019,
+    "loss_share_top_1_percent": 0.2557385165564908,
+    "loss_share_top_5_percent": 0.5679502093526281,
+    "loss_share_top_10_percent": 0.7316367007379417
+  },
+  "asymmetric-128": {
+    "exact_fraction": 0.5118258215430548,
+    "score": 99.2002706360385,
+    "loss_share_top_1_percent": 0.2696964113837013,
+    "loss_share_top_5_percent": 0.5776871386418923,
+    "loss_share_top_10_percent": 0.7370760598369419
+  }
+}

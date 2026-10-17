@@ -1,0 +1,24 @@
+{
+  "state": "complete",
+  "scope": "Physical prefix accuracy prototype, full 150053-row validation; query timings are not submission throughput",
+  "init_cpu_seconds": 65.073,
+  "peak_rss_bytes": 1934524416,
+  "cases": [
+    {
+      "depth": 3,
+      "score": 99.4822529963365,
+      "exact_fraction": 0.6911891131800098,
+      "cpu_seconds": 57.5796,
+      "sha256": "215a52212cf8eedc63bf08ddf61cbff3a30c26f4feccae248433973743948fc2"
+    },
+    {
+      "depth": 4,
+      "score": 99.54288803632093,
+      "exact_fraction": 0.7175597955389096,
+      "cpu_seconds": 457.746,
+      "sha256": "2a2259cfc0cd710ff4f76e409048d3ccc844aa39e563e86a161e1354cdc412e9"
+    }
+  ],
+  "depth3_byte_parity": true,
+  "joint_goal_met": false
+}

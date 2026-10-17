@@ -1,0 +1,13 @@
+{
+  "near_early": {
+    "minimum": -23,
+    "maximum": 1040,
+    "lossless_bits_for_shifted_value": 11
+  },
+  "late_base": {
+    "minimum": -21,
+    "maximum": 1054,
+    "lossless_bits_for_shifted_value": 11
+  },
+  "elapsed_seconds": 30.932375165997655
+}

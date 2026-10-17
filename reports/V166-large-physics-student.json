@@ -1,0 +1,50 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Larger physics-conditioned accuracy teacher; compression and native latency pending",
+  "candidates": [
+    {
+      "name": "wide",
+      "trees": 256,
+      "score": 99.24433090101925,
+      "elapsed_seconds": 343.18687150000187
+    },
+    {
+      "name": "wide",
+      "trees": 512,
+      "score": 99.24747098894025,
+      "elapsed_seconds": 349.0957088340001
+    },
+    {
+      "name": "wide",
+      "trees": 1024,
+      "score": 99.24779720568961,
+      "elapsed_seconds": 359.9537530420057
+    },
+    {
+      "name": "deep",
+      "trees": 256,
+      "score": 99.2367816654864,
+      "elapsed_seconds": 1016.5054073749998
+    },
+    {
+      "name": "deep",
+      "trees": 512,
+      "score": 99.24786185282782,
+      "elapsed_seconds": 1024.7143553750066
+    },
+    {
+      "name": "deep",
+      "trees": 1024,
+      "score": 99.2510902402104,
+      "elapsed_seconds": 1042.7394147500017
+    },
+    {
+      "name": "deep",
+      "trees": 1536,
+      "score": 99.25382425793359,
+      "elapsed_seconds": 1071.2433336250033
+    }
+  ]
+}

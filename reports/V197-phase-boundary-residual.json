@@ -1,0 +1,18 @@
+{
+  "state": "complete",
+  "fit_scope": "development residual with phase-conditioned architecture-only Bellman penalties",
+  "holdout_used": false,
+  "features": 346,
+  "candidates": [
+    {
+      "name": "large",
+      "score": 99.30179254767158,
+      "elapsed_seconds": 130.85437970799103
+    },
+    {
+      "name": "wide",
+      "score": 99.30649238174092,
+      "elapsed_seconds": 267.6258635409904
+    }
+  ]
+}

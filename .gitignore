@@ -7,3 +7,4 @@ papers/*.pdf
 papers/*.txt
 __pycache__/
 *.pyc
+papers/*.html

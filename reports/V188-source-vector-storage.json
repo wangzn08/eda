@@ -1,0 +1,8 @@
+{
+  "scope": "Four-source vector dictionary storage pilot, not full-source measurement",
+  "patterns": 20645,
+  "width": 2,
+  "decoded_bytes": 36577940,
+  "xz_bytes": 1753604,
+  "lossless_roundtrip": true
+}

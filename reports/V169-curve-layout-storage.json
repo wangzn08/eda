@@ -1,0 +1,36 @@
+{
+  "state": "complete",
+  "scope": "Lossless storage layout only; native parity and submission profile pending",
+  "candidates": [
+    {
+      "flags": 0,
+      "asset_bytes": 48025892,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 15.979894124997372
+    },
+    {
+      "flags": 2,
+      "asset_bytes": 45701548,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 31.08274620899465
+    },
+    {
+      "flags": 1,
+      "asset_bytes": 48746768,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 45.27328570899408
+    },
+    {
+      "flags": 3,
+      "asset_bytes": 46847236,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 58.38525437499629
+    },
+    {
+      "flags": 7,
+      "asset_bytes": 41952808,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 66.82903141699353
+    }
+  ]
+}

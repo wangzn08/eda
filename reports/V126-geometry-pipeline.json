@@ -1,0 +1,13 @@
+{
+  "validation_score": 99.0256649430261,
+  "same_as_v116": true,
+  "pilot_queries": 1000000,
+  "pilot_query_cpu": 0.6213000000000051,
+  "init_cpu": 78.0022,
+  "billion_estimate_seconds": 699.3022000000051,
+  "rss_bytes": 1622654976,
+  "pilot_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1",
+  "scope": "One initialization, full validation then1m pilot; final10m repeats required",
+  "holdout_used": false,
+  "prediction_cache": false
+}

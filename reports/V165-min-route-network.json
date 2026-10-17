@@ -1,0 +1,49 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "architecture": "Shared endpoint/core-conditioned correction for four source branches, then min-cost selection",
+  "scope": "MPS accuracy prototype; deployment cost and compression pending",
+  "candidates": [
+    {
+      "name": "hard-16",
+      "score": 99.12402023441308,
+      "elapsed_seconds": 16.887973291995877
+    },
+    {
+      "name": "hard-32",
+      "score": 99.13692502243286,
+      "elapsed_seconds": 30.770214832999045
+    },
+    {
+      "name": "hard-48",
+      "score": 99.1415657541454,
+      "elapsed_seconds": 43.577772332995664
+    },
+    {
+      "name": "hard-64",
+      "score": 99.1418428948323,
+      "elapsed_seconds": 56.37540204200195
+    },
+    {
+      "name": "annealed-16",
+      "score": 99.11994789553717,
+      "elapsed_seconds": 69.32400529200095
+    },
+    {
+      "name": "annealed-32",
+      "score": 99.13328090866167,
+      "elapsed_seconds": 82.23843050000141
+    },
+    {
+      "name": "annealed-48",
+      "score": 99.14042393155654,
+      "elapsed_seconds": 95.19364091700118
+    },
+    {
+      "name": "annealed-64",
+      "score": 99.1409568036027,
+      "elapsed_seconds": 108.09406250000029
+    }
+  ]
+}

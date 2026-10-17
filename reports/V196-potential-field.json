@@ -1,0 +1,18 @@
+{
+  "state": "complete",
+  "shape": [
+    4,
+    2,
+    2,
+    60200,
+    160,
+    4
+  ],
+  "header_bytes": 96,
+  "field_raw_bytes": 1232896096,
+  "generation_cpu_seconds_excluding_initialization": 21.3059,
+  "scope": "Architecture-only offline field generation, not submission assets or native query benchmark",
+  "golden_used": false,
+  "holdout_used": false,
+  "stderr": "proto=0 mode=0 depth=2 negative=0 clipped=0 cpu=1.28493\nproto=0 mode=0 depth=4 negative=0 clipped=0 cpu=2.57476\nproto=0 mode=1 depth=2 negative=0 clipped=0 cpu=3.94704\nproto=0 mode=1 depth=4 negative=0 clipped=0 cpu=5.31051\nproto=1 mode=0 depth=2 negative=0 clipped=0 cpu=6.60048\nproto=1 mode=0 depth=4 negative=0 clipped=0 cpu=7.8937\nproto=1 mode=1 depth=2 negative=0 clipped=0 cpu=9.26565\nproto=1 mode=1 depth=4 negative=0 clipped=0 cpu=10.6345\nproto=2 mode=0 depth=2 negative=0 clipped=0 cpu=11.9246\nproto=2 mode=0 depth=4 negative=0 clipped=0 cpu=13.2195\nproto=2 mode=1 depth=2 negative=0 clipped=0 cpu=14.5929\nproto=2 mode=1 depth=4 negative=0 clipped=0 cpu=15.9637\nproto=3 mode=0 depth=2 negative=0 clipped=0 cpu=17.2585\nproto=3 mode=0 depth=4 negative=0 clipped=0 cpu=18.5575\nproto=3 mode=1 depth=2 negative=0 clipped=0 cpu=19.9359\nproto=3 mode=1 depth=4 negative=0 clipped=0 cpu=21.3059\nbytes=1232896096\n"
+}

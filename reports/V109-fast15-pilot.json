@@ -1,0 +1,44 @@
+{
+  "state": "complete",
+  "target_seconds": 900,
+  "validation_floor": 99,
+  "scope": "M4 local extrapolation, development repeated 10m, init once",
+  "candidates": [
+    {
+      "name": "io",
+      "cpu_seconds": 51.0929,
+      "init_seconds": 37.3119,
+      "query_seconds": 13.780999999999999,
+      "estimate_seconds": 1415.4118999999998,
+      "rss_bytes": 1777270784,
+      "output_sha256": "6885572a1ec87f83e13b455910fb975282f5a86d2aedc4dcf78686ec2c0c674c"
+    },
+    {
+      "name": "io-nohub",
+      "cpu_seconds": 51.7972,
+      "init_seconds": 37.9582,
+      "query_seconds": 13.838999999999999,
+      "estimate_seconds": 1421.8582,
+      "rss_bytes": 1777270784,
+      "output_sha256": "617f88f3cf6757976050694feed84cb62012835baa15dc23b999f6242401070c"
+    },
+    {
+      "name": "prefetch",
+      "cpu_seconds": 50.6952,
+      "init_seconds": 38.062,
+      "query_seconds": 12.633200000000002,
+      "estimate_seconds": 1301.382,
+      "rss_bytes": 1775304704,
+      "output_sha256": "6885572a1ec87f83e13b455910fb975282f5a86d2aedc4dcf78686ec2c0c674c"
+    },
+    {
+      "name": "baseline",
+      "cpu_seconds": 53.5691,
+      "init_seconds": 36.8824,
+      "query_seconds": 16.686700000000002,
+      "estimate_seconds": 1705.5524,
+      "rss_bytes": 1777287168,
+      "output_sha256": "6885572a1ec87f83e13b455910fb975282f5a86d2aedc4dcf78686ec2c0c674c"
+    }
+  ]
+}

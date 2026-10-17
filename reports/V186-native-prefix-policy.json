@@ -1,0 +1,45 @@
+{
+  "state": "complete",
+  "scope": "Learned per-core receding-horizon next-action policy; native validation query-only prototype",
+  "cases": [
+    {
+      "name": "small",
+      "threshold": 0,
+      "score": 92.28134900482013,
+      "cpu_seconds": 0.593589
+    },
+    {
+      "name": "small",
+      "threshold": 128,
+      "score": 96.24832389630409,
+      "cpu_seconds": 1.28352
+    },
+    {
+      "name": "small",
+      "threshold": 255,
+      "score": 96.88831700055967,
+      "cpu_seconds": 2.2259
+    },
+    {
+      "name": "wide",
+      "threshold": 0,
+      "score": 91.08541586968806,
+      "cpu_seconds": 0.698849
+    },
+    {
+      "name": "wide",
+      "threshold": 128,
+      "score": 95.11336085218586,
+      "cpu_seconds": 1.31049
+    },
+    {
+      "name": "wide",
+      "threshold": 255,
+      "score": 95.90248399841853,
+      "cpu_seconds": 1.93294
+    }
+  ],
+  "fit_scope": "development architecture action labels only",
+  "holdout_used": false,
+  "joint_goal_met": false
+}

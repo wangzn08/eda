@@ -1,0 +1,26 @@
+{
+  "scope": "Ideal core transition graph audit after cyclic lane relabeling; unchanged costs required",
+  "classes_per_prefix": {
+    "IDE": 8,
+    "IDN": 8,
+    "IDS": 8,
+    "IDW": 8,
+    "ILE": 8,
+    "ILN": 8,
+    "ILS": 8,
+    "ILW": 8,
+    "IQE": 8,
+    "IQN": 8,
+    "IQS": 8,
+    "IQW": 8,
+    "ISEA": 8,
+    "ISEB": 8,
+    "ISNA": 8,
+    "ISNB": 8,
+    "ISSA": 8,
+    "ISSB": 8,
+    "ISWA": 8,
+    "ISWB": 8
+  },
+  "all_eight_lane_symmetry": false
+}

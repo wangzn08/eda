@@ -1,0 +1,74 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "device": "mps",
+  "reference": "Morioka et al. ICLR2021 KFL; adapted expression, not full paper replication",
+  "monotonicity_enforced": false,
+  "scope": "Python prototype, end-to-end deployment and throughput unverified",
+  "candidates": [
+    {
+      "rank": 2,
+      "epoch": 8,
+      "score": 99.04722761723711,
+      "parameter_float32_bytes": 15248,
+      "elapsed_seconds": 3.130484291999892
+    },
+    {
+      "rank": 2,
+      "epoch": 16,
+      "score": 99.04932404873252,
+      "parameter_float32_bytes": 15248,
+      "elapsed_seconds": 4.632707374999882
+    },
+    {
+      "rank": 2,
+      "epoch": 24,
+      "score": 99.0508289022658,
+      "parameter_float32_bytes": 15248,
+      "elapsed_seconds": 6.134970750004868
+    },
+    {
+      "rank": 4,
+      "epoch": 8,
+      "score": 99.04768201120639,
+      "parameter_float32_bytes": 30368,
+      "elapsed_seconds": 8.440286000004562
+    },
+    {
+      "rank": 4,
+      "epoch": 16,
+      "score": 99.0510549111962,
+      "parameter_float32_bytes": 30368,
+      "elapsed_seconds": 10.713526958999864
+    },
+    {
+      "rank": 4,
+      "epoch": 24,
+      "score": 99.05559627132004,
+      "parameter_float32_bytes": 30368,
+      "elapsed_seconds": 12.988622959004715
+    },
+    {
+      "rank": 8,
+      "epoch": 8,
+      "score": 99.04722749868677,
+      "parameter_float32_bytes": 60608,
+      "elapsed_seconds": 17.222620583997923
+    },
+    {
+      "rank": 8,
+      "epoch": 16,
+      "score": 99.05463333126842,
+      "parameter_float32_bytes": 60608,
+      "elapsed_seconds": 21.46369841699925
+    },
+    {
+      "rank": 8,
+      "epoch": 24,
+      "score": 99.05932072396003,
+      "parameter_float32_bytes": 60608,
+      "elapsed_seconds": 25.69657525000366
+    }
+  ]
+}

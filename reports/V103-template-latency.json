@@ -1,0 +1,47 @@
+{
+  "holdout_used": false,
+  "scope": "Actual1m pilot, full validation, raw architecture heads; no final-billion proof",
+  "candidates": [
+    {
+      "name": "wide-hubs4",
+      "score": 99.11584278465884,
+      "rows": 1000000,
+      "cpu_seconds": 9.31709,
+      "init_cpu_seconds": 5.81469,
+      "query_cpu_seconds": 3.5024000000000006,
+      "rss_bytes": 1388478464,
+      "billion_estimate_seconds": 3508.2146900000007
+    },
+    {
+      "name": "wide-hubs0",
+      "score": 99.08277419026973,
+      "rows": 1000000,
+      "cpu_seconds": 9.27951,
+      "init_cpu_seconds": 5.8806,
+      "query_cpu_seconds": 3.39891,
+      "rss_bytes": 1388445696,
+      "billion_estimate_seconds": 3404.7906
+    },
+    {
+      "name": "scalar-hubs0",
+      "score": 99.08277419026973,
+      "rows": 1000000,
+      "cpu_seconds": 13.0325,
+      "init_cpu_seconds": 5.49928,
+      "query_cpu_seconds": 7.533220000000001,
+      "rss_bytes": 804732928,
+      "billion_estimate_seconds": 7538.719280000001
+    },
+    {
+      "name": "wide-hubs1",
+      "score": 99.11471186076864,
+      "rows": 1000000,
+      "cpu_seconds": 9.29521,
+      "init_cpu_seconds": 5.90826,
+      "query_cpu_seconds": 3.3869500000000006,
+      "rss_bytes": 1388445696,
+      "billion_estimate_seconds": 3392.858260000001
+    }
+  ],
+  "state": "complete"
+}

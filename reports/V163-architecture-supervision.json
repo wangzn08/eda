@@ -1,0 +1,20 @@
+{
+  "state": "complete",
+  "fit_split": "development plus architecture-generated samples",
+  "holdout_used": false,
+  "teacher_rows": 117508,
+  "teacher_base_score": 98.08282255604821,
+  "scope": "Accuracy student prototype; native inference and paired timing pending",
+  "candidates": [
+    {
+      "name": "weight-0.25",
+      "score": 99.2064348793179,
+      "elapsed_seconds": 119.18986537500314
+    },
+    {
+      "name": "weight-1",
+      "score": 99.2113865213082,
+      "elapsed_seconds": 238.44115570900613
+    }
+  ]
+}

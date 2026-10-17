@@ -1,0 +1,12 @@
+{
+  "scope": "Label-dependent validation diagnostic upper bound, never a deployable predictor",
+  "oracle_score": 99.14566940877054,
+  "oracle_choice_counts": [
+    121467,
+    0,
+    24102,
+    1874,
+    2610
+  ],
+  "changed_rows": 28586
+}

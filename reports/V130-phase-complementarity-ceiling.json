@@ -1,0 +1,31 @@
+{
+  "scope": "Label-dependent oracle ceiling only, not implementable predictor",
+  "base_score": 99.0256649430261,
+  "oracle_score": 99.30225220471374,
+  "oracle_improved_rows": 22182,
+  "candidates": [
+    "out/v127/near0-mode0.csv",
+    "out/v127/near0-mode1.csv",
+    "out/v127/near0-mode2.csv",
+    "out/v127/near1-mode0.csv",
+    "out/v127/near1-mode1.csv",
+    "out/v127/near1-mode2.csv",
+    "out/v128/x1000-y1000-mode0.csv",
+    "out/v128/x1000-y1000-mode2.csv",
+    "out/v128/x30-y36-mode0.csv",
+    "out/v128/x30-y36-mode2.csv",
+    "out/v128/x50-y72-mode0.csv",
+    "out/v128/x50-y72-mode2.csv",
+    "out/v128/x70-y120-mode0.csv",
+    "out/v128/x70-y120-mode2.csv",
+    "out/v130/x1000-y1000-mode0.csv",
+    "out/v130/x1000-y1000-mode2.csv",
+    "out/v130/x30-y36-mode0.csv",
+    "out/v130/x30-y36-mode2.csv",
+    "out/v130/x50-y72-mode0.csv",
+    "out/v130/x50-y72-mode2.csv",
+    "out/v130/x70-y120-mode0.csv",
+    "out/v130/x70-y120-mode2.csv"
+  ],
+  "holdout_used": false
+}

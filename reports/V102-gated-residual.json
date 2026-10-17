@@ -1,0 +1,32 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Research gated architecture; no C++ or file-budget claim",
+  "candidates": [
+    {
+      "threshold": 0.4,
+      "score": 99.21000016289615,
+      "corrected_fraction": 0.18029629530899083
+    },
+    {
+      "threshold": 0.5,
+      "score": 99.22143549059797,
+      "corrected_fraction": 0.13326624592643932
+    },
+    {
+      "threshold": 0.7,
+      "score": 99.20020150398173,
+      "corrected_fraction": 0.030922407416046332
+    },
+    {
+      "threshold": 0.9,
+      "score": 99.12424968872986,
+      "corrected_fraction": 0.000846367616775406
+    },
+    {
+      "threshold": "soft-expectation",
+      "score": 99.16133598930362
+    }
+  ],
+  "elapsed_seconds": 137.40166029100146
+}

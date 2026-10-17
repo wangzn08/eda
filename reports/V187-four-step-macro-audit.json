@@ -1,0 +1,10 @@
+{
+  "states": 2079072,
+  "phase_groups": 995680,
+  "quadrant_witnesses": 1695699,
+  "cpu_seconds": 0.33053,
+  "scope": "Ideal geometry macro composition only, no validation or runtime claim",
+  "raw_bytes": 33265228,
+  "xz_bytes": 6735080,
+  "lossless_roundtrip": true
+}

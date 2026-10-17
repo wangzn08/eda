@@ -1,0 +1,24 @@
+{
+  "state": "compressed candidate; full validation pending",
+  "architecture_only": true,
+  "fit_labels_used": false,
+  "holdout_used": false,
+  "decoded_bytes": 221184000,
+  "asset_bytes": 17098224,
+  "minimum_delta": -145,
+  "maximum_delta": 110,
+  "nonzero_fraction": 0.6034763002748843,
+  "preset": 6,
+  "compression_cpu_seconds": 45.963529,
+  "exact_roundtrip": true,
+  "decoded_sha256": "5abe2497bb2c70b31f591ae8c24c2b55de8de69d1bf99b8d587fab0a8b3f07ae",
+  "asset_sha256": "7b3813eec4d498c33a4f647ff66fa50e65313a03d70ff0ecc676429cab92cf66",
+  "baseline_recipe": "70ef07de45b1a045913cfac20cfe9cb84e97c5d70954dfe039f04d1d6b57e830",
+  "baseline_assets": {
+    "core-template-xz6.bin": "ef0dd8146b0b9a0a3d331f06fefd004d82cae417c034d2eafc495160a5956621",
+    "vertical-transients-xz.bin": "eb8e5f3693334bc1e400fd6d5f5372df5234356c632950f91e16f180e5173398",
+    "horizontal-transients.bin": "36a07734d7d306661b2f18260d294cfbafaebc15f426ef47e10b75fa22383268",
+    "vertical-distant-delta-xz6.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1"
+  },
+  "estimated_profile_bytes_before_executable_growth": 109308069
+}

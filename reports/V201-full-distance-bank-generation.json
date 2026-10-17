@@ -1,0 +1,20 @@
+{
+  "state": "complete",
+  "shape": [
+    160,
+    160,
+    239,
+    24,
+    46,
+    2
+  ],
+  "raw_curve_bytes": 13509427616,
+  "generation_cpu_seconds_excluding_input_preparation": 348.2,
+  "validation_score": 99.35130093492236,
+  "all_850758_predictions_byte_parity_with_v198": true,
+  "prediction_sha256": "b8d7c10c6d6e245e73e7244c7284ccc2fd568b0376d680ecabbbdf5fa1b2cc2e",
+  "selection_bytes": 23821304,
+  "scope": "Full finite ideal distance bank generation and selected branches, not final submission asset",
+  "golden_used_for_generation": false,
+  "holdout_used": false
+}

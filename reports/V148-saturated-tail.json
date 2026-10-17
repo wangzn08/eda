@@ -1,0 +1,36 @@
+{
+  "state": "complete",
+  "scope": "Full validation of query-only saturation with original source/terminal selection indices; not fully regenerated/frozen",
+  "cases": [
+    {
+      "growth_limit": 10000,
+      "score": 99.0256649430261,
+      "exact_fraction": 0.5499590144815498
+    },
+    {
+      "growth_limit": 12,
+      "score": 99.002937577884,
+      "exact_fraction": 0.5225953496431262
+    },
+    {
+      "growth_limit": 20,
+      "score": 99.03393593661114,
+      "exact_fraction": 0.5413287305152179
+    },
+    {
+      "growth_limit": 32,
+      "score": 99.02603929846146,
+      "exact_fraction": 0.5497457564993702
+    },
+    {
+      "growth_limit": 4,
+      "score": 98.806772382834,
+      "exact_fraction": 0.48833412194357995
+    },
+    {
+      "growth_limit": 8,
+      "score": 98.93594981243155,
+      "exact_fraction": 0.5073074180456238
+    }
+  ]
+}

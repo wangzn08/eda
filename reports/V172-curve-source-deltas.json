@@ -1,0 +1,24 @@
+{
+  "state": "complete",
+  "scope": "Lossless storage transform only; native parity pending",
+  "candidates": [
+    {
+      "flags": 15,
+      "asset_bytes": 28551088,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 8.394286707996798
+    },
+    {
+      "flags": 23,
+      "asset_bytes": 47504084,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 19.11191104199679
+    },
+    {
+      "flags": 31,
+      "asset_bytes": 34101396,
+      "roundtrip_exact": true,
+      "elapsed_seconds": 28.979408375002095
+    }
+  ]
+}

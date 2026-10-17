@@ -1,0 +1,43 @@
+{
+  "state": "complete",
+  "scope": "Serial1m screening with full validation prefix; not paired10m or official Linux; pilot outputs outside packaging",
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "v151-prepared",
+      "validation_score": 99.0256649430261,
+      "validation_parity": true,
+      "init_seconds": 44.9909,
+      "query_1m_cpu_seconds": 0.6512999999999991,
+      "billion_pilot_seconds": 696.290899999999,
+      "runtime_artifact_bytes": 99342260
+    },
+    {
+      "name": "v152-staged",
+      "validation_score": 99.0256649430261,
+      "validation_parity": true,
+      "init_seconds": 43.7497,
+      "query_1m_cpu_seconds": 0.6872000000000043,
+      "billion_pilot_seconds": 730.9497000000042,
+      "runtime_artifact_bytes": 99340772
+    },
+    {
+      "name": "v153-libdecoder",
+      "validation_score": 99.0256649430261,
+      "validation_parity": true,
+      "init_seconds": 38.5495,
+      "query_1m_cpu_seconds": 0.6760999999999981,
+      "billion_pilot_seconds": 714.649499999998,
+      "runtime_artifact_bytes": 99377508
+    },
+    {
+      "name": "v154-sparse",
+      "validation_score": 99.0256649430261,
+      "validation_parity": true,
+      "init_seconds": 41.1959,
+      "query_1m_cpu_seconds": 0.6317000000000021,
+      "billion_pilot_seconds": 672.8959000000021,
+      "runtime_artifact_bytes": 99378980
+    }
+  ]
+}

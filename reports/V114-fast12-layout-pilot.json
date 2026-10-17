@@ -1,0 +1,67 @@
+{
+  "state": "complete",
+  "target_seconds": 720,
+  "validation_floor": 99,
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "prediction_cache": false,
+  "scope": "Serial full validation and development1m screening; final10m required",
+  "candidates": [
+    {
+      "name": "target16",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 2152628224
+    },
+    {
+      "name": "shared16",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 1768898560,
+      "cpu_seconds": 72.0101,
+      "init_seconds": 71.3502,
+      "query_seconds": 0.6598999999999933,
+      "estimated_billion_seconds": 731.2501999999932,
+      "rss_bytes": 1770831872,
+      "output_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1",
+      "runtime_file_bytes": 99293184
+    },
+    {
+      "name": "ring16",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 1768914944,
+      "cpu_seconds": 72.7765,
+      "init_seconds": 72.0993,
+      "query_seconds": 0.6771999999999991,
+      "estimated_billion_seconds": 749.2992999999991,
+      "rss_bytes": 1770897408,
+      "output_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1",
+      "runtime_file_bytes": 99293184
+    },
+    {
+      "name": "core32",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 1768800256,
+      "cpu_seconds": 72.6788,
+      "init_seconds": 72.0269,
+      "query_seconds": 0.6518999999999977,
+      "estimated_billion_seconds": 723.9268999999977,
+      "rss_bytes": 1770897408,
+      "output_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1",
+      "runtime_file_bytes": 99293184
+    },
+    {
+      "name": "target-ring16",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 2152710144
+    }
+  ]
+}

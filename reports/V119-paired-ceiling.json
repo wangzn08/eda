@@ -1,0 +1,22 @@
+[
+  {
+    "name": "max",
+    "development_score": 98.78134485883679,
+    "validation_score": 98.77747753406445
+  },
+  {
+    "name": "min",
+    "development_score": 99.0544204656945,
+    "validation_score": 99.04704249805927
+  },
+  {
+    "name": "average",
+    "development_score": 98.99744576125678,
+    "validation_score": 98.99032730724038
+  },
+  {
+    "name": "oracle_not_usable",
+    "validation_score": 99.17510051011246,
+    "note": "Uses validation labels to quantify ceiling only; cannot be a predictor"
+  }
+]

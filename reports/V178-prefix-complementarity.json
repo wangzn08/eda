@@ -1,0 +1,10 @@
+{
+  "scope": "Validation diagnostic only; label-selected oracle cannot be submitted",
+  "baseline_score": 99.02566494302609,
+  "depth4_score": 99.5428880363209,
+  "oracle_two_method_score": 99.60559448428754,
+  "changed_fraction": 0.39697306951543787,
+  "prefix_better_fraction": 0.3080644838823616,
+  "prefix_worse_fraction": 0.08367710075773227,
+  "prefix_worse_loss": 0.06270644796662767
+}

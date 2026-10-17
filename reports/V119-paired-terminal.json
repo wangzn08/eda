@@ -1,0 +1,10 @@
+{
+  "development_score": 98.80347191666108,
+  "validation_score": 98.79885508909763,
+  "changed_validation_rows": 35464,
+  "validation_improved_rows": 17850,
+  "validation_worsened_rows": 16947,
+  "fit_labels_used": false,
+  "holdout_used": false,
+  "architecture": "Actual last Net reverse movement plus approximate middle; fallback to V116 recurrence if selected endings are unavailable; not a path certificate"
+}

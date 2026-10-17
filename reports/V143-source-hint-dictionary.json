@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "unique_masks": 330725,
+  "bits_required": 19,
+  "code_bytes": 4,
+  "asset_bytes": 20251468,
+  "old_asset_bytes": 17660416,
+  "lossless_roundtrip": true,
+  "decoded_sha256": "1431ddca13b61e2ffaca9b60410187f48d7d54f7ab78ecafb05340ebb39b4d01",
+  "cpu_seconds": 42.364364,
+  "scope": "architecture-only storage research; runtime decoder pending"
+}

@@ -1,0 +1,13 @@
+{
+  "state": "complete",
+  "scope": "architecture-only lossless late-anchor asset, runtime loading and total budget pending",
+  "bytes": 28040544,
+  "raw_bytes": 289997228,
+  "decoded_sha256": "39c5b86a0c00623bea56bbc816cc47115add9bdf265e577d61b3ddc1cf2a3ecb",
+  "asset_sha256": "bf5ec4b4f3d7c4d2a0f4f612db820c9bad85ce9b921dda35d00c7c132d0eb889",
+  "lossless_roundtrip": true,
+  "delta_min": -350,
+  "delta_max": 9,
+  "nonzero_fraction": 0.24747828251897952,
+  "cpu_seconds": 70.899965
+}

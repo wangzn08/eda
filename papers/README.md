@@ -76,3 +76,46 @@ Petelin, Betz, *The Speed of Diversity: Exploring Complex FPGA Routing Topologie
 - `Bidirectional_Bounded_Search_2025.pdf`：[论文](https://arxiv.org/abs/2511.10272)，双向有界搜索参照。
 
 V40按官方架构构造周期模式下界，完整验证99.9963756；算法区别、证明条件和失败路线见 [V36–V40报告](../reports/V36-V40-precision-research.md)。
+
+## V99 新架构探索：张量与多尺度编码（2026-10-07）
+
+已下载 PDF 和作者公开 HTML，阅读分解形式、初始化、训练及局限相关章节：
+
+- [Si 等，An efficient tensor regression for high-dimensional data](https://arxiv.org/abs/2205.13734)，`Si2024-tensor-regression.pdf`。参考六维离散残差的 TT 核矩阵连乘表示。原文采用带正交结构的回归及黎曼优化；本轮原型使用加权绝对误差与 Adam，并非完整复现其算法或理论保证。
+- [Yin 等，TT-Rec (MLSys 2021)](https://arxiv.org/abs/2101.11714)，`Yin2021-TTRec.pdf`。参考秩、存储、计算的共同权衡及乘积初始化问题。原文主要面向推荐模型及加速器；本题不会直接继承其压缩比例和加速结论。
+- [Müller 等，Instant Neural Graphics Primitives with a Multiresolution Hash Encoding (SIGGRAPH 2022)](https://arxiv.org/abs/2201.05989)，`Mueller2022-hash-encoding.pdf`。参考多尺度可学习编码与小网络消歧。本轮采用离散端口和位移联合哈希，没有原文空间网格的多线性插值、CUDA融合内核，因此称为借鉴原型，不称论文复现。
+
+所有新拟合仅使用 development；validation 用于比较，未读取 holdout。项目创新候选是 FPGA 周期相位、端口耦合、实际边界表征和压缩残差的组合，不能将 TT 或多尺度哈希本身宣称为原创。具体结果和限制见 V99/V100 实验报告。
+
+### 请求流水线与内存访问
+
+- Kocberber, Falsafi, Grot (2015), *Asynchronous Memory Access Chaining*, PVLDB 9(4),252–263. [官方论文](https://www.vldb.org/pvldb/vol9/p252-kocberber.pdf)，已保存Kocberber2015-AMAC.pdf。本轮读取内存延迟隐藏与方法第2/3节：静态批次适合规则查询，独立状态调度可处理不同访问链长度。V113先试验分阶段批量预取，尚未复现完整AMAC调度；论文的数据库加速比例不能直接用于本题。
+
+## V123：稀疏路线交互的低秩模型
+
+Blondel, Ishihata, Fujino, Ueda (2016), *Polynomial Networks and Factorization Machines: New Insights and Efficient Training Algorithms*. [作者论文](https://arxiv.org/abs/1607.08810)，已下载 `Blondel2016-Polynomial-Factorization.pdf`。阅读第2.2及3节的二阶特征交互、低秩参数化与ANOVA表达。V123仅借鉴二阶FM表达，使用AdamW及赛题评分损失；没有复现论文的坐标下降/多凸训练算法，也不继承其理论或其他任务性能。路线特征来自估算器，标签仅来自development；原型泛化未达到阶段目标。
+
+## V132：面向联合目标的新检索（2026-10-07）
+
+新增本地PDF：Akiba2013-Pruned-Landmark-Labeling.pdf（SIGMOD2013，阅读标签查询/剪枝/有向带权扩展）；Alabi2019-Learning-to-Prune.pdf（阅读任务假设和探索/利用剪枝）。另通过网页读取CRP2011与HHL2012的相关方法部分，本地下载分别403/超时。KFL2021只阅读Google作者页与官方代码，PDF403，未通读全文。文献、下载状态、适配限制与三个新架构的执行顺序见 [V132研究计划](../reports/V132-literature-and-new-architectures.md)。不将既有两跳标签、分区覆盖图、KFL或学习剪枝方法本身作为原创。
+
+## 2026-10-07 V145–V147 长距离尾部诊断
+
+Nowak & Charron-Bost (2014), An Overview of Transience Bounds in Max-Plus Algebra. 原始PDF：https://arxiv.org/pdf/1405.3458；本地Nowak2014-MaxPlus-Transience-Overview.pdf，214323 bytes，SHA256 bfa2d4b43247d6f30986ab3137ec69f284c465d6b81023d76fa4e1a585cd2290。已读引言、§2定义/最终周期定理和文章结构，未通读证明。论文矩阵幂参数是路径边数；赛题参数是位移，须先建立正确状态转换，不能直接套用定理保证第6或20周期后稳定。仅作为“区分暂态和稳定尾部”的研究参考。
+
+V142端口乘积交互另参考Rendle2010 Factorization Machines：作者项目https://www.libfm.org/已核实；官方PDF链接超时，未宣称下载或全文阅读，表达方式为启发式适配。
+
+## V163：由精确算法提供监督
+
+- Hinton, Vinyals & Dean (2015), Distilling the Knowledge in a Neural Network：[原文](https://arxiv.org/abs/1503.02531)，本地 `Hinton2015-Knowledge-Distillation.pdf`，SHA256 `74e6689115c539db499f9d6153edecb364059926fd45402454f8210442444c5a`。已读引言与第2节，未通读实验。借鉴教师与部署模型分工；延时回归没有采用其分类温度 softmax。
+- Veličković et al. (ICLR 2020), Neural Execution of Graph Algorithms：[原文](https://arxiv.org/abs/1910.10593)，本地 `Velickovic2020-Neural-Graph-Algorithms.pdf`，SHA256 `493bc68a8cbae3d7d0daf510ce0e14abb8d5b50c67c2fbcc8ceab437b25d5566`。已读引言与第2节；借鉴图算法监督思想，尚未复现逐步消息传递网络。
+
+具体适配与实验边界见 `reports/V161-V163-accuracy-direction.md`。
+
+## V198追加CPD参考与阅读范围（2026-10-08）
+
+- Botea, *Fast, Optimal Pathfinding with Compressed Path Databases*, SoCS2012：[论文PDF](https://ojs.aaai.org/index.php/SOCS/article/download/18251/18042/21767)，本地Botea_2012_Fast_Optimal_Pathfinding_CPD.pdf。已读两页方法说明：Dijkstra生成首动作、同动作空间矩形压缩、在线逐步提取。预处理动作与路径相干性属于已有方法。
+- Zhao等, *Bounded Suboptimal Path Planning with Compressed Path Databases*, ICAPS2020：[论文PDF](https://ojs.aaai.org/index.php/ICAPS/article/download/6678/6532/9907)，本地Zhao_2020_Bounded_Suboptimal_CPD.pdf。已读引言、centroid误差定理与构建/反向CPD方法，未通读所有实验及证明。其2δ路径界使用无向网格条件，FPGA有向端口不能直接继承；可参考选择目标子集和反向压缩，效果仍需验证。
+- Botea、Strasser、Harabor, *Complexity Results for Compressing Optimal Paths*, AAAI2015：[作者PDF](https://pathfinding.ai/pdf/sbh-aaai15.pdf)，本地Botea_Strasser_Harabor_2015_CPD_Complexity.pdf。仅读摘要与引言；涉及最优RLE列排序的困难性，不声称已阅读完整证明。
+
+三个本地文件均核对PDF标识和SHA256，见reports/V198-cpd-literature-downloads.json。V193/V196物理Bellman差字段是当前实验设计，不宣称新基本图算法，也不宣称已达联合目标。

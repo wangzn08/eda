@@ -1,0 +1,44 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Python prototype; deployment and throughput unverified",
+  "candidates": [
+    {
+      "depth": 6,
+      "trees": 100,
+      "score": 99.06245728859919,
+      "elapsed_seconds": 116.22394299999723
+    },
+    {
+      "depth": 6,
+      "trees": 300,
+      "score": 99.08905491804794,
+      "elapsed_seconds": 116.39717041699623
+    },
+    {
+      "depth": 6,
+      "trees": 600,
+      "score": 99.11047135693057,
+      "elapsed_seconds": 116.60363399999915
+    },
+    {
+      "depth": 10,
+      "trees": 100,
+      "score": 99.12978649663653,
+      "elapsed_seconds": 547.0191988329971
+    },
+    {
+      "depth": 10,
+      "trees": 300,
+      "score": 99.16193772557136,
+      "elapsed_seconds": 547.2308650830018
+    },
+    {
+      "depth": 10,
+      "trees": 600,
+      "score": 99.17389130843475,
+      "elapsed_seconds": 547.4943047499983
+    }
+  ]
+}

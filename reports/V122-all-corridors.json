@@ -1,0 +1,23 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "scope": "Full development and validation, not final throughput",
+  "candidates": [
+    {
+      "mode": 1,
+      "development_score": 94.820656377488,
+      "validation_score": 94.80903088382377
+    },
+    {
+      "mode": 2,
+      "development_score": 94.7825121511746,
+      "validation_score": 94.7711682464279
+    },
+    {
+      "mode": 3,
+      "development_score": 94.91054070835831,
+      "validation_score": 94.90001539939414
+    }
+  ]
+}

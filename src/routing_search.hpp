@@ -54,12 +54,36 @@ public:
     }
 };
 
+#ifndef CORE_FIXED_PORT_LOAD
+#define CORE_FIXED_PORT_LOAD 0
+#endif
 class FastPinParser {
     std::vector<int> grid;
     std::unordered_map<std::string_view,unsigned> ports;
-    std::vector<uint16_t>perfect_ports;uint64_t perfect_seed=0;
+    std::vector<uint16_t>perfect_ports;uint64_t perfect_seed=0;bool grammar_ports=false;
+    std::array<uint64_t,4096>packed_keys{};std::array<uint16_t,4096>packed_ids{};bool packed_ports=false,scan_coordinates=false;
+    static uint64_t pack_port(std::string_view n){uint64_t k=0;if(n.empty() || n.size()>7)return 0;if(CORE_FIXED_PORT_LOAD){uint32_t low;uint16_t high;switch(n.size()){case 4:std::memcpy(&low,n.data(),4);k=low;break;case 5:std::memcpy(&low,n.data(),4);k=uint64_t(low)|(uint64_t(uint8_t(n[4]))<<32);break;case 6:std::memcpy(&low,n.data(),4);std::memcpy(&high,n.data()+4,2);k=uint64_t(low)|(uint64_t(high)<<32);break;case 7:std::memcpy(&low,n.data(),4);std::memcpy(&high,n.data()+4,2);k=uint64_t(low)|(uint64_t(high)<<32)|(uint64_t(uint8_t(n[6]))<<48);break;default:std::memcpy(&k,n.data(),n.size());}}else std::memcpy(&k,n.data(),n.size());return k|(uint64_t(n.size())<<56);}
+    static unsigned packed_slot(uint64_t k){return unsigned(((k^(k>>24))*11400714819323198485ULL)>>52);}
+    static int direction(char c){switch(c){case 'E':return 0;case 'N':return 1;case 'S':return 2;case 'W':return 3;default:return -1;}}
+    static unsigned grammar_port(std::string_view n){
+        if(n.size()>=6 && (n[0]=='Z' || n[0]=='I')){
+            unsigned result=65535;
+            if(n.size()==7 && n[1]=='S' && direction(n[2])>=0 && (n[3]=='A' || n[3]=='B') && n[4]=='[' && n[5]>='0' && n[5]<='7' && n[6]==']')result=(n[0]=='I'?64:0)+direction(n[2])*16+(n[3]-'A')*8+n[5]-'0';
+            else if(n.size()==6 && direction(n[2])>=0 && n[3]=='[' && n[4]>='0' && n[4]<='7' && n[5]==']'){
+                unsigned base=n[1]=='D'?128:n[1]=='Q'?192:n[1]=='L'?256:65535;if(base!=65535)result=base+(n[0]=='I'?32:0)+direction(n[2])*8+n[4]-'0';
+            }return result;
+        }
+        if((n.size()==4 || n.size()==5) && (n[0]=='A' || n[0]=='S') && n[1]=='_' && n[2]>='A' && n[2]<='H'){
+            int field=-1;if(n.size()==4){field=n[3]>='0' && n[3]<='5'?n[3]-'0':n[3]=='D'?6:n[3]=='M'?7:n[3]=='Y'?10:-1;}
+            else if(n[3]=='Q' && (n[4]=='0' || n[4]=='1'))field=8+n[4]-'0';
+            if(field>=0)return (n[0]=='A'?320:408)+(n[2]-'A')*11+field;
+        }return 65535;
+    }
     static uint64_t mix_port(uint64_t x){x^=x>>30;x*=0xbf58476d1ce4e5b9ULL;x^=x>>27;x*=0x94d049bb133111ebULL;return x^(x>>31);}
 public:
+    void enable_scan_coordinates(){scan_coordinates=true;}
+    void enable_packed_port_index(){packed_ids.fill(65535);for(unsigned i=0;i<archdata::P;++i){uint64_t k=pack_port(archdata::PORTS[i]);if(!k)throw std::runtime_error("Unsupported port name");unsigned slot=packed_slot(k);while(packed_keys[slot])slot=(slot+1)&4095;packed_keys[slot]=k;packed_ids[slot]=i;}packed_ports=true;}
+    void enable_grammar_port_index(){for(unsigned i=0;i<archdata::P;++i)if(grammar_port(archdata::PORTS[i])!=i)throw std::runtime_error("Architecture port grammar mismatch");grammar_ports=true;}
     void enable_perfect_port_index(){
         perfect_ports.resize(65536);std::array<uint64_t,archdata::P>hashes;
         for(unsigned i=0;i<archdata::P;++i)hashes[i]=std::hash<std::string_view>{}(archdata::PORTS[i]);
@@ -79,18 +103,27 @@ public:
     }
     Node pin(std::string_view text) const {
         if(text.substr(0,4)!="SRB_") throw std::runtime_error("Invalid pin: "+std::string(text));
-        size_t under=text.find('_',4),slash=text.find('/',4);
+        int x=-1,y=-1;size_t slash=0;
+        if(scan_coordinates){size_t cursor=4;x=0;y=0;bool digits=false;
+            while(cursor<text.size() && text[cursor]>='0' && text[cursor]<='9'){digits=true;x=x*10+text[cursor++]-'0';if(x>=archdata::WIDTH)throw std::runtime_error("Invalid coordinates");}
+            if(!digits || cursor>=text.size() || text[cursor++]!='_')throw std::runtime_error("Invalid pin coordinates");digits=false;
+            while(cursor<text.size() && text[cursor]>='0' && text[cursor]<='9'){digits=true;y=y*10+text[cursor++]-'0';if(y>=archdata::HEIGHT)throw std::runtime_error("Invalid coordinates");}
+            if(!digits || cursor>=text.size() || text[cursor]!='/')throw std::runtime_error("Invalid pin coordinates");slash=cursor;
+        }else{
+        size_t under=text.find('_',4);slash=text.find('/',4);
         if(under==text.npos || slash==text.npos || under>=slash)
             throw std::runtime_error("Invalid pin: "+std::string(text));
-        int x=-1,y=-1;
         auto px=std::from_chars(text.data()+4,text.data()+under,x);
         auto py=std::from_chars(text.data()+under+1,text.data()+slash,y);
         if(px.ec!=std::errc() || py.ec!=std::errc() || px.ptr!=text.data()+under || py.ptr!=text.data()+slash
            || x<0 || x>=archdata::WIDTH || y<0 || y>=archdata::HEIGHT)
             throw std::runtime_error("Invalid coordinates: "+std::string(text));
+        }
         int site=grid[x*archdata::HEIGHT+y];
         auto name=text.substr(slash+1);unsigned port;
-        if(!perfect_ports.empty()){port=perfect_ports[mix_port(std::hash<std::string_view>{}(name)^perfect_seed)&65535];if(port>=archdata::P || name!=archdata::PORTS[port])throw std::runtime_error("Unknown pin: "+std::string(text));}
+        if(packed_ports){uint64_t k=pack_port(name);unsigned slot=packed_slot(k);while(k && packed_keys[slot] && packed_keys[slot]!=k)slot=(slot+1)&4095;if(!k || packed_keys[slot]!=k)throw std::runtime_error("Unknown pin: "+std::string(text));port=packed_ids[slot];}
+        else if(grammar_ports){port=grammar_port(name);if(port>=archdata::P || name!=archdata::PORTS[port])throw std::runtime_error("Unknown pin: "+std::string(text));}
+        else if(!perfect_ports.empty()){port=perfect_ports[mix_port(std::hash<std::string_view>{}(name)^perfect_seed)&65535];if(port>=archdata::P || name!=archdata::PORTS[port])throw std::runtime_error("Unknown pin: "+std::string(text));}
         else{auto found=ports.find(name);if(found==ports.end())throw std::runtime_error("Unknown pin: "+std::string(text));port=found->second;}
         if(site<0)throw std::runtime_error("Unknown pin: "+std::string(text));
         return static_cast<Node>(site)*archdata::P+port;
@@ -100,6 +133,7 @@ public:
 class Graph {
     std::vector<int> grid;
     std::vector<Move> forward, backward;
+    std::vector<uint32_t>reverse_masks;
     std::array<std::vector<LocalEdge>, archdata::P> arcs, reverse_arcs;
     std::array<int, archdata::P> net_from, net_to;
     std::unordered_map<std::string, unsigned> port_ids;
@@ -145,7 +179,7 @@ public:
     Node nodes() const { return std::size(archdata::SITES)*archdata::P; }
     Node sites() const { return std::size(archdata::SITES); }
     Graph():grid(archdata::WIDTH*archdata::HEIGHT,-1),
-            forward(std::size(archdata::SITES)*archdata::K), backward(forward.size()) {
+            forward(std::size(archdata::SITES)*archdata::K), backward(forward.size()),reverse_masks(std::size(archdata::SITES)) {
         static_assert(std::size(archdata::BLOCKS)<=64);
         net_from.fill(-1); net_to.fill(-1);
         for(size_t i=0;i<std::size(archdata::SITES);++i) {
@@ -176,8 +210,11 @@ public:
                 }
             }
         }
+        static_assert(archdata::K<=32);
+        for(size_t site=0;site<std::size(archdata::SITES);++site)for(unsigned k=0;k<archdata::K;++k)if(backward[site*archdata::K+k].site!=NONE)reverse_masks[site]|=1u<<k;
     }
 
+    uint32_t reverse_vector_mask(Node site)const{return reverse_masks[site];}
     Node pin(const std::string& s) const {
         if(s.compare(0,4,"SRB_")!=0) throw std::runtime_error("Invalid pin: "+s);
         auto under=s.find('_',4), slash=s.find('/',4);
@@ -196,6 +233,7 @@ public:
     const std::vector<LocalEdge>& local_in(unsigned p) const { return reverse_arcs[p]; }
     int net_out(unsigned p) const { return net_from[p]; }
     int net_in(unsigned p) const { return net_to[p]; }
+    Move forward_vector_move(Node site,unsigned vector) const {return forward[site*archdata::K+vector];}
     Move net_move(Node site,int net,bool reverse) const {
         return (reverse?backward:forward)[site*archdata::K+archdata::NETS[net].vector];
     }
@@ -539,4 +577,3 @@ public:
     Node trace_site(Node state) const {return state/input_ports.size();}
     unsigned trace_port(Node state) const {return input_ports[state%input_ports.size()];}
 };
-

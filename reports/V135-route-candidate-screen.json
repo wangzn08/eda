@@ -1,0 +1,67 @@
+{
+  "state": "complete",
+  "scope": "Shared-init/preparsed validation screening, not end-to-end benchmark",
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h1-a10000",
+      "score": 99.0256649430261,
+      "exact_fraction": 0.5499590144815498
+    },
+    {
+      "name": "h1-a120",
+      "score": 99.0215779683535,
+      "exact_fraction": 0.5493125762230678
+    },
+    {
+      "name": "h1-a36",
+      "score": 99.00575848179007,
+      "exact_fraction": 0.547619840989517
+    },
+    {
+      "name": "h2-a10000",
+      "score": 99.02659715418768,
+      "exact_fraction": 0.549965678793493
+    },
+    {
+      "name": "h2-a120",
+      "score": 99.02251017951508,
+      "exact_fraction": 0.5493192405350109
+    },
+    {
+      "name": "h2-a36",
+      "score": 99.00669069295166,
+      "exact_fraction": 0.5476265053014602
+    },
+    {
+      "name": "h4-a10000",
+      "score": 99.02678130988974,
+      "exact_fraction": 0.5499590144815498
+    },
+    {
+      "name": "h4-a120",
+      "score": 99.02269433521714,
+      "exact_fraction": 0.5493125762230678
+    },
+    {
+      "name": "h4-a36",
+      "score": 99.0068748486537,
+      "exact_fraction": 0.547619840989517
+    },
+    {
+      "name": "h8-a10000",
+      "score": 99.02812754171454,
+      "exact_fraction": 0.5499723431054361
+    },
+    {
+      "name": "h8-a120",
+      "score": 99.02404056704195,
+      "exact_fraction": 0.5493259048469541
+    },
+    {
+      "name": "h8-a36",
+      "score": 99.00822108047852,
+      "exact_fraction": 0.5476331696134032
+    }
+  ]
+}

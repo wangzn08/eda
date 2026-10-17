@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "scope": "Architecture-only finite ideal-graph near-x late curves; native accuracy and timing pending",
+  "curves": 36249600,
+  "unique_patterns": 83129,
+  "index_bytes": 4,
+  "asset_bytes": 48196228,
+  "decoded_bytes": 224147920,
+  "roundtrip_exact": true,
+  "asset_sha256": "dcda85eebb3468c51f102cd0e7a0f7da39e380531c26031dcb4d28e6a0047a3c",
+  "elapsed_seconds": 183.03331812500255
+}

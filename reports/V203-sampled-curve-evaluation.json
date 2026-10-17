@@ -1,0 +1,36 @@
+{
+  "state": "complete",
+  "scope": "Whole-request horizontal-sampling accuracy screen; grouped source evaluation from 13.5GB architecture raw bank is not standard submission throughput",
+  "golden_used_for_generation": false,
+  "holdout_used": false,
+  "candidates": [
+    {
+      "mode": "exact",
+      "validation_score": 99.35130093492236,
+      "all_prediction_sha256": "b8d7c10c6d6e245e73e7244c7284ccc2fd568b0376d680ecabbbdf5fa1b2cc2e",
+      "query_cpu_seconds_offline_grouped": 3.92913,
+      "exact_full_byte_parity": true
+    },
+    {
+      "mode": "a148",
+      "validation_score": 99.33217929387139,
+      "all_prediction_sha256": "9cda71b5c96e678c8817d0347a76848d362462cfd5ba842bf74e716ae48c721d",
+      "query_cpu_seconds_offline_grouped": 3.95818,
+      "exact_full_byte_parity": false
+    },
+    {
+      "mode": "a1369",
+      "validation_score": 99.34147367044055,
+      "all_prediction_sha256": "6c85af37a04403ed77e29b6e321b15767313f8267bdee15b77f06d1c8f5623c3",
+      "query_cpu_seconds_offline_grouped": 4.14186,
+      "exact_full_byte_parity": false
+    },
+    {
+      "mode": "a12469",
+      "validation_score": 99.34882526202145,
+      "all_prediction_sha256": "59bc30354f7e06dd3acbfc207fb57edc55c39e40894078fed556a48dd3ba16db",
+      "query_cpu_seconds_offline_grouped": 4.2582,
+      "exact_full_byte_parity": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "development_sample_size": 100000,
+  "development_sample_score": 99.25260700578072,
+  "validation_score": 99.2101444242781,
+  "development_base_score": 99.04240719669595,
+  "validation_base_score": 99.0256649430261,
+  "note": "Training-fit diagnostic; development sample is not independent validation."
+}

@@ -1,0 +1,34 @@
+{
+  "state": "complete",
+  "scope": "Ideal witness policy at nearest dx/q anchors; native full validation, query-only prototype",
+  "cases": [
+    {
+      "hubs": 1,
+      "depth": 4,
+      "score": 97.97806493335773,
+      "cpu_seconds": 0.718507
+    },
+    {
+      "hubs": 1,
+      "depth": 8,
+      "score": 96.76272489935516,
+      "cpu_seconds": 1.15235
+    },
+    {
+      "hubs": 8,
+      "depth": 4,
+      "score": 97.97871532275056,
+      "cpu_seconds": 0.739874
+    },
+    {
+      "hubs": 8,
+      "depth": 8,
+      "score": 96.76326983408532,
+      "cpu_seconds": 1.11672
+    }
+  ],
+  "asset_bytes": 48648464,
+  "peak_rss_bytes": 2210316288,
+  "native_anchor_parity_rows": 100000,
+  "joint_goal_met": false
+}

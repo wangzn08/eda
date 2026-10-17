@@ -1,0 +1,26 @@
+{
+  "scope": "Cyclic lane relabeling topology only; necessary precondition for cost gauge equivalence",
+  "topology_classes_per_prefix": {
+    "ISEA": 1,
+    "ISEB": 1,
+    "ISNA": 1,
+    "ISNB": 1,
+    "ISSA": 1,
+    "ISSB": 1,
+    "ISWA": 1,
+    "ISWB": 1,
+    "IDE": 1,
+    "IDN": 1,
+    "IDS": 1,
+    "IDW": 1,
+    "IQE": 1,
+    "IQN": 1,
+    "IQS": 1,
+    "IQW": 1,
+    "ILE": 1,
+    "ILN": 1,
+    "ILS": 1,
+    "ILW": 1
+  },
+  "topology_symmetry": true
+}

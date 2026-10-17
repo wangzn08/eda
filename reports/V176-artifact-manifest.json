@@ -1,0 +1,11 @@
+{
+  "scope": "V176 historical native accuracy experiment; runtime beam changes were added after binary compilation, retained binary hash is authoritative",
+  "binary_sha256": "064cc5e3a8fe72ef688909050bdb9ddd5357db634c43ed7263c9b4a17f414b93",
+  "curve_asset_sha256": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+  "source_current_sha256": {
+    "src/probe_physical_prefix_dp.cpp": "4a18bf8b49025ffbcf5c5963c27ecf36ba4475a0ec87fadd7d4b93e7383546e4",
+    "src/core_template_model.hpp": "de956d892a38e1fa874849696d46fe05b31547194884d96fdf3e1969acedd270",
+    "src/prefix_dp_workspace.hpp": "62f9d3975f9b9f759bcadaf6aa8557214625c5733de42150b7b67163a513fbe6",
+    "src/near_response_curve_model.hpp": "013b94236ac115a627c3c4793b67744fe578cd7153083564e7feb5272e1f6c4d"
+  }
+}

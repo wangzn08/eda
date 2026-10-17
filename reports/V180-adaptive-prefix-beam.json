@@ -1,0 +1,22 @@
+{
+  "state": "complete",
+  "scope": "Adaptive beam4 heuristic margin, accuracy and query-only prototype CPU",
+  "cases": [
+    {
+      "margin": 16,
+      "score": 99.4662888895311,
+      "cpu_seconds": 12.9195
+    },
+    {
+      "margin": 32,
+      "score": 99.50251659741039,
+      "cpu_seconds": 17.2754
+    },
+    {
+      "margin": 64,
+      "score": 99.52520492328904,
+      "cpu_seconds": 22.7544
+    }
+  ],
+  "joint_goal_met": false
+}

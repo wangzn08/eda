@@ -1,0 +1,68 @@
+{
+  "state": "complete",
+  "scope": "Full validation; shared initialization/preparsed input, not a submission/throughput benchmark. Asset exceeds100MB profile budget.",
+  "architecture_only": true,
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h1-a10000",
+      "score": 99.0875617954246,
+      "exact_fraction": 0.6209939154831959
+    },
+    {
+      "name": "h1-a120",
+      "score": 99.08319639395208,
+      "exact_fraction": 0.6201475478664206
+    },
+    {
+      "name": "h1-a36",
+      "score": 99.06732586082438,
+      "exact_fraction": 0.6181415899715433
+    },
+    {
+      "name": "h2-a10000",
+      "score": 99.08849322344521,
+      "exact_fraction": 0.621000579795139
+    },
+    {
+      "name": "h2-a120",
+      "score": 99.08412782197269,
+      "exact_fraction": 0.6201542121783636
+    },
+    {
+      "name": "h2-a36",
+      "score": 99.06825728884498,
+      "exact_fraction": 0.6181482542834865
+    },
+    {
+      "name": "h4-a10000",
+      "score": 99.08867863622554,
+      "exact_fraction": 0.6209939154831959
+    },
+    {
+      "name": "h4-a120",
+      "score": 99.08431323475301,
+      "exact_fraction": 0.6201475478664206
+    },
+    {
+      "name": "h4-a36",
+      "score": 99.06844270162532,
+      "exact_fraction": 0.6181415899715433
+    },
+    {
+      "name": "h8-a10000",
+      "score": 99.09002828609977,
+      "exact_fraction": 0.6210072441070822
+    },
+    {
+      "name": "h8-a120",
+      "score": 99.08566288462723,
+      "exact_fraction": 0.6201608764903067
+    },
+    {
+      "name": "h8-a36",
+      "score": 99.06979235149954,
+      "exact_fraction": 0.6181549185954296
+    }
+  ]
+}

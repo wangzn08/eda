@@ -1,0 +1,15 @@
+{
+  "state": "rejected as full-query correction",
+  "validation_rows": 150053,
+  "score": 99.2101444242781,
+  "native_rounding_parity": true,
+  "model_bytes": 3136524,
+  "estimated_folder_with_existing_lossless_core": 99207757,
+  "estimated_folder_includes_only_old_executable_size": true,
+  "prior_concurrent_training_cpu_seconds": 7.35525,
+  "concurrent_training_running": false,
+  "measured_cpu_seconds_3_validation_inferences": 6.17863,
+  "model_only_billion_cpu_extrapolation": 13725.439233692985,
+  "scope": "Precomputed133-feature model-only timing; excludes base estimator, feature construction, CSV and initialization. No concurrent training; not an end-to-end timing. Alternative core not copied or frozen.",
+  "holdout_used": false
+}

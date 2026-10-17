@@ -1,0 +1,133 @@
+{
+  "state": "complete",
+  "input": "out/v211",
+  "fit_scope": "development golden residual only",
+  "holdout_used": false,
+  "features": 159,
+  "new_features": [
+    "endpoint_sum_0",
+    "endpoint_max_0",
+    "endpoint_min_0",
+    "endpoint_sum_1",
+    "endpoint_max_1",
+    "endpoint_min_1",
+    "endpoint_sum_2",
+    "endpoint_max_2",
+    "endpoint_min_2",
+    "endpoint_sum_growth",
+    "endpoint_max_growth",
+    "bank_dx",
+    "bank_qx",
+    "intrinsic_residual",
+    "intrinsic_vs_period8",
+    "period4_to8_slope",
+    "intrinsic_vs_bridge",
+    "source_vector_along_x",
+    "source_vector_along_y",
+    "end_vector_along_x",
+    "end_vector_along_y"
+  ],
+  "base_score": 99.29290682956317,
+  "scope": "One/few-tree accuracy and model-size screen; native performance unproven",
+  "candidates": [
+    {
+      "model": "deep24",
+      "score": 99.38911532381347,
+      "bytes": 2588575,
+      "trees": 1,
+      "num_leaves": 32767,
+      "depth": 24,
+      "minimum_leaf": 8,
+      "categorical": false,
+      "elapsed_seconds": 7.824899624989484
+    },
+    {
+      "model": "deep32",
+      "score": 99.38615570657088,
+      "bytes": 2954667,
+      "trees": 1,
+      "num_leaves": 32767,
+      "depth": 32,
+      "minimum_leaf": 8,
+      "categorical": false,
+      "elapsed_seconds": 8.196793459006585
+    },
+    {
+      "model": "wide32",
+      "score": 99.34967379311288,
+      "bytes": 4668675,
+      "trees": 1,
+      "num_leaves": 65535,
+      "depth": 32,
+      "minimum_leaf": 4,
+      "categorical": false,
+      "elapsed_seconds": 14.993657166007324
+    },
+    {
+      "model": "two",
+      "score": 99.42608250280472,
+      "bytes": 1463370,
+      "trees": 2,
+      "num_leaves": 8191,
+      "depth": 24,
+      "minimum_leaf": 15,
+      "categorical": false,
+      "elapsed_seconds": 4.828293542013853
+    },
+    {
+      "model": "four",
+      "score": 99.44757144162685,
+      "bytes": 1635869,
+      "trees": 4,
+      "num_leaves": 4095,
+      "depth": 24,
+      "minimum_leaf": 15,
+      "categorical": false,
+      "elapsed_seconds": 5.291211083997041
+    },
+    {
+      "model": "eight",
+      "score": 99.46806510119598,
+      "bytes": 1519210,
+      "trees": 8,
+      "num_leaves": 2047,
+      "depth": 24,
+      "minimum_leaf": 15,
+      "categorical": false,
+      "elapsed_seconds": 6.611468167000567
+    },
+    {
+      "model": "cat_one",
+      "score": 99.38523052683432,
+      "bytes": 2724877,
+      "trees": 1,
+      "num_leaves": 32767,
+      "depth": 24,
+      "minimum_leaf": 8,
+      "categorical": true,
+      "elapsed_seconds": 7.563845374999801
+    },
+    {
+      "model": "cat_two",
+      "score": 99.41318966823995,
+      "bytes": 1487467,
+      "trees": 2,
+      "num_leaves": 8191,
+      "depth": 24,
+      "minimum_leaf": 15,
+      "categorical": true,
+      "elapsed_seconds": 4.821314917004202
+    },
+    {
+      "model": "cat_eight",
+      "score": 99.45893204479692,
+      "bytes": 1579505,
+      "trees": 8,
+      "num_leaves": 2047,
+      "depth": 24,
+      "minimum_leaf": 15,
+      "categorical": true,
+      "elapsed_seconds": 6.827131209007348
+    }
+  ]
+}

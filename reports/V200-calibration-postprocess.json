@@ -1,0 +1,277 @@
+{
+  "state": "complete",
+  "scope": "Validation comparison of explicit postprocessing rules after development fitting; not official hidden evaluation",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "model": "compact",
+      "mode": "original",
+      "snap_ps": 0,
+      "score": 99.4951350310333
+    },
+    {
+      "model": "compact",
+      "mode": "original",
+      "snap_ps": 1,
+      "score": 99.4957315927645
+    },
+    {
+      "model": "compact",
+      "mode": "original",
+      "snap_ps": 2,
+      "score": 99.49363131498289
+    },
+    {
+      "model": "compact",
+      "mode": "original",
+      "snap_ps": 3,
+      "score": 99.49061718302511
+    },
+    {
+      "model": "compact",
+      "mode": "original",
+      "snap_ps": 5,
+      "score": 99.484295716194
+    },
+    {
+      "model": "compact",
+      "mode": "nonnegative",
+      "snap_ps": 0,
+      "score": 99.49309943555093
+    },
+    {
+      "model": "compact",
+      "mode": "nonnegative",
+      "snap_ps": 1,
+      "score": 99.49365445441617
+    },
+    {
+      "model": "compact",
+      "mode": "nonnegative",
+      "snap_ps": 2,
+      "score": 99.4915853859537
+    },
+    {
+      "model": "compact",
+      "mode": "nonnegative",
+      "snap_ps": 3,
+      "score": 99.48859165613277
+    },
+    {
+      "model": "compact",
+      "mode": "nonnegative",
+      "snap_ps": 5,
+      "score": 99.48225801866631
+    },
+    {
+      "model": "compact",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 0,
+      "score": 99.49501116353413
+    },
+    {
+      "model": "compact",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 1,
+      "score": 99.49562609964045
+    },
+    {
+      "model": "compact",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 2,
+      "score": 99.4935702299478
+    },
+    {
+      "model": "compact",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 3,
+      "score": 99.49057352900549
+    },
+    {
+      "model": "compact",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 5,
+      "score": 99.48426651095926
+    },
+    {
+      "model": "large",
+      "mode": "original",
+      "snap_ps": 0,
+      "score": 99.52340712165855
+    },
+    {
+      "model": "large",
+      "mode": "original",
+      "snap_ps": 1,
+      "score": 99.52621112944404
+    },
+    {
+      "model": "large",
+      "mode": "original",
+      "snap_ps": 2,
+      "score": 99.52580146768972
+    },
+    {
+      "model": "large",
+      "mode": "original",
+      "snap_ps": 3,
+      "score": 99.52360067192136
+    },
+    {
+      "model": "large",
+      "mode": "original",
+      "snap_ps": 5,
+      "score": 99.51697654970316
+    },
+    {
+      "model": "large",
+      "mode": "nonnegative",
+      "snap_ps": 0,
+      "score": 99.51985101132004
+    },
+    {
+      "model": "large",
+      "mode": "nonnegative",
+      "snap_ps": 1,
+      "score": 99.5224364296769
+    },
+    {
+      "model": "large",
+      "mode": "nonnegative",
+      "snap_ps": 2,
+      "score": 99.52185961913096
+    },
+    {
+      "model": "large",
+      "mode": "nonnegative",
+      "snap_ps": 3,
+      "score": 99.51960593467429
+    },
+    {
+      "model": "large",
+      "mode": "nonnegative",
+      "snap_ps": 5,
+      "score": 99.51293230311803
+    },
+    {
+      "model": "large",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 0,
+      "score": 99.52303214871424
+    },
+    {
+      "model": "large",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 1,
+      "score": 99.52574235512299
+    },
+    {
+      "model": "large",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 2,
+      "score": 99.52529665636514
+    },
+    {
+      "model": "large",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 3,
+      "score": 99.52309611261909
+    },
+    {
+      "model": "large",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 5,
+      "score": 99.51652367060484
+    },
+    {
+      "model": "wide",
+      "mode": "original",
+      "snap_ps": 0,
+      "score": 99.53303083666162
+    },
+    {
+      "model": "wide",
+      "mode": "original",
+      "snap_ps": 1,
+      "score": 99.53663070787017
+    },
+    {
+      "model": "wide",
+      "mode": "original",
+      "snap_ps": 2,
+      "score": 99.53687176450423
+    },
+    {
+      "model": "wide",
+      "mode": "original",
+      "snap_ps": 3,
+      "score": 99.53521451443164
+    },
+    {
+      "model": "wide",
+      "mode": "original",
+      "snap_ps": 5,
+      "score": 99.52954384287919
+    },
+    {
+      "model": "wide",
+      "mode": "nonnegative",
+      "snap_ps": 0,
+      "score": 99.5291672102005
+    },
+    {
+      "model": "wide",
+      "mode": "nonnegative",
+      "snap_ps": 1,
+      "score": 99.53241862025665
+    },
+    {
+      "model": "wide",
+      "mode": "nonnegative",
+      "snap_ps": 2,
+      "score": 99.5325225580102
+    },
+    {
+      "model": "wide",
+      "mode": "nonnegative",
+      "snap_ps": 3,
+      "score": 99.53071653290931
+    },
+    {
+      "model": "wide",
+      "mode": "nonnegative",
+      "snap_ps": 5,
+      "score": 99.5249860899229
+    },
+    {
+      "model": "wide",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 0,
+      "score": 99.53262816661609
+    },
+    {
+      "model": "wide",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 1,
+      "score": 99.5361020578193
+    },
+    {
+      "model": "wide",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 2,
+      "score": 99.53632810852602
+    },
+    {
+      "model": "wide",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 3,
+      "score": 99.53466068006098
+    },
+    {
+      "model": "wide",
+      "mode": "noncross_nonnegative",
+      "snap_ps": 5,
+      "score": 99.5290460927465
+    }
+  ]
+}

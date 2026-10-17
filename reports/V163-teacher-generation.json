@@ -1,0 +1,13 @@
+{
+  "state": "complete",
+  "architecture_only_targets": true,
+  "sources": "32 distinct source ports selected from development inputs",
+  "validation_labels_used": false,
+  "holdout_used": false,
+  "rows": 117508,
+  "compact_solver_audit_rows": 26,
+  "cpu_seconds": 78.6888,
+  "peak_rss_bytes": 1661337600,
+  "numeric_sha256": "2e17eacaadb86c67b7be2c1b80bfaa9841026bb412c575d4c02b54b335ed083c",
+  "scope": "Offline training label generation; sample parity does not establish a new whole-graph proof or a submission performance result."
+}

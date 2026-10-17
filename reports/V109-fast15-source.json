@@ -1,0 +1,33 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "prediction_cache": false,
+  "target_seconds": 900,
+  "candidates": [
+    {
+      "name": "cell-source8",
+      "source_count": 8,
+      "score": 99.0292052709444,
+      "validation_rows": 150053,
+      "cpu_seconds": 81.3622,
+      "init_seconds": 70.6382,
+      "query_seconds": 10.724000000000004,
+      "estimate_seconds": 1143.0382000000004,
+      "rss_bytes": 1958019072,
+      "output_sha256": "e8e9045f75044b5d51c096b0bcbf15320a8009271da420c22b9fd3e0dc9b35e4"
+    },
+    {
+      "name": "cell-source4",
+      "source_count": 4,
+      "score": 99.00929880970838,
+      "validation_rows": 150053,
+      "cpu_seconds": 81.3503,
+      "init_seconds": 70.7647,
+      "query_seconds": 10.5856,
+      "estimate_seconds": 1129.3247,
+      "rss_bytes": 1958002688,
+      "output_sha256": "899422bfd3995dd4db0b6fcb593b331920b1be8ffe9ec422c5f1b8812c9846e7"
+    }
+  ]
+}

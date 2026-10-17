@@ -1,0 +1,22 @@
+{
+  "raw": {
+    "zero_residual_fraction": 0.5720167545543416,
+    "median_residual_ps": 0.0,
+    "mean_abs_ps": 6.31059861139852,
+    "abs_quantiles_ps": [
+      0.0,
+      16.0,
+      92.0
+    ]
+  },
+  "retained": {
+    "zero_residual_fraction": 0.5103645614060125,
+    "median_residual_ps": 0.0,
+    "mean_abs_ps": 5.914691631999201,
+    "abs_quantiles_ps": [
+      0.0,
+      15.0,
+      84.0
+    ]
+  }
+}

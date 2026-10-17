@@ -1,0 +1,11 @@
+{
+  "state": "complete",
+  "bytes": 17124828,
+  "lossless_roundtrip": true,
+  "raw_sha256": "30dea4599f1d7bd77f954eee6661b7f43ebc5852d3b888e402ab0d796f30f1e6",
+  "asset_sha256": "1fbf42e849dee9e3ebd4209f43221a86bf26c6f890a1633881bfdbf2d25c65a0",
+  "cpu_seconds": 43.843627,
+  "reachable_leg_max": 2735,
+  "unreachable_fraction": 0.13902439024390245,
+  "submission_ready": false
+}

@@ -1,0 +1,56 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Python categorical challenger, no accepted runtime or serialized size",
+  "candidates": [
+    {
+      "leaves": 63,
+      "trees": 32,
+      "score": 99.06470218213327,
+      "elapsed": 79.93972450000001
+    },
+    {
+      "leaves": 63,
+      "trees": 64,
+      "score": 99.06927029392442,
+      "elapsed": 80.59301204200165
+    },
+    {
+      "leaves": 63,
+      "trees": 128,
+      "score": 99.07331747802147,
+      "elapsed": 81.98496137500479
+    },
+    {
+      "leaves": 63,
+      "trees": 256,
+      "score": 99.07328165871763,
+      "elapsed": 86.11594412500563
+    },
+    {
+      "leaves": 255,
+      "trees": 32,
+      "score": 99.07909006794543,
+      "elapsed": 215.1891665420044
+    },
+    {
+      "leaves": 255,
+      "trees": 64,
+      "score": 99.079684624378,
+      "elapsed": 216.81340491700394
+    },
+    {
+      "leaves": 255,
+      "trees": 128,
+      "score": 99.08144998316284,
+      "elapsed": 221.3600305
+    },
+    {
+      "leaves": 255,
+      "trees": 256,
+      "score": 99.08548118314073,
+      "elapsed": 232.12954662500124
+    }
+  ]
+}

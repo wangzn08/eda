@@ -1,0 +1,14 @@
+[
+  {
+    "normalized_lane": false,
+    "patterns": 594238,
+    "width": 3,
+    "xz_bytes": 5012140
+  },
+  {
+    "normalized_lane": true,
+    "patterns": 594238,
+    "width": 3,
+    "xz_bytes": 4996220
+  }
+]

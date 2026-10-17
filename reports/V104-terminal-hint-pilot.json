@@ -1,0 +1,13 @@
+{
+  "holdout_used": false,
+  "accuracy": [
+    {
+      "candidates": 1,
+      "score": 99.03732006791036
+    },
+    {
+      "candidates": 2,
+      "score": 99.07714818240181
+    }
+  ]
+}

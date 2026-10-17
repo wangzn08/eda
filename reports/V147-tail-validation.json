@@ -1,0 +1,67 @@
+{
+  "state": "complete",
+  "scope": "Full validation of raw tail response prototype, over submission size pending compression",
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h1-a10000",
+      "score": 99.11323184986836,
+      "exact_fraction": 0.5564967044977441
+    },
+    {
+      "name": "h1-a120",
+      "score": 99.10997068383358,
+      "exact_fraction": 0.5557569658720586
+    },
+    {
+      "name": "h1-a36",
+      "score": 99.09619969086886,
+      "exact_fraction": 0.5541242094459957
+    },
+    {
+      "name": "h2-a10000",
+      "score": 99.11416406102995,
+      "exact_fraction": 0.5565033688096872
+    },
+    {
+      "name": "h2-a120",
+      "score": 99.11090289499518,
+      "exact_fraction": 0.5557636301840017
+    },
+    {
+      "name": "h2-a36",
+      "score": 99.09713190203044,
+      "exact_fraction": 0.5541308737579389
+    },
+    {
+      "name": "h4-a10000",
+      "score": 99.114348216732,
+      "exact_fraction": 0.5564967044977441
+    },
+    {
+      "name": "h4-a120",
+      "score": 99.11108705069724,
+      "exact_fraction": 0.5557569658720586
+    },
+    {
+      "name": "h4-a36",
+      "score": 99.0973160577325,
+      "exact_fraction": 0.5541242094459957
+    },
+    {
+      "name": "h8-a10000",
+      "score": 99.11569444855682,
+      "exact_fraction": 0.5565100331216304
+    },
+    {
+      "name": "h8-a120",
+      "score": 99.11243328252205,
+      "exact_fraction": 0.5557702944959447
+    },
+    {
+      "name": "h8-a36",
+      "score": 99.0986622895573,
+      "exact_fraction": 0.554137538069882
+    }
+  ]
+}

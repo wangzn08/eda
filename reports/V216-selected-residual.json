@@ -1,0 +1,38 @@
+{
+  "state": "complete",
+  "fit_scope": "development labels only, features from the current selected architecture route; no old predictor descriptors",
+  "holdout_used": false,
+  "base_score": 99.34147367044055,
+  "feature_count": 137,
+  "scope": "Accuracy and model-size pilot; standard native speed/storage/RSS unproven",
+  "candidates": [
+    {
+      "model": "tree1",
+      "score": 99.46003983729031,
+      "elapsed_seconds": 3.2182970410067355,
+      "features_used": 130,
+      "reused_saved_model": false
+    },
+    {
+      "model": "tree8",
+      "score": 99.5175565720498,
+      "elapsed_seconds": 4.811283417002414,
+      "features_used": 124,
+      "reused_saved_model": false
+    },
+    {
+      "model": "compact",
+      "score": 99.50712005063971,
+      "elapsed_seconds": 15.901940750001813,
+      "features_used": 121,
+      "reused_saved_model": false
+    },
+    {
+      "model": "large",
+      "score": 99.52923029159274,
+      "elapsed_seconds": 66.48131308300071,
+      "features_used": 132,
+      "reused_saved_model": false
+    }
+  ]
+}

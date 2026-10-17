@@ -1,0 +1,65 @@
+{
+  "asset_sha256_before": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "770e3397625c4a7d6a6c28aaf83bc0841744f31039613205433d912896e9bea8",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "34c4307a3ab687571e3ee0ebc6f70fa974622fc18da97d65b0c88cc5c842b6a2",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "state": "complete",
+  "scope": "Apple M4/macOS local; actual10m repeated development requests with CSV I/O, init once; billion extrapolation, not official Linux",
+  "target_seconds": 600,
+  "validation_floor": 99.5,
+  "single_thread": true,
+  "prediction_cache": false,
+  "holdout_used": false,
+  "runtime_file_bytes": 94768591,
+  "runs": [
+    {
+      "name": "validation",
+      "rows": 150053,
+      "cpu_seconds": 74.3145,
+      "init_seconds": 73.9592,
+      "query_seconds": 0.3552999999999997,
+      "rss_bytes": 1833549824,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "score": 99.51665300760335,
+      "scope": "Full validation of this candidate; differing from V116 is allowed"
+    },
+    {
+      "name": "speed10m-1",
+      "rows": 10000000,
+      "cpu_seconds": 97.6088,
+      "init_seconds": 74.6208,
+      "query_seconds": 22.988,
+      "rss_bytes": 1850851328,
+      "output_sha256": "121a31b4077b111a72829548bd9f2511663a3c2159a76ece46506629a19df0a3",
+      "billion_estimate_seconds": 2373.4208000000003
+    },
+    {
+      "name": "speed10m-2",
+      "rows": 10000000,
+      "cpu_seconds": 97.2298,
+      "init_seconds": 74.5216,
+      "query_seconds": 22.70819999999999,
+      "rss_bytes": 1770504192,
+      "output_sha256": "121a31b4077b111a72829548bd9f2511663a3c2159a76ece46506629a19df0a3",
+      "billion_estimate_seconds": 2345.3415999999993
+    }
+  ],
+  "validation_score": 99.51665300760335,
+  "asset_sha256_after": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "770e3397625c4a7d6a6c28aaf83bc0841744f31039613205433d912896e9bea8",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "34c4307a3ab687571e3ee0ebc6f70fa974622fc18da97d65b0c88cc5c842b6a2",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "peak_rss_bytes": 1850851328,
+  "speed_outputs_match": true,
+  "goal_met": false
+}

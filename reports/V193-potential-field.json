@@ -1,0 +1,17 @@
+{
+  "state": "complete",
+  "shape": [
+    2,
+    3,
+    60200,
+    160,
+    4
+  ],
+  "header_bytes": 92,
+  "field_raw_bytes": 462336092,
+  "generation_cpu_seconds_excluding_initialization": 5.32836,
+  "scope": "Architecture-only offline field generation, not submission assets or native query benchmark",
+  "golden_used": false,
+  "holdout_used": false,
+  "stderr": "mode=0 depth=1 negative=0 clipped=0 cpu=0.670231\nmode=0 depth=2 negative=0 clipped=0 cpu=1.32076\nmode=0 depth=4 negative=0 clipped=0 cpu=2.57958\nmode=1 depth=1 negative=0 clipped=858880 cpu=3.26013\nmode=1 depth=2 negative=0 clipped=858880 cpu=3.97188\nmode=1 depth=4 negative=0 clipped=858880 cpu=5.32836\nbytes=462336092\n        5.88 real         5.13 user         0.24 sys\n           327041024  maximum resident set size\n                   0  average shared memory size\n                   0  average unshared data size\n                   0  average unshared stack size\n               20131  page reclaims\n                   1  page faults\n                   0  swaps\n                   0  block input operations\n                   0  block output operations\n                   0  messages sent\n                   0  messages received\n                   0  signals received\n                  32  voluntary context switches\n                  97  involuntary context switches\n        147127382154  instructions retired\n         22321726162  cycles elapsed\n           326140528  peak memory footprint\n"
+}

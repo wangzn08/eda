@@ -1,0 +1,15 @@
+{
+  "state": "compressed candidate; full validation pending",
+  "lossless": true,
+  "architecture_only": true,
+  "fit_labels_used": false,
+  "holdout_used": false,
+  "inverse_exact": true,
+  "asset_bytes": 14599948,
+  "decoded_bytes": 221184000,
+  "decoded_transform_sha256": "7fcefe75ff5217d99d6631a475b5d46679164ea27bc1db397118081948b43c88",
+  "reconstructed_sha256": "5abe2497bb2c70b31f591ae8c24c2b55de8de69d1bf99b8d587fab0a8b3f07ae",
+  "original_raw_sha256": "5abe2497bb2c70b31f591ae8c24c2b55de8de69d1bf99b8d587fab0a8b3f07ae",
+  "compression_cpu_seconds": 52.152607,
+  "estimated_profile_bytes_before_executable_growth": 106809793
+}

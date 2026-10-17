@@ -1,0 +1,9 @@
+{
+  "scope": "Exact gauge-potential test for one-lane graph rotation; zero residuals required",
+  "edges": 2752,
+  "missing_rotated_edges": 0,
+  "components": 1,
+  "nonzero_constraints": 2487,
+  "max_absolute_residual": 32,
+  "exact_gauge_equivalence": false
+}

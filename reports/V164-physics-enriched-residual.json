@@ -1,0 +1,20 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "features": 150,
+  "physics_tables": "Architecture-only finite ideal-graph tail and multianchor responses; approximate descriptors, not true physical shortest-path certificates",
+  "scope": "Accuracy prototype; native timing/budget pending",
+  "candidates": [
+    {
+      "name": "small",
+      "score": 99.18716377708911,
+      "elapsed_seconds": 25.43899750000128
+    },
+    {
+      "name": "large",
+      "score": 99.24514894562788,
+      "elapsed_seconds": 126.73868766600208
+    }
+  ]
+}

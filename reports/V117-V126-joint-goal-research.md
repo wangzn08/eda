@@ -1,0 +1,23 @@
+# V117–V126: 99.5 score / 600-second joint target
+
+Status: **in progress, target not achieved**. Preserve frozen V116 (99.0256649430; two10m CPU extrapolations684.0975/689.4150sec; runtime directory99,295,621 bytes; peakRSS1,624,555,520 bytes).
+
+## Diagnosis and distinct experiments
+
+- V117: full validation diagnostic, 67,530 non-exact rows. Underestimates account for0.67822 score points of the0.97434 total loss. Merely taking minima over more candidates can worsen this dominant loss. Route descriptor extraction matches all850,758 development+validation predictions. Descriptors report selected source/terminal, period/residue, route kind, entry cost and source-candidate margin; they are approximate estimator states, not physical shortest-path witnesses.
+- V117 route-aware trees: control99.10638; single1023/8191 leaves99.09987/99.09222; route16/64 trees99.12530/99.13014. Labels from development only. Python results; not accepted C++ or a submission. The added information helps this control but does not meet99.5.
+- V118: source expansion reused across prefetch and prediction, full850,758-output parity. Actual1m pilot0.6499 query CPU seconds/init77.0604; worse than the frozen V116 measurements. This isolated implementation is not retained.
+- V119: reverse-peel the last physical Net then estimate its middle. Some selected final Nets are unavailable; if no candidate remains, fall back to the original recurrence. Full validation98.79886, worse than V116. Label-dependent oracle comparison is a diagnostic ceiling only (99.17510), not a predictor. Endpoint peeling does not independently solve the target.
+- V120: additive weighted-median route factors (family, relative lane, phase, distance bucket, boundary context). Development-only fit; low-count factors overfit (validation98.92935), conservative mincount32 reaches99.02931. Not retained.
+- V121: category-aware topology boosting with raw/core port categories. Best99.08548, not retained; categorical treatment alone is insufficient.
+- V122: force all cross-wall requests through open-row hubs (target-side, source-side, minimum of both). Full validation94.80903/94.77117/94.90002. A fixed hub severely restricts port compatibility and freedom; this route family is rejected. Nominal pieces do not certify a physical path.
+- V123: second-order sparse factorization machines. Compact prototype reaches99.03824; joint high-dimensional factors overfit (best98.82552). Not retained. Parameters fitted on development only. FM is an established model, not our invention.
+- V124: compile out inactive endpoint/trace experiments; fixed-width port loads, zero-copy batches flushed before reader refills, 32-bit prepared costs. Full validation predictions and1m hashes match V116. Same-process control/zero/prepared pilot queries0.6441/0.6370/0.6336sec, with initialization78.1091/77.6791/77.7753sec. Small improvement within this paired screening, insufficient for600sec. The control differs from earlier frozen timings; do not silently claim this pilot is a final regression or speedup.
+- V125: expose actual four-band bases and horizontal/interaction deltas from the selected cell as quality indicators. These are architecture-derived, not labels. Best full validation99.21014442 (511 leaves,256 trees), better than the frozen baseline but below99.5. Python prototype only; deployment and throughput unverified.
+- V126: group source candidates by actual first-hop coordinate and reuse period/residue/gap calculations. Compute these quantities once per distinct coordinate, prefetch with the same geometry, and use the direct ordinary-region kernel. Preserve original cross-wall handling. No result caching and no new disk asset. Full validation parity verified; actual1m query0.6213sec, initialization78.0022sec, pilot extrapolation699.3022sec, peakRSS1,622,654,976 bytes. This pilot does not meet600sec.
+
+## Evidence and boundaries
+
+Reports V117 through V125 JSON plus saved scripts implement the experiments. All fitting uses development, validation for research comparison; holdout unread. Several candidates are purely architecture-derived. No billion run, no official Linux measurement or ranking. Failed prototypes remain behind explicit research flags; V116 bytes stay intact. Repeated validation selection may overstate generalization.
+
+References: FPGA lookahead (Petelin/Betz2016); route decomposition (Arz/Luxen/Sanders2013 and Hook2017); latency hiding (Kocberber et al.2015, staged prefetch rather than full AMAC); Blondel et al.2016, https://arxiv.org/abs/1607.08810, second-order FM expression. The FM prototype uses AdamW and the contest loss, not the paper's coordinate-descent solver or theoretical guarantees. Paper PDFs and notes are in papers/README.md.

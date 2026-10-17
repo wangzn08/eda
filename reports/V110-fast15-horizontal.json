@@ -1,0 +1,33 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "prediction_cache": false,
+  "target_seconds": 900,
+  "candidates": [
+    {
+      "name": "horizontal-source8",
+      "source_count": 8,
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "cpu_seconds": 82.7771,
+      "init_seconds": 74.3948,
+      "query_seconds": 8.3823,
+      "estimate_seconds": 912.6248,
+      "rss_bytes": 1963868160,
+      "output_sha256": "e64d087e4364c141c8925fe563c07ad7ab983287ffb49301db01bac3f41e8e89"
+    },
+    {
+      "name": "horizontal-source4",
+      "source_count": 4,
+      "score": 99.00575848179007,
+      "validation_rows": 150053,
+      "cpu_seconds": 82.5298,
+      "init_seconds": 74.3155,
+      "query_seconds": 8.214299999999994,
+      "estimate_seconds": 895.7454999999994,
+      "rss_bytes": 1963868160,
+      "output_sha256": "cab7903f6f71a8e2ee42a3dbd10276e589ee81112b2d4eaad9d6a38671c289d3"
+    }
+  ]
+}

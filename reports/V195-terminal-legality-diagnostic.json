@@ -1,0 +1,7 @@
+{
+  "scope": "Validation diagnostic of selected terminal core having no incoming physical Net; no fitting on validation",
+  "invalid_terminal_rows": 795,
+  "fraction": 0.0052981279947751795,
+  "loss_contribution_points": 0.042267426356493415,
+  "baseline_score_invalid": 92.02219606657748
+}

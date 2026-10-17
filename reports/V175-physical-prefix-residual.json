@@ -1,0 +1,19 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "base_validation_score": 99.40078481593186,
+  "scope": "Two-step physical teacher plus residual, accuracy prototype; pruning/distillation and native timing pending",
+  "candidates": [
+    {
+      "name": "compact",
+      "score": 99.52422913097662,
+      "elapsed_seconds": 100.87971870799811
+    },
+    {
+      "name": "wide",
+      "score": 99.52794105535536,
+      "elapsed_seconds": 301.66695991600136
+    }
+  ]
+}

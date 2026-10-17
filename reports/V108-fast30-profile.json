@@ -1,0 +1,70 @@
+{
+  "state": "complete",
+  "validation_rows": 150053,
+  "validation_score": 99.03732006791036,
+  "validation_byte_exact_to_v105": true,
+  "retained_v93_validation_byte_exact": true,
+  "machine": {
+    "cpu": "Apple M4",
+    "os": "macOS 27.0.1"
+  },
+  "runtime_file_bytes": 99301592,
+  "profile_directory_bytes": 99303986,
+  "files": {
+    "estimate": 774440,
+    "core-template.bin": 42083456,
+    "vertical-transients.bin": 18774532,
+    "horizontal-transients.bin": 23032644,
+    "vertical-far-delta.bin": 10775132,
+    "joint-interaction.bin": 3861388
+  },
+  "runs": [
+    {
+      "name": "speed10m-1",
+      "layout": "phase-major",
+      "rows": 10000000,
+      "cpu_seconds": 50.2269,
+      "initialization_seconds": 35.9759,
+      "query_cpu_seconds": 14.250999999999998,
+      "query_cpu_seconds_per_million": 1.4250999999999998,
+      "rss_bytes": 1777270784,
+      "estimated_billion_cpu_seconds": 1461.0758999999996,
+      "estimated_billion_cpu_minutes": 24.351264999999994
+    },
+    {
+      "name": "control-speed10m",
+      "layout": "source-major-control",
+      "rows": 10000000,
+      "cpu_seconds": 42.9828,
+      "initialization_seconds": 25.085,
+      "query_cpu_seconds": 17.897799999999997,
+      "query_cpu_seconds_per_million": 1.7897799999999997,
+      "rss_bytes": 1775321088,
+      "estimated_billion_cpu_seconds": 1814.8649999999998,
+      "estimated_billion_cpu_minutes": 30.247749999999996
+    },
+    {
+      "name": "speed10m-2",
+      "layout": "phase-major",
+      "rows": 10000000,
+      "cpu_seconds": 50.1507,
+      "initialization_seconds": 35.9459,
+      "query_cpu_seconds": 14.204799999999999,
+      "query_cpu_seconds_per_million": 1.42048,
+      "rss_bytes": 1777270784,
+      "estimated_billion_cpu_seconds": 1456.4258999999997,
+      "estimated_billion_cpu_minutes": 24.273764999999994
+    }
+  ],
+  "speed_output_sha256": {
+    "speed10m-1": "6885572a1ec87f83e13b455910fb975282f5a86d2aedc4dcf78686ec2c0c674c",
+    "control-speed10m": "6885572a1ec87f83e13b455910fb975282f5a86d2aedc4dcf78686ec2c0c674c",
+    "speed10m-2": "6885572a1ec87f83e13b455910fb975282f5a86d2aedc4dcf78686ec2c0c674c"
+  },
+  "whole10m_outputs_byte_exact": true,
+  "holdout_used": false,
+  "prediction_cache": false,
+  "estimated_billion_cpu_minutes_mean": 24.312514999999994,
+  "estimated_billion_cpu_minutes_worst": 24.351264999999994,
+  "scope": "Local macOS single-thread actual10m CPU, validation >=99 and billion-time extrapolation <=30 minutes; same development-derived repeated mix and stable-throughput assumption, not officialLinux acceptance or actual-billion proof"
+}

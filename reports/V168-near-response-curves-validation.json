@@ -1,0 +1,68 @@
+{
+  "state": "complete",
+  "scope": "Shared initialization research comparison, not a standard submission or throughput benchmark",
+  "architecture_only": true,
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h1-a10000",
+      "score": 99.10215862646677,
+      "exact_fraction": 0.5764763117031982
+    },
+    {
+      "name": "h1-a120",
+      "score": 99.09899116542357,
+      "exact_fraction": 0.5755099864714468
+    },
+    {
+      "name": "h1-a36",
+      "score": 99.08391373970863,
+      "exact_fraction": 0.5738039226140097
+    },
+    {
+      "name": "h2-a10000",
+      "score": 99.10309083762836,
+      "exact_fraction": 0.5764829760151413
+    },
+    {
+      "name": "h2-a120",
+      "score": 99.09992337658517,
+      "exact_fraction": 0.5755166507833899
+    },
+    {
+      "name": "h2-a36",
+      "score": 99.08484595087022,
+      "exact_fraction": 0.5738105869259529
+    },
+    {
+      "name": "h4-a10000",
+      "score": 99.10327499333042,
+      "exact_fraction": 0.5764763117031982
+    },
+    {
+      "name": "h4-a120",
+      "score": 99.10010753228721,
+      "exact_fraction": 0.5755099864714468
+    },
+    {
+      "name": "h4-a36",
+      "score": 99.08503010657228,
+      "exact_fraction": 0.5738039226140097
+    },
+    {
+      "name": "h8-a10000",
+      "score": 99.10462122515523,
+      "exact_fraction": 0.5764896403270844
+    },
+    {
+      "name": "h8-a120",
+      "score": 99.10145376411202,
+      "exact_fraction": 0.5755233150953329
+    },
+    {
+      "name": "h8-a36",
+      "score": 99.08637633839709,
+      "exact_fraction": 0.573817251237896
+    }
+  ]
+}

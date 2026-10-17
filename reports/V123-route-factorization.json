@@ -1,0 +1,82 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "prediction_cache": false,
+  "device": "mps",
+  "reference": "Blondel et al.2016 arxiv1607.08810; second-order ANOVA/FM equation, AdamW rather than paper coordinate descent",
+  "candidates": [
+    {
+      "name": "joint0-r8-e4",
+      "score": 99.01234963517153,
+      "float16_parameter_bytes": 39512,
+      "elapsed": 2.3861484579974785
+    },
+    {
+      "name": "joint0-r8-e8",
+      "score": 99.01677655619127,
+      "float16_parameter_bytes": 39512,
+      "elapsed": 2.9291904170022462
+    },
+    {
+      "name": "joint0-r8-e12",
+      "score": 99.02582936925349,
+      "float16_parameter_bytes": 39512,
+      "elapsed": 3.4707437500037486
+    },
+    {
+      "name": "joint0-r8-e16",
+      "score": 99.03478392716615,
+      "float16_parameter_bytes": 39512,
+      "elapsed": 4.022375833003025
+    },
+    {
+      "name": "joint0-r8-e20",
+      "score": 99.03798341630797,
+      "float16_parameter_bytes": 39512,
+      "elapsed": 4.565760750003392
+    },
+    {
+      "name": "joint0-r8-e24",
+      "score": 99.03824290663252,
+      "float16_parameter_bytes": 39512,
+      "elapsed": 5.108819624998432
+    },
+    {
+      "name": "joint1-r8-e4",
+      "score": 98.82551697732963,
+      "float16_parameter_bytes": 1191512,
+      "elapsed": 6.021625207999023
+    },
+    {
+      "name": "joint1-r8-e8",
+      "score": 98.77614266478776,
+      "float16_parameter_bytes": 1191512,
+      "elapsed": 6.7638475420026225
+    },
+    {
+      "name": "joint1-r8-e12",
+      "score": 98.75178277616725,
+      "float16_parameter_bytes": 1191512,
+      "elapsed": 7.503372457998921
+    },
+    {
+      "name": "joint1-r8-e16",
+      "score": 98.73903087707704,
+      "float16_parameter_bytes": 1191512,
+      "elapsed": 8.263515375001589
+    },
+    {
+      "name": "joint1-r8-e20",
+      "score": 98.72756204430941,
+      "float16_parameter_bytes": 1191512,
+      "elapsed": 9.002798166999128
+    },
+    {
+      "name": "joint1-r8-e24",
+      "score": 98.71813028949342,
+      "float16_parameter_bytes": 1191512,
+      "elapsed": 9.739816207998956
+    }
+  ]
+}

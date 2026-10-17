@@ -1,0 +1,65 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "reference_potential_north": 125,
+  "new_north": 127,
+  "scale": 12,
+  "scope": "New periodic approximation, not physical-path certificate or final submission",
+  "candidates": [
+    {
+      "name": "near0-mode0",
+      "score": 93.2820404541433,
+      "cpu_seconds": 0.165582,
+      "init_seconds": 0.094778,
+      "query_seconds": 0.070804,
+      "rss_bytes": 325730304,
+      "exact_fraction": 0.05758631950044318
+    },
+    {
+      "name": "near0-mode1",
+      "score": 93.2820404541433,
+      "cpu_seconds": 0.118566,
+      "init_seconds": 0.066025,
+      "query_seconds": 0.052541000000000004,
+      "rss_bytes": 325746688,
+      "exact_fraction": 0.05758631950044318
+    },
+    {
+      "name": "near0-mode2",
+      "score": 93.63247558872342,
+      "cpu_seconds": 0.118861,
+      "init_seconds": 0.062136,
+      "query_seconds": 0.056725,
+      "rss_bytes": 325779456,
+      "exact_fraction": 0.0587392454666018
+    },
+    {
+      "name": "near1-mode0",
+      "score": 94.18532044958103,
+      "cpu_seconds": 4.46112,
+      "init_seconds": 4.40577,
+      "query_seconds": 0.05534999999999979,
+      "rss_bytes": 768376832,
+      "exact_fraction": 0.10053114566186615
+    },
+    {
+      "name": "near1-mode1",
+      "score": 94.16855041306917,
+      "cpu_seconds": 4.44011,
+      "init_seconds": 4.38252,
+      "query_seconds": 0.057589999999999364,
+      "rss_bytes": 768393216,
+      "exact_fraction": 0.09967811373314762
+    },
+    {
+      "name": "near1-mode2",
+      "score": 94.54637923129307,
+      "cpu_seconds": 4.46614,
+      "init_seconds": 4.40086,
+      "query_seconds": 0.06528000000000045,
+      "rss_bytes": 768360448,
+      "exact_fraction": 0.10401658080811446
+    }
+  ]
+}

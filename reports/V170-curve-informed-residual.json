@@ -1,0 +1,19 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "features": 170,
+  "scope": "Curve/obstruction-conditioned accuracy prototype; native inference and budget pending",
+  "candidates": [
+    {
+      "name": "compact",
+      "score": 99.25282312067918,
+      "elapsed_seconds": 111.53055458299787
+    },
+    {
+      "name": "wide",
+      "score": 99.26088294168827,
+      "elapsed_seconds": 341.7354123749974
+    }
+  ]
+}

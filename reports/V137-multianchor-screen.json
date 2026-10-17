@@ -1,0 +1,20 @@
+{
+  "state": "complete",
+  "scope": "Architecture nominal graph and three preselected sources; held-distance combinations, not unseen ports or full validation",
+  "all_band_mean_absolute_error_ps": {
+    "0": 6.6722231249999995,
+    "1": 2.41021875,
+    "2": 1.1599261875
+  },
+  "non_anchor_band_mean_absolute_error_ps": {
+    "0": 7.2512775,
+    "1": 2.6195049999999998,
+    "2": 1.54656825
+  },
+  "methods": {
+    "0": "axis transient baseline",
+    "1": "current single-anchor scaled patch",
+    "2": "nine-anchor bilinear patch"
+  },
+  "holdout_used": false
+}

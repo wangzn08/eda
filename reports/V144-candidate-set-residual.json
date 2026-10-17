@@ -1,0 +1,40 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "baseline_parity": true,
+  "features": 202,
+  "scope": "Architecture candidate-set feature screening; not native speed or submission",
+  "candidates": [
+    {
+      "name": "single",
+      "trees": 1,
+      "score": 99.12312121059658,
+      "elapsed_seconds": 7.500890000002983
+    },
+    {
+      "name": "shared",
+      "trees": 32,
+      "score": 99.16135217090051,
+      "elapsed_seconds": 175.32521579199965
+    },
+    {
+      "name": "shared",
+      "trees": 64,
+      "score": 99.18805080275341,
+      "elapsed_seconds": 176.58352987500257
+    },
+    {
+      "name": "shared",
+      "trees": 128,
+      "score": 99.19743886383418,
+      "elapsed_seconds": 178.73887345800176
+    },
+    {
+      "name": "shared",
+      "trees": 256,
+      "score": 99.20634569292622,
+      "elapsed_seconds": 182.12892462500167
+    }
+  ]
+}

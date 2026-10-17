@@ -1,0 +1,45 @@
+{
+  "state": "complete",
+  "scope": "Full-vector masks normalized to existing unrestricted nominal fast paths, with smaller beam alternatives. Shared initialization query timing only; not a submission profile.",
+  "rows": 150053,
+  "holdout_used": false,
+  "init_cpu_seconds": 89.2027,
+  "full_validation_byte_parity": {
+    "h1-depth0-beam4-margin32": true,
+    "h1-depth4-beam4-margin32": true
+  },
+  "hint_assets_generated_from_architecture_only": true,
+  "cases": [
+    {
+      "name": "h1-depth0-beam4-margin32",
+      "score": 99.12690358754685,
+      "cpu_query_seconds": 0.148758,
+      "sha256": "ab79466bb00609f3ef949da55a25619153f2f9419d8b9fb738b4e911e2286167"
+    },
+    {
+      "name": "h1-depth4-beam2-margin0",
+      "score": 99.49184951359028,
+      "cpu_query_seconds": 10.4138,
+      "sha256": "26c58b0feea4f4437b89330aa7596cbb199702fecfe297acfdf12d02d9b6a818"
+    },
+    {
+      "name": "h1-depth4-beam2-margin32",
+      "score": 99.46886995500765,
+      "cpu_query_seconds": 8.84441,
+      "sha256": "6951c2b9617fb542ae8e8313d47d50ac13923d597fce2a81823f2514e6c1dd41"
+    },
+    {
+      "name": "h1-depth4-beam4-margin0",
+      "score": 99.55217411088316,
+      "cpu_query_seconds": 29.0812,
+      "sha256": "2075ccce9259b1194ad3b4f4de0489f12f3c161473aded753956a3c605e570c8"
+    },
+    {
+      "name": "h1-depth4-beam4-margin32",
+      "score": 99.52494240128871,
+      "cpu_query_seconds": 18.2104,
+      "sha256": "ec1365bd54ebc1110505bd05764c3d7c32b89ee09a314c4d61999fe1fff5ca2a"
+    }
+  ],
+  "joint_goal_met": false
+}

@@ -1,0 +1,189 @@
+{
+  "state": "complete",
+  "scope": "All sources in eight-source action dictionaries; nearest period/x anchors approximate, native accuracy pending",
+  "blocks": [
+    {
+      "block": 0,
+      "patterns": 59619,
+      "width": 2,
+      "decoded_bytes": 14185752,
+      "xz_bytes": 2303588,
+      "elapsed_seconds": 3.608388584005297
+    },
+    {
+      "block": 1,
+      "patterns": 85469,
+      "width": 3,
+      "decoded_bytes": 21246952,
+      "xz_bytes": 2469676,
+      "elapsed_seconds": 8.74437187500007
+    },
+    {
+      "block": 2,
+      "patterns": 154759,
+      "width": 3,
+      "decoded_bytes": 21801272,
+      "xz_bytes": 3121980,
+      "elapsed_seconds": 14.305615334000322
+    },
+    {
+      "block": 3,
+      "patterns": 65775,
+      "width": 3,
+      "decoded_bytes": 21089400,
+      "xz_bytes": 2617668,
+      "elapsed_seconds": 19.63006487500388
+    },
+    {
+      "block": 4,
+      "patterns": 66985,
+      "width": 3,
+      "decoded_bytes": 21099080,
+      "xz_bytes": 2407904,
+      "elapsed_seconds": 24.768059542009723
+    },
+    {
+      "block": 5,
+      "patterns": 60506,
+      "width": 2,
+      "decoded_bytes": 14192848,
+      "xz_bytes": 2418884,
+      "elapsed_seconds": 28.511290624999674
+    },
+    {
+      "block": 6,
+      "patterns": 84145,
+      "width": 3,
+      "decoded_bytes": 21236360,
+      "xz_bytes": 2682792,
+      "elapsed_seconds": 33.9332597090106
+    },
+    {
+      "block": 7,
+      "patterns": 135880,
+      "width": 3,
+      "decoded_bytes": 21650240,
+      "xz_bytes": 3081160,
+      "elapsed_seconds": 39.51109116700536
+    },
+    {
+      "block": 8,
+      "patterns": 71118,
+      "width": 3,
+      "decoded_bytes": 21132144,
+      "xz_bytes": 2597220,
+      "elapsed_seconds": 44.88211666700954
+    },
+    {
+      "block": 9,
+      "patterns": 70116,
+      "width": 3,
+      "decoded_bytes": 21124128,
+      "xz_bytes": 2424488,
+      "elapsed_seconds": 50.11875350000628
+    },
+    {
+      "block": 10,
+      "patterns": 59557,
+      "width": 2,
+      "decoded_bytes": 14185256,
+      "xz_bytes": 2290948,
+      "elapsed_seconds": 53.86505520901119
+    },
+    {
+      "block": 11,
+      "patterns": 93182,
+      "width": 3,
+      "decoded_bytes": 21308656,
+      "xz_bytes": 2661960,
+      "elapsed_seconds": 59.35724825000216
+    },
+    {
+      "block": 12,
+      "patterns": 155990,
+      "width": 3,
+      "decoded_bytes": 21811120,
+      "xz_bytes": 2975340,
+      "elapsed_seconds": 64.86902254199958
+    },
+    {
+      "block": 13,
+      "patterns": 57727,
+      "width": 2,
+      "decoded_bytes": 14170616,
+      "xz_bytes": 2053832,
+      "elapsed_seconds": 68.52922654199938
+    },
+    {
+      "block": 14,
+      "patterns": 60061,
+      "width": 2,
+      "decoded_bytes": 14189288,
+      "xz_bytes": 1918068,
+      "elapsed_seconds": 72.0159077920107
+    },
+    {
+      "block": 15,
+      "patterns": 53630,
+      "width": 2,
+      "decoded_bytes": 14137840,
+      "xz_bytes": 1904768,
+      "elapsed_seconds": 75.54877062501328
+    },
+    {
+      "block": 16,
+      "patterns": 82947,
+      "width": 3,
+      "decoded_bytes": 21226776,
+      "xz_bytes": 2165220,
+      "elapsed_seconds": 80.5554299170035
+    },
+    {
+      "block": 17,
+      "patterns": 117461,
+      "width": 3,
+      "decoded_bytes": 21502888,
+      "xz_bytes": 2410892,
+      "elapsed_seconds": 85.77778637500887
+    },
+    {
+      "block": 18,
+      "patterns": 61891,
+      "width": 2,
+      "decoded_bytes": 14203928,
+      "xz_bytes": 2017896,
+      "elapsed_seconds": 89.33893737501057
+    },
+    {
+      "block": 19,
+      "patterns": 69590,
+      "width": 3,
+      "decoded_bytes": 21119920,
+      "xz_bytes": 2122744,
+      "elapsed_seconds": 94.18448733400146
+    }
+  ],
+  "raw_bytes": 3509454332,
+  "policy_bytes": 48648464,
+  "decoded_bytes": 376614464,
+  "knots": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    12,
+    16,
+    20,
+    32,
+    47
+  ],
+  "lossless_roundtrip_of_selected_anchors": true,
+  "sha256": "cbd229b6d65d8b359243b324936dea70378b1c67371a6ef4a9013b7e022096e3",
+  "joint_goal_met": false
+}

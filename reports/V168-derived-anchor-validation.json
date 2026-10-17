@@ -1,0 +1,56 @@
+{
+  "state": "complete",
+  "scope": "Research full validation with far anchors regenerated from finite ideal-graph curves; not final submission timing",
+  "architecture_only": true,
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h1-a10000",
+      "score": 99.10215862646677
+    },
+    {
+      "name": "h1-a120",
+      "score": 99.09899116542357
+    },
+    {
+      "name": "h1-a36",
+      "score": 99.08391373970863
+    },
+    {
+      "name": "h2-a10000",
+      "score": 99.10309083762836
+    },
+    {
+      "name": "h2-a120",
+      "score": 99.09992337658517
+    },
+    {
+      "name": "h2-a36",
+      "score": 99.08484595087022
+    },
+    {
+      "name": "h4-a10000",
+      "score": 99.10327499333042
+    },
+    {
+      "name": "h4-a120",
+      "score": 99.10010753228721
+    },
+    {
+      "name": "h4-a36",
+      "score": 99.08503010657228
+    },
+    {
+      "name": "h8-a10000",
+      "score": 99.10462122515523
+    },
+    {
+      "name": "h8-a120",
+      "score": 99.10145376411202
+    },
+    {
+      "name": "h8-a36",
+      "score": 99.08637633839709
+    }
+  ]
+}

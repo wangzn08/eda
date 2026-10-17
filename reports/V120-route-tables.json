@@ -1,0 +1,72 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "prediction_cache": false,
+  "architecture": "Additive weighted-median factors of selected route family, relative lanes, phase, distance bucket, and boundary context",
+  "candidates": [
+    {
+      "mincount": 4,
+      "epoch": 1,
+      "validation_score": 98.96248161090791,
+      "development_score": 99.09153080412396,
+      "elapsed": 1.067707000001974
+    },
+    {
+      "mincount": 4,
+      "epoch": 2,
+      "validation_score": 98.93780078980869,
+      "development_score": 99.10391382702693,
+      "elapsed": 1.9380517919998965
+    },
+    {
+      "mincount": 4,
+      "epoch": 3,
+      "validation_score": 98.9293458968482,
+      "development_score": 99.10762946411639,
+      "elapsed": 2.8216870420001214
+    },
+    {
+      "mincount": 12,
+      "epoch": 1,
+      "validation_score": 99.02794560600279,
+      "development_score": 99.04674497243612,
+      "elapsed": 3.864090417002444
+    },
+    {
+      "mincount": 12,
+      "epoch": 2,
+      "validation_score": 99.0263295512107,
+      "development_score": 99.04910828265051,
+      "elapsed": 4.6971825000000536
+    },
+    {
+      "mincount": 12,
+      "epoch": 3,
+      "validation_score": 99.02547001769382,
+      "development_score": 99.04994544472547,
+      "elapsed": 5.55166604200349
+    },
+    {
+      "mincount": 32,
+      "epoch": 1,
+      "validation_score": 99.02970900481466,
+      "development_score": 99.04049536216924,
+      "elapsed": 6.584017542001675
+    },
+    {
+      "mincount": 32,
+      "epoch": 2,
+      "validation_score": 99.02953827602492,
+      "development_score": 99.04208771102601,
+      "elapsed": 7.400169583001116
+    },
+    {
+      "mincount": 32,
+      "epoch": 3,
+      "validation_score": 99.02931173225069,
+      "development_score": 99.04257811299127,
+      "elapsed": 8.25636087499879
+    }
+  ]
+}

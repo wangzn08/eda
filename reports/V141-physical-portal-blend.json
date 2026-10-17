@@ -1,0 +1,32 @@
+{
+  "state": "complete",
+  "fit_labels_used": false,
+  "scope": "full validation screening; finite portal candidate is feasible but not globally exact",
+  "cases": [
+    {
+      "blend": 0.0,
+      "score": 99.02707320650975,
+      "exact_fraction": 0.5499923360412654
+    },
+    {
+      "blend": 0.25,
+      "score": 98.85414280946065,
+      "exact_fraction": 0.5417619107915204
+    },
+    {
+      "blend": 0.5,
+      "score": 98.70385706315714,
+      "exact_fraction": 0.5417619107915204
+    },
+    {
+      "blend": 0.75,
+      "score": 98.58140289504493,
+      "exact_fraction": 0.5417619107915204
+    },
+    {
+      "blend": 1.0,
+      "score": 98.48290668647103,
+      "exact_fraction": 0.5417619107915204
+    }
+  ]
+}

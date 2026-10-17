@@ -1,0 +1,25 @@
+{
+  "state": "complete",
+  "fit_scope": "development golden residual over full finite ideal architecture distances and physical boundary features",
+  "holdout_used": false,
+  "features": 221,
+  "base_validation_score": 99.35130093492236,
+  "scope": "Accuracy prototype, native memory/storage/time not established",
+  "candidates": [
+    {
+      "name": "compact",
+      "score": 99.4951350310333,
+      "elapsed_seconds": 27.051308583002537
+    },
+    {
+      "name": "large",
+      "score": 99.52340712165855,
+      "elapsed_seconds": 101.00402858298912
+    },
+    {
+      "name": "wide",
+      "score": 99.53303083666162,
+      "elapsed_seconds": 225.91941870799928
+    }
+  ]
+}

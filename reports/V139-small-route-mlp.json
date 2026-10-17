@@ -1,0 +1,65 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "New small residual-head prototype, not deployed or timed end-to-end",
+  "reference": "Revisiting Deep Learning Models for Tabular Data2021; adapted route features/grouped ReLU heads",
+  "candidates": [
+    {
+      "gated": false,
+      "epoch": 16,
+      "score": 99.0389788363003,
+      "parameter_float32_bytes": 63044,
+      "elapsed_seconds": 4.933533499999612
+    },
+    {
+      "gated": false,
+      "epoch": 32,
+      "score": 99.04076794194889,
+      "parameter_float32_bytes": 63044,
+      "elapsed_seconds": 7.418436290994578
+    },
+    {
+      "gated": false,
+      "epoch": 48,
+      "score": 99.04079687395368,
+      "parameter_float32_bytes": 63044,
+      "elapsed_seconds": 9.909588540998811
+    },
+    {
+      "gated": false,
+      "epoch": 64,
+      "score": 99.04090202643134,
+      "parameter_float32_bytes": 63044,
+      "elapsed_seconds": 12.406101957996725
+    },
+    {
+      "gated": true,
+      "epoch": 16,
+      "score": 99.05990848705643,
+      "parameter_float32_bytes": 312512,
+      "elapsed_seconds": 30.08566991599946
+    },
+    {
+      "gated": true,
+      "epoch": 32,
+      "score": 99.06642837195497,
+      "parameter_float32_bytes": 312512,
+      "elapsed_seconds": 47.33870912499697
+    },
+    {
+      "gated": true,
+      "epoch": 48,
+      "score": 99.0640686866056,
+      "parameter_float32_bytes": 312512,
+      "elapsed_seconds": 64.58961416599777
+    },
+    {
+      "gated": true,
+      "epoch": 64,
+      "score": 99.06394615006955,
+      "parameter_float32_bytes": 312512,
+      "elapsed_seconds": 81.84284308299539
+    }
+  ]
+}

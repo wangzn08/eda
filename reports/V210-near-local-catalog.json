@@ -1,0 +1,29 @@
+{
+  "state": "complete",
+  "scope": "Lossless architecture-only near late curves with per-target local ids; native implementation pending",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "flags": 15,
+      "asset_bytes": 34273384,
+      "decoded_bytes": 154833540,
+      "local_catalog_ids": 879173,
+      "maximum_target_catalog": 13888,
+      "full_transform_parity": true,
+      "full_compression_roundtrip": true,
+      "decoded_sha256": "f4135e78116bb74d68966080d0b5b272e3279f6545fc2cca29ab2b5b130a6f0d",
+      "elapsed_seconds": 9.933146166004008
+    },
+    {
+      "flags": 31,
+      "asset_bytes": 38287148,
+      "decoded_bytes": 154833540,
+      "local_catalog_ids": 879173,
+      "maximum_target_catalog": 13888,
+      "full_transform_parity": true,
+      "full_compression_roundtrip": true,
+      "decoded_sha256": "b92234cd73b4f140b7642b265f9a007621d98eb7f557779ef0c1ca4bb7d06e88",
+      "elapsed_seconds": 18.40730866600643
+    }
+  ]
+}

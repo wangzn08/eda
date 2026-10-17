@@ -1,0 +1,23 @@
+{
+  "state": "complete",
+  "fit_scope": "development golden residual with architecture-only min-plus penalty features",
+  "holdout_used": false,
+  "features": 218,
+  "candidates": [
+    {
+      "name": "compact",
+      "score": 99.24496318557004,
+      "elapsed_seconds": 28.31927549999091
+    },
+    {
+      "name": "large",
+      "score": 99.29878279524254,
+      "elapsed_seconds": 139.7873986249906
+    },
+    {
+      "name": "wide",
+      "score": 99.30634651791712,
+      "elapsed_seconds": 367.0174512079975
+    }
+  ]
+}

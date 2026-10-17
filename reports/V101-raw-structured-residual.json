@@ -1,0 +1,79 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Raw architecture residual, fixed 32-epoch schedule, Python only",
+  "candidates": [
+    {
+      "name": "tensor-r8",
+      "epoch": 8,
+      "score": 99.02024467566298,
+      "correction_abs_mean_ps": 0.7451391220092773,
+      "parameter_bytes": 158664,
+      "elapsed_seconds": 5.387253541997779
+    },
+    {
+      "name": "tensor-r8",
+      "epoch": 16,
+      "score": 99.02662332668378,
+      "correction_abs_mean_ps": 0.7436962127685547,
+      "parameter_bytes": 158664,
+      "elapsed_seconds": 8.830652832999476
+    },
+    {
+      "name": "tensor-r8",
+      "epoch": 32,
+      "score": 99.0023669159759,
+      "correction_abs_mean_ps": 0.9544540047645569,
+      "parameter_bytes": 158664,
+      "elapsed_seconds": 15.670344333000685
+    },
+    {
+      "name": "tensor-r16",
+      "epoch": 8,
+      "score": 99.0385709582786,
+      "correction_abs_mean_ps": 0.7801685333251953,
+      "parameter_bytes": 599944,
+      "elapsed_seconds": 25.421164749997843
+    },
+    {
+      "name": "tensor-r16",
+      "epoch": 16,
+      "score": 98.98014799167188,
+      "correction_abs_mean_ps": 1.3884508609771729,
+      "parameter_bytes": 599944,
+      "elapsed_seconds": 35.10693116699986
+    },
+    {
+      "name": "tensor-r16",
+      "epoch": 32,
+      "score": 98.93555218513092,
+      "correction_abs_mean_ps": 1.6429102420806885,
+      "parameter_bytes": 599944,
+      "elapsed_seconds": 54.419206167000084
+    },
+    {
+      "name": "multiscale-hash",
+      "epoch": 8,
+      "score": 98.73741433655891,
+      "correction_abs_mean_ps": 2.9682376384735107,
+      "parameter_bytes": 4196612,
+      "elapsed_seconds": 57.00142016699829
+    },
+    {
+      "name": "multiscale-hash",
+      "epoch": 16,
+      "score": 98.44129208005941,
+      "correction_abs_mean_ps": 4.992998123168945,
+      "parameter_bytes": 4196612,
+      "elapsed_seconds": 59.66889299999821
+    },
+    {
+      "name": "multiscale-hash",
+      "epoch": 32,
+      "score": 98.17727070698908,
+      "correction_abs_mean_ps": 6.651423454284668,
+      "parameter_bytes": 4196612,
+      "elapsed_seconds": 64.79575704200033
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "state": "complete",
+  "validation_floor": 99.5,
+  "target_seconds": 600,
+  "holdout_used": false,
+  "prediction_cache": false,
+  "scope": "Same process full validation then actual1m development pilot; final separate10m repeats required",
+  "candidates": [
+    {
+      "name": "control",
+      "validation_score": 99.0256649430261,
+      "same_as_v116": true,
+      "init_seconds": 78.1091,
+      "validation_query_seconds": 0.09900000000000375,
+      "pilot_query_seconds": 0.6440999999999946,
+      "billion_estimate_seconds": 722.2090999999946,
+      "rss_bytes": 1622671360,
+      "pilot_rows": 1000000,
+      "pilot_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1"
+    },
+    {
+      "name": "zero",
+      "validation_score": 99.0256649430261,
+      "same_as_v116": true,
+      "init_seconds": 77.6791,
+      "validation_query_seconds": 0.09779999999999234,
+      "pilot_query_seconds": 0.6370000000000005,
+      "billion_estimate_seconds": 714.6791000000005,
+      "rss_bytes": 1622671360,
+      "pilot_rows": 1000000,
+      "pilot_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1"
+    },
+    {
+      "name": "prepared",
+      "validation_score": 99.0256649430261,
+      "same_as_v116": true,
+      "init_seconds": 77.7753,
+      "validation_query_seconds": 0.09820000000000562,
+      "pilot_query_seconds": 0.6335999999999871,
+      "billion_estimate_seconds": 711.3752999999871,
+      "rss_bytes": 1622671360,
+      "pilot_rows": 1000000,
+      "pilot_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1"
+    }
+  ]
+}

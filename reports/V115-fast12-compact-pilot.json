@@ -1,0 +1,46 @@
+{
+  "state": "complete",
+  "target_seconds": 720,
+  "validation_floor": 99,
+  "holdout_used": false,
+  "fit_labels_used": false,
+  "prediction_cache": false,
+  "scope": "Serial full validation and development1m screening; final10m required",
+  "candidates": [
+    {
+      "name": "compact32",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 1622687744,
+      "cpu_seconds": 72.6131,
+      "init_seconds": 71.9973,
+      "query_seconds": 0.6158000000000072,
+      "estimated_billion_seconds": 687.7973000000072,
+      "rss_bytes": 1624588288,
+      "output_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1",
+      "runtime_file_bytes": 99293184
+    },
+    {
+      "name": "compact16",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 1622687744,
+      "cpu_seconds": 72.5007,
+      "init_seconds": 71.8943,
+      "query_seconds": 0.6063999999999936,
+      "estimated_billion_seconds": 678.2942999999937,
+      "rss_bytes": 1628815360,
+      "output_sha256": "2a1956a309d7140ed26ac0df759fd5a1c29d2a7968aa59c78925fa62a8687dd1",
+      "runtime_file_bytes": 99293184
+    },
+    {
+      "name": "compact-target16",
+      "score": 99.0256649430261,
+      "validation_rows": 150053,
+      "same_as_v112": true,
+      "validation_rss_bytes": 2008481792
+    }
+  ]
+}

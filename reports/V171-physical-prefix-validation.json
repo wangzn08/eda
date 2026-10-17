@@ -1,0 +1,40 @@
+{
+  "state": "complete",
+  "scope": "Research actual one-Net prefix + finite ideal-graph curves; full validation, no final throughput",
+  "architecture_only": true,
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h1-prefix0",
+      "score": 99.10215862646677
+    },
+    {
+      "name": "h1-prefix1",
+      "score": 99.27866297834247
+    },
+    {
+      "name": "h1-prefix2",
+      "score": 99.20808144769902
+    },
+    {
+      "name": "h1-prefix3",
+      "score": 99.27866297834247
+    },
+    {
+      "name": "h8-prefix0",
+      "score": 99.10462122515523
+    },
+    {
+      "name": "h8-prefix1",
+      "score": 99.28001509735749
+    },
+    {
+      "name": "h8-prefix2",
+      "score": 99.21000778427684
+    },
+    {
+      "name": "h8-prefix3",
+      "score": 99.28001509735749
+    }
+  ]
+}

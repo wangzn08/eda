@@ -1,0 +1,121 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "full-validation accuracy prototype; C++ deployment and time budget pending",
+  "reference": "Revisiting Deep Learning Models for Tabular Data2021 and factorization-machine port interactions; no claim of a new neural primitive",
+  "candidates": [
+    {
+      "width": 128,
+      "epoch": 16,
+      "score": 99.06893552272786,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 15.282424999997602
+    },
+    {
+      "width": 128,
+      "epoch": 32,
+      "score": 99.07091723149603,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 25.297256958001526
+    },
+    {
+      "width": 128,
+      "epoch": 48,
+      "score": 99.09590315577752,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 35.24025154099945
+    },
+    {
+      "width": 128,
+      "epoch": 64,
+      "score": 99.09577638060648,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 45.21857133299636
+    },
+    {
+      "width": 128,
+      "epoch": 80,
+      "score": 99.09430697746639,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 55.165823666000506
+    },
+    {
+      "width": 128,
+      "epoch": 96,
+      "score": 99.08903409438922,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 65.1635810000007
+    },
+    {
+      "width": 128,
+      "epoch": 112,
+      "score": 99.08761217774854,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 75.13236766600312
+    },
+    {
+      "width": 128,
+      "epoch": 128,
+      "score": 99.08729997668334,
+      "parameter_float32_bytes": 393220,
+      "elapsed_seconds": 85.1009088330029
+    },
+    {
+      "width": 256,
+      "epoch": 16,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 98.08017945799656
+    },
+    {
+      "width": 256,
+      "epoch": 32,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 110.59888504099945
+    },
+    {
+      "width": 256,
+      "epoch": 48,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 123.13113683299889
+    },
+    {
+      "width": 256,
+      "epoch": 64,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 135.66659983299905
+    },
+    {
+      "width": 256,
+      "epoch": 80,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 148.14201687499735
+    },
+    {
+      "width": 256,
+      "epoch": 96,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 160.61631016599858
+    },
+    {
+      "width": 256,
+      "epoch": 112,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 173.14224962500157
+    },
+    {
+      "width": 256,
+      "epoch": 128,
+      "score": 99.0256649430261,
+      "parameter_float32_bytes": 681220,
+      "elapsed_seconds": 185.59362970799702
+    }
+  ]
+}

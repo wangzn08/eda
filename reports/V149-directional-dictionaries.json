@@ -1,0 +1,28 @@
+{
+  "state": "complete",
+  "scope": "architecture-only lossless storage; runtime integration pending",
+  "assets": [
+    {
+      "name": "horizontal",
+      "bytes": 11470352,
+      "old_bytes": 23032644,
+      "unique_vectors": 11034,
+      "index_bytes": 2,
+      "original_decoded_sha256": "b7496f2486bda22b8d9002d64431c3f8d5f305091a12222fa0a19a229bba1f49",
+      "asset_sha256": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+      "lossless_roundtrip": true,
+      "cpu_seconds": 26.005117
+    },
+    {
+      "name": "vertical",
+      "bytes": 8636996,
+      "old_bytes": 18774532,
+      "unique_vectors": 8621,
+      "index_bytes": 2,
+      "original_decoded_sha256": "566303d9c44a6ce43383b1bc29c35b84d3d393226abcc3eabfa718177dd95d70",
+      "asset_sha256": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+      "lossless_roundtrip": true,
+      "cpu_seconds": 25.578384
+    }
+  ]
+}

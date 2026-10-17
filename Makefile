@@ -45,7 +45,7 @@ build/phase_estimate: src/repeat_cycle_jump.hpp src/phase_estimate.cpp src/routi
 	$(CXX) $(CXXFLAGS) -Isrc src/phase_estimate.cpp -o $@
 
 # Direct periodic relaxation; experimental, no per-request graph search.
-build/core_template_estimate: src/buffered_csv_writer.hpp src/joint_interaction_model.hpp $(XZ_OBJECTS) src/xz_decode.hpp src/horizontal_transient_model.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
+build/core_template_estimate: src/buffered_csv_writer.hpp src/buffered_csv_reader.hpp src/joint_interaction_model.hpp $(XZ_OBJECTS) src/xz_decode.hpp src/horizontal_transient_model.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -ffp-contract=off -Isrc src/core_template_estimate.cpp $(XZ_OBJECTS) -lz -o $@
 
@@ -77,3 +77,14 @@ build/compress_periodic_dense: src/compress_periodic_dense.cpp src/architecture_
 build/tiny_route_estimate: src/tiny_route_estimate.cpp src/tiny_route_model.hpp src/direct_phase_bound.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/phase_lower_bound.hpp src/architecture_data.hpp src/potential_lower_model.hpp
 	mkdir -p build
 	$(CXX) $(CXXFLAGS) -ffp-contract=fast -Isrc src/tiny_route_estimate.cpp -o $@
+
+# Research layout and standalone 99-score / 30-minute target profile.
+build/core_template_phase_estimate: src/buffered_csv_writer.hpp src/buffered_csv_reader.hpp src/joint_interaction_model.hpp $(XZ_OBJECTS) src/xz_decode.hpp src/horizontal_transient_model.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
+	$(CXX) $(CXXFLAGS) -ffp-contract=off -DCORE_PHASE_MAJOR=1 -Isrc src/core_template_estimate.cpp $(XZ_OBJECTS) -lz -o $@
+
+build/core_template_fast30_estimate: src/buffered_csv_writer.hpp src/buffered_csv_reader.hpp src/joint_interaction_model.hpp $(XZ_OBJECTS) src/xz_decode.hpp src/horizontal_transient_model.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
+	$(CXX) $(CXXFLAGS) -ffp-contract=off -DCORE_PHASE_MAJOR=1 -DCORE_FAST30_PROFILE=1 -Isrc src/core_template_estimate.cpp $(XZ_OBJECTS) -lz -o $@
+
+# Portable build; benchmarked M4 profile is prepared by prepare_fast15_profile.py.
+build/core_template_fast15_estimate: src/buffered_csv_writer.hpp src/buffered_csv_reader.hpp src/joint_interaction_model.hpp $(XZ_OBJECTS) src/xz_decode.hpp src/horizontal_transient_model.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
+	$(CXX) $(CXXFLAGS) -ffp-contract=off -DCORE_PHASE_MAJOR=1 -DCORE_FAST30_PROFILE=1 -DCORE_FAST15_PROFILE=1 -DCORE_BUFFERED_INPUT=1 -DCORE_PREFETCH=1 -DCORE_PREFETCH_CELL=1 -Isrc src/core_template_estimate.cpp $(XZ_OBJECTS) -lz -o $@

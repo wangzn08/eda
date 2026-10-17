@@ -1,0 +1,39 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Normalized robust linear-leaf prototype; native inference not profiled",
+  "categories": [
+    80,
+    94,
+    99,
+    100,
+    107
+  ],
+  "candidates": [
+    {
+      "name": "huber-127-16-1",
+      "score": 98.93385373068284,
+      "model_bytes": 561660,
+      "elapsed_seconds": 8.14300650000223
+    },
+    {
+      "name": "huber-255-32-10",
+      "score": 99.0470130186864,
+      "model_bytes": 2397179,
+      "elapsed_seconds": 24.756481000003987
+    },
+    {
+      "name": "fair-127-32-10",
+      "score": 99.11407586863376,
+      "model_bytes": 1262789,
+      "elapsed_seconds": 34.58257975000015
+    },
+    {
+      "name": "regression-127-32-10",
+      "score": 99.06891954977864,
+      "model_bytes": 1125782,
+      "elapsed_seconds": 46.144409665997955
+    }
+  ]
+}

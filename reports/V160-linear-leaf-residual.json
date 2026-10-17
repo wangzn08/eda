@@ -1,0 +1,57 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Linear-leaf accuracy prototype; packed/native inference pending",
+  "reference": "LightGBM linear_tree official documentation; adapted intrinsic residual fields",
+  "candidates": [
+    {
+      "name": "rel0-leaves63-trees1",
+      "score": 98.9448585542371,
+      "model_bytes": 13901,
+      "elapsed_seconds": 2.7722101249964908
+    },
+    {
+      "name": "rel0-leaves255-trees1",
+      "score": 98.99733373570818,
+      "model_bytes": 39146,
+      "elapsed_seconds": 5.486566749998019
+    },
+    {
+      "name": "rel0-leaves511-trees1",
+      "score": 99.02564335290913,
+      "model_bytes": 72788,
+      "elapsed_seconds": 8.312342249999347
+    },
+    {
+      "name": "rel0-leaves63-trees32",
+      "score": 99.02444361077312,
+      "model_bytes": 585985,
+      "elapsed_seconds": 17.72098216699669
+    },
+    {
+      "name": "rel1-leaves63-trees1",
+      "score": 98.92391959543747,
+      "model_bytes": 13281,
+      "elapsed_seconds": 20.367180166998878
+    },
+    {
+      "name": "rel1-leaves255-trees1",
+      "score": 98.96005824000255,
+      "model_bytes": 36630,
+      "elapsed_seconds": 23.117510416996083
+    },
+    {
+      "name": "rel1-leaves511-trees1",
+      "score": 98.98752634329024,
+      "model_bytes": 67773,
+      "elapsed_seconds": 25.967769416994997
+    },
+    {
+      "name": "rel1-leaves63-trees32",
+      "score": 99.00762901867085,
+      "model_bytes": 577081,
+      "elapsed_seconds": 34.8829775829945
+    }
+  ]
+}

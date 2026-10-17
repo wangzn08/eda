@@ -1,0 +1,18 @@
+{
+  "fit_split": "development",
+  "selection_split": "validation",
+  "holdout_used": false,
+  "rows": 150053,
+  "validation_score": 97.69764117967856,
+  "exact_fraction": 0.07657960853831647,
+  "mean_relative_error": 0.005795603281019129,
+  "p99_relative_error": 0.046238134656282806,
+  "runtime": {
+    "cpu_seconds": 1.03823,
+    "rss_bytes": 460423168,
+    "initialization_seconds": 0.623731
+  },
+  "machine": "macOS-26.6.2-arm64-arm-64bit",
+  "scope": "Approximate research candidate; no per-query precision certificate or official platform acceptance.",
+  "python_cpp_mismatch_rows": 0
+}

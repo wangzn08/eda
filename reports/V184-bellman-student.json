@@ -1,0 +1,28 @@
+{
+  "state": "complete",
+  "fit_scope": "development architecture teacher states only",
+  "golden_used_for_fitting": false,
+  "holdout_used": false,
+  "state_count": 4876513,
+  "fit_state_count": 1200000,
+  "teacher_score": 99.52520492328904,
+  "base_score": 99.10462122515523,
+  "scope": "Route-state value distillation; native speed not yet measured",
+  "candidates": [
+    {
+      "name": "tree1",
+      "score": 99.13290764047841,
+      "elapsed_seconds": 1.759259625003324
+    },
+    {
+      "name": "tree4",
+      "score": 99.13866034103879,
+      "elapsed_seconds": 4.6275234170025215
+    },
+    {
+      "name": "tree16",
+      "score": 99.14577263677603,
+      "elapsed_seconds": 11.610559209002531
+    }
+  ]
+}

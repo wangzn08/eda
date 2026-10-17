@@ -1,0 +1,32 @@
+{
+  "long_near_x": {
+    "rows": 44155,
+    "baseline": 99.11695842320918,
+    "prefix4": 99.60687879975272,
+    "gain_contribution": 0.1441652897728038
+  },
+  "short_y": {
+    "rows": 48681,
+    "baseline": 98.85116918507877,
+    "prefix4": 99.45655484623602,
+    "gain_contribution": 0.19640246693365238
+  },
+  "far_x": {
+    "rows": 84248,
+    "baseline": 99.03293936817136,
+    "prefix4": 99.5171680862969,
+    "gain_contribution": 0.2718726119747073
+  },
+  "direct": {
+    "rows": 95524,
+    "baseline": 99.19613477393138,
+    "prefix4": 99.66684645024758,
+    "gain_contribution": 0.2996558693823402
+  },
+  "cross_wall": {
+    "rows": 54529,
+    "baseline": 98.72703558750156,
+    "prefix4": 99.32573746447969,
+    "gain_contribution": 0.21756722391248315
+  }
+}

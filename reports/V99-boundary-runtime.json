@@ -1,0 +1,159 @@
+{
+  "holdout_used": false,
+  "scope": "Full validation parity and paired actual 1m repeated requests; no billion proof",
+  "validation": [
+    {
+      "name": "retained-v93-64",
+      "cpp_score": 99.16677855252483,
+      "python_mismatches": 0,
+      "max_abs_python_difference_ps": 0,
+      "runtime_file_bytes": 99831028
+    },
+    {
+      "name": "boundary-d8-t256",
+      "cpp_score": 99.18121506801859,
+      "python_mismatches": 0,
+      "max_abs_python_difference_ps": 0,
+      "runtime_file_bytes": 99843060
+    },
+    {
+      "name": "boundary-d10-t64",
+      "cpp_score": 99.18112714970188,
+      "python_mismatches": 0,
+      "max_abs_python_difference_ps": 0,
+      "runtime_file_bytes": 99831028
+    },
+    {
+      "name": "boundary-d10-t128",
+      "cpp_score": 99.1984068659142,
+      "python_mismatches": 1,
+      "max_abs_python_difference_ps": 1,
+      "runtime_file_bytes": 100360692
+    },
+    {
+      "name": "asymmetric-64",
+      "cpp_score": 99.18991806719325,
+      "python_mismatches": 0,
+      "max_abs_python_difference_ps": 0,
+      "runtime_file_bytes": 99495652
+    },
+    {
+      "name": "asymmetric-128",
+      "cpp_score": 99.2002706360385,
+      "python_mismatches": 2,
+      "max_abs_python_difference_ps": 1,
+      "runtime_file_bytes": 99689956
+    },
+    {
+      "name": "asymmetric-256",
+      "cpp_score": 99.21038929063126,
+      "python_mismatches": 2,
+      "max_abs_python_difference_ps": 1,
+      "runtime_file_bytes": 100078564
+    },
+    {
+      "name": "asymmetric-512",
+      "cpp_score": 99.21241725085089,
+      "python_mismatches": 2,
+      "max_abs_python_difference_ps": 1,
+      "runtime_file_bytes": 100855780
+    }
+  ],
+  "timings": [
+    {
+      "name": "boundary-d10-t64",
+      "rows": 1000000,
+      "cpu_seconds": 9.83064,
+      "init_cpu_seconds": 5.97343,
+      "query_cpu_seconds": 3.857210000000001,
+      "rss_bytes": 1390411776
+    },
+    {
+      "name": "retained-v93-64",
+      "rows": 1000000,
+      "cpu_seconds": 9.82165,
+      "init_cpu_seconds": 5.98405,
+      "query_cpu_seconds": 3.8376,
+      "rss_bytes": 1389887488
+    },
+    {
+      "name": "asymmetric-128",
+      "rows": 1000000,
+      "cpu_seconds": 14.2631,
+      "init_cpu_seconds": 5.99648,
+      "query_cpu_seconds": 8.26662,
+      "rss_bytes": 1389035520
+    },
+    {
+      "name": "asymmetric-64",
+      "rows": 1000000,
+      "cpu_seconds": 11.7936,
+      "init_cpu_seconds": 5.98577,
+      "query_cpu_seconds": 5.80783,
+      "rss_bytes": 1388756992
+    },
+    {
+      "name": "asymmetric-64",
+      "rows": 1000000,
+      "cpu_seconds": 11.7945,
+      "init_cpu_seconds": 5.98626,
+      "query_cpu_seconds": 5.80824,
+      "rss_bytes": 1388756992
+    },
+    {
+      "name": "asymmetric-128",
+      "rows": 1000000,
+      "cpu_seconds": 14.2575,
+      "init_cpu_seconds": 5.98835,
+      "query_cpu_seconds": 8.26915,
+      "rss_bytes": 1389019136
+    },
+    {
+      "name": "retained-v93-64",
+      "rows": 1000000,
+      "cpu_seconds": 9.81834,
+      "init_cpu_seconds": 5.99543,
+      "query_cpu_seconds": 3.8229099999999994,
+      "rss_bytes": 1389903872
+    },
+    {
+      "name": "boundary-d10-t64",
+      "rows": 1000000,
+      "cpu_seconds": 9.85719,
+      "init_cpu_seconds": 5.99566,
+      "query_cpu_seconds": 3.8615299999999992,
+      "rss_bytes": 1390346240
+    }
+  ],
+  "state": "complete",
+  "summary": [
+    {
+      "name": "boundary-d10-t64",
+      "mean_query_cpu_seconds_per_million": 3.85937,
+      "measured_runs": 2,
+      "billion_estimate_seconds": 3865.354545,
+      "assumption": "Same request mix, unchanged throughput, initialization once; extrapolation only"
+    },
+    {
+      "name": "retained-v93-64",
+      "mean_query_cpu_seconds_per_million": 3.8302549999999997,
+      "measured_runs": 2,
+      "billion_estimate_seconds": 3836.2447399999996,
+      "assumption": "Same request mix, unchanged throughput, initialization once; extrapolation only"
+    },
+    {
+      "name": "asymmetric-128",
+      "mean_query_cpu_seconds_per_million": 8.267885,
+      "measured_runs": 2,
+      "billion_estimate_seconds": 8273.877415,
+      "assumption": "Same request mix, unchanged throughput, initialization once; extrapolation only"
+    },
+    {
+      "name": "asymmetric-64",
+      "mean_query_cpu_seconds_per_million": 5.808035,
+      "measured_runs": 2,
+      "billion_estimate_seconds": 5814.021015,
+      "assumption": "Same request mix, unchanged throughput, initialization once; extrapolation only"
+    }
+  ]
+}

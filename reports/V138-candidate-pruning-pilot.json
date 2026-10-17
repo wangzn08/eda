@@ -1,0 +1,18 @@
+[
+  {
+    "name": "control",
+    "validation_score": 99.0256649430261,
+    "init_seconds": 74.4364,
+    "query_1m_cpu_seconds": 0.5698000000000008,
+    "billion_pilot_seconds": 644.2364000000008,
+    "scope": "1m screening; not paired final benchmark"
+  },
+  {
+    "name": "pruned",
+    "validation_score": 99.00575848179007,
+    "init_seconds": 75.3974,
+    "query_1m_cpu_seconds": 0.5724000000000018,
+    "billion_pilot_seconds": 647.7974000000017,
+    "scope": "1m screening; not paired final benchmark"
+  }
+]

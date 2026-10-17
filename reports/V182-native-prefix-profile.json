@@ -1,0 +1,18 @@
+{
+  "state": "complete",
+  "scope": "Native profile layout and source shortlist experiment; query-only full validation",
+  "cases": [
+    {
+      "adaptive_distance": 36,
+      "score": 99.4781044005073,
+      "cpu_seconds": 15.6963
+    },
+    {
+      "adaptive_distance": 10000,
+      "score": 99.50251659741039,
+      "cpu_seconds": 17.1537
+    }
+  ],
+  "profile_output_parity": true,
+  "joint_goal_met": false
+}

@@ -1,0 +1,101 @@
+{
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Python research prototypes; no C++ throughput or submission claim",
+  "candidates": [
+    {
+      "name": "retained-v93-64",
+      "score": 99.16677855252483,
+      "mean_abs_error_ps": 5.962346637521409,
+      "elapsed_seconds": 1.3687214579986176
+    },
+    {
+      "name": "boundary-d8-t64",
+      "score": 99.15910637830646,
+      "mean_abs_error_ps": 6.042924833225594,
+      "elapsed_seconds": 45.53432233299827
+    },
+    {
+      "name": "boundary-d8-t256",
+      "score": 99.18121506801859,
+      "mean_abs_error_ps": 5.872331776105776,
+      "elapsed_seconds": 45.674052957998356
+    },
+    {
+      "name": "boundary-d10-t64",
+      "score": 99.18112714970188,
+      "mean_abs_error_ps": 5.862188693328357,
+      "elapsed_seconds": 96.63839033299882
+    },
+    {
+      "name": "boundary-d10-t128",
+      "score": 99.19840515268514,
+      "mean_abs_error_ps": 5.740798251284546,
+      "elapsed_seconds": 96.773660750001
+    },
+    {
+      "name": "tensor-r8-e4",
+      "score": 99.16677855252483,
+      "mean_abs_error_ps": 5.962346637521409,
+      "elapsed_seconds": 100.05541466700015,
+      "parameter_bytes": 158664
+    },
+    {
+      "name": "tensor-r8-e8",
+      "score": 99.16677855252483,
+      "mean_abs_error_ps": 5.962346637521409,
+      "elapsed_seconds": 101.80166625000129,
+      "parameter_bytes": 158664
+    },
+    {
+      "name": "tensor-r8-e12",
+      "score": 99.16677855252483,
+      "mean_abs_error_ps": 5.962346637521409,
+      "elapsed_seconds": 103.52734929199869,
+      "parameter_bytes": 158664
+    },
+    {
+      "name": "tensor-r16-e4",
+      "score": 99.16677814673771,
+      "mean_abs_error_ps": 5.962353301833352,
+      "elapsed_seconds": 108.32097941699976,
+      "parameter_bytes": 599944
+    },
+    {
+      "name": "tensor-r16-e8",
+      "score": 99.16677855252483,
+      "mean_abs_error_ps": 5.962346637521409,
+      "elapsed_seconds": 113.1054479580016,
+      "parameter_bytes": 599944
+    },
+    {
+      "name": "tensor-r16-e12",
+      "score": 99.16669623486932,
+      "mean_abs_error_ps": 5.962919768348517,
+      "elapsed_seconds": 117.89683345799858,
+      "parameter_bytes": 599944
+    },
+    {
+      "name": "multiscale-hash-e4",
+      "score": 99.16570744891294,
+      "mean_abs_error_ps": 5.966998327257702,
+      "elapsed_seconds": 119.1933367499987,
+      "parameter_bytes": 4196612
+    },
+    {
+      "name": "multiscale-hash-e8",
+      "score": 99.14511438991481,
+      "mean_abs_error_ps": 6.070648370908946,
+      "elapsed_seconds": 120.47094300000026,
+      "parameter_bytes": 4196612
+    },
+    {
+      "name": "multiscale-hash-e12",
+      "score": 99.12685403942272,
+      "mean_abs_error_ps": 6.166621127201722,
+      "elapsed_seconds": 121.75485591699908,
+      "parameter_bytes": 4196612
+    }
+  ],
+  "elapsed_seconds": 121.7568702919998
+}

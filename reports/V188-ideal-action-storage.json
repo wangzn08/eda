@@ -1,0 +1,22 @@
+{
+  "scope": "Four-source ideal action storage pilot, full-source projections are not measurements",
+  "shape": [
+    4,
+    160,
+    99,
+    24,
+    48,
+    1
+  ],
+  "candidates": [
+    {
+      "name": "net_ids",
+      "patterns": 154050,
+      "xz_bytes": 1317916,
+      "naive_160_source_projection_bytes": 52716640,
+      "constant_after_q20_fraction": 0.9066472011784512,
+      "lossless_roundtrip": true,
+      "elapsed_seconds": 2.690296041997499
+    }
+  ]
+}

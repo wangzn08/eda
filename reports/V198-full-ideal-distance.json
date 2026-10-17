@@ -1,0 +1,17 @@
+{
+  "state": "complete",
+  "scope": "Full-displacement finite ideal distances with legal physical entry and terminal mask; no extra physical prefix, existing cross-wall surrogate. Offline architecture accuracy diagnostic, not a submission or native time profile.",
+  "rows": 850758,
+  "validation_rows": 150053,
+  "validation_score": 99.35130093492236,
+  "development_score": 99.35498854680931,
+  "exact_fraction": 0.7613376606932217,
+  "generation_cpu_seconds": 309.552,
+  "holdout_used": false,
+  "golden_used_for_generation": false,
+  "teacher_base_or_expanded_used_for_generation": false,
+  "prediction_sha256": "b8d7c10c6d6e245e73e7244c7284ccc2fd568b0376d680ecabbbdf5fa1b2cc2e",
+  "joint_goal_met": false,
+  "development_zero_delay_rows": 1,
+  "zero_delay_score_convention": "Identical zero-delay predictions have zero loss; mismatched zero-delay predictions have loss one."
+}

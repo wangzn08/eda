@@ -1,0 +1,75 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "scope": "Categorical topology residual prototype; native inference and whole-program timing pending",
+  "categories": [
+    77,
+    80,
+    91,
+    94,
+    99,
+    100,
+    107,
+    133,
+    134,
+    135
+  ],
+  "reference": "LightGBM official categorical_feature documentation; adapted port-pair and phase categories",
+  "candidates": [
+    {
+      "name": "single",
+      "trees": 1,
+      "score": 99.10688696841808,
+      "elapsed_seconds": 4.253819207995548
+    },
+    {
+      "name": "categorical",
+      "trees": 32,
+      "score": 99.10010317829467,
+      "elapsed_seconds": 242.6727227079973
+    },
+    {
+      "name": "categorical",
+      "trees": 64,
+      "score": 99.11744159261858,
+      "elapsed_seconds": 247.74746129199775
+    },
+    {
+      "name": "categorical",
+      "trees": 128,
+      "score": 99.12721321562292,
+      "elapsed_seconds": 259.4687845829976
+    },
+    {
+      "name": "categorical",
+      "trees": 256,
+      "score": 99.1353002474373,
+      "elapsed_seconds": 283.473600917001
+    },
+    {
+      "name": "wide",
+      "trees": 32,
+      "score": 99.10980243920181,
+      "elapsed_seconds": 908.5158914169951
+    },
+    {
+      "name": "wide",
+      "trees": 64,
+      "score": 99.11932267446831,
+      "elapsed_seconds": 912.4369312499985
+    },
+    {
+      "name": "wide",
+      "trees": 128,
+      "score": 99.14150357751281,
+      "elapsed_seconds": 920.9245413329991
+    },
+    {
+      "name": "wide",
+      "trees": 512,
+      "score": 99.1551009951633,
+      "elapsed_seconds": 995.7410699169995
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "state": "complete",
+  "score": 99.51665300760334,
+  "rows": 150053,
+  "all_native_feature_elements_equal_python_from_native_selected_route": true,
+  "all_native_predictions_equal_python_from_native_features": true,
+  "differences_from_offline_v216_are_selected_candidate_changes": true,
+  "holdout_used": false,
+  "joint_goal_met": false,
+  "scope": "Diagnostic full validation; RSS exceeds2GB and throughput pending"
+}

@@ -1,0 +1,15 @@
+{
+  "state": "complete",
+  "scope": "Physical prefix depth comparison; research full validation, not final timing",
+  "holdout_used": false,
+  "cases": [
+    {
+      "name": "h8-depth1",
+      "score": 99.28001509735749
+    },
+    {
+      "name": "h8-depth2",
+      "score": 99.40078481593186
+    }
+  ]
+}

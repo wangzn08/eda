@@ -1,0 +1,45 @@
+{
+  "state": "complete",
+  "fit_split": "development",
+  "holdout_used": false,
+  "descriptor_predictions_match_v116": true,
+  "scope": "Python prototype; C++/size/throughput pending",
+  "candidates": [
+    {
+      "name": "single",
+      "trees": 1,
+      "score": 99.11902788363842,
+      "elapsed": 4.5266218750039116
+    },
+    {
+      "name": "small",
+      "trees": 32,
+      "score": 99.12132201251733,
+      "elapsed": 18.920899625001766
+    },
+    {
+      "name": "large",
+      "trees": 32,
+      "score": 99.16436607982243,
+      "elapsed": 114.72138354100025
+    },
+    {
+      "name": "large",
+      "trees": 64,
+      "score": 99.18768760648608,
+      "elapsed": 116.00724412500131
+    },
+    {
+      "name": "large",
+      "trees": 128,
+      "score": 99.20167122891554,
+      "elapsed": 118.36646462500357
+    },
+    {
+      "name": "large",
+      "trees": 256,
+      "score": 99.2101444242781,
+      "elapsed": 122.06285295799898
+    }
+  ]
+}

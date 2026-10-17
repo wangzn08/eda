@@ -1,0 +1,68 @@
+{
+  "state": "complete",
+  "scope": "Full validation, research raw asset; no final timing/budget qualification",
+  "cases": [
+    {
+      "name": "h1-a10000",
+      "score": 99.02707320650975,
+      "exact_fraction": 0.5499923360412654
+    },
+    {
+      "name": "h1-a120",
+      "score": 99.02298623183715,
+      "exact_fraction": 0.5493458977827834
+    },
+    {
+      "name": "h1-a36",
+      "score": 99.00716674527374,
+      "exact_fraction": 0.5476531625492326
+    },
+    {
+      "name": "h2-a10000",
+      "score": 99.02729978755217,
+      "exact_fraction": 0.5499990003532085
+    },
+    {
+      "name": "h2-a120",
+      "score": 99.02321281287955,
+      "exact_fraction": 0.5493525620947265
+    },
+    {
+      "name": "h2-a36",
+      "score": 99.00739332631612,
+      "exact_fraction": 0.5476598268611758
+    },
+    {
+      "name": "h4-a10000",
+      "score": 99.02729978755217,
+      "exact_fraction": 0.5499990003532085
+    },
+    {
+      "name": "h4-a120",
+      "score": 99.02321281287955,
+      "exact_fraction": 0.5493525620947265
+    },
+    {
+      "name": "h4-a36",
+      "score": 99.00739332631612,
+      "exact_fraction": 0.5476598268611758
+    },
+    {
+      "name": "h8-a10000",
+      "score": 99.02745247717115,
+      "exact_fraction": 0.5499990003532085
+    },
+    {
+      "name": "h8-a120",
+      "score": 99.02336550249855,
+      "exact_fraction": 0.5493525620947265
+    },
+    {
+      "name": "h8-a36",
+      "score": 99.00754601593513,
+      "exact_fraction": 0.5476598268611758
+    }
+  ],
+  "holdout_used": false,
+  "prediction_cache": false
+}
