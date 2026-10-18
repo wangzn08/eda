@@ -1,0 +1,352 @@
+{
+  "state": "complete",
+  "fit_scope": "development only, label whether existing development-trained forest changes integer base",
+  "holdout_used": false,
+  "full_score": 99.5175565720498,
+  "validation_nonzero_correction_fraction": 0.25155111860475965,
+  "candidates": [
+    {
+      "model": "l15-w1",
+      "threshold": 0.01,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.03,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.05,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.1,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.15,
+      "score": 99.51208818518974,
+      "skip_fraction": 0.49909698573170813,
+      "false_skip_fraction": 0.0053914283619787675
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.2,
+      "score": 99.51208818518974,
+      "skip_fraction": 0.49909698573170813,
+      "false_skip_fraction": 0.0053914283619787675
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.3,
+      "score": 99.49016654193456,
+      "skip_fraction": 0.6860509286718692,
+      "false_skip_fraction": 0.041378712854791305
+    },
+    {
+      "model": "l15-w1",
+      "threshold": 0.5,
+      "score": 99.48249222334313,
+      "skip_fraction": 0.8318860669230206,
+      "false_skip_fraction": 0.10646904760318021
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.01,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.03,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.05,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.1,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.15,
+      "score": 99.51210143987207,
+      "skip_fraction": 0.515537843295369,
+      "false_skip_fraction": 0.0059712235010296365
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.2,
+      "score": 99.51076681098573,
+      "skip_fraction": 0.6009809867180262,
+      "false_skip_fraction": 0.015561168387169866
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.3,
+      "score": 99.50862104257625,
+      "skip_fraction": 0.6710762197356934,
+      "false_skip_fraction": 0.02907639300780391
+    },
+    {
+      "model": "l31-w1",
+      "threshold": 0.5,
+      "score": 99.50569274001818,
+      "skip_fraction": 0.7542734900335215,
+      "false_skip_fraction": 0.0577462629870779
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.01,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.03,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.05,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.1,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.15,
+      "score": 99.51219563625659,
+      "skip_fraction": 0.5663065716780071,
+      "false_skip_fraction": 0.008583633782730101
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.2,
+      "score": 99.51101960749702,
+      "skip_fraction": 0.6210805515384564,
+      "false_skip_fraction": 0.01556783269911298
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.3,
+      "score": 99.50948777109903,
+      "skip_fraction": 0.6941280747469227,
+      "false_skip_fraction": 0.032042011822489384
+    },
+    {
+      "model": "l63-w1",
+      "threshold": 0.5,
+      "score": 99.50690994759603,
+      "skip_fraction": 0.7774852885313855,
+      "false_skip_fraction": 0.06334428501929318
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.01,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.03,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.05,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.1,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.15,
+      "score": 99.5169229795968,
+      "skip_fraction": 0.3937675354708003,
+      "false_skip_fraction": 0.0018060285365837404
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.2,
+      "score": 99.51670190499112,
+      "skip_fraction": 0.42885513785129253,
+      "false_skip_fraction": 0.002172565693454979
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.3,
+      "score": 99.51481135249294,
+      "skip_fraction": 0.5168107268765036,
+      "false_skip_fraction": 0.004565053681032702
+    },
+    {
+      "model": "l31-w10",
+      "threshold": 0.5,
+      "score": 99.51491598055789,
+      "skip_fraction": 0.54843955135852,
+      "false_skip_fraction": 0.006257788914583514
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.01,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.03,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.05,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.1,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.15,
+      "score": 99.51687230416225,
+      "skip_fraction": 0.4382584820030256,
+      "false_skip_fraction": 0.0020659367023651643
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.2,
+      "score": 99.51697764384181,
+      "skip_fraction": 0.4868346517563794,
+      "false_skip_fraction": 0.0027923467041645286
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.3,
+      "score": 99.51689389576462,
+      "skip_fraction": 0.5371835284866014,
+      "false_skip_fraction": 0.004058565973356081
+    },
+    {
+      "model": "l63-w10",
+      "threshold": 0.5,
+      "score": 99.51639285931364,
+      "skip_fraction": 0.5603486768008636,
+      "false_skip_fraction": 0.0055313789127841495
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.01,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.03,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.05,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.1,
+      "score": 99.5175565720498,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.15,
+      "score": 99.5170638422883,
+      "skip_fraction": 0.39791273749941686,
+      "false_skip_fraction": 0.001292876516964006
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.2,
+      "score": 99.51718372885271,
+      "skip_fraction": 0.526647251304539,
+      "false_skip_fraction": 0.0029789474385717046
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.3,
+      "score": 99.51715043497342,
+      "skip_fraction": 0.5603819983605792,
+      "false_skip_fraction": 0.004118544780844102
+    },
+    {
+      "model": "l127-w10",
+      "threshold": 0.5,
+      "score": 99.51666106144933,
+      "skip_fraction": 0.5885253876963473,
+      "false_skip_fraction": 0.005751301206906893
+    }
+  ],
+  "best_safe_screen": {
+    "model": "l63-w1",
+    "threshold": 0.5,
+    "score": 99.50690994759603,
+    "skip_fraction": 0.7774852885313855,
+    "false_skip_fraction": 0.06334428501929318
+  }
+}

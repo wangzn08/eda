@@ -1,0 +1,11 @@
+{
+  "state": "complete",
+  "archive": "out/submission/fpga-delay-v242.tar.gz",
+  "archive_bytes": 94610764,
+  "archive_sha256": "9b539388527cf20e59b5d1e6171b9a7b67de32b1a74519c7f7ee36bbb62e5795",
+  "complete_directory_bytes": 96619631,
+  "files": 30,
+  "all_archive_member_bytes_match_frozen_folder": true,
+  "runtime_executable_sha256": "1c52d012fb4072f046b40c54ddd4dae1ed68d2c6ddf4106920334f447fe4344a",
+  "measured_executable_sha256": "1c52d012fb4072f046b40c54ddd4dae1ed68d2c6ddf4106920334f447fe4344a"
+}

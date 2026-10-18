@@ -1,0 +1,34 @@
+{
+  "state": "complete",
+  "goal_met": true,
+  "version": "V242",
+  "validation_score": 99.50611050630775,
+  "validation_rows": 150053,
+  "billion_estimate_seconds": [
+    536.2104000000003,
+    534.0711999999992
+  ],
+  "peak_rss_bytes": 1928036352,
+  "runtime_file_bytes": 95157247,
+  "complete_submission_bytes": 96619631,
+  "complete_submission_file_count": 30,
+  "independent_model_and_row_order_parity": true,
+  "single_runtime_thread_observed": true,
+  "standalone_rebuild_all_sections_identical": true,
+  "standalone_rebuild_diff_only_macho_uuid_and_signature": true,
+  "frozen_binary_and_all_runtime_asset_hashes_match": true,
+  "speed_outputs_match": true,
+  "architecture_operator_cache": true,
+  "final_prediction_cache": false,
+  "operator_cache_hit_fractions": [
+    0.9234579543776051,
+    0.9234579543776051
+  ],
+  "scope": "Apple M4/macOS local single-thread CPU extrapolation from repeated development requests; includes initialization and CSV. Input has700705 distinct pin pairs repeated to10m. Not an official Linux result and not proof of10-minute throughput on unseen low-reuse inputs.",
+  "evidence": [
+    "reports/V242-joint-goal-profile.json",
+    "reports/V242-validation-order-and-model-parity.json",
+    "out/v242/rebuild-parity.json",
+    "out/v242/single-thread-snapshot.txt"
+  ]
+}

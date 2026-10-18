@@ -1,7 +1,12 @@
 #pragma once
+#ifndef ROUTING_GRAPH_ONLY
+#define ROUTING_GRAPH_ONLY 0
+#endif
 #include "architecture_data.hpp"
+#if !ROUTING_GRAPH_ONLY
 #include "phase_lower_bound.hpp"
 #include "potential_lower_model.hpp"
+#endif
 #include <algorithm>
 #include <array>
 #include <charconv>
@@ -25,6 +30,7 @@ constexpr Distance INF = std::numeric_limits<Distance>::max()/4;
 struct Move { Node site=NONE; uint32_t delay=0; };
 struct LocalEdge { uint16_t port; uint32_t delay; };
 
+#if !ROUTING_GRAPH_ONLY
 // Memoization contains predictions computed in this process, never answers.
 class PredictionCache {
     struct Entry {uint64_t key=UINT64_MAX,value=0;};
@@ -53,6 +59,8 @@ public:
         }
     }
 };
+
+#endif
 
 #ifndef CORE_FIXED_PORT_LOAD
 #define CORE_FIXED_PORT_LOAD 0
@@ -251,6 +259,7 @@ public:
     }
 };
 
+#if !ROUTING_GRAPH_ONLY
 // Addressable binary heap: at most one live entry per node, avoiding stale-entry growth.
 class Frontier {
     std::vector<Distance> distances;
@@ -577,3 +586,5 @@ public:
     Node trace_site(Node state) const {return state/input_ports.size();}
     unsigned trace_port(Node state) const {return input_ports[state%input_ports.size()];}
 };
+
+#endif // !ROUTING_GRAPH_ONLY

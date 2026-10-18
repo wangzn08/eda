@@ -1,0 +1,39 @@
+{
+  "state": "complete",
+  "scope": "Offline validation screen of fixed development-trained V216 forest prefixes; native parity/speed unproven",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "trees": 1,
+      "score": 99.40193353289688
+    },
+    {
+      "trees": 2,
+      "score": 99.44693788514496
+    },
+    {
+      "trees": 3,
+      "score": 99.47755106088326
+    },
+    {
+      "trees": 4,
+      "score": 99.49510328819032
+    },
+    {
+      "trees": 5,
+      "score": 99.5062727222989
+    },
+    {
+      "trees": 6,
+      "score": 99.51158106335552
+    },
+    {
+      "trees": 7,
+      "score": 99.51573767316624
+    },
+    {
+      "trees": 8,
+      "score": 99.5175565720498
+    }
+  ]
+}

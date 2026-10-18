@@ -1,0 +1,4 @@
+#include "runtime_short_kernel.hpp"
+#include <fcntl.h>
+#include <sys/stat.h>
+int main(int argc,char**argv){if(argc!=2)return 2;int fd=open(argv[1],O_RDONLY);struct stat st;fstat(fd,&st);auto*m=(const unsigned char*)mmap(nullptr,st.st_size,PROT_READ,MAP_PRIVATE,fd,0);uint32_t h[6];std::memcpy(h,m+72,24);size_t rows=size_t(h[0])*h[2]*h[3];auto*p=m+96+h[2]*2;std::array<uint64_t,17>counts{};int maxspan=0;for(size_t r=0;r<rows;++r){unsigned lo=2047,hi=0;for(unsigned t=0;t<160;++t){unsigned a=RuntimeShortKernel::View::raw(p+r*220,t);lo=std::min(lo,a);hi=std::max(hi,a);}unsigned span=hi-lo,b=1;while((1u<<b)<=span)++b;++counts[b];maxspan=std::max(maxspan,int(span));}std::cout<<"rows="<<rows<<" max_span="<<maxspan<<'\n';for(unsigned b=0;b<17;++b)if(counts[b])std::cout<<"bits="<<b<<" rows="<<counts[b]<<'\n';}

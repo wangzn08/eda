@@ -1,0 +1,35 @@
+{
+  "state": "complete",
+  "fit_scope": "development labels only, V216 fixed137-feature schema",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "two8191",
+      "score": 99.46566564813875,
+      "trees": 2,
+      "leaves": 8191,
+      "elapsed_seconds": 4.087128459010273
+    },
+    {
+      "name": "four4095",
+      "score": 99.49316290015085,
+      "trees": 4,
+      "leaves": 4095,
+      "elapsed_seconds": 4.477791750017786
+    },
+    {
+      "name": "two16383",
+      "score": 99.47571698008356,
+      "trees": 2,
+      "leaves": 16383,
+      "elapsed_seconds": 6.460499790991889
+    },
+    {
+      "name": "two4095",
+      "score": 99.48402548345814,
+      "trees": 2,
+      "leaves": 4095,
+      "elapsed_seconds": 3.4124762910068966
+    }
+  ]
+}

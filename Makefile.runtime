@@ -1,0 +1,26 @@
+.DEFAULT_GOAL := runtime-v242
+RUNTIME_CXX = clang++
+RUNTIME_CXXFLAGS = -O3 -std=c++17
+ifeq ($(shell uname -s),Darwin)
+RUNTIME_ARCHFLAGS ?= -mcpu=apple-m4
+RUNTIME_LZMA_CFLAGS ?= -I/opt/homebrew/include
+RUNTIME_LZMA_LIBS ?= /opt/homebrew/lib/liblzma.a
+else
+RUNTIME_ARCHFLAGS ?=
+RUNTIME_LZMA_CFLAGS ?=
+RUNTIME_LZMA_LIBS ?= -llzma
+endif
+RUNTIME_DIR ?= build/runtime-v242
+RUNTIME_ASSETS ?= artifacts/runtime-v219
+RUNTIME_DEFINES = -DCORE_LIBLZMA=1 -DROUTING_GRAPH_ONLY=1 -DRUNTIME_COMPONENT_PROFILE=0 -DRUNTIME_COMPILED_FOREST=1 -DRUNTIME_TERMINAL_MASKS=1 -DRUNTIME_INTERVAL_MASKS=1 -DRUNTIME_CORRECTION_GATE=1 -DRUNTIME_OPERATOR_CACHE=1 -DRUNTIME_SHORT_PACK_VERIFY=0
+RUNTIME_HEADERS = src/architecture_data.hpp src/architecture_operator_cache.hpp src/buffered_csv_reader.hpp src/buffered_csv_writer.hpp src/compact_phi_model.hpp src/compact_response_kernel.hpp src/compiled_selected_correction_gate.hpp src/compiled_selected_forest.hpp src/directional_terminal_bounds.hpp src/initial_kernel_candidates.hpp src/mask_palette_index.hpp src/routing_search.hpp src/runtime_memory.hpp src/runtime_route_model.hpp src/runtime_short_kernel.hpp src/selected_feature_schema.hpp src/terminal_interval_mask_catalog.hpp src/terminal_mask_catalog.hpp src/xz_decode.hpp
+RUNTIME_MODELS = correction.bin far-curves.bin near-curves.bin phi-patterns.bin source-hints.bin LIBLZMA-LICENSE.txt
+.PHONY: runtime-v242
+runtime-v242: $(RUNTIME_DIR)/estimate $(RUNTIME_DIR)/.assets
+$(RUNTIME_DIR)/estimate: src/runtime_route_estimate.cpp $(RUNTIME_HEADERS)
+	mkdir -p $(RUNTIME_DIR)
+	$(RUNTIME_CXX) $(RUNTIME_CXXFLAGS) $(RUNTIME_ARCHFLAGS) $(RUNTIME_DEFINES) $(RUNTIME_LZMA_CFLAGS) src/runtime_route_estimate.cpp $(RUNTIME_LZMA_LIBS) -lz -o $@
+$(RUNTIME_DIR)/.assets: $(addprefix $(RUNTIME_ASSETS)/,$(RUNTIME_MODELS))
+	mkdir -p $(RUNTIME_DIR)
+	cp $(addprefix $(RUNTIME_ASSETS)/,$(RUNTIME_MODELS)) $(RUNTIME_DIR)/
+	touch $@

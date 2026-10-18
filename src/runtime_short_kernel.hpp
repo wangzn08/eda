@@ -15,12 +15,15 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include "runtime_memory.hpp"
+#ifndef RUNTIME_SHORT_PACK_VERIFY
+#define RUNTIME_SHORT_PACK_VERIFY 0
+#endif
 #ifndef RUNTIME_GEOMETRY_LOWER_BOUNDS
 #define RUNTIME_GEOMETRY_LOWER_BOUNDS 0
 #endif
 class RuntimeShortKernel{
  struct Edge{int to,dx,dy,cost;};
- unsigned char*storage=nullptr;size_t mapping_bytes=0,packed_bytes=0;unsigned sources=0,bits=0;int minimum=0;std::vector<int>anchors;std::vector<int16_t>xs;std::vector<int16_t>lower_bounds;
+ unsigned char*storage=nullptr;size_t mapping_bytes=0,packed_bytes=0;unsigned sources=0,bits=0;int minimum=0;std::vector<int>anchors;std::vector<int16_t>xs;std::vector<int16_t>lower_bounds;std::vector<uint32_t>row_descriptors;std::vector<std::array<uint32_t,10>>high_planes;std::vector<int16_t>column_bias;
  static size_t aligned(size_t n){size_t page=size_t(sysconf(_SC_PAGESIZE));return (n+page-1)/page*page;}
 public:
  RuntimeShortKernel(const RuntimeShortKernel&)=delete;RuntimeShortKernel&operator=(const RuntimeShortKernel&)=delete;
@@ -50,21 +53,31 @@ public:
      if(s%8==7||s+1==sources)std::cerr<<"short_source="<<s<<" generation_cpu="<<double(std::clock()-start)/CLOCKS_PER_SEC<<'\n';
     }
    }
-   unsigned range=maximum-minimum;bits=1;while((uint32_t(1)<<bits)<=range)++bits;if(bits>16)throw std::runtime_error("Short packed range");size_t write=0;uint64_t buffer=0;unsigned pending=0;
-   for(size_t i=0;i<count;++i){unsigned value=int(field[i])-minimum;buffer|=uint64_t(value)<<pending;pending+=bits;while(pending>=8){storage[write++]=uint8_t(buffer);buffer>>=8;pending-=8;}}if(pending)storage[write++]=uint8_t(buffer);packed_bytes=write;std::memset(storage+write,0,8);size_t keep=aligned(write+8);if(keep<mapping_bytes&&munmap(storage+keep,mapping_bytes-keep))throw std::runtime_error("Short kernel shrink");mapping_bytes=keep;
+   bits=8;size_t rows=count/160;row_descriptors.resize(rows);column_bias.resize(count/sources);high_planes.reserve(230000);size_t write=0;uint64_t packed_checked=0;minimum=0;maximum=0;std::array<int16_t,160*160>matrix;std::array<int16_t,160>bias;
+   for(size_t geometry=0;geometry<rows/sources;++geometry){std::copy_n(field+geometry*sources*160,size_t(sources)*160,matrix.data());bias.fill(INT16_MAX);for(unsigned s=0;s<sources;++s)for(unsigned t=0;t<160;++t)bias[t]=std::min(bias[t],matrix[s*160+t]);std::copy(bias.begin(),bias.end(),column_bias.data()+geometry*160);
+    for(unsigned s=0;s<sources;++s){size_t r=geometry*sources+s;std::array<int16_t,160>values;int lo=INT16_MAX,hi=INT16_MIN;for(unsigned t=0;t<160;++t){values[t]=matrix[s*160+t]-bias[t];lo=std::min(lo,int(values[t]));hi=std::max(hi,int(values[t]));}maximum=std::max(maximum,hi);if(lo<0||hi>=2048||hi-lo>=1024)throw std::runtime_error("Centered short range");unsigned high_id=(1u<<21)-1;if(hi-lo>=256){high_id=high_planes.size();if(high_id>=(1u<<21)-1)throw std::runtime_error("Short high-plane count");high_planes.push_back({});}row_descriptors[r]=unsigned(lo)|(high_id<<11);
+     for(unsigned t=0;t<160;++t){unsigned value=int(values[t])-lo;if(high_id!=(1u<<21)-1){if(value&256)high_planes[high_id][t/32]|=1u<<(t%32);if(value&512)high_planes[high_id][5+t/32]|=1u<<(t%32);}storage[write++]=uint8_t(value);}
+     if(RUNTIME_SHORT_PACK_VERIFY){const uint32_t*extra=high_id==(1u<<21)-1?nullptr:high_planes[high_id].data();for(unsigned t=0;t<160;++t){int decoded=int(View::raw8(storage+r*160,extra,t))+lo+bias[t];if(decoded!=matrix[s*160+t])throw std::runtime_error("Short centered postpack parity");++packed_checked;}}
+    }
+   }
+   if(RUNTIME_SHORT_PACK_VERIFY)std::cerr<<"short_postpack_checked="<<packed_checked<<'\n';
+   packed_bytes=write;std::memset(storage+write,0,8);size_t keep=aligned(write+8);if(keep<mapping_bytes&&munmap(storage+keep,mapping_bytes-keep))throw std::runtime_error("Short kernel shrink");mapping_bytes=keep;
    release_unused_heap_pages();runtime_memory_checkpoint("short-packed");std::cerr<<"short_entries="<<count<<" min="<<minimum<<" max="<<maximum<<" bits="<<bits<<" packed_bytes="<<packed_bytes<<" checked="<<checked<<" init_cpu="<<double(std::clock()-start)/CLOCKS_PER_SEC<<'\n';
   }catch(...){munmap(storage,mapping_bytes);storage=nullptr;throw;}
  }
  struct View{
-  const unsigned char*lo=nullptr,*hi=nullptr;int minimum=0,slope=0,wl=0,wh=0,denominator=1,lower_lo=0,lower_hi=0;
+  const unsigned char*lo=nullptr,*hi=nullptr;const uint32_t*high_lo=nullptr,*high_hi=nullptr;const int16_t*bias_lo=nullptr,*bias_hi=nullptr;int minimum=0,minimum_hi=0,slope=0,wl=0,wh=0,denominator=1,lower_lo=0,lower_hi=0;
+  // Legacy decoder retained for independent frozen11-bit reference audits.
   static unsigned raw(const unsigned char*p,unsigned target){unsigned bit=target*11;uint32_t v;std::memcpy(&v,p+(bit>>3),4);return (v>>(bit&7))&2047;}
-  int get(unsigned target)const{int a=int(raw(lo,target))+minimum;if(!hi)return a+slope;int b=int(raw(hi,target))+minimum;return int(std::nearbyint(double(a*wl+b*wh)/denominator))+slope;}
+  static unsigned raw8(const unsigned char*p,const uint32_t*extra,unsigned target){unsigned value=p[target];if(extra){value|=((extra[target/32]>>(target%32))&1)<<8;value|=((extra[5+target/32]>>(target%32))&1)<<9;}return value;}
+  int get(unsigned target)const{int a=int(raw8(lo,high_lo,target))+minimum+bias_lo[target];if(!hi)return a+slope;int b=int(raw8(hi,high_hi,target))+minimum_hi+bias_hi[target];return int(std::nearbyint(double(a*wl+b*wh)/denominator))+slope;}
   int lower_bound()const{if(!RUNTIME_GEOMETRY_LOWER_BOUNDS)throw std::runtime_error("Geometry bounds disabled");return (!hi?lower_lo:int(std::nearbyint(double(lower_lo*wl+lower_hi*wh)/denominator)))+slope;}
-  void prefetch()const{for(unsigned j=0;j<220;j+=64){__builtin_prefetch(lo+j);if(hi)__builtin_prefetch(hi+j);}}
+  void prefetch_target(unsigned target)const{__builtin_prefetch(lo+target);__builtin_prefetch(bias_lo+target);if(high_lo)__builtin_prefetch(high_lo);if(hi){__builtin_prefetch(hi+target);__builtin_prefetch(bias_hi+target);if(high_hi)__builtin_prefetch(high_hi);}}
+  void prefetch()const{for(unsigned j=0;j<160;j+=64){__builtin_prefetch(lo+j);if(hi)__builtin_prefetch(hi+j);}for(unsigned j=0;j<160;j+=32){__builtin_prefetch(bias_lo+j);if(hi)__builtin_prefetch(bias_hi+j);}if(high_lo)__builtin_prefetch(high_lo);if(high_hi)__builtin_prefetch(high_hi);}
+
  };
- View view(unsigned source,int dx,int dy)const{if(bits!=11||source>=sources||std::abs(dx)>119||std::abs(dy)>95)throw std::runtime_error("Short prepared view");View v;v.minimum=minimum;int ax=std::abs(dx),qx=ax>29?(ax-20)/10:0;v.slope=qx*125+std::abs(dy)/12*(dy>0?127:125);auto row=[&](unsigned x,bool high){size_t i=(size_t(x)*191+dy+95)*sources+source;if(high){v.hi=storage+i*220;if(RUNTIME_GEOMETRY_LOWER_BOUNDS)v.lower_hi=lower_bounds[i];}else{v.lo=storage+i*220;if(RUNTIME_GEOMETRY_LOWER_BOUNDS)v.lower_lo=lower_bounds[i];}};if(!qx){row(dx+29,false);return v;}unsigned lo=0,hi=anchors.size()-1;for(unsigned k=0;k<anchors.size();++k){if(anchors[k]<=qx)lo=k;if(anchors[k]>=qx){hi=k;break;}}if(qx>=anchors.back())lo=hi=anchors.size()-1;unsigned offset=59+(dx>0?anchors.size()*10:0)+ax%10;row(offset+lo*10,false);if(lo!=hi){row(offset+hi*10,true);v.wl=anchors[hi]-qx;v.wh=qx-anchors[lo];v.denominator=anchors[hi]-anchors[lo];}return v;}
- int residual(unsigned source,unsigned target,unsigned x_index,int dy)const{if(source>=sources||target>=160||x_index>=xs.size()||std::abs(dy)>95)throw std::runtime_error("Short query");size_t i=((size_t(x_index)*191+dy+95)*sources+source)*160+target,bit=i*bits;uint32_t word;std::memcpy(&word,storage+(bit>>3),4);return int((word>>(bit&7))&((1u<<bits)-1))+minimum;}
- int cost(unsigned source,unsigned target,int dx,int dy)const{if(std::abs(dx)>119||std::abs(dy)>95)throw std::runtime_error("Short geometry");int ax=std::abs(dx),ay=std::abs(dy),qx=ax>29?(ax-20)/10:0,qy=ay/12,value;if(!qx)value=residual(source,target,dx+29,dy);else{unsigned lo=0,hi=anchors.size()-1;for(unsigned k=0;k<anchors.size();++k){if(anchors[k]<=qx)lo=k;if(anchors[k]>=qx){hi=k;break;}}if(qx>=anchors.back())lo=hi=anchors.size()-1;unsigned offset=59+(dx>0?anchors.size()*10:0)+ax%10;int l=residual(source,target,offset+lo*10,dy);value=lo==hi?l:int(std::nearbyint(double(l*(anchors[hi]-qx)+residual(source,target,offset+hi*10,dy)*(qx-anchors[lo]))/(anchors[hi]-anchors[lo])));}return value+125*qx+qy*(dy>0?127:125);}
- void save(const std::string&path)const{std::ofstream f(path,std::ios::binary);f.write("RTSHORT1",8);f.write(archdata::HASH,64);uint32_t h[6]={sources,160,uint32_t(xs.size()),191,bits,uint32_t(minimum)};f.write(reinterpret_cast<char*>(h),24);f.write(reinterpret_cast<const char*>(xs.data()),xs.size()*2);f.write(reinterpret_cast<const char*>(storage),packed_bytes);if(!f)throw std::runtime_error("Short research output");}
- size_t bytes()const{return packed_bytes;}
+ View view(unsigned source,int dx,int dy)const{if(bits!=8||source>=sources||std::abs(dx)>119||std::abs(dy)>95)throw std::runtime_error("Short prepared view");View v;int ax=std::abs(dx),qx=ax>29?(ax-20)/10:0;v.slope=qx*125+std::abs(dy)/12*(dy>0?127:125);auto row=[&](unsigned x,bool high){size_t i=(size_t(x)*191+dy+95)*sources+source;uint32_t meta=row_descriptors[i];int base=int(meta&2047)+minimum;unsigned id=meta>>11;const uint32_t*extra=id==((1u<<21)-1)?nullptr:high_planes[id].data();if(high){v.hi=storage+i*160;v.bias_hi=column_bias.data()+(size_t(x)*191+dy+95)*160;v.minimum_hi=base;v.high_hi=extra;if(RUNTIME_GEOMETRY_LOWER_BOUNDS)v.lower_hi=lower_bounds[i];}else{v.lo=storage+i*160;v.bias_lo=column_bias.data()+(size_t(x)*191+dy+95)*160;v.minimum=base;v.high_lo=extra;if(RUNTIME_GEOMETRY_LOWER_BOUNDS)v.lower_lo=lower_bounds[i];}};if(!qx){row(dx+29,false);return v;}unsigned lo=0,hi=anchors.size()-1;for(unsigned k=0;k<anchors.size();++k){if(anchors[k]<=qx)lo=k;if(anchors[k]>=qx){hi=k;break;}}if(qx>=anchors.back())lo=hi=anchors.size()-1;unsigned offset=59+(dx>0?anchors.size()*10:0)+ax%10;row(offset+lo*10,false);if(lo!=hi){row(offset+hi*10,true);v.wl=anchors[hi]-qx;v.wh=qx-anchors[lo];v.denominator=anchors[hi]-anchors[lo];}return v;}
+ int cost(unsigned source,unsigned target,int dx,int dy)const{return view(source,dx,dy).get(target);}
+ void save(const std::string&path)const{std::ofstream f(path,std::ios::binary);f.write("RTSHORT3",8);f.write(archdata::HASH,64);uint32_t h[7]={sources,160,uint32_t(xs.size()),191,bits,uint32_t(minimum),uint32_t(high_planes.size())};f.write(reinterpret_cast<char*>(h),28);f.write(reinterpret_cast<const char*>(xs.data()),xs.size()*2);f.write(reinterpret_cast<const char*>(row_descriptors.data()),row_descriptors.size()*4);f.write(reinterpret_cast<const char*>(high_planes.data()),high_planes.size()*40);f.write(reinterpret_cast<const char*>(column_bias.data()),column_bias.size()*2);f.write(reinterpret_cast<const char*>(storage),packed_bytes);if(!f)throw std::runtime_error("Short research output");}
+ size_t bytes()const{return packed_bytes+row_descriptors.size()*4+high_planes.size()*40+column_bias.size()*2;}
 };

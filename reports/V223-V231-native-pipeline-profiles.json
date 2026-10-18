@@ -1,0 +1,112 @@
+{
+  "state": "complete",
+  "scope": "Full150053-row native validation profiling; these small-query timings are not standard billion throughput",
+  "holdout_used": false,
+  "reference_score": 99.51665300760335,
+  "reference_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+  "cases": [
+    {
+      "version": 223,
+      "method": "Circular Dial initialization and chosen-route feature prefetch; original lazy forest",
+      "rows": 150053,
+      "cpu_seconds": 68.6075,
+      "initialization_seconds": 68.2696,
+      "query_seconds": 0.33790000000000475,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "all_validation_output_bytes_equal_v219": true,
+      "score": 99.51665300760335,
+      "peak_rss_bytes": 1781809152,
+      "components": {
+        "component_prefetch_cpu": 0.044389,
+        "component_base_cpu": 0.152375,
+        "component_forest_output_cpu": 0.120648
+      }
+    },
+    {
+      "version": 224,
+      "method": "Targeted feature prefetch and eager137 features; sequential forest",
+      "rows": 150053,
+      "cpu_seconds": 68.6408,
+      "initialization_seconds": 68.3133,
+      "query_seconds": 0.32750000000000057,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "all_validation_output_bytes_equal_v219": true,
+      "score": 99.51665300760335,
+      "peak_rss_bytes": 1781383168,
+      "components": {
+        "component_prefetch_cpu": 0.043536,
+        "component_base_cpu": 0.140403,
+        "component_forest_output_cpu": 0.124408
+      }
+    },
+    {
+      "version": 226,
+      "method": "Exact9-bit row deltas with sparse10th bits; local16-bit source-mask catalogues; eager interleaved forest",
+      "rows": 150053,
+      "cpu_seconds": 69.9485,
+      "initialization_seconds": 69.6304,
+      "query_seconds": 0.31810000000000116,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "all_validation_output_bytes_equal_v219": true,
+      "score": 99.51665300760335,
+      "peak_rss_bytes": 1671708672,
+      "components": {
+        "component_prefetch_cpu": 0.046463,
+        "component_base_cpu": 0.152795,
+        "component_forest_output_cpu": 0.097259
+      }
+    },
+    {
+      "version": 227,
+      "method": "Integer-equivalent compiled8-tree forest",
+      "rows": 150053,
+      "cpu_seconds": 69.4688,
+      "initialization_seconds": 69.2156,
+      "query_seconds": 0.25320000000000675,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "all_validation_output_bytes_equal_v219": true,
+      "score": 99.51665300760335,
+      "peak_rss_bytes": 1671725056,
+      "components": {
+        "component_prefetch_cpu": 0.045498,
+        "component_base_cpu": 0.151317,
+        "component_forest_output_cpu": 0.036354
+      }
+    },
+    {
+      "version": 228,
+      "method": "Exhaustive architecture-derived terminal winner-set masks over all integer displacement groups",
+      "rows": 150053,
+      "cpu_seconds": 199.628,
+      "initialization_seconds": 199.362,
+      "query_seconds": 0.26599999999999113,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "all_validation_output_bytes_equal_v219": true,
+      "score": 99.51665300760335,
+      "peak_rss_bytes": 1833451520,
+      "components": {
+        "component_prefetch_cpu": 0.045949,
+        "component_base_cpu": 0.147282,
+        "component_forest_output_cpu": 0.040681
+      }
+    },
+    {
+      "version": 231,
+      "method": "CTZ candidate iteration and deduplicated response-feature prefetch",
+      "rows": 150053,
+      "cpu_seconds": 197.048,
+      "initialization_seconds": 196.835,
+      "query_seconds": 0.21299999999999386,
+      "output_sha256": "a1527ca3fb6940f4c6df9d91e60d5ec14210b24d928d676997e9ff1ff8cf2d83",
+      "all_validation_output_bytes_equal_v219": true,
+      "score": 99.51665300760335,
+      "peak_rss_bytes": 1907359744,
+      "components": {
+        "component_prefetch_cpu": 0.045928,
+        "component_base_cpu": 0.091734,
+        "component_selected_prefetch_cpu": 0.012214,
+        "component_forest_output_cpu": 0.03458
+      }
+    }
+  ]
+}

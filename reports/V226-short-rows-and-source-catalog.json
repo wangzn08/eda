@@ -1,0 +1,25 @@
+{
+  "state": "complete",
+  "scope": "Independent full frozen11-bit short-field row-range scan; new representation separately checked through native validation parity",
+  "rows": 4247840,
+  "entries": 679654400,
+  "row_span_max": 701,
+  "rows_by_required_bits": {
+    "8": 9,
+    "9": 4212481,
+    "10": 35350
+  },
+  "old_scalar_data_bytes": 934524800,
+  "new_low9_data_bytes": 764611200,
+  "new_row_descriptor_bytes": 16991360,
+  "new_sparse_high_plane_bytes": 707000,
+  "new_total_data_bytes": 782309560,
+  "saved_bytes": 152215240,
+  "source_mask_entries": 40771584,
+  "source_local_patterns": 1091416,
+  "max_patterns_per_source": 28516,
+  "source_old_mask_bytes": 163086336,
+  "source_new_code_bytes": 81543168,
+  "source_new_pattern_bytes": 4365664,
+  "source_new_start_bytes": 192
+}

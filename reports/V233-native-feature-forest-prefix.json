@@ -1,0 +1,23 @@
+{
+  "state": "complete",
+  "scope": "Python model using all150053 original native V218-selected features; standard compiled performance pending",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "trees": 5,
+      "score": 99.50537953733291
+    },
+    {
+      "trees": 6,
+      "score": 99.51068586746385
+    },
+    {
+      "trees": 7,
+      "score": 99.5148412300511
+    },
+    {
+      "trees": 8,
+      "score": 99.51665300760334
+    }
+  ]
+}

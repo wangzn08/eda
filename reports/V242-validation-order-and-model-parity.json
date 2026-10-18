@@ -1,0 +1,8 @@
+{
+  "state": "complete",
+  "validation_rows": 150053,
+  "all_output_pin_pairs_match_input_in_order": true,
+  "all_predictions_equal_independent_python_gate_on_native_features": true,
+  "validation_output_sha256": "3b49c22313a7437aa42bd8f1fd0892c8b86cc0b0d9c5920882bbe8ca7db2d629",
+  "architecture_operator_cache_final_prediction_cache": false
+}

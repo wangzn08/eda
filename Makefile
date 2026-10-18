@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := runtime-v242
 CXX = c++
 CXXFLAGS = -std=c++17 -O3 -Wall -Wextra -Wpedantic
 XZ_OBJECTS = build/xz/xz_crc32.o build/xz/xz_dec_lzma2.o build/xz/xz_dec_stream.o
@@ -88,3 +88,6 @@ build/core_template_fast30_estimate: src/buffered_csv_writer.hpp src/buffered_cs
 # Portable build; benchmarked M4 profile is prepared by prepare_fast15_profile.py.
 build/core_template_fast15_estimate: src/buffered_csv_writer.hpp src/buffered_csv_reader.hpp src/joint_interaction_model.hpp $(XZ_OBJECTS) src/xz_decode.hpp src/horizontal_transient_model.hpp src/vertical_transient_model.hpp src/core_template_estimate.cpp src/core_template_model.hpp src/fast_residual_model.hpp src/fast_architecture_features.hpp src/routing_search.hpp src/architecture_data.hpp
 	$(CXX) $(CXXFLAGS) -ffp-contract=off -DCORE_PHASE_MAJOR=1 -DCORE_FAST30_PROFILE=1 -DCORE_FAST15_PROFILE=1 -DCORE_BUFFERED_INPUT=1 -DCORE_PREFETCH=1 -DCORE_PREFETCH_CELL=1 -Isrc src/core_template_estimate.cpp $(XZ_OBJECTS) -lz -o $@
+
+# Validated local99.5/600s/100MB/2GB candidate.
+include Makefile.runtime

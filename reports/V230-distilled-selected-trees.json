@@ -1,0 +1,56 @@
+{
+  "state": "complete",
+  "fit_scope": "development only; blend development-trained teacher residual and development golden residual",
+  "teacher": "out/v216/tree8.txt",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "teacher_one",
+      "score": 99.44011704550108,
+      "trees": 1,
+      "leaves": 32767,
+      "teacher_fraction": 1,
+      "elapsed_seconds": 4.8402882919763215
+    },
+    {
+      "name": "teacher_two",
+      "score": 99.48574569540835,
+      "trees": 2,
+      "leaves": 8191,
+      "teacher_fraction": 1,
+      "elapsed_seconds": 4.580967874993803
+    },
+    {
+      "name": "teacher_two_wide",
+      "score": 99.48409931977187,
+      "trees": 2,
+      "leaves": 16383,
+      "teacher_fraction": 1,
+      "elapsed_seconds": 5.354846667003585
+    },
+    {
+      "name": "teacher_four",
+      "score": 99.4964660142004,
+      "trees": 4,
+      "leaves": 4095,
+      "teacher_fraction": 1,
+      "elapsed_seconds": 4.589286540984176
+    },
+    {
+      "name": "blend_two",
+      "score": 99.4814017006752,
+      "trees": 2,
+      "leaves": 8191,
+      "teacher_fraction": 0.5,
+      "elapsed_seconds": 4.277792624983704
+    },
+    {
+      "name": "blend_four",
+      "score": 99.49528537264585,
+      "trees": 4,
+      "leaves": 4095,
+      "teacher_fraction": 0.5,
+      "elapsed_seconds": 4.757888042018749
+    }
+  ]
+}
