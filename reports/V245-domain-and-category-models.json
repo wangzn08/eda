@@ -1,0 +1,102 @@
+{
+  "state": "complete",
+  "fit_scope": "development only; native V242 features; validation only for comparison",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "wall-wide",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "leaves": 1023,
+      "elapsed_seconds": 18.898160707991337,
+      "score": 99.51032239815254,
+      "exact_fraction": 0.6808461010442977
+    },
+    {
+      "name": "wall-wide",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "leaves": 1023,
+      "elapsed_seconds": 19.290071124996757,
+      "score": 99.52533485984752,
+      "exact_fraction": 0.6684371522062205
+    },
+    {
+      "name": "wall-wide",
+      "trees_per_request": 32,
+      "total_trees": 64,
+      "leaves": 1023,
+      "elapsed_seconds": 20.097661292005796,
+      "score": 99.52917345287399,
+      "exact_fraction": 0.6606865574163795
+    },
+    {
+      "name": "four-regions",
+      "trees_per_request": 8,
+      "total_trees": 32,
+      "leaves": 511,
+      "elapsed_seconds": 17.46405812498415,
+      "score": 99.50092059916886,
+      "exact_fraction": 0.6745483262580555
+    },
+    {
+      "name": "four-regions",
+      "trees_per_request": 16,
+      "total_trees": 64,
+      "leaves": 511,
+      "elapsed_seconds": 17.748396374983713,
+      "score": 99.51624142813229,
+      "exact_fraction": 0.6672242474325738
+    },
+    {
+      "name": "four-regions",
+      "trees_per_request": 32,
+      "total_trees": 128,
+      "leaves": 511,
+      "elapsed_seconds": 18.306466249981895,
+      "score": 99.52140985471418,
+      "exact_fraction": 0.659720232184628
+    },
+    {
+      "name": "categorical",
+      "trees": 8,
+      "leaves": 1023,
+      "elapsed_seconds": 36.107564124977216,
+      "score": 99.49518735751099,
+      "exact_fraction": 0.6840116492172765
+    },
+    {
+      "name": "categorical",
+      "trees": 16,
+      "leaves": 1023,
+      "elapsed_seconds": 36.461643791990355,
+      "score": 99.50243990638913,
+      "exact_fraction": 0.6726489973542682
+    },
+    {
+      "name": "categorical",
+      "trees": 32,
+      "leaves": 1023,
+      "elapsed_seconds": 37.20241304198862,
+      "score": 99.50305555736657,
+      "exact_fraction": 0.6679106715627146
+    },
+    {
+      "name": "categorical",
+      "trees": 64,
+      "leaves": 1023,
+      "elapsed_seconds": 38.77465658300207,
+      "score": 99.50311994225508,
+      "exact_fraction": 0.6669643392667924
+    }
+  ],
+  "best": {
+    "name": "wall-wide",
+    "trees_per_request": 32,
+    "total_trees": 64,
+    "leaves": 1023,
+    "elapsed_seconds": 20.097661292005796,
+    "score": 99.52917345287399,
+    "exact_fraction": 0.6606865574163795
+  }
+}

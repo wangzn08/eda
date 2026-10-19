@@ -1,0 +1,8 @@
+{
+  "state": "complete",
+  "version": 250,
+  "root_build_all_file_backed_sections_equal_measured": true,
+  "root_build_diff_only_uuid_and_signature": true,
+  "measured_binary_sha256": "6d3607e464e5b0d7a947a33003a5384b8d6606ca8d096c7443c9c7d995159b9b",
+  "root_build_binary_sha256": "6d3607e464e5b0d7a947a33003a5384b8d6606ca8d096c7443c9c7d995159b9b"
+}

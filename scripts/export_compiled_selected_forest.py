@@ -6,15 +6,15 @@ integer threshold equivalent to every original double comparison.
 """
 import argparse,math,struct
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('input');p.add_argument('output');a=p.parse_args()
-b=Path(a.input).read_bytes();nf,nt=struct.unpack_from('<II',b,136);assert nf==137;pos=144;trees=[];checksum=1469598103934665603
+p=argparse.ArgumentParser();p.add_argument('input');p.add_argument('output');p.add_argument('--domains',type=int,choices=(1,2,4),default=1);a=p.parse_args()
+b=Path(a.input).read_bytes();nf,nt=struct.unpack_from('<II',b,136);assert 137<=nf<=192;pos=144;trees=[];checksum=1469598103934665603
 for t in range(nt):
  n=struct.unpack_from('<I',b,pos)[0];pos+=4;raw=b[pos:pos+16*n];pos+=len(raw)
  for byte in raw:checksum=((checksum^byte)*1099511628211)&((1<<64)-1)
  trees.append([struct.unpack_from('<HHHHd',raw,16*i) for i in range(n)])
 assert pos==len(b)
 def cut(feature,threshold):
- if feature<77:return math.floor(threshold)
+ if feature<77 or feature>=137:return math.floor(threshold)
  lo,hi=-32769,32768
  while hi-lo>1:
   mid=(lo+hi)//2;v=struct.unpack('<f',struct.pack('<f',mid/12))[0]
@@ -29,7 +29,21 @@ for t,nodes in enumerate(trees):
   if f==65535:lines.append(f'return {v.hex()};');return
   lines.append(f'if(r.integer<{f}>()<={cut(f,v)}){{');emit(l);lines.append('}else{');emit(rr);lines.append('}')
  emit(0);lines.append('}')
-lines.append('static double compiled_correction(Features&r){double value=0;')
-for t in range(nt):lines.append(f'value+=compiled_tree_{t}(r);')
-lines.append('return value;}')
+assert nt%a.domains==0
+if a.domains==1:
+ lines.append('static double compiled_correction(Features&r){double value=0;')
+ for t in range(nt):lines.append(f'value+=compiled_tree_{t}(r);')
+ lines.append('return value;}')
+else:
+ for domain in range(a.domains):
+  lines.append(f'static double compiled_expert_{domain}(Features&r){{double value=0;')
+  for t in range(domain*(nt//a.domains),(domain+1)*(nt//a.domains)):lines.append(f'value+=compiled_tree_{t}(r);')
+  lines.append('return value;}')
+ lines.append('static double compiled_correction(Features&r){')
+ if a.domains==2:lines.append('return r.integer<54>()?compiled_expert_1(r):compiled_expert_0(r);')
+ else:
+  lines.append('unsigned domain=(r.integer<54>()?2:0)+(r.integer<22>()<96?1:0);switch(domain){')
+  for domain in range(4):lines.append(f'case {domain}:return compiled_expert_{domain}(r);')
+  lines.append('}return 0;')
+ lines.append('}')
 Path(a.output).write_text('\n'.join(lines)+'\n');print('generated',nt,'trees',Path(a.output).stat().st_size,'bytes')

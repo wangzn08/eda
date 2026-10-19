@@ -1,0 +1,15 @@
+{
+  "state": "complete",
+  "scope": "Single3m novel-input ablation of compile-time integer interaction features versus V246; output parity only on these3m requests, no independent V249 full-validation score claimed",
+  "rows": 3000000,
+  "total_cpu_seconds": 96.4195,
+  "initialization_cpu_seconds": 88.9941,
+  "query_cpu_seconds": 7.425399999999996,
+  "query_cpu_seconds_per_request": 2.475133333333332e-06,
+  "billion_estimate_cpu_seconds": 2564.1274333333317,
+  "wall_seconds": 96.94927504201769,
+  "output_sha256": "55560f7799c21be57fa8e7223101c8297486b3c6a2437401a75c921663d34842",
+  "all3m_output_bytes_equal_v246": true,
+  "source_of_reference": "reports/V246-native-score-profile.json",
+  "maximum_rss_bytes": 1914568704
+}

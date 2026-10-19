@@ -1,4 +1,21 @@
-# V219 已验证运行快照
+# 运行快照与共享资产
+
+## 2026-10-19：V250 / V253 / V254
+
+`runtime-v253/`、`runtime-v254/`保存实测程序、冻结源码、构建文件与清单。它们共用V219中SHA完全相同的架构资产，只保存新增文件，合计新增约6.68MB。`runtime-v242/`另保留原重复请求阶段的完整冻结源码与程序，`make runtime-v242`可重编译。使用下面的命令组装完整目录；组装会逐项核对程序、模型及源码SHA：
+
+```sh
+python3 scripts/assemble_score_release.py --version 254 --output out/submission/reassembled-v254
+python3 scripts/assemble_score_release.py --version 253 --output out/submission/reassembled-v253
+```
+
+`runtime-v250/`另保留验证99.5290713、约29.06分钟的精度配置，可用`make runtime-v250`组装并编译；其源码重建使用Python3标准库生成临时树代码。
+
+根目录`make`编译V254，输出`build/runtime-v254/estimate`；`make runtime-v253`组装并重编译短专家配置。三个完整提交目录均小于100MB，包含必要模型、许可证和可独立编译源码。提交使用组装后的单个完整目录或对应压缩包。
+
+V254保持验证99.5061105，新请求十亿CPU外推约21.05分钟；V253验证99.5151946，约21.98分钟。均关闭中间算子缓存，测速输入为两批各300万条互不重复的新配对请求。详细指标及适用范围见[本轮结果](../reports/V253-V254-final.md)。Linux性能尚未实测。
+
+## 以下为历史V219快照
 
 `runtime-v219/` 保存最后完成同版完整验证和两轮速度测量的程序及全部必要资产。其七个文件共 94,768,591 bytes。各文件 SHA-256 记录在 [`../reports/V219-joint-goal-profile.json`](../reports/V219-joint-goal-profile.json) 的 `asset_sha256_after` 中，本次复制前已逐项核对。
 
@@ -26,7 +43,7 @@ cd artifacts/runtime-v219
 
 时间外推包含一次初始化与 CSV 读写，只代表本地单线程重复开发请求测量，不代表官方评测机、未见请求或实际十亿条性能。验证分是比赛误差评分，不是预测完全正确比例。99.5 分与 600 秒的联合目标尚未达到。
 
-## 源码状态
+## 当时源码状态（2026-10-17历史）
 
 仓库当前 `src/` 是继续迭代的研究源码，包含 V220/V222 与此后的未验证改动，并非此二进制的冻结源码快照。尤其最新短程初始化队列、3100 截断与条件下界存储改动尚未重新编译和完成验证。默认 `Makefile` 还保留历史入口，不能据此声称重新构建了该已验证程序。
 

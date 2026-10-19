@@ -1,0 +1,115 @@
+{
+  "state": "complete",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "runtime": "out/runtime-kernel-v242",
+  "asset_sha256_before": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "770e3397625c4a7d6a6c28aaf83bc0841744f31039613205433d912896e9bea8",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "1c52d012fb4072f046b40c54ddd4dae1ed68d2c6ddf4106920334f447fe4344a",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "prediction_cache": false,
+  "architecture_operator_cache": true,
+  "scope": "Synthetic distinct recombined development pins, Apple M4/macOS, same frozen V242, standard CSV I/O, serial fresh processes; not official hidden requests, no accuracy labels available",
+  "extrapolation": "initialization_cpu + 1e9 * query_cpu / measured_rows; assumes comparable distribution and sustained throughput",
+  "runs": [
+    {
+      "index": 1,
+      "rows": 3000000,
+      "command": [
+        "/Users/wang/Desktop/EDA精英挑战赛-赛题一/out/runtime-kernel-v242/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA精英挑战赛-赛题一/out/v242/novel-requests/novel-1.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA精英挑战赛-赛题一/out/v242/novel-requests/novel-1.output.csv"
+      ],
+      "total_cpu_seconds": 91.0511,
+      "initialization_cpu_seconds": 86.7398,
+      "query_cpu_seconds": 4.311300000000003,
+      "total_wall_seconds": 91.2666961660143,
+      "query_cpu_seconds_per_request": 1.437100000000001e-06,
+      "query_cpu_microseconds_per_request": 1.437100000000001,
+      "billion_estimate_cpu_seconds_including_initialization": 1523.839800000001,
+      "maximum_rss_bytes": 1910865920,
+      "operator_hits": 17053,
+      "operator_misses": 17200172,
+      "operator_hit_fraction": 0.0009904615871605326,
+      "output_rows_and_pin_order_verified": true,
+      "invalid_or_unreachable_output_rows": 0,
+      "minimum_delay": 52,
+      "maximum_delay": 8403,
+      "output_sha256": "c4bef7904d56913b698ff3a2c57699f18a3b6c666a68ce2d51f09df640898d2a",
+      "stderr": "out/v242/novel-requests/novel-1.stderr"
+    },
+    {
+      "index": 2,
+      "rows": 3000000,
+      "command": [
+        "/Users/wang/Desktop/EDA精英挑战赛-赛题一/out/runtime-kernel-v242/estimate",
+        "-in",
+        "/Users/wang/Desktop/EDA精英挑战赛-赛题一/out/v242/novel-requests/novel-2.request.csv",
+        "-out",
+        "/Users/wang/Desktop/EDA精英挑战赛-赛题一/out/v242/novel-requests/novel-2.output.csv"
+      ],
+      "total_cpu_seconds": 91.4054,
+      "initialization_cpu_seconds": 87.1866,
+      "query_cpu_seconds": 4.218800000000002,
+      "total_wall_seconds": 91.567664333008,
+      "query_cpu_seconds_per_request": 1.4062666666666672e-06,
+      "query_cpu_microseconds_per_request": 1.4062666666666672,
+      "billion_estimate_cpu_seconds_including_initialization": 1493.453266666667,
+      "maximum_rss_bytes": 1928019968,
+      "operator_hits": 16663,
+      "operator_misses": 17188088,
+      "operator_hit_fraction": 0.0009685115466070971,
+      "output_rows_and_pin_order_verified": true,
+      "invalid_or_unreachable_output_rows": 0,
+      "minimum_delay": 68,
+      "maximum_delay": 8504,
+      "output_sha256": "6899f49192bfd994b557a7437b343c5d96efd4b9a4e9d14b06ddebeff0473ca6",
+      "stderr": "out/v242/novel-requests/novel-2.stderr"
+    }
+  ],
+  "input_inventory": {
+    "seed": 20261019,
+    "numpy_version": "2.5.3",
+    "development_rows": 700705,
+    "distinct_source_pins": 652051,
+    "distinct_target_pins": 679079,
+    "method": "Independent empirical development source and target marginals; reject all development/validation pairs and duplicates; shuffle; disjoint sequential slices for separate fresh processes",
+    "distinct_pairs_across_all_runs": 6000000,
+    "known_development_validation_pairs_present": 0,
+    "duplicate_pairs_across_all_runs": 0,
+    "labels_read": false,
+    "holdout_read": false,
+    "files": [
+      {
+        "path": "out/v242/novel-requests/novel-1.request.csv",
+        "rows": 3000000,
+        "bytes": 106183457,
+        "sha256": "1fa56771389e6449e70da765d46a8d7c882a819038bc25d09b056ee84c4c5ae4"
+      },
+      {
+        "path": "out/v242/novel-requests/novel-2.request.csv",
+        "rows": 3000000,
+        "bytes": 106185024,
+        "sha256": "11bebc6dafd1a3bf86aa9a7581ffc7307ef232ff443026ee66fe78a4dd67b1b3"
+      }
+    ]
+  },
+  "asset_sha256_after": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "770e3397625c4a7d6a6c28aaf83bc0841744f31039613205433d912896e9bea8",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "1c52d012fb4072f046b40c54ddd4dae1ed68d2c6ddf4106920334f447fe4344a",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "pooled_query_cpu_seconds_per_request": 1.421683333333334e-06,
+  "pooled_billion_estimate_cpu_seconds_including_initialization": 1508.646533333334
+}

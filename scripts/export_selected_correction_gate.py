@@ -4,7 +4,7 @@ from pathlib import Path
 import lightgbm as lgb
 p=argparse.ArgumentParser();p.add_argument('model');p.add_argument('mapping');p.add_argument('output');p.add_argument('--threshold',type=float,default=.5);a=p.parse_args();mapping=json.loads(Path(a.mapping).read_text());m=lgb.Booster(model_file=a.model);tree=m.dump_model()['tree_info'];assert len(tree)==1;logit=math.log(a.threshold/(1-a.threshold))
 def cut(f,t):
- if f<77:return math.floor(t)
+ if f<77 or f>=137:return math.floor(t)
  lo,hi=-32769,32768
  while hi-lo>1:
   mid=(lo+hi)//2;v=struct.unpack('<f',struct.pack('<f',mid/12))[0]

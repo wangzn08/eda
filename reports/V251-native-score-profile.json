@@ -1,0 +1,205 @@
+{
+  "state": "complete",
+  "version": "251",
+  "scope": "Apple M4/macOS, standard CSV CLI, native full validation then two disjoint synthetic novel-request inputs; extrapolation not official hidden input measurement",
+  "architecture_operator_cache": false,
+  "prediction_cache": false,
+  "holdout_used": false,
+  "runtime_file_bytes": 97088815,
+  "asset_sha256_before": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "cac84059451fcc23aeb40edd7aa58dfa9d4418c284114fd220c5017cef992b41",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "c917e5a4c9447a876361904623e4618b93eb9d00c7ee254f1bf0fb068bc4a13c",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "runs": [
+    {
+      "name": "validation",
+      "rows": 150053,
+      "total_cpu_seconds": 133.602,
+      "initialization_cpu_seconds": 133.376,
+      "query_cpu_seconds": 0.2259999999999991,
+      "total_wall_seconds": 134.1162177079823,
+      "maximum_rss_bytes": 1964277760,
+      "output_sha256": "1359494513de70ce848613509eda498b4dee39d31a8cc6fe7a022fbe2dbb7321",
+      "output_pin_order_and_range_verified": true,
+      "score": 99.52601984894189,
+      "all_predictions_equal_offline": true
+    },
+    {
+      "name": "novel-1",
+      "rows": 3000000,
+      "total_cpu_seconds": 137.97,
+      "initialization_cpu_seconds": 133.585,
+      "query_cpu_seconds": 4.384999999999991,
+      "total_wall_seconds": 138.04939870798262,
+      "maximum_rss_bytes": 1963442176,
+      "output_sha256": "36f540c8b0e5923d77c0614a3895e6f39dc04f013f4a4b3e7b7c5bfc453b68e5",
+      "output_pin_order_and_range_verified": true,
+      "query_cpu_seconds_per_request": 1.4616666666666635e-06,
+      "billion_estimate_cpu_seconds": 1595.2516666666636
+    },
+    {
+      "name": "novel-2",
+      "rows": 3000000,
+      "total_cpu_seconds": 138.145,
+      "initialization_cpu_seconds": 133.77,
+      "query_cpu_seconds": 4.375,
+      "total_wall_seconds": 138.20122250000713,
+      "maximum_rss_bytes": 1963442176,
+      "output_sha256": "743f209a9f864c1cfbcce4d14f7f27291391a896c965d7fec95d908be8aab3ce",
+      "output_pin_order_and_range_verified": true,
+      "query_cpu_seconds_per_request": 1.4583333333333333e-06,
+      "billion_estimate_cpu_seconds": 1592.1033333333332
+    }
+  ],
+  "fit_manifest": {
+    "version": "251",
+    "domains": 2,
+    "trees_per_request": 32,
+    "total_trees": 64,
+    "features": 187,
+    "models": [
+      "out/v244/wall-expert-0.txt",
+      "out/v244/wall-expert-1.txt"
+    ],
+    "feature_names": "out/v244/physics.features.json",
+    "gate_model": "out/v248/geometry-255.txt",
+    "gate_threshold": 0.5,
+    "batch_size": 64,
+    "refined_terminals": true,
+    "hot_terminal_codec": false,
+    "direct_terminal_masks": true,
+    "source_entry": "out/v250/runtime_route_estimate.cpp",
+    "architecture_operator_cache": false,
+    "prediction_cache": false,
+    "fit_scope": "development only",
+    "holdout_used": false,
+    "compile_command": [
+      "clang++",
+      "-O3",
+      "-mcpu=apple-m4",
+      "-std=c++17",
+      "-DCORE_LIBLZMA=1",
+      "-DROUTING_GRAPH_ONLY=1",
+      "-DRUNTIME_COMPONENT_PROFILE=0",
+      "-DRUNTIME_COMPILED_FOREST=1",
+      "-DRUNTIME_TERMINAL_MASKS=1",
+      "-DRUNTIME_INTERVAL_MASKS=1",
+      "-DRUNTIME_OPERATOR_CACHE=0",
+      "-DRUNTIME_SHORT_PACK_VERIFY=0",
+      "-DRUNTIME_FEATURE_SCHEMA_HEADER=\"/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/v251/selected_feature_schema.hpp\"",
+      "-DRUNTIME_COMPILED_FOREST_HEADER=\"/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/v251/compiled_selected_forest.hpp\"",
+      "-DRUNTIME_CORRECTION_GATE=1",
+      "-DRUNTIME_CORRECTION_GATE_HEADER=\"/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/v251/compiled_selected_correction_gate.hpp\"",
+      "-DRUNTIME_BATCH_SIZE=64",
+      "-DRUNTIME_REFINED_TERMINALS=1",
+      "-DRUNTIME_MASK_HOT_CODEC=0",
+      "-DRUNTIME_MASK_DIRECT=1",
+      "-I/opt/homebrew/include",
+      "-I/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/src",
+      "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/v250/runtime_route_estimate.cpp",
+      "/opt/homebrew/lib/liblzma.a",
+      "-lz",
+      "-o",
+      "/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/runtime-kernel-v251/estimate"
+    ],
+    "runtime_source_sha256": {
+      "runtime_memory.hpp": "16571cc393b91ade51354e5621d34bd2d987afd0abbf33b7780d755437ac04cf",
+      "runtime_route_estimate.cpp": "258565bd521bd0d99ac9cce402d1a6f9afcd8e4c0793b992eaa43c9940ca5634",
+      "buffered_csv_reader.hpp": "ab82a98607ff439fa66d76f3237b8229c29af22b94a347781076e182f4358a84",
+      "compact_response_kernel.hpp": "672f9c6fd9e3e036af3a8157ae22c56941231f7fedea4cc2265ebe6cb01970a0",
+      "runtime_short_kernel.hpp": "b5d2225cf3d2b6b750d50589c8a9f6c1ae25f68e40b99f211cda583ede0f773e",
+      "xz_decode.hpp": "ec69de34fc96a8ff4267b3f3cf7f6a3553221590dbf57e5e1531a2097b29f765",
+      "architecture_data.hpp": "d341ea5a876a39790a29b39619d27eb6343c550cb044bff8f2c7cdde381924c0",
+      "buffered_csv_writer.hpp": "93d3aee4d047b1ca422754b481934f00dbb5792ddb011181497d2797cc811302",
+      "selected_feature_schema.hpp": "51b698d14def7cb869dfefe050e0fa18b4733e1eec841881e4c08a299cb1f5cc",
+      "selected_physics_features.hpp": "5b74493eb421e02d64491b513196034b7f6a16bda9a8b1b36c3cb9b1a524bb60",
+      "terminal_mask_catalog.hpp": "55ae5f6877064b0187b0c7408d9527b7fbec4193c36fff3d1e0d1f1c0445e9be",
+      "routing_search.hpp": "f23da604dad3f304197131a91b30f2782876a705b989cec3ff41448e7d8860bc",
+      "compiled_selected_forest.hpp": "540da2e2db125a29805f1cfeaed1fa4c1bb4d50385932f9ffac5fc2461be0f26",
+      "terminal_interval_mask_catalog.hpp": "77edb34bd25f7827f9f80357f07b3c199321a9c2c9faad6b8d4c9c7a05ba2b6c",
+      "runtime_route_model.hpp": "f2fbe1fd64fc98edef976e5bf5220e52e2f1ea74e1b71af076b6c8f1b16df382",
+      "initial_kernel_candidates.hpp": "265fe3ecbad7302cc8817c9b165d8ba2761df12c205fd00b2540fd7b9d5c426d",
+      "compact_phi_model.hpp": "2ee70420b2f6cdfd1dca60cbae75f13a5a4775f65214ae0e2f50ec319d0b22eb",
+      "architecture_operator_cache.hpp": "7c16ff8474188e56043c5213f317c7baf76bac83a73232beb2f545ddeb479160",
+      "mask_palette_index.hpp": "222d05cef851d724169999a08aa2988d59122ddfb221308bf355ee1fa415caeb",
+      "compiled_selected_correction_gate.hpp": "4925cee971f5f4a08dadac0928d3c9327b71d418de7a068eb915b7999b38c8e1",
+      "directional_terminal_bounds.hpp": "d5ec4ce9835af44f0f8e66a7e8703ce488849a46acdbf897a658201a9b2731fb"
+    },
+    "files": {
+      "LIBLZMA-LICENSE.txt": {
+        "bytes": 607,
+        "sha256": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1"
+      },
+      "near-curves.bin": {
+        "bytes": 28551088,
+        "sha256": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c"
+      },
+      "correction.bin": {
+        "bytes": 1045904,
+        "sha256": "cac84059451fcc23aeb40edd7aa58dfa9d4418c284114fd220c5017cef992b41"
+      },
+      "far-curves.bin": {
+        "bytes": 45728124,
+        "sha256": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e"
+      },
+      "phi-patterns.bin": {
+        "bytes": 1790348,
+        "sha256": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b"
+      },
+      "estimate": {
+        "bytes": 2312328,
+        "sha256": "c917e5a4c9447a876361904623e4618b93eb9d00c7ee254f1bf0fb068bc4a13c"
+      },
+      "source-hints.bin": {
+        "bytes": 17660416,
+        "sha256": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+      }
+    }
+  },
+  "novel_input_inventory": {
+    "seed": 20261019,
+    "numpy_version": "2.5.3",
+    "development_rows": 700705,
+    "distinct_source_pins": 652051,
+    "distinct_target_pins": 679079,
+    "method": "Independent empirical development source and target marginals; reject all development/validation pairs and duplicates; shuffle; disjoint sequential slices for separate fresh processes",
+    "distinct_pairs_across_all_runs": 6000000,
+    "known_development_validation_pairs_present": 0,
+    "duplicate_pairs_across_all_runs": 0,
+    "labels_read": false,
+    "holdout_read": false,
+    "files": [
+      {
+        "path": "out/v242/novel-requests/novel-1.request.csv",
+        "rows": 3000000,
+        "bytes": 106183457,
+        "sha256": "1fa56771389e6449e70da765d46a8d7c882a819038bc25d09b056ee84c4c5ae4"
+      },
+      {
+        "path": "out/v242/novel-requests/novel-2.request.csv",
+        "rows": 3000000,
+        "bytes": 106185024,
+        "sha256": "11bebc6dafd1a3bf86aa9a7581ffc7307ef232ff443026ee66fe78a4dd67b1b3"
+      }
+    ]
+  },
+  "observed_runtime_threads": 1,
+  "validation_score": 99.52601984894189,
+  "asset_sha256_after": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "cac84059451fcc23aeb40edd7aa58dfa9d4418c284114fd220c5017cef992b41",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "c917e5a4c9447a876361904623e4618b93eb9d00c7ee254f1bf0fb068bc4a13c",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "peak_rss_bytes": 1964277760,
+  "pooled_query_cpu_seconds_per_request": 1.4599999999999985e-06,
+  "pooled_billion_estimate_cpu_seconds": 1593.6774999999984
+}

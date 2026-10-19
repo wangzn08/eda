@@ -1,0 +1,181 @@
+{
+  "state": "complete",
+  "fit_scope": "Native V242 route features; development labels only; validation comparison only",
+  "holdout_used": false,
+  "base_score": 99.34061536957391,
+  "candidates": [
+    {
+      "name": "full-old8-native",
+      "trees": 8,
+      "score": 99.51665300760334,
+      "exact_fraction": 0.6774606305771961
+    },
+    {
+      "name": "plain",
+      "trees": 8,
+      "leaves": 1023,
+      "features": 137,
+      "model": "out/v244/plain.txt",
+      "elapsed_seconds": 22.217642249976052,
+      "score": 99.49405378808622,
+      "exact_fraction": 0.6925086469447462
+    },
+    {
+      "name": "plain",
+      "trees": 16,
+      "leaves": 1023,
+      "features": 137,
+      "model": "out/v244/plain.txt",
+      "elapsed_seconds": 22.485128040978452,
+      "score": 99.51803934254411,
+      "exact_fraction": 0.6834385183901688
+    },
+    {
+      "name": "plain",
+      "trees": 32,
+      "leaves": 1023,
+      "features": 137,
+      "model": "out/v244/plain.txt",
+      "elapsed_seconds": 23.038163582998095,
+      "score": 99.52421210197448,
+      "exact_fraction": 0.6761544254363459
+    },
+    {
+      "name": "plain",
+      "trees": 64,
+      "leaves": 1023,
+      "features": 137,
+      "model": "out/v244/plain.txt",
+      "elapsed_seconds": 24.041779541003052,
+      "score": 99.52790515504866,
+      "exact_fraction": 0.6729089055200496
+    },
+    {
+      "name": "physics",
+      "trees": 8,
+      "leaves": 1023,
+      "features": 187,
+      "model": "out/v244/physics.txt",
+      "elapsed_seconds": 29.207643083995208,
+      "score": 99.49376952202645,
+      "exact_fraction": 0.6915623146488241
+    },
+    {
+      "name": "physics",
+      "trees": 16,
+      "leaves": 1023,
+      "features": 187,
+      "model": "out/v244/physics.txt",
+      "elapsed_seconds": 29.51531945899478,
+      "score": 99.51800021091103,
+      "exact_fraction": 0.6815925039819264
+    },
+    {
+      "name": "physics",
+      "trees": 32,
+      "leaves": 1023,
+      "features": 187,
+      "model": "out/v244/physics.txt",
+      "elapsed_seconds": 30.18125604200759,
+      "score": 99.52465202484034,
+      "exact_fraction": 0.6739751954309477
+    },
+    {
+      "name": "physics",
+      "trees": 64,
+      "leaves": 1023,
+      "features": 187,
+      "model": "out/v244/physics.txt",
+      "elapsed_seconds": 31.58590566701605,
+      "score": 99.52771203775237,
+      "exact_fraction": 0.6693235056946546
+    },
+    {
+      "name": "physics-small",
+      "trees": 8,
+      "leaves": 511,
+      "features": 187,
+      "model": "out/v244/physics-small.txt",
+      "elapsed_seconds": 24.8372180830047,
+      "score": 99.48955027152535,
+      "exact_fraction": 0.6945012762157371
+    },
+    {
+      "name": "physics-small",
+      "trees": 16,
+      "leaves": 511,
+      "features": 187,
+      "model": "out/v244/physics-small.txt",
+      "elapsed_seconds": 25.088786208012607,
+      "score": 99.51373223058799,
+      "exact_fraction": 0.6855377766522496
+    },
+    {
+      "name": "physics-small",
+      "trees": 32,
+      "leaves": 511,
+      "features": 187,
+      "model": "out/v244/physics-small.txt",
+      "elapsed_seconds": 25.56511049999972,
+      "score": 99.52063781395097,
+      "exact_fraction": 0.6775339380085703
+    },
+    {
+      "name": "physics-small",
+      "trees": 64,
+      "leaves": 511,
+      "features": 187,
+      "model": "out/v244/physics-small.txt",
+      "elapsed_seconds": 26.5468305000104,
+      "score": 99.52402168126143,
+      "exact_fraction": 0.673228792493319
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "leaves_per_tree": 511,
+      "elapsed_seconds": 16.95644245800213,
+      "score": 99.49511225517924,
+      "exact_fraction": 0.6926219402477791
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "leaves_per_tree": 511,
+      "elapsed_seconds": 17.220617333019618,
+      "score": 99.5232269424154,
+      "exact_fraction": 0.6805995215024024
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 32,
+      "total_trees": 64,
+      "features": 187,
+      "leaves_per_tree": 511,
+      "elapsed_seconds": 17.840789125009906,
+      "score": 99.5306164587667,
+      "exact_fraction": 0.6725357040512352
+    }
+  ],
+  "references": [
+    "https://proceedings.neurips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html",
+    "https://proceedings.mlr.press/r16/wang18c.html",
+    "https://www.eecg.utoronto.ca/~vaughn/papers/fpl2016_complex_routing.pdf"
+  ],
+  "novelty_scope": "FPGA endpoint/curve interaction and domain-specialist adaptation; existing GBDT and cascades are not claimed as new theory",
+  "best_offline": {
+    "name": "wall-experts",
+    "trees_per_request": 32,
+    "total_trees": 64,
+    "features": 187,
+    "leaves_per_tree": 511,
+    "elapsed_seconds": 17.840789125009906,
+    "score": 99.5306164587667,
+    "exact_fraction": 0.6725357040512352
+  },
+  "scope": "Offline full validation, not yet the same-candidate native score/speed/memory/package evidence"
+}

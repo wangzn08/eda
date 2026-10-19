@@ -1,0 +1,11 @@
+{
+  "state": "complete",
+  "validation_rows_identical": 150053,
+  "novel_output_rows_identical": 6000000,
+  "all3_output_files_byte_identical_to_v242": true,
+  "architecture_operator_cache": false,
+  "reference_reports": [
+    "V242-joint-goal-profile.json",
+    "V242-novel-request-profile.json"
+  ]
+}

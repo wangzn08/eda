@@ -119,3 +119,13 @@ V142端口乘积交互另参考Rendle2010 Factorization Machines：作者项目h
 - Botea、Strasser、Harabor, *Complexity Results for Compressing Optimal Paths*, AAAI2015：[作者PDF](https://pathfinding.ai/pdf/sbh-aaai15.pdf)，本地Botea_Strasser_Harabor_2015_CPD_Complexity.pdf。仅读摘要与引言；涉及最优RLE列排序的困难性，不声称已阅读完整证明。
 
 三个本地文件均核对PDF标识和SHA256，见reports/V198-cpd-literature-downloads.json。V193/V196物理Bellman差字段是当前实验设计，不宣称新基本图算法，也不宣称已达联合目标。
+
+## 2026-10-19：分场景修正与按需推理
+
+本轮重新核对以下官方论文页面的摘要；尚未下载或通读这些新增论文的全文，不将摘要阅读表述为全文阅读。
+
+- Ke 等，[*LightGBM: A Highly Efficient Gradient Boosting Decision Tree*](https://proceedings.neurips.cc/paper_files/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html)，NeurIPS 2017：本轮使用其已有 GBDT 实现拟合物理估算残差，不声称发明提升树。
+- Wang 等，[*IDK Cascades: Fast Deep Learning by Learning not to Overthink*](https://proceedings.mlr.press/r16/wang18c.html)，UAI 2018：参考容易输入与困难输入分配不同推理计算的思路。本轮是数值回归中的浅门控与单个场景专家，未复现原文分类级联或其搜索算法。
+- Peter 等，[*Cost efficient gradient boosting*](https://proceedings.neurips.cc/paper/2017/hash/4fac9ba115140ac4f1c22da82aa0bc7f-Abstract.html)，NeurIPS 2017：参考同时考虑特征计算开销与预测质量。当前没有启用其 CEGB 训练惩罚，不声称复现其方法。
+
+具体适配是按 FPGA 跨墙几何选专家，加入起终点势与响应曲线的整数交互特征，再用 development 训练的门控减少无效修正。整数交互不是可采纳路径下界，不能用于宣称精确剪枝。已有树模型、专家分工、级联和编译优化均不作为新理论；实际增益只以本仓库的完整验证和标准入口测量为准。

@@ -1,0 +1,9 @@
+{
+  "state": "complete",
+  "version": 253,
+  "root_build_all_file_backed_sections_equal_measured": true,
+  "root_build_diff_only_uuid_and_signature": true,
+  "measured_binary_sha256": "103c31f12391a18a8912e9a7e16b5f104f42dbf559edd08082c72a7f46f61321",
+  "root_build_binary_sha256": "652b6f677973b33655839d1b5368f4665caa027a2f21430ffb68fb9d10a850af",
+  "all_root_build_source_files_match_frozen": true
+}

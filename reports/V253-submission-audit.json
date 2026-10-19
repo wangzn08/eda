@@ -1,0 +1,31 @@
+{
+  "state": "complete",
+  "version": "253",
+  "validation_score": 99.51519462210767,
+  "billion_estimate_cpu_seconds": [
+    1317.2646666666624,
+    1319.8653333333323
+  ],
+  "pooled_billion_estimate_cpu_seconds": 1318.5649999999976,
+  "complete_submission_bytes": 97748385,
+  "file_count": 31,
+  "peak_rss_bytes": 1963573248,
+  "runtime_asset_sha256": {
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "near-curves.bin": "1318e1cd19e3de1639838b5b5bb5678a64287481f88a976da01f5f6dd6bc5d9c",
+    "correction.bin": "47b4007bd16b2ec33e95a6a695c29b754aa9ef630f1050c6941f243d13421cb7",
+    "far-curves.bin": "575a2a02abf7ac2ca4f2da4643e7c6b4349316e4d7401191e92c4996c441ec3e",
+    "phi-patterns.bin": "708ea2c9f15b6c2054d36c546a0367fb5dc3db6e29ff65c748107e22b6f9225b",
+    "estimate": "103c31f12391a18a8912e9a7e16b5f104f42dbf559edd08082c72a7f46f61321",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "same_frozen_runtime_for_all_runs": true,
+  "all_validation_predictions_equal_independent_python": true,
+  "all_output_pin_orders_checked": true,
+  "single_runtime_thread_observed": true,
+  "prediction_cache": false,
+  "architecture_operator_cache": false,
+  "standalone_rebuild_all_sections_identical": true,
+  "standalone_rebuild_diff_only_uuid_and_signature": true,
+  "scope": "Apple M4/macOS, single-thread CPU extrapolation on six million disjoint synthetic novel requests, one initialization per billion; not an official hidden-input measurement, no5-run official consistency score claimed"
+}

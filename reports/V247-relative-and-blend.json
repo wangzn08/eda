@@ -1,0 +1,66 @@
+{
+  "state": "complete",
+  "fit_scope": "development only; validation representation comparison",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "blend-old8",
+      "fraction": 0.25,
+      "score": 99.5311602543011
+    },
+    {
+      "name": "blend-old8",
+      "fraction": 0.5,
+      "score": 99.52917265869024
+    },
+    {
+      "name": "blend-old8",
+      "fraction": 0.75,
+      "score": 99.52436886435436
+    },
+    {
+      "name": "blend-plain64",
+      "fraction": 0.25,
+      "score": 99.53355881441581
+    },
+    {
+      "name": "blend-plain64",
+      "fraction": 0.5,
+      "score": 99.53401446847997
+    },
+    {
+      "name": "blend-plain64",
+      "fraction": 0.75,
+      "score": 99.53209281744354
+    },
+    {
+      "name": "relative",
+      "trees": 8,
+      "elapsed_seconds": 26.37161816697335,
+      "score": 99.49191128367971
+    },
+    {
+      "name": "relative",
+      "trees": 16,
+      "elapsed_seconds": 26.68530745798489,
+      "score": 99.50883378644286
+    },
+    {
+      "name": "relative",
+      "trees": 32,
+      "elapsed_seconds": 27.213551374996314,
+      "score": 99.51233690470605
+    },
+    {
+      "name": "relative",
+      "trees": 64,
+      "elapsed_seconds": 28.209389625000767,
+      "score": 99.51482178623996
+    }
+  ],
+  "best": {
+    "name": "blend-plain64",
+    "fraction": 0.5,
+    "score": 99.53401446847997
+  }
+}

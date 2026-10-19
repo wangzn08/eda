@@ -1,0 +1,116 @@
+#pragma once
+// Generated integer physics interaction features; no path pruning.
+namespace selectedphysics {
+template<class Row> int value(Row&r,unsigned index){
+auto f=[&](unsigned i){return int(r.get(i));};
+auto raw=[&](unsigned i){return i>=77?int(std::nearbyint(double(r.get(i))*12.0)):f(i);};
+auto sign=[](int x){return (x>0)-(x<0);};
+auto bank_x=[&](){return f(19)-(f(46)==2?sign(f(19))*14:0);};
+switch(index){
+case 0:return raw(125)+raw(131);
+case 1:return std::max(raw(125),raw(131));
+case 2:return std::min(raw(125),raw(131));
+case 3:return raw(125)-raw(131);
+case 4:return raw(126)+raw(132);
+case 5:return std::max(raw(126),raw(132));
+case 6:return std::min(raw(126),raw(132));
+case 7:return raw(126)-raw(132);
+case 8:return raw(127)+raw(133);
+case 9:return std::max(raw(127),raw(133));
+case 10:return std::min(raw(127),raw(133));
+case 11:return raw(127)-raw(133);
+case 12:return raw(126)-raw(125);
+case 13:return raw(127)-raw(125);
+case 14:return raw(132)-raw(131);
+case 15:return raw(133)-raw(131);
+case 16:return raw(128)+raw(134);
+case 17:return std::max(raw(128),raw(134));
+case 18:return std::min(raw(128),raw(134));
+case 19:return raw(128)-raw(134);
+case 20:return raw(129)+raw(135);
+case 21:return std::max(raw(129),raw(135));
+case 22:return std::min(raw(129),raw(135));
+case 23:return raw(129)-raw(135);
+case 24:return raw(130)+raw(136);
+case 25:return std::max(raw(130),raw(136));
+case 26:return std::min(raw(130),raw(136));
+case 27:return raw(130)-raw(136);
+case 28:return raw(129)-raw(128);
+case 29:return raw(130)-raw(128);
+case 30:return raw(135)-raw(134);
+case 31:return raw(136)-raw(134);
+case 32:return f(44)-f(45)-(f(46)==2?292:0)-f(24)*(f(20)<0?125:127)-f(69);
+case 33:return f(44)-f(45)-(f(46)==2?292:0)-f(24)*(f(20)<0?125:127)-f(70);
+case 34:return f(44)-f(45)-(f(46)==2?292:0)-f(24)*(f(20)<0?125:127)-f(71);
+case 35:return f(44)-f(45)-(f(46)==2?292:0)-f(24)*(f(20)<0?125:127)-f(72);
+case 36:return f(44)-f(45)-(f(46)==2?292:0)-f(24)*(f(20)<0?125:127)-f(73);
+case 37:return f(44)-f(45)-(f(46)==2?292:0)-f(24)*(f(20)<0?125:127)-f(74);
+case 38:return raw(70)-raw(69);
+case 39:return raw(71)-raw(70);
+case 40:return raw(72)-raw(71);
+case 41:return raw(73)-raw(72);
+case 42:return raw(74)-raw(73);
+case 43:return f(63)*sign(f(19));
+case 44:return f(64)*sign(f(20));
+case 45:return f(66)*sign(f(19));
+case 46:return f(67)*sign(f(20));
+case 47:return bank_x();
+case 48:return std::abs(bank_x());
+case 49:return std::abs(bank_x())%10;
+default:throw std::runtime_error("Physics feature index");
+}
+}
+template<unsigned Index,class Row> int integer(Row&r){
+static_assert(Index<50);
+if constexpr(Index==0)return r.template integer<125>()+r.template integer<131>();
+else if constexpr(Index==1)return std::max(r.template integer<125>(),r.template integer<131>());
+else if constexpr(Index==2)return std::min(r.template integer<125>(),r.template integer<131>());
+else if constexpr(Index==3)return r.template integer<125>()-r.template integer<131>();
+else if constexpr(Index==4)return r.template integer<126>()+r.template integer<132>();
+else if constexpr(Index==5)return std::max(r.template integer<126>(),r.template integer<132>());
+else if constexpr(Index==6)return std::min(r.template integer<126>(),r.template integer<132>());
+else if constexpr(Index==7)return r.template integer<126>()-r.template integer<132>();
+else if constexpr(Index==8)return r.template integer<127>()+r.template integer<133>();
+else if constexpr(Index==9)return std::max(r.template integer<127>(),r.template integer<133>());
+else if constexpr(Index==10)return std::min(r.template integer<127>(),r.template integer<133>());
+else if constexpr(Index==11)return r.template integer<127>()-r.template integer<133>();
+else if constexpr(Index==12)return r.template integer<126>()-r.template integer<125>();
+else if constexpr(Index==13)return r.template integer<127>()-r.template integer<125>();
+else if constexpr(Index==14)return r.template integer<132>()-r.template integer<131>();
+else if constexpr(Index==15)return r.template integer<133>()-r.template integer<131>();
+else if constexpr(Index==16)return r.template integer<128>()+r.template integer<134>();
+else if constexpr(Index==17)return std::max(r.template integer<128>(),r.template integer<134>());
+else if constexpr(Index==18)return std::min(r.template integer<128>(),r.template integer<134>());
+else if constexpr(Index==19)return r.template integer<128>()-r.template integer<134>();
+else if constexpr(Index==20)return r.template integer<129>()+r.template integer<135>();
+else if constexpr(Index==21)return std::max(r.template integer<129>(),r.template integer<135>());
+else if constexpr(Index==22)return std::min(r.template integer<129>(),r.template integer<135>());
+else if constexpr(Index==23)return r.template integer<129>()-r.template integer<135>();
+else if constexpr(Index==24)return r.template integer<130>()+r.template integer<136>();
+else if constexpr(Index==25)return std::max(r.template integer<130>(),r.template integer<136>());
+else if constexpr(Index==26)return std::min(r.template integer<130>(),r.template integer<136>());
+else if constexpr(Index==27)return r.template integer<130>()-r.template integer<136>();
+else if constexpr(Index==28)return r.template integer<129>()-r.template integer<128>();
+else if constexpr(Index==29)return r.template integer<130>()-r.template integer<128>();
+else if constexpr(Index==30)return r.template integer<135>()-r.template integer<134>();
+else if constexpr(Index==31)return r.template integer<136>()-r.template integer<134>();
+else if constexpr(Index==32)return r.template integer<44>()-r.template integer<45>()-(r.template integer<46>()==2?292:0)-r.template integer<24>()*(r.template integer<20>()<0?125:127)-r.template integer<69>();
+else if constexpr(Index==33)return r.template integer<44>()-r.template integer<45>()-(r.template integer<46>()==2?292:0)-r.template integer<24>()*(r.template integer<20>()<0?125:127)-r.template integer<70>();
+else if constexpr(Index==34)return r.template integer<44>()-r.template integer<45>()-(r.template integer<46>()==2?292:0)-r.template integer<24>()*(r.template integer<20>()<0?125:127)-r.template integer<71>();
+else if constexpr(Index==35)return r.template integer<44>()-r.template integer<45>()-(r.template integer<46>()==2?292:0)-r.template integer<24>()*(r.template integer<20>()<0?125:127)-r.template integer<72>();
+else if constexpr(Index==36)return r.template integer<44>()-r.template integer<45>()-(r.template integer<46>()==2?292:0)-r.template integer<24>()*(r.template integer<20>()<0?125:127)-r.template integer<73>();
+else if constexpr(Index==37)return r.template integer<44>()-r.template integer<45>()-(r.template integer<46>()==2?292:0)-r.template integer<24>()*(r.template integer<20>()<0?125:127)-r.template integer<74>();
+else if constexpr(Index==38)return r.template integer<70>()-r.template integer<69>();
+else if constexpr(Index==39)return r.template integer<71>()-r.template integer<70>();
+else if constexpr(Index==40)return r.template integer<72>()-r.template integer<71>();
+else if constexpr(Index==41)return r.template integer<73>()-r.template integer<72>();
+else if constexpr(Index==42)return r.template integer<74>()-r.template integer<73>();
+else if constexpr(Index==43)return r.template integer<63>()*((r.template integer<19>()>0)-(r.template integer<19>()<0));
+else if constexpr(Index==44)return r.template integer<64>()*((r.template integer<20>()>0)-(r.template integer<20>()<0));
+else if constexpr(Index==45)return r.template integer<66>()*((r.template integer<19>()>0)-(r.template integer<19>()<0));
+else if constexpr(Index==46)return r.template integer<67>()*((r.template integer<20>()>0)-(r.template integer<20>()<0));
+else if constexpr(Index==47)return (r.template integer<19>()-(r.template integer<46>()==2?((r.template integer<19>()>0)-(r.template integer<19>()<0))*14:0));
+else if constexpr(Index==48)return std::abs((r.template integer<19>()-(r.template integer<46>()==2?((r.template integer<19>()>0)-(r.template integer<19>()<0))*14:0)));
+else if constexpr(Index==49)return std::abs((r.template integer<19>()-(r.template integer<46>()==2?((r.template integer<19>()>0)-(r.template integer<19>()<0))*14:0)))%10;
+}
+}

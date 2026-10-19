@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := runtime-v242
+.DEFAULT_GOAL := runtime-v254
 CXX = c++
 CXXFLAGS = -std=c++17 -O3 -Wall -Wextra -Wpedantic
 XZ_OBJECTS = build/xz/xz_crc32.o build/xz/xz_dec_lzma2.o build/xz/xz_dec_stream.o

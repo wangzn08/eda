@@ -1,0 +1,305 @@
+{
+  "state": "complete",
+  "fit_scope": "development only; target whether trained expert changes rounded base",
+  "holdout_used": false,
+  "full_score": 99.5306164587667,
+  "candidates": [
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.01,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.03,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.05,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.1,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.15,
+      "score": 99.52528331043976,
+      "skip_fraction": 0.51277881815092,
+      "false_skip_fraction": 0.008903520755999548
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.2,
+      "score": 99.52482713333917,
+      "skip_fraction": 0.612770154545394,
+      "false_skip_fraction": 0.0184068295868793
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.3,
+      "score": 99.52286578422904,
+      "skip_fraction": 0.6925619614402911,
+      "false_skip_fraction": 0.037333475505321456
+    },
+    {
+      "name": "geometry-63",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-63.txt",
+      "threshold": 0.5,
+      "score": 99.5206062107903,
+      "skip_fraction": 0.7547866420531413,
+      "false_skip_fraction": 0.06109841189446396
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.01,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.03,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.05,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.1,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.15,
+      "score": 99.52887002662423,
+      "skip_fraction": 0.5735373501362852,
+      "false_skip_fraction": 0.009856517363864769
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.2,
+      "score": 99.52903026739955,
+      "skip_fraction": 0.6386143562607879,
+      "false_skip_fraction": 0.017300553804322473
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.3,
+      "score": 99.5277374756955,
+      "skip_fraction": 0.702305185501123,
+      "false_skip_fraction": 0.0320486761344325
+    },
+    {
+      "name": "geometry-255",
+      "mapping": "out/v248/geometry.features.json",
+      "model": "out/v248/geometry-255.txt",
+      "threshold": 0.5,
+      "score": 99.52601984894187,
+      "skip_fraction": 0.7524341399372222,
+      "false_skip_fraction": 0.05344111747182662
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.01,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.03,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.05,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.1,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.15,
+      "score": 99.52530662780866,
+      "skip_fraction": 0.5138451080618182,
+      "false_skip_fraction": 0.00897016387543068
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.2,
+      "score": 99.5248650239935,
+      "skip_fraction": 0.622173498697127,
+      "false_skip_fraction": 0.019866313902421145
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.3,
+      "score": 99.52310784790835,
+      "skip_fraction": 0.6798331256289445,
+      "false_skip_fraction": 0.033721418432153975
+    },
+    {
+      "name": "endpoint-63",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-63.txt",
+      "threshold": 0.5,
+      "score": 99.52075600218376,
+      "skip_fraction": 0.7525874191119137,
+      "false_skip_fraction": 0.06021205840602987
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.01,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.03,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.05,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.1,
+      "score": 99.5306164587667,
+      "skip_fraction": 0.0,
+      "false_skip_fraction": 0.0
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.15,
+      "score": 99.52889311307412,
+      "skip_fraction": 0.5789154498743777,
+      "false_skip_fraction": 0.010343012135712048
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.2,
+      "score": 99.52907126855798,
+      "skip_fraction": 0.6398872398419225,
+      "false_skip_fraction": 0.01753380472233144
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.3,
+      "score": 99.52758128611435,
+      "skip_fraction": 0.701838683665105,
+      "false_skip_fraction": 0.032095326318034294
+    },
+    {
+      "name": "endpoint-255",
+      "mapping": "out/v248/endpoint.features.json",
+      "model": "out/v248/endpoint-255.txt",
+      "threshold": 0.5,
+      "score": 99.5260419066881,
+      "skip_fraction": 0.7519942953489767,
+      "false_skip_fraction": 0.053074580314955384
+    }
+  ],
+  "selected": {
+    "name": "endpoint-255",
+    "mapping": "out/v248/endpoint.features.json",
+    "model": "out/v248/endpoint-255.txt",
+    "threshold": 0.2,
+    "score": 99.52907126855798,
+    "skip_fraction": 0.6398872398419225,
+    "false_skip_fraction": 0.01753380472233144
+  }
+}

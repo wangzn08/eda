@@ -1,0 +1,259 @@
+{
+  "state": "complete",
+  "fit_scope": "development only, full validation comparison",
+  "holdout_used": false,
+  "gate": "out/v248/geometry-255.txt",
+  "gate_threshold": 0.5,
+  "candidates": [
+    {
+      "name": "physics1023-r35",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics1023-r35-8.npy",
+      "elapsed_seconds": 12.840897624992067,
+      "score": 99.51770742501425
+    },
+    {
+      "name": "physics1023-r35",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics1023-r35-8-gated.npy",
+      "elapsed_seconds": 12.842722458997741,
+      "score": 99.51534460457346
+    },
+    {
+      "name": "physics1023-r35",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics1023-r35-12.npy",
+      "elapsed_seconds": 13.161814916995354,
+      "score": 99.51945520406474
+    },
+    {
+      "name": "physics1023-r35",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics1023-r35-12-gated.npy",
+      "elapsed_seconds": 13.162704041984398,
+      "score": 99.51863172052407
+    },
+    {
+      "name": "physics1023-r35",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics1023-r35-16.npy",
+      "elapsed_seconds": 13.56760816698079,
+      "score": 99.51979061922465
+    },
+    {
+      "name": "physics1023-r35",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics1023-r35-16-gated.npy",
+      "elapsed_seconds": 13.56860008399235,
+      "score": 99.52002192928151
+    },
+    {
+      "name": "physics1023-r50",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics1023-r50-8.npy",
+      "elapsed_seconds": 12.80151483300142,
+      "score": 99.5129302114691
+    },
+    {
+      "name": "physics1023-r50",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics1023-r50-8-gated.npy",
+      "elapsed_seconds": 12.8026253329881,
+      "score": 99.5131234214146
+    },
+    {
+      "name": "physics1023-r50",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics1023-r50-12.npy",
+      "elapsed_seconds": 13.12936116597848,
+      "score": 99.51096912822253
+    },
+    {
+      "name": "physics1023-r50",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics1023-r50-12-gated.npy",
+      "elapsed_seconds": 13.130330790998414,
+      "score": 99.51340392372316
+    },
+    {
+      "name": "physics1023-r50",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics1023-r50-16.npy",
+      "elapsed_seconds": 13.572635207994608,
+      "score": 99.50962313927269
+    },
+    {
+      "name": "physics1023-r50",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics1023-r50-16-gated.npy",
+      "elapsed_seconds": 13.57359729098971,
+      "score": 99.51369712117564
+    },
+    {
+      "name": "physics511-r35",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics511-r35-8.npy",
+      "elapsed_seconds": 10.837711334024789,
+      "score": 99.51639191625034
+    },
+    {
+      "name": "physics511-r35",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics511-r35-8-gated.npy",
+      "elapsed_seconds": 10.838744792010402,
+      "score": 99.51250619373765
+    },
+    {
+      "name": "physics511-r35",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics511-r35-12.npy",
+      "elapsed_seconds": 11.063750084023923,
+      "score": 99.52032536672193
+    },
+    {
+      "name": "physics511-r35",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics511-r35-12-gated.npy",
+      "elapsed_seconds": 11.064711084007286,
+      "score": 99.51774820343537
+    },
+    {
+      "name": "physics511-r35",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "selective": false,
+      "prediction": "out/v252/physics511-r35-16.npy",
+      "elapsed_seconds": 11.360872625024058,
+      "score": 99.52012311812184
+    },
+    {
+      "name": "physics511-r35",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 187,
+      "selective": true,
+      "prediction": "out/v252/physics511-r35-16-gated.npy",
+      "elapsed_seconds": 11.361814667005092,
+      "score": 99.51869520029756
+    },
+    {
+      "name": "plain1023-r35",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 137,
+      "selective": false,
+      "prediction": "out/v252/plain1023-r35-8.npy",
+      "elapsed_seconds": 8.811847292003222,
+      "score": 99.51812288515052
+    },
+    {
+      "name": "plain1023-r35",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "features": 137,
+      "selective": true,
+      "prediction": "out/v252/plain1023-r35-8-gated.npy",
+      "elapsed_seconds": 8.812828834023094,
+      "score": 99.51519462210767
+    },
+    {
+      "name": "plain1023-r35",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 137,
+      "selective": false,
+      "prediction": "out/v252/plain1023-r35-12.npy",
+      "elapsed_seconds": 9.080227917002048,
+      "score": 99.51948206917726
+    },
+    {
+      "name": "plain1023-r35",
+      "trees_per_request": 12,
+      "total_trees": 24,
+      "features": 137,
+      "selective": true,
+      "prediction": "out/v252/plain1023-r35-12-gated.npy",
+      "elapsed_seconds": 9.08148700001766,
+      "score": 99.51834776598287
+    },
+    {
+      "name": "plain1023-r35",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 137,
+      "selective": false,
+      "prediction": "out/v252/plain1023-r35-16.npy",
+      "elapsed_seconds": 9.42736091700499,
+      "score": 99.51920086078205
+    },
+    {
+      "name": "plain1023-r35",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "features": 137,
+      "selective": true,
+      "prediction": "out/v252/plain1023-r35-16-gated.npy",
+      "elapsed_seconds": 9.428366834006738,
+      "score": 99.519171530158
+    }
+  ],
+  "best": {
+    "name": "physics511-r35",
+    "trees_per_request": 12,
+    "total_trees": 24,
+    "features": 187,
+    "selective": false,
+    "prediction": "out/v252/physics511-r35-12.npy",
+    "elapsed_seconds": 11.063750084023923,
+    "score": 99.52032536672193
+  }
+}

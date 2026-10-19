@@ -1,0 +1,15 @@
+CXX = clang++
+CXXFLAGS = -O3 -std=c++17
+ifeq ($(shell uname -s),Darwin)
+ARCHFLAGS ?= -mcpu=apple-m4
+LZMA_CFLAGS ?= -I/opt/homebrew/include
+LZMA_LIBS ?= /opt/homebrew/lib/liblzma.a
+else
+ARCHFLAGS ?=
+LZMA_CFLAGS ?=
+LZMA_LIBS ?= -llzma
+endif
+DEFINES = -DCORE_LIBLZMA=1 -DROUTING_GRAPH_ONLY=1 -DRUNTIME_COMPONENT_PROFILE=0 -DRUNTIME_COMPILED_FOREST=1 -DRUNTIME_TERMINAL_MASKS=1 -DRUNTIME_INTERVAL_MASKS=1 -DRUNTIME_CORRECTION_GATE=1 -DRUNTIME_OPERATOR_CACHE=1 -DRUNTIME_SHORT_PACK_VERIFY=0
+.PHONY: rebuild
+rebuild:
+	$(CXX) $(CXXFLAGS) $(ARCHFLAGS) $(DEFINES) $(LZMA_CFLAGS) src/runtime_route_estimate.cpp $(LZMA_LIBS) -lz -o estimate

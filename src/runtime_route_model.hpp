@@ -3,7 +3,11 @@
 #include "compact_response_kernel.hpp"
 #include "compact_phi_model.hpp"
 #include "initial_kernel_candidates.hpp"
-#include "selected_feature_schema.hpp"
+#ifndef RUNTIME_FEATURE_SCHEMA_HEADER
+#define RUNTIME_FEATURE_SCHEMA_HEADER "selected_feature_schema.hpp"
+#endif
+#include RUNTIME_FEATURE_SCHEMA_HEADER
+#include "selected_physics_features.hpp"
 #include "directional_terminal_bounds.hpp"
 #include "terminal_mask_catalog.hpp"
 #include "terminal_interval_mask_catalog.hpp"
@@ -46,8 +50,8 @@ public:
   if(RUNTIME_SOURCE_LOWER_PRUNE||RUNTIME_TERMINAL_LOWER_PRUNE)terminal_bounds=std::make_unique<DirectionalTerminalBounds>(initial.terminals);
   if(RUNTIME_TERMINAL_MASKS)terminal_masks=std::make_unique<ActiveTerminalMaskCatalog>(short_kernel,near_kernel,far_kernel,initial.terminals);
   if(far_kernel.horizontal_anchors()!=std::vector<unsigned>{1,3,6,9})throw std::runtime_error("Runtime anchor mismatch");for(auto l:archdata::LINES){if(l.vertical)for(int x=l.site+1;x<120;++x)xgap[x]+=l.delay;else for(int y=l.site+1;y<550;++y)ygap[y]+=l.delay;}
-  std::ifstream f(folder+"/correction.bin",std::ios::binary);std::array<char,144>h;f.read(h.data(),h.size());uint32_t nf,nt;std::memcpy(&nf,h.data()+136,4);std::memcpy(&nt,h.data()+140,4);if(!f||std::memcmp(h.data(),"SFRST001",8)||std::memcmp(h.data()+8,archdata::HASH,64)||std::memcmp(h.data()+72,selectedschema::HASH,64)||nf!=137||!nt||nt>64)throw std::runtime_error("Selected forest header");
-  for(unsigned t=0;t<nt;++t){uint32_t n;f.read(reinterpret_cast<char*>(&n),4);if(!f||!n||n>=65536)throw std::runtime_error("Selected forest size");std::vector<ForestNode>tree(n);f.read(reinterpret_cast<char*>(tree.data()),n*16);if(!f)throw std::runtime_error("Selected forest body");for(unsigned i=0;i<n;++i){auto v=tree[i];if(!std::isfinite(v.number)||v.flags||(v.feature!=65535&&(v.feature>=137||v.left<=i||v.right<=i||v.left>=n||v.right>=n)))throw std::runtime_error("Selected forest node");}forest.push_back(std::move(tree));}if(f.peek()!=EOF)throw std::runtime_error("Selected forest trailer");
+  std::ifstream f(folder+"/correction.bin",std::ios::binary);std::array<char,144>h;f.read(h.data(),h.size());uint32_t nf,nt;std::memcpy(&nf,h.data()+136,4);std::memcpy(&nt,h.data()+140,4);if(!f||std::memcmp(h.data(),"SFRST001",8)||std::memcmp(h.data()+8,archdata::HASH,64)||std::memcmp(h.data()+72,selectedschema::HASH,64)||nf!=selectedschema::COUNT||!nt||nt>64)throw std::runtime_error("Selected forest header");
+  for(unsigned t=0;t<nt;++t){uint32_t n;f.read(reinterpret_cast<char*>(&n),4);if(!f||!n||n>=65536)throw std::runtime_error("Selected forest size");std::vector<ForestNode>tree(n);f.read(reinterpret_cast<char*>(tree.data()),n*16);if(!f)throw std::runtime_error("Selected forest body");for(unsigned i=0;i<n;++i){auto v=tree[i];if(!std::isfinite(v.number)||v.flags||(v.feature!=65535&&(v.feature>=selectedschema::COUNT||v.left<=i||v.right<=i||v.left>=n||v.right>=n)))throw std::runtime_error("Selected forest node");}forest.push_back(std::move(tree));}if(f.peek()!=EOF)throw std::runtime_error("Selected forest trailer");
 
 #if RUNTIME_COMPILED_FOREST
   uint64_t checksum=1469598103934665603ull;for(const auto&tree:forest)for(size_t i=0;i<tree.size()*sizeof(ForestNode);++i){checksum^=reinterpret_cast<const unsigned char*>(tree.data())[i];checksum*=1099511628211ull;}if(checksum!=compiled_forest_checksum||forest.size()!=compiled_forest_count)throw std::runtime_error("Compiled forest asset mismatch");
@@ -92,19 +96,19 @@ public:
   if(best>=1000000000&&r.mask!=UINT32_MAX){PreparedKernelRequest all;prepare(r.from,r.to,all,true);resolve_operator_cache(all);prefetch(all);return base(all,trace);}if(best>=1000000000)throw std::runtime_error("Unreachable runtime query");return best;
  }
  class Features{
-  const RuntimeRouteModel&model;const KernelRequest&r;const KernelTrace&t;int b,sx,sy,tx,ty,ox,oy,sp,tp,dx,dy,ax,ay,qx,qy,gx,gy,direction,backward;bool valid,cross;std::array<float,137>cached;std::array<uint64_t,3>seen{};const int16_t*source_phi=nullptr,*target_phi=nullptr;
+  const RuntimeRouteModel&model;const KernelRequest&r;const KernelTrace&t;int b,sx,sy,tx,ty,ox,oy,sp,tp,dx,dy,ax,ay,qx,qy,gx,gy,direction,backward;bool valid,cross;std::array<float,selectedschema::COUNT>cached;std::array<uint64_t,(selectedschema::COUNT+63)/64>seen{};const int16_t*source_phi=nullptr,*target_phi=nullptr;
   static int sign(int x){return (x>0)-(x<0);}
   float phi_value(bool source,unsigned index){if(!valid)return 0;auto&ptr=source?source_phi:target_phi;if(!ptr)ptr=model.phi.row(source?t.site:r.to/496,source?t.core:t.end);return float(double(ptr[index])/12.0);}
   int response(unsigned j)const{if(!valid)return 0;int x=dx-(t.kind==2?sign(dx)*14:0),slope=dy<0?125:127,sg=dy<0?-1:1,ry=ay%12;auto query=[&](int q){return model.cost(t.core,t.end,x,sg*(q*12+ry))-q*slope;};if(j<6){const int periods[6]={0,2,8,20,32,45};return query(periods[j]);}int current=t.nominal-t.arc-(t.kind==2?292:0)-qy*slope;if(j==6)return qy?current-query(qy-1):0;return qy<45?query(qy+1)-current:0;}
-  __attribute__((always_inline)) float calculate(unsigned i){if(i>=77&&i<101)return phi_value(true,i-77);if(i>=101&&i<125)return phi_value(false,i-101);if(i>=125){bool source=i<131;unsigned j=i-(source?125:131);return phi_value(source,(j/3)*12+(j%3)*4+(source?direction:backward));}if(i>=69)return response(i-69);if(i>=63){if(!valid)return 0;unsigned core=i<66?t.core:t.end,j=(i-63)%3;auto e=archdata::NETS[core];auto v=archdata::VECTORS[e.vector];return j==0?v.x:j==1?v.y:e.delay;}
+  __attribute__((always_inline)) float calculate(unsigned i){if(i>=137)return selectedphysics::value(*this,i-137);if(i>=77&&i<101)return phi_value(true,i-77);if(i>=101&&i<125)return phi_value(false,i-101);if(i>=125){bool source=i<131;unsigned j=i-(source?125:131);return phi_value(source,(j/3)*12+(j%3)*4+(source?direction:backward));}if(i>=69)return response(i-69);if(i>=63){if(!valid)return 0;unsigned core=i<66?t.core:t.end,j=(i-63)%3;auto e=archdata::NETS[core];auto v=archdata::VECTORS[e.vector];return j==0?v.x:j==1?v.y:e.delay;}
    switch(i){case 0:return b;case 1:return sx;case 2:return sy;case 3:return tx;case 4:return ty;case 5:return ox;case 6:return oy;case 7:return sp;case 8:return tp;case 9:return selectedschema::PORT_TYPE[sp];case 10:return selectedschema::PORT_TYPE[tp];case 11:return selectedschema::PORT_LANE[sp];case 12:return selectedschema::PORT_LANE[tp];case 13:return t.core;case 14:return t.end;case 15:return valid?t.core%20:-1;case 16:return valid?t.end%20:-1;case 17:return valid?t.core/20:-1;case 18:return valid?t.end/20:-1;case 19:return dx;case 20:return dy;case 21:return ax;case 22:return ay;case 23:return qx;case 24:return qy;case 25:return sign(dx)*(ax-qx*10);case 26:return sign(dy)*(ay%12);case 27:return sx%10;case 28:return sy%12;case 29:return tx%10;case 30:return ty%12;case 31:return sy%100;case 32:return ty%100;case 33:return sy/100;case 34:return ty/100;case 35:return std::min(sx,119-sx);case 36:return std::min(tx,119-tx);case 37:return std::min(sy,549-sy);case 38:return std::min(ty,549-ty);case 39:return std::min(sy%100,99-sy%100);case 40:return std::min(ty%100,99-ty%100);case 41:return sx-ox;case 42:return sy-oy;case 43:return t.entry;case 44:return valid?t.nominal:b;case 45:return t.arc;case 46:return t.kind;case 47:return valid;case 48:return (valid?t.nominal:b)-125*qx-(dy>0?127:125)*qy;case 49:return valid?b-t.entry-t.nominal:0;case 50:return gx;case 51:return gy;case 52:return std::abs(gx);case 53:return std::abs(gy);case 54:return cross;case 55:return sx>=76&&sx<=89;case 56:return tx>=76&&tx<=89;case 57:{int n=0;for(int y=0;y<450;y+=100)n+=std::min(sy,ty)<y+49&&std::max(sy,ty)>y;return n;}case 58:return std::min(sx-75,90-sx);case 59:return std::min(tx-75,90-tx);case 60:return std::max(0,16-std::min(sx,tx));case 61:return std::max(0,100-std::min(sy,ty));case 62:return cross&&sy/100==ty/100&&sy%100<=49&&ty%100<=49;default:throw std::runtime_error("Feature index");}
   }
  public:
   Features(const RuntimeRouteModel&m,const KernelRequest&request,const KernelTrace&trace,int value):model(m),r(request),t(trace),b(value){auto a=archdata::SITES[t.site],target=archdata::SITES[r.to/496],original=archdata::SITES[r.from/496];sx=a.x;sy=a.y;tx=target.x;ty=target.y;ox=original.x;oy=original.y;sp=r.from%496;tp=r.to%496;dx=tx-sx;dy=ty-sy;ax=std::abs(dx);ay=std::abs(dy);qx=ax>29?(ax-20)/10:0;qy=ay/12;gx=m.xgap[tx]-m.xgap[sx];gy=m.ygap[ty]-m.ygap[sy];valid=t.core>=0;cross=std::min(sx,tx)<76&&std::max(sx,tx)>89;direction=(dx<0)*2+(dy<0);backward=(dx>=0)*2+(dy>=0);}
   float get(unsigned i){uint64_t bit=uint64_t(1)<<(i%64);if(!(seen[i/64]&bit)){cached[i]=calculate(i);seen[i/64]|=bit;}return cached[i];}
-  template<unsigned i>int integer(){static_assert(i<137);if constexpr(i>=77){if(!valid)return 0;constexpr bool source=i<101||(i>=125&&i<131);unsigned index;if constexpr(i<101)index=i-77;else if constexpr(i<125)index=i-101;else {constexpr unsigned j=i-(source?125:131);index=(j/3)*12+(j%3)*4+(source?direction:backward);}auto&ptr=source?source_phi:target_phi;if(!ptr)ptr=model.phi.row(source?t.site:r.to/496,source?t.core:t.end);return ptr[index];}else if constexpr(i>=69)return int(get(i));else return int(calculate(i));}
-  void eager(){for(unsigned i=0;i<77;++i)cached[i]=calculate(i);for(unsigned i=0;i<24;++i){cached[77+i]=phi_value(true,i);cached[101+i]=phi_value(false,i);}for(unsigned j=0;j<6;++j){unsigned index=(j/3)*12+(j%3)*4;cached[125+j]=cached[77+index+direction];cached[131+j]=cached[101+index+backward];}seen.fill(UINT64_MAX);}
-  std::array<float,137>dense(){for(unsigned i=0;i<137;++i)get(i);return cached;}
+  template<unsigned i>int integer(){static_assert(i<selectedschema::COUNT);if constexpr(i>=137)return selectedphysics::integer<i-137>(*this);else if constexpr(i>=77){if(!valid)return 0;constexpr bool source=i<101||(i>=125&&i<131);unsigned index;if constexpr(i<101)index=i-77;else if constexpr(i<125)index=i-101;else {constexpr unsigned j=i-(source?125:131);index=(j/3)*12+(j%3)*4+(source?direction:backward);}auto&ptr=source?source_phi:target_phi;if(!ptr)ptr=model.phi.row(source?t.site:r.to/496,source?t.core:t.end);return ptr[index];}else if constexpr(i>=69)return int(get(i));else return int(calculate(i));}
+  void eager(){for(unsigned i=0;i<77;++i)cached[i]=calculate(i);for(unsigned i=0;i<24;++i){cached[77+i]=phi_value(true,i);cached[101+i]=phi_value(false,i);}for(unsigned j=0;j<6;++j){unsigned index=(j/3)*12+(j%3)*4;cached[125+j]=cached[77+index+direction];cached[131+j]=cached[101+index+backward];}for(unsigned i=0;i<137;++i)seen[i/64]|=uint64_t(1)<<(i%64);for(unsigned i=137;i<selectedschema::COUNT;++i)cached[i]=calculate(i);seen.fill(UINT64_MAX);}
+  std::array<float,selectedschema::COUNT>dense(){for(unsigned i=0;i<selectedschema::COUNT;++i)get(i);return cached;}
  };
 #if RUNTIME_COMPILED_FOREST
  #ifndef RUNTIME_COMPILED_FOREST_HEADER
@@ -113,7 +117,10 @@ public:
  #include RUNTIME_COMPILED_FOREST_HEADER
 #endif
 #if RUNTIME_CORRECTION_GATE
- #include "compiled_selected_correction_gate.hpp"
+ #ifndef RUNTIME_CORRECTION_GATE_HEADER
+ #define RUNTIME_CORRECTION_GATE_HEADER "compiled_selected_correction_gate.hpp"
+ #endif
+ #include RUNTIME_CORRECTION_GATE_HEADER
 #endif
  bool needs_correction(const KernelRequest&r,const KernelTrace&t,int value)const{
 #if RUNTIME_CORRECTION_GATE
@@ -122,7 +129,7 @@ public:
  return true;
 #endif
  }
- int correct(const KernelRequest&r,const KernelTrace&trace,int value,std::array<float,137>*features=nullptr)const{Features row(*this,r,trace,value);double correction=0;
+ int correct(const KernelRequest&r,const KernelTrace&trace,int value,std::array<float,selectedschema::COUNT>*features=nullptr)const{Features row(*this,r,trace,value);double correction=0;
 #if RUNTIME_COMPILED_FOREST
  correction=compiled_correction(row);
 #else
@@ -130,5 +137,5 @@ public:
 #endif
  if(features)*features=row.dense();return int(std::nearbyint(std::max(0.,double(value)+correction)));}
  void report_operator_cache()const{if(RUNTIME_OPERATOR_CACHE)std::cerr<<"architecture_operator_cache_bytes="<<operator_cache.bytes()<<" hits="<<operator_hits<<" misses="<<operator_misses<<" final_prediction_cache=0\n";}
- int predict(PreparedKernelRequest&r,KernelTrace*diagnostic=nullptr,std::array<float,137>*features=nullptr,int*baseline=nullptr)const{resolve_operator_cache(r);prefetch(r);KernelTrace trace;int value=base(r,trace);if(diagnostic)*diagnostic=trace;if(baseline)*baseline=value;if(!needs_correction(r,trace,value)){if(features){Features row(*this,r,trace,value);*features=row.dense();}return value;}return correct(r,trace,value,features);}
+ int predict(PreparedKernelRequest&r,KernelTrace*diagnostic=nullptr,std::array<float,selectedschema::COUNT>*features=nullptr,int*baseline=nullptr)const{resolve_operator_cache(r);prefetch(r);KernelTrace trace;int value=base(r,trace);if(diagnostic)*diagnostic=trace;if(baseline)*baseline=value;if(!needs_correction(r,trace,value)){if(features){Features row(*this,r,trace,value);*features=row.dense();}return value;}return correct(r,trace,value,features);}
 };

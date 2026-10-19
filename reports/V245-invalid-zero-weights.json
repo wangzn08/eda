@@ -1,0 +1,103 @@
+{
+  "state": "invalid-discarded",
+  "fit_scope": "development only; native V242 features; validation only for comparison",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "wall-wide",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "leaves": 1023,
+      "elapsed_seconds": 12.235431790992152,
+      "score": 99.44225688051233,
+      "exact_fraction": 0.696613863101704
+    },
+    {
+      "name": "wall-wide",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "leaves": 1023,
+      "elapsed_seconds": 12.435364166012732,
+      "score": 99.45373014455984,
+      "exact_fraction": 0.6888499396879769
+    },
+    {
+      "name": "wall-wide",
+      "trees_per_request": 32,
+      "total_trees": 64,
+      "leaves": 1023,
+      "elapsed_seconds": 12.760624540998833,
+      "score": 99.456545040027,
+      "exact_fraction": 0.6843248718786029
+    },
+    {
+      "name": "four-regions",
+      "trees_per_request": 8,
+      "total_trees": 32,
+      "leaves": 511,
+      "elapsed_seconds": 15.719920125004137,
+      "score": 99.47992654869383,
+      "exact_fraction": 0.6793199736093247
+    },
+    {
+      "name": "four-regions",
+      "trees_per_request": 16,
+      "total_trees": 64,
+      "leaves": 511,
+      "elapsed_seconds": 15.944606667006155,
+      "score": 99.49398978792054,
+      "exact_fraction": 0.6729288984558789
+    },
+    {
+      "name": "four-regions",
+      "trees_per_request": 32,
+      "total_trees": 128,
+      "leaves": 511,
+      "elapsed_seconds": 16.359840416989755,
+      "score": 99.49889576568229,
+      "exact_fraction": 0.6657847560528614
+    },
+    {
+      "name": "categorical",
+      "trees": 8,
+      "leaves": 1023,
+      "elapsed_seconds": 6.137493332993472,
+      "score": 99.34061536957391,
+      "exact_fraction": 0.7322945892451334
+    },
+    {
+      "name": "categorical",
+      "trees": 16,
+      "leaves": 1023,
+      "elapsed_seconds": 6.189777040999616,
+      "score": 99.34061536957391,
+      "exact_fraction": 0.7322945892451334
+    },
+    {
+      "name": "categorical",
+      "trees": 32,
+      "leaves": 1023,
+      "elapsed_seconds": 6.242160750000039,
+      "score": 99.34061536957391,
+      "exact_fraction": 0.7322945892451334
+    },
+    {
+      "name": "categorical",
+      "trees": 64,
+      "leaves": 1023,
+      "elapsed_seconds": 6.2937538330152165,
+      "score": 99.34061536957391,
+      "exact_fraction": 0.7322945892451334
+    }
+  ],
+  "best": {
+    "name": "four-regions",
+    "trees_per_request": 32,
+    "total_trees": 128,
+    "leaves": 511,
+    "elapsed_seconds": 16.359840416989755,
+    "score": 99.49889576568229,
+    "exact_fraction": 0.6657847560528614
+  },
+  "reason": "Zero-delay development rows produced infinite sample weights; no scores from this run are accepted"
+}
