@@ -1,0 +1,510 @@
+{
+  "state": "complete",
+  "fit_scope": "two-fold development-only cross-fitting of8-tree reference and32-tree/domain physical expert; weighted binary gain gate; full-data experts for validation",
+  "holdout_used": false,
+  "oof_reference_uses_old_shallow_gate": false,
+  "validation_fallback": "exact frozen V254 predictions, including old shallow gate",
+  "candidates": [
+    {
+      "leaves": 63,
+      "threshold": 0.1,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-63-t0.1.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.2,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-63-t0.2.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.3,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-63-t0.3.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.4,
+      "score": 99.67710738433671,
+      "physical_request_fraction": 0.999240268438485,
+      "prediction": "out/v262/gain-63-t0.4.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.5,
+      "score": 99.67728815914282,
+      "physical_request_fraction": 0.9919828327324346,
+      "prediction": "out/v262/gain-63-t0.5.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.6,
+      "score": 99.67645228264269,
+      "physical_request_fraction": 0.9856384077625906,
+      "prediction": "out/v262/gain-63-t0.6.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.7,
+      "score": 99.65880581216977,
+      "physical_request_fraction": 0.7645032088662006,
+      "prediction": "out/v262/gain-63-t0.7.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.8,
+      "score": 99.59162027890686,
+      "physical_request_fraction": 0.5276202408482337,
+      "prediction": "out/v262/gain-63-t0.8.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.9,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-63-t0.9.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.95,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-63-t0.95.npy"
+    },
+    {
+      "leaves": 63,
+      "threshold": 0.98,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-63-t0.98.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.1,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-255-t0.1.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.2,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-255-t0.2.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.3,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-255-t0.3.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.4,
+      "score": 99.67708264538169,
+      "physical_request_fraction": 0.997527540269105,
+      "prediction": "out/v262/gain-255-t0.4.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.5,
+      "score": 99.6752552587257,
+      "physical_request_fraction": 0.987664358593297,
+      "prediction": "out/v262/gain-255-t0.5.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.6,
+      "score": 99.67112271255637,
+      "physical_request_fraction": 0.9523435052947958,
+      "prediction": "out/v262/gain-255-t0.6.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.7,
+      "score": 99.6469423882162,
+      "physical_request_fraction": 0.6725490326751214,
+      "prediction": "out/v262/gain-255-t0.7.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.8,
+      "score": 99.60820141090491,
+      "physical_request_fraction": 0.5249545160709882,
+      "prediction": "out/v262/gain-255-t0.8.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.9,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-255-t0.9.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.95,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-255-t0.95.npy"
+    },
+    {
+      "leaves": 255,
+      "threshold": 0.98,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-255-t0.98.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.1,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-511-t0.1.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.2,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-511-t0.2.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.3,
+      "score": 99.67731557719499,
+      "physical_request_fraction": 1.0,
+      "prediction": "out/v262/gain-511-t0.3.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.4,
+      "score": 99.6772748104437,
+      "physical_request_fraction": 0.9973276109108116,
+      "prediction": "out/v262/gain-511-t0.4.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.5,
+      "score": 99.67472659665505,
+      "physical_request_fraction": 0.9838257149140637,
+      "prediction": "out/v262/gain-511-t0.5.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.6,
+      "score": 99.66860414130426,
+      "physical_request_fraction": 0.9217276562281327,
+      "prediction": "out/v262/gain-511-t0.6.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.7,
+      "score": 99.6452740511847,
+      "physical_request_fraction": 0.6649183955002566,
+      "prediction": "out/v262/gain-511-t0.7.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.8,
+      "score": 99.60384650213025,
+      "physical_request_fraction": 0.48946705497390924,
+      "prediction": "out/v262/gain-511-t0.8.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.9,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-511-t0.9.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.95,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-511-t0.95.npy"
+    },
+    {
+      "leaves": 511,
+      "threshold": 0.98,
+      "score": 99.50611050630775,
+      "physical_request_fraction": 0.0,
+      "prediction": "out/v262/gain-511-t0.98.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 5e-05,
+      "export_threshold": 0.5000124999999974,
+      "score": 99.67732446069273,
+      "physical_request_fraction": 0.9996934416506168,
+      "prediction": "out/v262/regression-63-t5e-05.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.0001,
+      "export_threshold": 0.5000249999999792,
+      "score": 99.67732446069273,
+      "physical_request_fraction": 0.9996934416506168,
+      "prediction": "out/v262/regression-63-t0.0001.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.0002,
+      "export_threshold": 0.5000499999998334,
+      "score": 99.67732446069273,
+      "physical_request_fraction": 0.9996934416506168,
+      "prediction": "out/v262/regression-63-t0.0002.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.0005,
+      "export_threshold": 0.5001249999973958,
+      "score": 99.64978050520895,
+      "physical_request_fraction": 0.3476771540722278,
+      "prediction": "out/v262/regression-63-t0.0005.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.001,
+      "export_threshold": 0.5002499999791666,
+      "score": 99.64458257907704,
+      "physical_request_fraction": 0.30452573424056834,
+      "prediction": "out/v262/regression-63-t0.001.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.002,
+      "export_threshold": 0.5004999998333334,
+      "score": 99.62446662851407,
+      "physical_request_fraction": 0.1608831546187014,
+      "prediction": "out/v262/regression-63-t0.002.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.003,
+      "export_threshold": 0.5007499994375005,
+      "score": 99.60559302716628,
+      "physical_request_fraction": 0.09028143389335767,
+      "prediction": "out/v262/regression-63-t0.003.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.005,
+      "export_threshold": 0.5012499973958399,
+      "score": 99.59199662011143,
+      "physical_request_fraction": 0.06837584053634382,
+      "prediction": "out/v262/regression-63-t0.005.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.01,
+      "export_threshold": 0.5024999791668749,
+      "score": 99.55914238253214,
+      "physical_request_fraction": 0.02494451960307358,
+      "prediction": "out/v262/regression-63-t0.01.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 63,
+      "threshold": 0.02,
+      "export_threshold": 0.5049998333399998,
+      "score": 99.53890241308359,
+      "physical_request_fraction": 0.009729895436945612,
+      "prediction": "out/v262/regression-63-t0.02.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 5e-05,
+      "export_threshold": 0.5000124999999974,
+      "score": 99.67697022749469,
+      "physical_request_fraction": 0.9984205580694822,
+      "prediction": "out/v262/regression-255-t5e-05.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.0001,
+      "export_threshold": 0.5000249999999792,
+      "score": 99.67697022749469,
+      "physical_request_fraction": 0.9984205580694822,
+      "prediction": "out/v262/regression-255-t0.0001.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.0002,
+      "export_threshold": 0.5000499999998334,
+      "score": 99.67697022749469,
+      "physical_request_fraction": 0.9984205580694822,
+      "prediction": "out/v262/regression-255-t0.0002.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.0005,
+      "export_threshold": 0.5001249999973958,
+      "score": 99.65060937993974,
+      "physical_request_fraction": 0.34763050388862604,
+      "prediction": "out/v262/regression-255-t0.0005.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.001,
+      "export_threshold": 0.5002499999791666,
+      "score": 99.64221837130637,
+      "physical_request_fraction": 0.2339706636988264,
+      "prediction": "out/v262/regression-255-t0.001.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.002,
+      "export_threshold": 0.5004999998333334,
+      "score": 99.62486080591445,
+      "physical_request_fraction": 0.13317294555923573,
+      "prediction": "out/v262/regression-255-t0.002.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.003,
+      "export_threshold": 0.5007499994375005,
+      "score": 99.61187344632351,
+      "physical_request_fraction": 0.08911517930331284,
+      "prediction": "out/v262/regression-255-t0.003.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.005,
+      "export_threshold": 0.5012499973958399,
+      "score": 99.60030788415946,
+      "physical_request_fraction": 0.06533024997834098,
+      "prediction": "out/v262/regression-255-t0.005.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.01,
+      "export_threshold": 0.5024999791668749,
+      "score": 99.57800948757026,
+      "physical_request_fraction": 0.035460803849306576,
+      "prediction": "out/v262/regression-255-t0.01.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 255,
+      "threshold": 0.02,
+      "export_threshold": 0.5049998333399998,
+      "score": 99.54831522252103,
+      "physical_request_fraction": 0.014621500403190872,
+      "prediction": "out/v262/regression-255-t0.02.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 5e-05,
+      "export_threshold": 0.5000124999999974,
+      "score": 99.67521363093427,
+      "physical_request_fraction": 0.9928491932850393,
+      "prediction": "out/v262/regression-511-t5e-05.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.0001,
+      "export_threshold": 0.5000249999999792,
+      "score": 99.67495559165611,
+      "physical_request_fraction": 0.9922360765862729,
+      "prediction": "out/v262/regression-511-t0.0001.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.0002,
+      "export_threshold": 0.5000499999998334,
+      "score": 99.6733841979609,
+      "physical_request_fraction": 0.92292056806595,
+      "prediction": "out/v262/regression-511-t0.0002.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.0005,
+      "export_threshold": 0.5001249999973958,
+      "score": 99.657899107633,
+      "physical_request_fraction": 0.41526660579928426,
+      "prediction": "out/v262/regression-511-t0.0005.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.001,
+      "export_threshold": 0.5002499999791666,
+      "score": 99.639862744789,
+      "physical_request_fraction": 0.20357473692628605,
+      "prediction": "out/v262/regression-511-t0.001.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.002,
+      "export_threshold": 0.5004999998333334,
+      "score": 99.62667168216325,
+      "physical_request_fraction": 0.13113366610464303,
+      "prediction": "out/v262/regression-511-t0.002.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.003,
+      "export_threshold": 0.5007499994375005,
+      "score": 99.61778018032379,
+      "physical_request_fraction": 0.10371002245873125,
+      "prediction": "out/v262/regression-511-t0.003.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.005,
+      "export_threshold": 0.5012499973958399,
+      "score": 99.60446351295856,
+      "physical_request_fraction": 0.07300087302486455,
+      "prediction": "out/v262/regression-511-t0.005.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.01,
+      "export_threshold": 0.5024999791668749,
+      "score": 99.57963446110553,
+      "physical_request_fraction": 0.03734013981726457,
+      "prediction": "out/v262/regression-511-t0.01.npy"
+    },
+    {
+      "kind": "regression",
+      "leaves": 511,
+      "threshold": 0.02,
+      "export_threshold": 0.5049998333399998,
+      "score": 99.54894389127364,
+      "physical_request_fraction": 0.015068009303379473,
+      "prediction": "out/v262/regression-511-t0.02.npy"
+    }
+  ]
+}

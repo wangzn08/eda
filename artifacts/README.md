@@ -1,5 +1,20 @@
 # 运行快照与共享资产
 
+## V274高精度快照（2026-10-19）
+
+`runtime-v274/`保存实测程序、主模型、冻结源码和构建清单，共约5.68MB；不变架构文件与`runtime-v219/`共用。轻量目录需先组装，完整提交为99,415,300 bytes。
+
+```sh
+make runtime-accuracy
+build/runtime-v274/estimate -in /absolute/path/request.csv -out /absolute/path/result.csv
+python3 scripts/assemble_score_release.py --version 274 --output out/submission/reassembled-v274
+```
+
+完整验证99.6344970607；两批新请求十亿CPU外推平均55.8968分钟，峰值RSS1,966,096,384 bytes。高精度版的综合估分仍低于V254，默认`make`继续构建V254。默认及高精度入口都从各自冻结源码重编译，避免后续研究头文件改变已测版本。
+
+源码构建只需C++17、zlib、liblzma和Python3标准库；生成树代码使用临时目录，最终提交不包含重复的完整树表示。预编译程序为M4/macOS ARM64；Linux需重编译，性能尚未实测。[完整结果](../reports/V255-V274-accuracy.md)。
+
+
 ## 2026-10-19：V250 / V253 / V254
 
 `runtime-v253/`、`runtime-v254/`保存实测程序、冻结源码、构建文件与清单。它们共用V219中SHA完全相同的架构资产，只保存新增文件，合计新增约6.68MB。`runtime-v242/`另保留原重复请求阶段的完整冻结源码与程序，`make runtime-v242`可重编译。使用下面的命令组装完整目录；组装会逐项核对程序、模型及源码SHA：

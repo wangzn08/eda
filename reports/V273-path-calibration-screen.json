@@ -1,0 +1,78 @@
+{
+  "state": "complete",
+  "scope": "Validation-only inference rule screen; no native or frozen result yet",
+  "candidates": [
+    {
+      "mode": "base",
+      "threshold_ps": 1,
+      "score": 99.67682787974746,
+      "changed": 11192
+    },
+    {
+      "mode": "base",
+      "threshold_ps": 2,
+      "score": 99.67343181111997,
+      "changed": 16964
+    },
+    {
+      "mode": "base",
+      "threshold_ps": 3,
+      "score": 99.66901238806231,
+      "changed": 20693
+    },
+    {
+      "mode": "base",
+      "threshold_ps": 4,
+      "score": 99.66465885369142,
+      "changed": 23149
+    },
+    {
+      "mode": "base",
+      "threshold_ps": 6,
+      "score": 99.65443787284939,
+      "changed": 26630
+    },
+    {
+      "mode": "base",
+      "threshold_ps": 8,
+      "score": 99.64584743735404,
+      "changed": 28734
+    },
+    {
+      "mode": "nearest-path",
+      "threshold_ps": 1,
+      "score": 99.67952747257036,
+      "changed": 12405
+    },
+    {
+      "mode": "nearest-path",
+      "threshold_ps": 2,
+      "score": 99.67947650916241,
+      "changed": 18285
+    },
+    {
+      "mode": "nearest-path",
+      "threshold_ps": 3,
+      "score": 99.67868808122392,
+      "changed": 21851
+    },
+    {
+      "mode": "nearest-path",
+      "threshold_ps": 4,
+      "score": 99.67755013686443,
+      "changed": 24115
+    },
+    {
+      "mode": "nearest-path",
+      "threshold_ps": 6,
+      "score": 99.67452018682432,
+      "changed": 27001
+    },
+    {
+      "mode": "nearest-path",
+      "threshold_ps": 8,
+      "score": 99.67110975120282,
+      "changed": 28700
+    }
+  ]
+}

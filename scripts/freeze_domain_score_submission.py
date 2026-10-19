@@ -29,10 +29,10 @@ p=argparse.ArgumentParser();p.add_argument('--cxx',default='clang++');p.add_argu
 with tempfile.TemporaryDirectory(prefix='eda-forest-') as directory:
  header=Path(directory)/'compiled_selected_forest.hpp'
  subprocess.run([sys.executable,str(root/'generate_forest.py'),str(root/'correction.bin'),str(header),'--domains','__DOMAIN_COUNT__'],check=True)
- flags=['-DCORE_LIBLZMA=1','-DROUTING_GRAPH_ONLY=1','-DRUNTIME_COMPONENT_PROFILE=0','-DRUNTIME_COMPILED_FOREST=1','-DRUNTIME_TERMINAL_MASKS=1','-DRUNTIME_INTERVAL_MASKS=1','-DRUNTIME_OPERATOR_CACHE=0','-DRUNTIME_SHORT_PACK_VERIFY=0','-DRUNTIME_CORRECTION_GATE=__GATE_ENABLED__','-DRUNTIME_BATCH_SIZE=__BATCH_SIZE__','-DRUNTIME_REFINED_TERMINALS=__REFINED_ENABLED__','-DRUNTIME_MASK_HOT_CODEC=__HOT_CODEC_ENABLED__','-DRUNTIME_MASK_DIRECT=__DIRECT_ENABLED__',f'-DRUNTIME_COMPILED_FOREST_HEADER="{header}"']
+ flags=['-DCORE_LIBLZMA=1','-DROUTING_GRAPH_ONLY=1','-DRUNTIME_COMPONENT_PROFILE=0','-DRUNTIME_COMPILED_FOREST=1','-DRUNTIME_TERMINAL_MASKS=1','-DRUNTIME_INTERVAL_MASKS=1','-DRUNTIME_OPERATOR_CACHE=0','-DRUNTIME_SHORT_PACK_VERIFY=0','-DRUNTIME_CORRECTION_GATE=__GATE_ENABLED__','-DRUNTIME_BATCH_SIZE=__BATCH_SIZE__','-DRUNTIME_REFINED_TERMINALS=__REFINED_ENABLED__','-DRUNTIME_MASK_HOT_CODEC=__HOT_CODEC_ENABLED__','-DRUNTIME_MASK_DIRECT=__DIRECT_ENABLED__','-DRUNTIME_ENDPOINT_SEEDS=__SEEDS_ENABLED__','-DRUNTIME_ENDPOINT_BELLMAN=__ENDPOINT_MODE__','-DRUNTIME_PATH_ENVELOPE=__PATH_ENVELOPE__','-DRUNTIME_CORRECTION_FALLBACK=__FALLBACK_ENABLED__',f'-DRUNTIME_COMPILED_FOREST_HEADER="{header}"']
  command=shlex.split(a.cxx)+shlex.split(a.cxxflags)+shlex.split(a.archflags)+flags+shlex.split(a.lzma_cflags)+[str(root/'src/runtime_route_estimate.cpp')]+shlex.split(a.lzma_libs)+['-lz','-o',str(root/'estimate')]
  subprocess.run(command,cwd=root,check=True)
-'''.replace('__DOMAIN_COUNT__',str(manifest['domains'])).replace('__GATE_ENABLED__',str(int(bool(manifest['gate_model'])))).replace('__BATCH_SIZE__',str(manifest.get('batch_size',32))).replace('__REFINED_ENABLED__',str(int(manifest.get('refined_terminals',False)))).replace('__HOT_CODEC_ENABLED__',str(int(manifest.get('hot_terminal_codec',False)))).replace('__DIRECT_ENABLED__',str(int(manifest.get('direct_terminal_masks',False))))
+'''.replace('__DOMAIN_COUNT__',str(manifest['domains'])).replace('__GATE_ENABLED__',str(int(bool(manifest['gate_model'])))).replace('__BATCH_SIZE__',str(manifest.get('batch_size',32))).replace('__REFINED_ENABLED__',str(int(manifest.get('refined_terminals',False)))).replace('__HOT_CODEC_ENABLED__',str(int(manifest.get('hot_terminal_codec',False)))).replace('__DIRECT_ENABLED__',str(int(manifest.get('direct_terminal_masks',False)))).replace('__SEEDS_ENABLED__',str(int(manifest.get('endpoint_mode',0)==6))).replace('__ENDPOINT_MODE__',str(manifest.get('endpoint_mode',0))).replace('__PATH_ENVELOPE__',str(int(manifest.get('path_envelope',False)))).replace('__FALLBACK_ENABLED__',str(int(manifest.get('fallback_v254',False))))
 (target/'rebuild.py').write_text(builder)
 (target/'Makefile').write_text('''CXX = clang++
 CXXFLAGS = -O3 -std=c++17
@@ -53,14 +53,19 @@ embedded_forest=sum(p.stat().st_size for p in target.rglob('*') if p.is_file())+
 if embedded_forest:
  shutil.copy2(snapshot/'compiled_selected_forest.hpp',target/'src/compiled_selected_forest.hpp')
  for name in ('generate_forest.py','rebuild.py'):(target/name).unlink()
- flags=['-DCORE_LIBLZMA=1','-DROUTING_GRAPH_ONLY=1','-DRUNTIME_COMPONENT_PROFILE=0','-DRUNTIME_COMPILED_FOREST=1','-DRUNTIME_TERMINAL_MASKS=1','-DRUNTIME_INTERVAL_MASKS=1','-DRUNTIME_OPERATOR_CACHE=0','-DRUNTIME_SHORT_PACK_VERIFY=0',f"-DRUNTIME_CORRECTION_GATE={int(bool(manifest['gate_model']))}",f"-DRUNTIME_BATCH_SIZE={manifest.get('batch_size',32)}",f"-DRUNTIME_REFINED_TERMINALS={int(manifest.get('refined_terminals',False))}",f"-DRUNTIME_MASK_HOT_CODEC={int(manifest.get('hot_terminal_codec',False))}",f"-DRUNTIME_MASK_DIRECT={int(manifest.get('direct_terminal_masks',False))}"]
+ flags=['-DCORE_LIBLZMA=1','-DROUTING_GRAPH_ONLY=1','-DRUNTIME_COMPONENT_PROFILE=0','-DRUNTIME_COMPILED_FOREST=1','-DRUNTIME_TERMINAL_MASKS=1','-DRUNTIME_INTERVAL_MASKS=1','-DRUNTIME_OPERATOR_CACHE=0','-DRUNTIME_SHORT_PACK_VERIFY=0',f"-DRUNTIME_CORRECTION_GATE={int(bool(manifest['gate_model']))}",f"-DRUNTIME_BATCH_SIZE={manifest.get('batch_size',32)}",f"-DRUNTIME_REFINED_TERMINALS={int(manifest.get('refined_terminals',False))}",f"-DRUNTIME_MASK_HOT_CODEC={int(manifest.get('hot_terminal_codec',False))}",f"-DRUNTIME_MASK_DIRECT={int(manifest.get('direct_terminal_masks',False))}",f"-DRUNTIME_ENDPOINT_SEEDS={int(manifest.get('endpoint_mode',0)==6)}",f"-DRUNTIME_ENDPOINT_BELLMAN={manifest.get('endpoint_mode',0)}",f"-DRUNTIME_PATH_ENVELOPE={int(manifest.get('path_envelope',False))}",f"-DRUNTIME_CORRECTION_FALLBACK={int(manifest.get('fallback_v254',False))}"]
  makefile=(target/'Makefile').read_text().split('.PHONY: rebuild')[0]
  makefile+='DEFINES = '+' '.join(flags)+'\n.PHONY: rebuild\nrebuild:\n\t$(CXX) $(CXXFLAGS) $(ARCHFLAGS) $(DEFINES) $(LZMA_CFLAGS) src/runtime_route_estimate.cpp $(LZMA_LIBS) -lz -o estimate\n'
  (target/'Makefile').write_text(makefile)
+if manifest.get('endpoint_mode'):
+ assert all(r['billion_estimate_cpu_seconds']<=3600 for r in profile['runs'][1:]),'Do not freeze a release beyond the one-hour CPU limit'
+ assert profile['peak_rss_bytes']<=2000000000
 seconds=profile['pooled_billion_estimate_cpu_seconds']
 build_description=('The exact generated forest header is included. No Python packages or training data are needed to rebuild.' if embedded_forest else 'Python 3 standard library regenerates the forest header from correction.bin in a temporary directory; LightGBM and training data are not required.')
 model_description=('The existing single residual forest and shallow gate are retained.' if manifest['domains']==1 else 'One development-trained numeric expert is selected by whether the chosen route crosses the vertical wall.')
 feature_description=('The model uses137 geometry, response and endpoint-potential features.' if manifest['features']==137 else 'The model also uses integer endpoint/curve interaction features.')
+if manifest.get('endpoint_mode'):feature_description='The model uses137 original features and16 actual endpoint Bellman/beam profile features; these are approximate, not shortest-path certificates.'
+if manifest.get('fallback_v254'):model_description+=' A development cross-fitted expected-gain gate selects the physical expert; other requests use the frozen V254 forest/gate.'
 (target/'README.md').write_text(f'''# V{a.version} score-oriented runtime
 
 Standard entry: `./estimate -in requests.csv -out predictions.csv`.

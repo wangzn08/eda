@@ -3,6 +3,7 @@ import argparse,csv,hashlib,json,re,subprocess,time
 from pathlib import Path
 import numpy as np
 from architecture import ROOT
+from native_research_labels import load_labels
 from experiment_v7_teacher import score
 from selected_physics_interactions import augment
 
@@ -25,7 +26,7 @@ if a.resume:
  for item in previous['runs']:assert digest(out/f"{item['name']}.csv")==item['output_sha256']
  report=previous;report['state']='running'
 def save():report_path.write_text(json.dumps(report,indent=2)+'\n')
-save();z=np.load(ROOT/'out/v125/fit-features.npz');yv=z['yv'];n=len(z['y'])
+save();z=load_labels();yv=z['yv'];n=len(z['y'])
 cases=[('validation',ROOT/'out/evaluation/validation.request.csv',150053)]+[(f'novel-{i+1}',ROOT/v['path'],v['rows']) for i,v in enumerate(inventory['files'][:a.speed_runs])]
 for name,source,expected_rows in cases:
  if any(item['name']==name for item in report['runs']):continue

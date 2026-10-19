@@ -1,0 +1,287 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "baseline_parity": true,
+  "features": 153,
+  "fit_scope": "development only; validation selection; beam width2; no shortest path guarantee",
+  "candidates": [
+    {
+      "name": "raw-source1",
+      "deployable": false,
+      "score": 99.39152782404351,
+      "exact_fraction": 0.743317361199043
+    },
+    {
+      "name": "raw-target1",
+      "deployable": false,
+      "score": 99.05163003075434,
+      "exact_fraction": 0.7402317847693815
+    },
+    {
+      "name": "raw-source2",
+      "deployable": false,
+      "score": 99.39505486260508,
+      "exact_fraction": 0.7542201755379766
+    },
+    {
+      "name": "raw-target2",
+      "deployable": false,
+      "score": 98.99494159859776,
+      "exact_fraction": 0.7482422877250038
+    },
+    {
+      "name": "raw-paired11",
+      "deployable": false,
+      "score": 99.02853932767293,
+      "exact_fraction": 0.748835411487941
+    },
+    {
+      "name": "raw-paired21",
+      "deployable": false,
+      "score": 98.8897015714014,
+      "exact_fraction": 0.7568459144435633
+    },
+    {
+      "name": "raw-paired12",
+      "deployable": false,
+      "score": 98.84100375760376,
+      "exact_fraction": 0.7542001826021473
+    },
+    {
+      "name": "raw-paired22",
+      "deployable": false,
+      "score": 98.45793599591616,
+      "exact_fraction": 0.7585053281173986
+    },
+    {
+      "name": "global",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v258/global-8.npy",
+      "elapsed_seconds": 19.50892875000136,
+      "score": 99.56642792632829,
+      "exact_fraction": 0.7238442417012656
+    },
+    {
+      "name": "global",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v258/global-16.npy",
+      "elapsed_seconds": 19.768072166014463,
+      "score": 99.5988005879877,
+      "exact_fraction": 0.7206853578402298
+    },
+    {
+      "name": "global",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v258/global-32.npy",
+      "elapsed_seconds": 20.331282833009027,
+      "score": 99.60781939211067,
+      "exact_fraction": 0.7141809893837511
+    },
+    {
+      "name": "global",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v258/global-64.npy",
+      "elapsed_seconds": 21.70919012502418,
+      "score": 99.61096939623013,
+      "exact_fraction": 0.7106888899255597
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "prediction": "out/v258/wall-experts-8.npy",
+      "elapsed_seconds": 20.230413500015857,
+      "score": 99.57487732500643,
+      "exact_fraction": 0.7221714994035441
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "prediction": "out/v258/wall-experts-16.npy",
+      "elapsed_seconds": 20.499273833993357,
+      "score": 99.60481783982199,
+      "exact_fraction": 0.7151539789274456
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 32,
+      "total_trees": 64,
+      "prediction": "out/v258/wall-experts-32.npy",
+      "elapsed_seconds": 21.10395904199686,
+      "score": 99.61354156110919,
+      "exact_fraction": 0.7095959427668891
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 64,
+      "total_trees": 128,
+      "prediction": "out/v258/wall-experts-64.npy",
+      "elapsed_seconds": 22.507172584009822,
+      "score": 99.61567396125439,
+      "exact_fraction": 0.7072501049629131
+    },
+    {
+      "name": "source1",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v258/source1-8.npy",
+      "elapsed_seconds": 20.14950804100954,
+      "score": 99.53057589112561,
+      "exact_fraction": 0.6977001459484315
+    },
+    {
+      "name": "source1",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v258/source1-16.npy",
+      "elapsed_seconds": 20.426235999999335,
+      "score": 99.55173897419701,
+      "exact_fraction": 0.6905959894170727
+    },
+    {
+      "name": "source1",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v258/source1-32.npy",
+      "elapsed_seconds": 20.93874795801821,
+      "score": 99.55541497097079,
+      "exact_fraction": 0.684684744723531
+    },
+    {
+      "name": "source1",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v258/source1-64.npy",
+      "elapsed_seconds": 21.94111095799599,
+      "score": 99.55886890129365,
+      "exact_fraction": 0.6806861575576629
+    },
+    {
+      "name": "target1",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v258/target1-8.npy",
+      "elapsed_seconds": 21.00063858300564,
+      "score": 99.51045459916512,
+      "exact_fraction": 0.695787488420758
+    },
+    {
+      "name": "target1",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v258/target1-16.npy",
+      "elapsed_seconds": 21.277722957980586,
+      "score": 99.53039332869831,
+      "exact_fraction": 0.6886433460177404
+    },
+    {
+      "name": "target1",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v258/target1-32.npy",
+      "elapsed_seconds": 21.778831874980824,
+      "score": 99.53548892853728,
+      "exact_fraction": 0.6817124615969025
+    },
+    {
+      "name": "target1",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v258/target1-64.npy",
+      "elapsed_seconds": 22.747378166997805,
+      "score": 99.5372984976258,
+      "exact_fraction": 0.6769008283739746
+    },
+    {
+      "name": "source2",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v258/source2-8.npy",
+      "elapsed_seconds": 20.310402125003748,
+      "score": 99.55458864896892,
+      "exact_fraction": 0.7124349396546553
+    },
+    {
+      "name": "source2",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v258/source2-16.npy",
+      "elapsed_seconds": 20.574914666009136,
+      "score": 99.5802705775984,
+      "exact_fraction": 0.7078498930377933
+    },
+    {
+      "name": "source2",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v258/source2-32.npy",
+      "elapsed_seconds": 21.13046287500765,
+      "score": 99.5877759520155,
+      "exact_fraction": 0.7010389662319314
+    },
+    {
+      "name": "source2",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v258/source2-64.npy",
+      "elapsed_seconds": 22.208480875007808,
+      "score": 99.5908780033995,
+      "exact_fraction": 0.695847467228246
+    },
+    {
+      "name": "both1",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v258/both1-8.npy",
+      "elapsed_seconds": 20.19177066697739,
+      "score": 99.53971983636043,
+      "exact_fraction": 0.7050175604619701
+    },
+    {
+      "name": "both1",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v258/both1-16.npy",
+      "elapsed_seconds": 20.50254262497765,
+      "score": 99.56499848504671,
+      "exact_fraction": 0.6986398139324106
+    },
+    {
+      "name": "both1",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v258/both1-32.npy",
+      "elapsed_seconds": 21.087368916982086,
+      "score": 99.57102473209912,
+      "exact_fraction": 0.6929018413493899
+    },
+    {
+      "name": "both1",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v258/both1-64.npy",
+      "elapsed_seconds": 22.183312041976023,
+      "score": 99.57273827891773,
+      "exact_fraction": 0.6893297701478811
+    }
+  ],
+  "references": [
+    "https://doi.org/10.1090/qam/102435"
+  ],
+  "best": {
+    "name": "wall-experts",
+    "trees_per_request": 64,
+    "total_trees": 128,
+    "prediction": "out/v258/wall-experts-64.npy",
+    "elapsed_seconds": 22.507172584009822,
+    "score": 99.61567396125439,
+    "exact_fraction": 0.7072501049629131
+  }
+}

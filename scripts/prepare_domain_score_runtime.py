@@ -25,6 +25,9 @@ p.add_argument('--batch-size',type=int,default=32)
 p.add_argument('--refined-terminals',action='store_true')
 p.add_argument('--hot-terminal-codec',action='store_true')
 p.add_argument('--direct-terminal-masks',action='store_true')
+p.add_argument('--endpoint-mode',type=int,default=0,choices=range(7))
+p.add_argument('--path-envelope',action='store_true')
+p.add_argument('--fallback-v254',action='store_true')
 a=p.parse_args()
 assert len(a.models) in (1,2,4)
 work=ROOT/f'out/v{a.version}';work.mkdir(exist_ok=True)
@@ -58,6 +61,14 @@ flags+=[f'-DRUNTIME_BATCH_SIZE={a.batch_size}']
 flags+=[f'-DRUNTIME_REFINED_TERMINALS={int(a.refined_terminals)}']
 flags+=[f'-DRUNTIME_MASK_HOT_CODEC={int(a.hot_terminal_codec)}']
 flags+=[f'-DRUNTIME_MASK_DIRECT={int(a.direct_terminal_masks)}']
+flags+=[f'-DRUNTIME_ENDPOINT_BELLMAN={a.endpoint_mode}',f'-DRUNTIME_PATH_ENVELOPE={int(a.path_envelope)}',f'-DRUNTIME_CORRECTION_FALLBACK={int(a.fallback_v254)}']
+flags+=[f'-DRUNTIME_ENDPOINT_SEEDS={int(a.endpoint_mode==6)}']
+if a.fallback_v254:
+ assert a.gate
+ for source_name,target_name in [('compiled_selected_forest.hpp','compiled_fallback_forest.hpp'),('compiled_selected_correction_gate.hpp','compiled_fallback_gate.hpp')]:
+  text=(ROOT/'artifacts/runtime-v254/src'/source_name).read_text().replace('compiled_','fallback_')
+  (work/target_name).write_text(text)
+ flags += [f'-DRUNTIME_FALLBACK_FOREST_HEADER="{work}/compiled_fallback_forest.hpp"',f'-DRUNTIME_FALLBACK_GATE_HEADER="{work}/compiled_fallback_gate.hpp"']
 snapshot=work/'runtime-source';snapshot.mkdir(exist_ok=True)
 import shutil
 for source in (ROOT/'out/submission/final-v242/src').iterdir():
@@ -66,12 +77,15 @@ for source in (ROOT/'out/submission/final-v242/src').iterdir():
 for name in ('selected_feature_schema.hpp','compiled_selected_forest.hpp','compiled_selected_correction_gate.hpp'):
  if (work/name).exists():shutil.copy2(work/name,snapshot/name)
 shutil.copy2(ROOT/'src/selected_physics_features.hpp',snapshot/'selected_physics_features.hpp')
+shutil.copy2(ROOT/'src/endpoint_bellman_profile.hpp',snapshot/'endpoint_bellman_profile.hpp')
+if a.fallback_v254:
+ for name in ('compiled_fallback_forest.hpp','compiled_fallback_gate.hpp'):shutil.copy2(work/name,snapshot/name)
 shutil.copy2(ROOT/a.source,snapshot/'runtime_route_estimate.cpp')
 command=['clang++',*flags,'-I/opt/homebrew/include','-I'+str(ROOT/'src'),str(ROOT/a.source),'/opt/homebrew/lib/liblzma.a','-lz','-o',str(folder/'estimate')]
 subprocess.run(command,cwd=ROOT,check=True)
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 source_hash={p.name:digest(p) for p in snapshot.iterdir() if p.is_file()}
 (work/'runtime-source-sha256.json').write_text(json.dumps(source_hash,indent=2)+'\n')
-manifest={'version':a.version,'domains':len(parts),'trees_per_request':a.trees,'total_trees':trees,'features':len(names),'models':a.models,'feature_names':a.features,'gate_model':a.gate,'gate_threshold':a.gate_threshold if a.gate else None,'batch_size':a.batch_size,'refined_terminals':a.refined_terminals,'hot_terminal_codec':a.hot_terminal_codec,'direct_terminal_masks':a.direct_terminal_masks,'source_entry':a.source,'architecture_operator_cache':False,'prediction_cache':False,'fit_scope':'development only','holdout_used':False,'compile_command':command,'runtime_source_sha256':source_hash,'files':{p.name:{'bytes':p.stat().st_size,'sha256':digest(p)} for p in folder.iterdir() if p.is_file()}}
+manifest={'version':a.version,'domains':len(parts),'trees_per_request':a.trees,'total_trees':trees,'features':len(names),'models':a.models,'feature_names':a.features,'gate_model':a.gate,'gate_threshold':a.gate_threshold if a.gate else None,'batch_size':a.batch_size,'refined_terminals':a.refined_terminals,'hot_terminal_codec':a.hot_terminal_codec,'direct_terminal_masks':a.direct_terminal_masks,'endpoint_mode':a.endpoint_mode,'path_envelope':a.path_envelope,'fallback_v254':a.fallback_v254,'source_entry':a.source,'architecture_operator_cache':False,'prediction_cache':False,'fit_scope':'development only','holdout_used':False,'compile_command':command,'runtime_source_sha256':source_hash,'files':{p.name:{'bytes':p.stat().st_size,'sha256':digest(p)} for p in folder.iterdir() if p.is_file()}}
 (work/'runtime-manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print(json.dumps({'directory':str(folder),'runtime_bytes':sum(p.stat().st_size for p in folder.iterdir() if p.is_file()),'version':a.version}),flush=True)

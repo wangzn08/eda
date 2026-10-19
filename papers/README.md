@@ -129,3 +129,10 @@ V142端口乘积交互另参考Rendle2010 Factorization Machines：作者项目h
 - Peter 等，[*Cost efficient gradient boosting*](https://proceedings.neurips.cc/paper/2017/hash/4fac9ba115140ac4f1c22da82aa0bc7f-Abstract.html)，NeurIPS 2017：参考同时考虑特征计算开销与预测质量。当前没有启用其 CEGB 训练惩罚，不声称复现其方法。
 
 具体适配是按 FPGA 跨墙几何选专家，加入起终点势与响应曲线的整数交互特征，再用 development 训练的门控减少无效修正。整数交互不是可采纳路径下界，不能用于宣称精确剪枝。已有树模型、专家分工、级联和编译优化均不作为新理论；实际增益只以本仓库的完整验证和标准入口测量为准。
+
+## 2026-10-19：双端局部连接与收益分流
+
+- Bellman，*On a routing problem*，Quarterly of Applied Mathematics 16 (1958)，87–90：[题录](https://doi.org/10.1090/qam/102435)，[扫描论文](https://www.cs.yale.edu/homes/lans/readings/routing/bellman-routing-1958.pdf)。本轮核对题录及四页扫描文档信息，未声称完成全文阅读。采用经典路由递推思想；本程序的有限理想后缀和beam截断不具有原精确最短路算法的保证。
+- Prokhorenkova等，*CatBoost: unbiased boosting with categorical features*，NeurIPS2018：[官方摘要](https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.html)。核对摘要并以开源实现做三种对照，未声称全文阅读或复现论文benchmark。该方向未优于本题的物理路径特征方案。
+
+V255–V274把真实起终点局部连接、有限响应银行与交叉拟合的收益分流组合。交叉拟合和级联不是本项目原创；工作量归一化门控也做过对照，V274最终使用原始收益的16树门控。精度、时间代价与未采用方案见[本轮研究记录](../reports/V255-V274-accuracy.md)。

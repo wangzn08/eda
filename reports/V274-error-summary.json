@@ -1,0 +1,40 @@
+{
+  "state": "complete",
+  "validation_rows": 150053,
+  "old_version": 254,
+  "new_version": 274,
+  "score_gain": 0.12838655444202499,
+  "relative_deduction_reduction": 0.2599499606323342,
+  "old_exact_fraction": 0.7013588532052009,
+  "new_exact_fraction": 0.7102623739612004,
+  "improved_rows": 8835,
+  "worsened_rows": 3405,
+  "unchanged_rows": 137813,
+  "old_worst_1pct_loss_share": 0.3531552687725845,
+  "old_worst_1pct_loss_reduction": 0.4201798091302532,
+  "old_absolute_error_quantiles": [
+    0.0,
+    7.0,
+    15.0,
+    55.0,
+    113.0,
+    289.0
+  ],
+  "new_absolute_error_quantiles": [
+    0.0,
+    6.0,
+    12.0,
+    41.0,
+    92.0,
+    341.0
+  ],
+  "quantile_levels": [
+    0.5,
+    0.9,
+    0.95,
+    0.99,
+    0.999,
+    1
+  ],
+  "holdout_used": false
+}

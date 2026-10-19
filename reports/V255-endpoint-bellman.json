@@ -1,0 +1,143 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "baseline_parity": true,
+  "features": 153,
+  "fit_scope": "development only; validation selection; beam width2; no shortest path guarantee",
+  "candidates": [
+    {
+      "name": "raw-source1",
+      "deployable": false,
+      "score": 99.42819695901885,
+      "exact_fraction": 0.7487021252490786
+    },
+    {
+      "name": "raw-target1",
+      "deployable": false,
+      "score": 99.37718956192916,
+      "exact_fraction": 0.7492152772686984
+    },
+    {
+      "name": "raw-source2",
+      "deployable": false,
+      "score": 99.46394105391248,
+      "exact_fraction": 0.7630503888626019
+    },
+    {
+      "name": "raw-target2",
+      "deployable": false,
+      "score": 99.30702707635561,
+      "exact_fraction": 0.7608778231691469
+    },
+    {
+      "name": "raw-paired11",
+      "deployable": false,
+      "score": 99.37236375049075,
+      "exact_fraction": 0.7587519076592937
+    },
+    {
+      "name": "raw-paired21",
+      "deployable": false,
+      "score": 99.22309167096263,
+      "exact_fraction": 0.7671889265792753
+    },
+    {
+      "name": "raw-paired12",
+      "deployable": false,
+      "score": 99.13846899407486,
+      "exact_fraction": 0.7659960147414581
+    },
+    {
+      "name": "raw-paired22",
+      "deployable": false,
+      "score": 98.73814506619256,
+      "exact_fraction": 0.7697946725490327
+    },
+    {
+      "name": "global",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v255/global-8.npy",
+      "elapsed_seconds": 19.317600750015117,
+      "score": 99.60898630141273,
+      "exact_fraction": 0.7345471266819057
+    },
+    {
+      "name": "global",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v255/global-16.npy",
+      "elapsed_seconds": 19.56185437500244,
+      "score": 99.6570039357682,
+      "exact_fraction": 0.7308084476818191
+    },
+    {
+      "name": "global",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v255/global-32.npy",
+      "elapsed_seconds": 20.101698959013447,
+      "score": 99.66747159993719,
+      "exact_fraction": 0.7262367296888432
+    },
+    {
+      "name": "global",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v255/global-64.npy",
+      "elapsed_seconds": 21.436708334018476,
+      "score": 99.67079945413049,
+      "exact_fraction": 0.7210185734373855
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "prediction": "out/v255/wall-experts-8.npy",
+      "elapsed_seconds": 19.5490392500069,
+      "score": 99.61290560728693,
+      "exact_fraction": 0.7273163482236277
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "prediction": "out/v255/wall-experts-16.npy",
+      "elapsed_seconds": 19.841186666017165,
+      "score": 99.66031300432223,
+      "exact_fraction": 0.7235376833518823
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 32,
+      "total_trees": 64,
+      "prediction": "out/v255/wall-experts-32.npy",
+      "elapsed_seconds": 20.47142666601576,
+      "score": 99.67731557719499,
+      "exact_fraction": 0.7202721704997568
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 64,
+      "total_trees": 128,
+      "prediction": "out/v255/wall-experts-64.npy",
+      "elapsed_seconds": 21.78228687500814,
+      "score": 99.67896265475392,
+      "exact_fraction": 0.7180596189346431
+    }
+  ],
+  "references": [
+    "https://doi.org/10.1090/qam/102435"
+  ],
+  "best": {
+    "name": "wall-experts",
+    "trees_per_request": 64,
+    "total_trees": 128,
+    "prediction": "out/v255/wall-experts-64.npy",
+    "elapsed_seconds": 21.78228687500814,
+    "score": 99.67896265475392,
+    "exact_fraction": 0.7180596189346431
+  }
+}

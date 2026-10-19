@@ -1,0 +1,11 @@
+{
+  "python": "3.12.14",
+  "numpy": "2.5.3",
+  "lightgbm": "4.7.0",
+  "catboost": "1.2.10",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "machine": "arm64",
+  "runtime_single_thread": true,
+  "training_threads_per_process": 1,
+  "note": "Final V274 novel-request speed runs executed after independent model training and research exports had completed."
+}

@@ -1,0 +1,9 @@
+{
+  "state": "complete",
+  "version": 254,
+  "all_file_backed_sections_identical": true,
+  "identical_except_macho_uuid_and_signature": true,
+  "measured_binary_sha256": "9318e324deea4de6ff1c8dcb207f40d4da2f56c1c497fe8703387ad26bcf2cd6",
+  "root_build_binary_sha256": "5303ff8205568b439e51510ec6dfc1d1b63046f43c85d1a0dbb2a9c719c63830",
+  "source_scope": "Root make uses the frozen measured source closure, not mutable research headers"
+}

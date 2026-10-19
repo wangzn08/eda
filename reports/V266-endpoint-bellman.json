@@ -1,0 +1,144 @@
+{
+  "state": "complete",
+  "holdout_used": false,
+  "development_rows": 700705,
+  "validation_rows": 150053,
+  "baseline_parity": true,
+  "features": 153,
+  "profile_kind": "bellman",
+  "fit_scope": "development only; validation selection; approximate physical features, no shortest path guarantee",
+  "candidates": [
+    {
+      "name": "raw-source1",
+      "deployable": false,
+      "score": 99.42655394092112,
+      "exact_fraction": 0.7483289237802643
+    },
+    {
+      "name": "raw-target1",
+      "deployable": false,
+      "score": 99.33604530362157,
+      "exact_fraction": 0.7475292063470907
+    },
+    {
+      "name": "raw-source2",
+      "deployable": false,
+      "score": 99.45906092747015,
+      "exact_fraction": 0.7624372721638355
+    },
+    {
+      "name": "raw-target2",
+      "deployable": false,
+      "score": 99.27115596115266,
+      "exact_fraction": 0.7583253916949344
+    },
+    {
+      "name": "raw-paired11",
+      "deployable": false,
+      "score": 99.32918070491624,
+      "exact_fraction": 0.757479024078159
+    },
+    {
+      "name": "raw-paired21",
+      "deployable": false,
+      "score": 99.17742832134644,
+      "exact_fraction": 0.7660160076772874
+    },
+    {
+      "name": "raw-paired12",
+      "deployable": false,
+      "score": 99.10017667356439,
+      "exact_fraction": 0.7639833925346378
+    },
+    {
+      "name": "raw-paired22",
+      "deployable": false,
+      "score": 98.6887979735227,
+      "exact_fraction": 0.7679220008930178
+    },
+    {
+      "name": "global",
+      "trees_per_request": 8,
+      "total_trees": 8,
+      "prediction": "out/v266/global-8.npy",
+      "elapsed_seconds": 23.771299750020262,
+      "score": 99.59429815525446,
+      "exact_fraction": 0.7308817551131933
+    },
+    {
+      "name": "global",
+      "trees_per_request": 16,
+      "total_trees": 16,
+      "prediction": "out/v266/global-16.npy",
+      "elapsed_seconds": 24.083535250014393,
+      "score": 99.64187347546765,
+      "exact_fraction": 0.7274429701505468
+    },
+    {
+      "name": "global",
+      "trees_per_request": 32,
+      "total_trees": 32,
+      "prediction": "out/v266/global-32.npy",
+      "elapsed_seconds": 24.91191120800795,
+      "score": 99.6530098791102,
+      "exact_fraction": 0.7232711108741579
+    },
+    {
+      "name": "global",
+      "trees_per_request": 64,
+      "total_trees": 64,
+      "prediction": "out/v266/global-64.npy",
+      "elapsed_seconds": 26.70600279100472,
+      "score": 99.6551776041044,
+      "exact_fraction": 0.7201921987564394
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 8,
+      "total_trees": 16,
+      "prediction": "out/v266/wall-experts-8.npy",
+      "elapsed_seconds": 26.1016423330002,
+      "score": 99.60117483832774,
+      "exact_fraction": 0.7238642346370949
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 16,
+      "total_trees": 32,
+      "prediction": "out/v266/wall-experts-16.npy",
+      "elapsed_seconds": 26.43034833300044,
+      "score": 99.64682256868738,
+      "exact_fraction": 0.7197323612323646
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 32,
+      "total_trees": 64,
+      "prediction": "out/v266/wall-experts-32.npy",
+      "elapsed_seconds": 27.219493167009205,
+      "score": 99.6567355964881,
+      "exact_fraction": 0.7149940354408109
+    },
+    {
+      "name": "wall-experts",
+      "trees_per_request": 64,
+      "total_trees": 128,
+      "prediction": "out/v266/wall-experts-64.npy",
+      "elapsed_seconds": 28.910759249993134,
+      "score": 99.65907709802964,
+      "exact_fraction": 0.7136211871805296
+    }
+  ],
+  "references": [
+    "https://doi.org/10.1090/qam/102435"
+  ],
+  "best": {
+    "name": "wall-experts",
+    "trees_per_request": 64,
+    "total_trees": 128,
+    "prediction": "out/v266/wall-experts-64.npy",
+    "elapsed_seconds": 28.910759249993134,
+    "score": 99.65907709802964,
+    "exact_fraction": 0.7136211871805296
+  }
+}

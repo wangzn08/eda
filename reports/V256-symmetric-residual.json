@@ -1,0 +1,125 @@
+{
+  "state": "complete",
+  "fit_scope": "development only; no validation eval set or categorical label access",
+  "holdout_used": false,
+  "reference": "https://proceedings.neurips.cc/paper/2018/hash/14491b756b3a51daac41c24863285549-Abstract.html",
+  "candidates": [
+    {
+      "name": "numeric-d8",
+      "depth": 8,
+      "trees": 64,
+      "score": 99.44555389025513,
+      "exact_fraction": 0.6908625618947972,
+      "elapsed_seconds": 210.01669087499613,
+      "model_bytes": 2160048
+    },
+    {
+      "name": "numeric-d8",
+      "depth": 8,
+      "trees": 128,
+      "score": 99.45542942098338,
+      "exact_fraction": 0.6865240948198303,
+      "elapsed_seconds": 210.06053154199617,
+      "model_bytes": 2160048
+    },
+    {
+      "name": "numeric-d8",
+      "depth": 8,
+      "trees": 256,
+      "score": 99.47336852739654,
+      "exact_fraction": 0.6775272736966272,
+      "elapsed_seconds": 210.12193695799215,
+      "model_bytes": 2160048
+    },
+    {
+      "name": "numeric-d8",
+      "depth": 8,
+      "trees": 512,
+      "score": 99.48233425513277,
+      "exact_fraction": 0.6740218456145495,
+      "elapsed_seconds": 210.21659404199454,
+      "model_bytes": 2160048
+    },
+    {
+      "name": "ordered-category-d8",
+      "depth": 8,
+      "trees": 64,
+      "score": 99.4713562236463,
+      "exact_fraction": 0.6824455359106449,
+      "elapsed_seconds": 716.3998665420222,
+      "model_bytes": 2246532
+    },
+    {
+      "name": "ordered-category-d8",
+      "depth": 8,
+      "trees": 128,
+      "score": 99.47709059209838,
+      "exact_fraction": 0.6785202561761511,
+      "elapsed_seconds": 716.453899834014,
+      "model_bytes": 2246532
+    },
+    {
+      "name": "ordered-category-d8",
+      "depth": 8,
+      "trees": 256,
+      "score": 99.48090661004332,
+      "exact_fraction": 0.6720158877196724,
+      "elapsed_seconds": 716.5310262090061,
+      "model_bytes": 2246532
+    },
+    {
+      "name": "ordered-category-d8",
+      "depth": 8,
+      "trees": 512,
+      "score": 99.48494720070131,
+      "exact_fraction": 0.6714894070761664,
+      "elapsed_seconds": 716.645061209012,
+      "model_bytes": 2246532
+    },
+    {
+      "name": "numeric-d10",
+      "depth": 10,
+      "trees": 64,
+      "score": 99.45802495085039,
+      "exact_fraction": 0.6857776918822016,
+      "elapsed_seconds": 566.3835707079852,
+      "model_bytes": 8462928
+    },
+    {
+      "name": "numeric-d10",
+      "depth": 10,
+      "trees": 128,
+      "score": 99.47120598574158,
+      "exact_fraction": 0.6778871465415554,
+      "elapsed_seconds": 566.4441171670042,
+      "model_bytes": 8462928
+    },
+    {
+      "name": "numeric-d10",
+      "depth": 10,
+      "trees": 256,
+      "score": 99.48727832352169,
+      "exact_fraction": 0.6691635622080199,
+      "elapsed_seconds": 566.5264008750091,
+      "model_bytes": 8462928
+    },
+    {
+      "name": "numeric-d10",
+      "depth": 10,
+      "trees": 512,
+      "score": 99.49190140435043,
+      "exact_fraction": 0.6677507280760798,
+      "elapsed_seconds": 566.6529360830027,
+      "model_bytes": 8462928
+    }
+  ],
+  "best": {
+    "name": "numeric-d10",
+    "depth": 10,
+    "trees": 512,
+    "score": 99.49190140435043,
+    "exact_fraction": 0.6677507280760798,
+    "elapsed_seconds": 566.6529360830027,
+    "model_bytes": 8462928
+  }
+}
