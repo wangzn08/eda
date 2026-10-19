@@ -1,0 +1,187 @@
+{
+  "state": "complete",
+  "fit_scope": "development only, objective comparison and forest-to-single-tree distillation",
+  "holdout_used": false,
+  "candidates": [
+    {
+      "name": "mse-1023",
+      "cutoff": 0,
+      "score": 98.97533043712458,
+      "elapsed_seconds": 1.037684042006731
+    },
+    {
+      "name": "mse-1023",
+      "cutoff": 1,
+      "score": 99.00358610828255,
+      "elapsed_seconds": 1.0386687089921907
+    },
+    {
+      "name": "mse-1023",
+      "cutoff": 2,
+      "score": 99.0269512028467,
+      "elapsed_seconds": 1.0395759170060046
+    },
+    {
+      "name": "mse-4095",
+      "cutoff": 0,
+      "score": 98.95820245861519,
+      "elapsed_seconds": 1.195021416991949
+    },
+    {
+      "name": "mse-4095",
+      "cutoff": 1,
+      "score": 98.97644727693825,
+      "elapsed_seconds": 1.1959582499985117
+    },
+    {
+      "name": "mse-4095",
+      "cutoff": 2,
+      "score": 98.98802043030746,
+      "elapsed_seconds": 1.1968576249782927
+    },
+    {
+      "name": "huber-1023",
+      "cutoff": 0,
+      "score": 98.91378726169359,
+      "elapsed_seconds": 1.034565959009342
+    },
+    {
+      "name": "huber-1023",
+      "cutoff": 1,
+      "score": 98.91378726169359,
+      "elapsed_seconds": 1.0355227090185508
+    },
+    {
+      "name": "huber-1023",
+      "cutoff": 2,
+      "score": 99.04078431100062,
+      "elapsed_seconds": 1.0366603340080474
+    },
+    {
+      "name": "huber-4095",
+      "cutoff": 0,
+      "score": 98.91733658919978,
+      "elapsed_seconds": 1.1972639590094332
+    },
+    {
+      "name": "huber-4095",
+      "cutoff": 1,
+      "score": 98.91733658919978,
+      "elapsed_seconds": 1.1982253339956515
+    },
+    {
+      "name": "huber-4095",
+      "cutoff": 2,
+      "score": 99.03955989442836,
+      "elapsed_seconds": 1.1991555420099758
+    },
+    {
+      "name": "fair1-1023",
+      "cutoff": 0,
+      "score": 98.35467895277668,
+      "elapsed_seconds": 1.0170475839986466
+    },
+    {
+      "name": "fair1-1023",
+      "cutoff": 1,
+      "score": 98.3614994485988,
+      "elapsed_seconds": 1.0180120840086602
+    },
+    {
+      "name": "fair1-1023",
+      "cutoff": 2,
+      "score": 98.37116503529015,
+      "elapsed_seconds": 1.0189203750051092
+    },
+    {
+      "name": "fair1-4095",
+      "cutoff": 0,
+      "score": 98.32013569193657,
+      "elapsed_seconds": 1.2090112500009127
+    },
+    {
+      "name": "fair1-4095",
+      "cutoff": 1,
+      "score": 98.32402143765164,
+      "elapsed_seconds": 1.2099830000079237
+    },
+    {
+      "name": "fair1-4095",
+      "cutoff": 2,
+      "score": 98.33464345842886,
+      "elapsed_seconds": 1.21089570899494
+    },
+    {
+      "name": "fair3-1023",
+      "cutoff": 0,
+      "score": 98.72819401134211,
+      "elapsed_seconds": 1.0129824169853237
+    },
+    {
+      "name": "fair3-1023",
+      "cutoff": 1,
+      "score": 98.73518869528512,
+      "elapsed_seconds": 1.013940916978754
+    },
+    {
+      "name": "fair3-1023",
+      "cutoff": 2,
+      "score": 98.8348102545522,
+      "elapsed_seconds": 1.014840291987639
+    },
+    {
+      "name": "fair3-4095",
+      "cutoff": 0,
+      "score": 98.7109992677319,
+      "elapsed_seconds": 1.1885320830042474
+    },
+    {
+      "name": "fair3-4095",
+      "cutoff": 1,
+      "score": 98.72486505676137,
+      "elapsed_seconds": 1.1894772080122493
+    },
+    {
+      "name": "fair3-4095",
+      "cutoff": 2,
+      "score": 98.81914610309408,
+      "elapsed_seconds": 1.190375625010347
+    },
+    {
+      "name": "student-1023",
+      "cutoff": 0,
+      "score": 99.09700063885204,
+      "elapsed_seconds": 0.9870754159928765
+    },
+    {
+      "name": "student-1023",
+      "cutoff": 1,
+      "score": 99.09879562621033,
+      "elapsed_seconds": 0.9880486660113093
+    },
+    {
+      "name": "student-1023",
+      "cutoff": 2,
+      "score": 99.09893102908066,
+      "elapsed_seconds": 0.9889810000022408
+    },
+    {
+      "name": "student-4095",
+      "cutoff": 0,
+      "score": 99.09968699711571,
+      "elapsed_seconds": 1.1809351249830797
+    },
+    {
+      "name": "student-4095",
+      "cutoff": 1,
+      "score": 99.10087874507167,
+      "elapsed_seconds": 1.1818968750012573
+    },
+    {
+      "name": "student-4095",
+      "cutoff": 2,
+      "score": 99.10093914469685,
+      "elapsed_seconds": 1.182795917004114
+    }
+  ]
+}

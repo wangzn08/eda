@@ -1,0 +1,20 @@
+{
+  "state": "complete",
+  "version": "306",
+  "validation_score": 99.11375822929791,
+  "billion_estimate_cpu_seconds": [
+    487.51336300000014,
+    489.6786649999999
+  ],
+  "pooled_billion_estimate_cpu_seconds": 488.596014,
+  "peak_rss_bytes": 1711685632,
+  "complete_submission_bytes": 99954766,
+  "archive_bytes": 99035255,
+  "archive_sha256": "5aa685f811be7743e10f5cdd75326c99796dd90157824419bce2d59e125eafc6",
+  "single_runtime_thread_observed": true,
+  "all_validation_predictions_equal_independent_python": true,
+  "same_frozen_runtime_for_all_runs": true,
+  "rebuild_machine_code_identical": true,
+  "prediction_cache": false,
+  "architecture_operator_cache": false
+}

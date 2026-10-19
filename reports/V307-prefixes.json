@@ -1,0 +1,187 @@
+[
+  {
+    "model": "sixteen511",
+    "trees": 8,
+    "score": 99.10821358927858
+  },
+  {
+    "model": "sixteen511",
+    "trees": 10,
+    "score": 99.11276138707944
+  },
+  {
+    "model": "sixteen511",
+    "trees": 12,
+    "score": 99.11557582484825
+  },
+  {
+    "model": "sixteen511",
+    "trees": 14,
+    "score": 99.11649744930095
+  },
+  {
+    "model": "sixteen511",
+    "trees": 16,
+    "score": 99.11702735899819
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 8,
+    "score": 99.09389093538964
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 10,
+    "score": 99.10040261410609
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 12,
+    "score": 99.10493591285082
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 14,
+    "score": 99.10751226622385
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 16,
+    "score": 99.11043540853004
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 20,
+    "score": 99.11437069018126
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 24,
+    "score": 99.11637397776467
+  },
+  {
+    "model": "thirtytwo511",
+    "trees": 32,
+    "score": 99.11970830427906
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 8,
+    "score": 99.095763433462
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 10,
+    "score": 99.10282256862813
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 12,
+    "score": 99.10705593508658
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 14,
+    "score": 99.11012576257465
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 16,
+    "score": 99.11137830414376
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 20,
+    "score": 99.11534713311563
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 24,
+    "score": 99.11672728899413
+  },
+  {
+    "model": "thirtytwo1023",
+    "trees": 32,
+    "score": 99.11921404841733
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 8,
+    "score": 99.07609510267416
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 10,
+    "score": 99.08432748445553
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 12,
+    "score": 99.0897417512974
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 14,
+    "score": 99.09404746425575
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 16,
+    "score": 99.0974244881951
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 20,
+    "score": 99.10350827271961
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 24,
+    "score": 99.10757388409614
+  },
+  {
+    "model": "sixtyfour511",
+    "trees": 32,
+    "score": 99.11282122874783
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 8,
+    "score": 99.08236021277122
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 10,
+    "score": 99.09031749681743
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 12,
+    "score": 99.09701496202781
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 14,
+    "score": 99.10211715024737
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 16,
+    "score": 99.10576724699462
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 20,
+    "score": 99.10983532310892
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 24,
+    "score": 99.1123005847891
+  },
+  {
+    "model": "sixtyfour1023",
+    "trees": 32,
+    "score": 99.11605266464095
+  }
+]

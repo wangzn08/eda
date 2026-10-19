@@ -1,0 +1,58 @@
+{
+  "state": "complete",
+  "fit_scope": "development labels only",
+  "holdout_used": false,
+  "features": 34,
+  "base_score": 99.02566494302609,
+  "candidates": [
+    {
+      "name": "one511",
+      "leaves": 511,
+      "trees": 1,
+      "score": 99.0765049313222,
+      "elapsed_seconds": 0.7585290420101956
+    },
+    {
+      "name": "one2047",
+      "leaves": 2047,
+      "trees": 1,
+      "score": 99.07851452209808,
+      "elapsed_seconds": 0.8104891669936478
+    },
+    {
+      "name": "one8191",
+      "leaves": 8191,
+      "trees": 1,
+      "score": 99.07719481620573,
+      "elapsed_seconds": 1.0950029999949038
+    },
+    {
+      "name": "two1023",
+      "leaves": 1023,
+      "trees": 2,
+      "score": 99.0902807923336,
+      "elapsed_seconds": 0.9779706659901422
+    },
+    {
+      "name": "four511",
+      "leaves": 511,
+      "trees": 4,
+      "score": 99.09233176804976,
+      "elapsed_seconds": 1.2855826249870006
+    },
+    {
+      "name": "eight255",
+      "leaves": 255,
+      "trees": 8,
+      "score": 99.09012428892294,
+      "elapsed_seconds": 1.9363050000101794
+    },
+    {
+      "name": "sixteen255",
+      "leaves": 255,
+      "trees": 16,
+      "score": 99.0985710110234,
+      "elapsed_seconds": 3.152735915995436
+    }
+  ]
+}

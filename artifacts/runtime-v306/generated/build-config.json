@@ -1,0 +1,20 @@
+{
+  "definitions": [
+    "-DCORE_LIBLZMA=1",
+    "-DCORE_PHASE_MAJOR=1",
+    "-DCORE_PACKED_NEAR=1",
+    "-DCORE_BATCH_SIZE=16",
+    "-DCORE_SHARED_CORRIDOR=1",
+    "-DCORE_FIXED_PORT_LOAD=1",
+    "-DCORE_PREPARED_GEOMETRY=1",
+    "-DCORE_LOAD_HINT_ASSETS=1",
+    "-DCORE_SPARSE_SOURCE_ITERATION=1",
+    "-DCORE_HINT_PHASE_SCAN=1",
+    "-DROUTING_GRAPH_ONLY=1",
+    "-DBUDGET_SOURCE_HINTS=8",
+    "-DBUDGET_PORT_METADATA_HEADER=\"/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/v306/budget_port_metadata.hpp\"",
+    "-DBUDGET_RESIDUAL_HEADER=\"/Users/wang/Desktop/EDA\u7cbe\u82f1\u6311\u6218\u8d5b-\u8d5b\u9898\u4e00/out/v306/compiled_budget_residual.hpp\""
+  ],
+  "entry": "budget_route_estimate.cpp",
+  "architecture_header_sha256": "d341ea5a876a39790a29b39619d27eb6343c550cb044bff8f2c7cdde381924c0"
+}

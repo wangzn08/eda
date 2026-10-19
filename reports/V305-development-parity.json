@@ -1,0 +1,10 @@
+{
+  "state": "complete",
+  "development_rows": 700705,
+  "all_predictions_equal_independent_python": true,
+  "differing_rows": 0,
+  "native_output_sha256": "ea860d4b5afb52872e03d76f501f203e2b0fba339b9689139568d62998d6fa6f",
+  "expected_delay_i32_sha256": "a1b380df15dca1d20eb367131223a7552ac9ad116d935a0d77930695bfe0050a",
+  "model_sha256": "151fc0953eec15bc803eb6a86596d8908dd5bace4c4570e989f2561a08e708f4",
+  "scope": "Development input used for compiler profile; no labels supplied to native executable; offline parity checked afterward"
+}

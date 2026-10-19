@@ -16,5 +16,8 @@ public:
  BufferedCsvWriter(const BufferedCsvWriter&)=delete;
  ~BufferedCsvWriter(){if(file)std::fclose(file);}
  void row(std::string_view source,std::string_view target,uint64_t delay){char digits[32];auto end=std::to_chars(digits,digits+32,delay);if(end.ec!=std::errc())throw std::runtime_error("Delay formatting failure");size_t n=source.size()+target.size()+size_t(end.ptr-digits)+3;if(n>buffer.size())throw std::runtime_error("Oversized CSV row");if(used+n>buffer.size())flush();char*dest=buffer.data()+used;std::memcpy(dest,source.data(),source.size());dest+=source.size();*dest++=',';std::memcpy(dest,target.data(),target.size());dest+=target.size();*dest++=',';std::memcpy(dest,digits,end.ptr-digits);dest+=end.ptr-digits;*dest='\n';used+=n;}
+ // The caller supplies the already validated two-field span. This preserves
+ // the original comma and removes a separate tiny copy for each endpoint.
+ void row_pair(std::string_view pair,uint64_t delay){char digits[32];auto end=std::to_chars(digits,digits+32,delay);if(end.ec!=std::errc())throw std::runtime_error("Delay formatting failure");size_t n=pair.size()+size_t(end.ptr-digits)+2;if(n>buffer.size())throw std::runtime_error("Oversized CSV row");if(used+n>buffer.size())flush();char*dest=buffer.data()+used;std::memcpy(dest,pair.data(),pair.size());dest+=pair.size();*dest++=',';std::memcpy(dest,digits,end.ptr-digits);dest+=end.ptr-digits;*dest='\n';used+=n;}
  void finish(){flush();int result=std::fclose(file);file=nullptr;if(result)throw std::runtime_error("CSV close failure");}
 };

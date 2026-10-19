@@ -2,6 +2,36 @@
 
 目标：实现超大规模 FPGA 布局布线的延时估算程序。给定起点和终点 pin，输出最短走线延时。
 
+## 当前：全新请求十亿外推不超过 10 分钟
+
+| 配置 | 完整验证分 | 十亿新请求 CPU 外推，含初始化 | 两批范围 | 完整提交 |
+| --- | ---: | ---: | ---: | ---: |
+| **V306，默认，综合与时间余量优先** | **99.1137582** | **8.1433分钟** | 8.13–8.16分钟 | 99.95MB |
+| **V309，预算内精度优先** | **99.1170274** | **9.4367分钟** | 9.20–9.67分钟 | 99.86MB |
+| V254，旧高精度选项 | 99.5061105 | 21.0482分钟 | 21.03–21.06分钟 | 96.65MB |
+| V274，旧最高精度选项 | 99.6344971 | 55.8968分钟 | 55.87–55.92分钟 | 99.42MB |
+
+两个新版本均由同一冻结程序完成完整150053条验证和两批各300万条互不重复的新配对请求测量；不运行完整十亿条，不使用最终预测缓存或中间算子缓存。峰值RSS约1.712GB。每批分别满足600秒，而非仅平均通过；完整文件均小于100,000,000 bytes；独立重编译得到的机器码乃至整个程序SHA均与实测文件相同。
+
+**精度尚未保住原V254水平**：十分钟内已达到99.11分，但尚未同时达到99.5分与新请求600秒。旧高精度版本保留。按此前“综合技术分尽量高”的选择，默认用时间余量更大的V306；本机代入公式并暂设一致性100，其综合估分约95.2194，V309约94.5753，均非官方成绩。
+
+```sh
+make
+build/runtime-v306/estimate -in /absolute/path/request.csv -out /absolute/path/result.csv
+make runtime-budget-accuracy
+build/runtime-v309/estimate -in /absolute/path/request.csv -out /absolute/path/result.csv
+```
+
+- [本轮架构、容量比较与失败记录](reports/V275-V310-budget-progress.md)
+- [V306同版完整测量](reports/V306-budget-profile.json) · [完整提交与重建](reports/V306-budget-submission.json)
+- [V309同版完整测量](reports/V309-budget-profile.json) · [完整提交与重建](reports/V309-budget-submission.json)
+- [精度优先筛选](reports/budget-accuracy-selection.json) · [综合估分优先筛选](reports/budget-technical-selection.json)
+- 完整包：`out/submission/final-v306/`、`final-v309/`；对应归档位于同一父目录。从Git快照组装见[资产说明](artifacts/README.md)。`make runtime-v254`与`make runtime-accuracy`保留旧高精度配置。
+
+时间口径为Apple M4/macOS单线程CPU、小批量全新配对请求外推，包含一次初始化和CSV；不保证另一台机器或其他隐藏输入分布的速度，验证分也不是完全正确的比例。
+
+下方均为历史记录，当前选择以本节为准。
+
 ## 2026-10-19：V274精度专项
 
 | 配置 | 完整验证分 | 十亿新请求CPU外推 | 完整提交 |

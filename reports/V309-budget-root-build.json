@@ -1,0 +1,8 @@
+{
+  "state": "complete",
+  "version": 309,
+  "root_build_binary_sha256": "42b07596923ab5e03b95d8590bfaece3036632171806a8e3b5d59773cbc0bb0a",
+  "whole_binary_identical_to_measured": true,
+  "all_runtime_assets_identical_to_measured": true,
+  "complete_build_directory_bytes": 99859283
+}

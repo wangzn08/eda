@@ -1,0 +1,53 @@
+{
+  "version": "309",
+  "release_kind": "novel-budget",
+  "runtime_asset_sha256": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "42b07596923ab5e03b95d8590bfaece3036632171806a8e3b5d59773cbc0bb0a",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "source_sha256": {
+    "Makefile": "6f49085aa34ca215db0594db796bfdaf54642df65ec500bcae264e17ebf26cc7",
+    "README.md": "04028b6d74fe2fe10fc92aae7acfcccf8017ab1308c9583da83849ae2030e837",
+    "rebuild.py": "700b4af87e565a65d89ac355d5609f63fa2df0070b8cd1e24d794ae96b21411b",
+    "generated/development.profdata.xz": "a387ee7b0d967084968d7d8dd4f3e2b107b0ebd7ad292c9ce1d634ba5ac8d596",
+    "generated/compiled_budget_residual.hpp.xz": "d0be35389e35064d7b4254a0d43e22c33de60d510ac7349536d19a202d2f25dd",
+    "generated/architecture_data.hpp.xz": "8f8f48afe9c63efcb1c3e41e6389ca1d955ffba03c21cd8c95755ce6ee5002a2",
+    "generated/build-config.json": "16137068fd8d1f3c99d8555db4cdf81775b508a7e2456470bf6a6135d5f45381",
+    "src/buffered_csv_reader.hpp": "ab82a98607ff439fa66d76f3237b8229c29af22b94a347781076e182f4358a84",
+    "src/prefix_dp_workspace.hpp": "a0a86de00bcd0b7e0e6025d0b501456803872fa30502dd95a59ae078bbd79185",
+    "src/vertical_transient_model.hpp": "46fad0bbf12c88dd7eff5c760d2596e63cf3e3dbc71509cbf87cf2e05bca443f",
+    "src/xz_decode.hpp": "ec69de34fc96a8ff4267b3f3cf7f6a3553221590dbf57e5e1531a2097b29f765",
+    "src/core_template_model.hpp": "00f54c550cf174786d82dacf05149c7be1eb0b5dd22c86d0bd7f618465b1e59b",
+    "src/budget_port_metadata.hpp": "b933a3834911a352daa1079aea179dca734b512a5c7896535c760dc1b0c6b855",
+    "src/buffered_csv_writer.hpp": "e2e8b75c1ec5df1abff2a3f45ede57e0e6fb9c3f9cb0920ccd9135f2d656eaa4",
+    "src/transient_tail_patch.hpp": "da83bbdd9a954e28e88309c969909843a45b9f6953d073f71b36cae27809c0f4",
+    "src/physical_portal_bank.hpp": "0256fce0fb541227b854eac0e4e54acdfe001a84ade2d7077720a4f3f6135f70",
+    "src/routing_search.hpp": "f23da604dad3f304197131a91b30f2782876a705b989cec3ff41448e7d8860bc",
+    "src/prefix_policy_model.hpp": "a69ad80fa3c6857f8f278c918d8ba4028d688857e42c9efddc710e89d95b3ec8",
+    "src/joint_interaction_model.hpp": "4c3b25d8fd2c163af37a4bcd7fedf64653093713eb32a9e0fd6ca371d828cd1d",
+    "src/budget_residual_features.hpp": "93431f093ab18446384df6c99cc122eeb9094dacf7fafce1f461faf9535243a3",
+    "src/horizontal_transient_model.hpp": "4b9cdd2fb23c4517c7b7ebac51733866408ac2df6e5f17718beca156e865a7e2",
+    "src/budget_route_estimate.cpp": "d618f0da401a73f5f8e969420ccb2d1f9b411f25e75e57818c668ded4ec3f5aa",
+    "src/ideal_action_policy.hpp": "470dd65d571df89b244475875823c8dc8d1c4d9fecc8087d5058f468dece0d32",
+    "src/near_response_curve_model.hpp": "013b94236ac115a627c3c4793b67744fe578cd7153083564e7feb5272e1f6c4d",
+    "src/transient_dictionary_decode.hpp": "75b7e58153aedf45aa6282f2576471c27c58fb75e3a7cd37cbba27d4fc518a5c"
+  },
+  "shared_asset_roots": [
+    "artifacts/runtime-periodic-v158",
+    "artifacts/runtime-v219"
+  ],
+  "benchmark_profile": "reports/V309-budget-profile.json",
+  "validation_score": 99.11702735899819,
+  "billion_cpu_seconds": 566.2021290000002,
+  "hard_budget_seconds": 600,
+  "architecture_header_sha256": "d341ea5a876a39790a29b39619d27eb6343c550cb044bff8f2c7cdde381924c0",
+  "pgo_scope": "700705 development requests only; no labels supplied to instrumented executable",
+  "pgo_profile_sha256": "a2c09157e46440047affb1a818e7b4e18a19a1aaf2f75bcd33541cf3d8a63850"
+}

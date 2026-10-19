@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := runtime-v254
+.DEFAULT_GOAL := runtime-budget
 CXX = c++
 CXXFLAGS = -std=c++17 -O3 -Wall -Wextra -Wpedantic
 XZ_OBJECTS = build/xz/xz_crc32.o build/xz/xz_dec_lzma2.o build/xz/xz_dec_stream.o
@@ -10,7 +10,7 @@ build/xz/%.o: src/vendor/xz/%.c src/vendor/xz/xz.h src/vendor/xz/xz_config.h src
 ARCH = data/EDA-PANGO-SRB-Arch-Delay/arch
 
 .PHONY: all audit check refresh-architecture
-all: build/estimate
+all: runtime-current
 
 refresh-architecture:
 	python3 scripts/generate_architecture.py --arch "$(ARCH)" --out src/architecture_data.hpp

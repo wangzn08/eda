@@ -1,0 +1,29 @@
+{
+  "state": "complete",
+  "scope": "Architecture screening, not a final candidate: V158 fresh novel-1 plus V254 stage instrumentation",
+  "prediction_cache": false,
+  "holdout_used": false,
+  "v158": {
+    "runtime_and_all_assets_match_original_frozen_sha256": true,
+    "rows": 3000000,
+    "cpu_seconds": 24.2423,
+    "initialization_seconds": 22.7283,
+    "query_seconds": 1.5139999999999993,
+    "billion_cpu_extrapolation_seconds": 527.3949666666665,
+    "maximum_rss_bytes": 1713061888,
+    "novel_output_sha256": "112ec433446861a957eabf2863d6a810e9cf9a09d55333da9a4be230f729fbe3",
+    "validation_score_from_same_frozen_binary": 99.0256649430261
+  },
+  "v254_instrumented": {
+    "rows": 3000000,
+    "cpu_seconds": 130.525,
+    "initialization_seconds": 127.338,
+    "components": {
+      "component_prefetch_cpu": 0.518133,
+      "component_base_cpu": 1.22332,
+      "component_selected_prefetch_cpu": 0.176849,
+      "component_forest_output_cpu": 0.310389
+    },
+    "scope": "Instrumented component attribution; not the standard V254 throughput proof"
+  }
+}

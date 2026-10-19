@@ -13,7 +13,9 @@ extras=release/'SNAPSHOT_EXTRAS.json'
 if extras.exists():files.update(json.loads(extras.read_text()))
 for name,expected in files.items():
  source=release/name
- if not source.exists():source=common/name
+ if not source.exists():
+  roots=[ROOT/p for p in manifest.get('shared_asset_roots',['artifacts/runtime-v219'])]
+  source=next((root/name for root in roots if (root/name).is_file()),common/name)
  assert source.is_file() and digest(source)==expected,source
  target=destination/name
  if target.exists() and digest(target)!=expected and not a.overwrite:raise RuntimeError(f'Existing different file: {target}')

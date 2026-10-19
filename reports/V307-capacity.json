@@ -1,0 +1,43 @@
+{
+  "state": "complete",
+  "fit_scope": "development only",
+  "holdout_used": false,
+  "features": 56,
+  "candidates": [
+    {
+      "name": "sixteen511",
+      "leaves": 511,
+      "trees": 16,
+      "score": 99.11702735899819,
+      "elapsed_seconds": 4.632562250015326
+    },
+    {
+      "name": "thirtytwo511",
+      "leaves": 511,
+      "trees": 32,
+      "score": 99.11970830427906,
+      "elapsed_seconds": 8.158161082974402
+    },
+    {
+      "name": "thirtytwo1023",
+      "leaves": 1023,
+      "trees": 32,
+      "score": 99.11921404841733,
+      "elapsed_seconds": 9.087786166986916
+    },
+    {
+      "name": "sixtyfour511",
+      "leaves": 511,
+      "trees": 64,
+      "score": 99.11780627509529,
+      "elapsed_seconds": 15.266918874986004
+    },
+    {
+      "name": "sixtyfour1023",
+      "leaves": 1023,
+      "trees": 64,
+      "score": 99.12119146860223,
+      "elapsed_seconds": 16.78176212499966
+    }
+  ]
+}

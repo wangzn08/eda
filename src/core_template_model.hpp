@@ -455,6 +455,52 @@ hint_count=count;if(!far_joint.empty() && !(CORE_MULTI_ANCHOR && interaction && 
         corridor_block.fill(-1);for(unsigned i=0;i<std::size(archdata::BLOCKS);++i){auto block=archdata::BLOCKS[i];if(block.left==76 && block.right==89)for(int y=block.lower;y<=block.upper;++y){if(corridor_block[y]>=0)throw std::runtime_error("Overlapping corridor bands");corridor_block[y]=i;}}
         for(auto l:archdata::LINES){if(l.vertical)for(int x=l.site+1;x<120;++x)xgap[x]+=l.delay;else for(int y=l.site+1;y<550;++y)ygap[y]+=l.delay;}
     }
+    void validate_periodic_specialization()const{
+        if(!phase_major||hint_count!=1||hint_width!=1||far_period!=6||envelope||shell_x||shell_y||core_layout_ready||far_joint.empty()||short_vertical.empty()||horizontal_cells.empty()||near_hints.empty()||!interaction_enabled||!source_hint_count||CORE_MULTI_ANCHOR||CORE_TRANSIENT_TAIL||CORE_TAIL_SATURATION||CORE_DIRECT_NEAR||corridor_ports.size()!=1||CORE_CORRIDOR_ROW_CACHE||!CORE_SHARED_CORRIDOR)throw std::runtime_error("Unsupported periodic specialization state");
+    }
+    // One hinted terminal and fixed packed layouts, specialized from nominal().
+    // This method preserves V158's finite values, interpolation, truncation,
+    // and tie policy; it does not claim exact physical shortest paths.
+    Distance periodic_nominal(int port,int target,const NominalGeometry&g)const{
+        unsigned source=index[port],nx=g.qx,ny=g.qy;int rx=g.rx,ry=g.ry;unsigned selected=0;
+        if(terminal[target].size()>1){unsigned t=hint_target[target];
+            if(!nx&&!ny)selected=near_hint(t,size_t(rx+29)*71+ry+35,source);
+            else if(nx&&!ny){unsigned phase=((rx>0?10:0)+std::abs(rx)-20)*71+ry+35;selected=horizontal_hints[(size_t(t)*1420+phase)*160+source];}
+            else{unsigned yb=ny==1?0:ny<=6?1:2,iy=(ry>0?12:0)+std::abs(ry)-24;if(!nx)selected=vertical_hint_bytes[((size_t(t)*3+yb)*1416+size_t(rx+29)*24+iy)*160+source];else{unsigned ix=(rx>0?10:0)+std::abs(rx)-20;selected=long_hint_bytes[((size_t(t)*6+(nx==1?0:3)+yb)*480+ix*24+iy)*160+source];}}
+        }
+        auto end=terminal[target][selected];int64_t value;
+        if(ny){unsigned iy=(ry>0?12:0)+std::abs(ry)-24;
+            if(!nx){const auto&c=short_vertical[(size_t(end.first)*1416+size_t(rx+29)*24+iy)*160+source];value=ny==1?c.base[0]:ny==2?c.base[1]:ny<6?int(c.base[1])+(int(c.base[2])-int(c.base[1]))*int(ny-2)/4:ny==6?c.base[2]:c.base[3]+int64_t(ny-7)*c.far_slope();}
+            else{unsigned ix=(rx>0?10:0)+std::abs(rx)-20;const auto&c=far_joint[(size_t(end.first)*480+ix*24+iy)*160+source];value=ny==1?c.base[0]:ny==2?c.base[1]:ny<6?int(c.base[1])+(int(c.base[2])-int(c.base[1]))*int(ny-2)/4:ny==6?c.base[2]:c.base[3]+int64_t(ny-7)*c.far_slope();if(nx>=2)value+=c.horizontal_delta+int64_t(nx-2)*c.x_slope();int weight=std::min(std::min(nx,5u)*6,std::min(ny,6u)*5);value+=weight==30?int(c.interaction_delta):int(c.interaction_delta)*weight/30;}
+        }else if(nx){unsigned phase=((rx>0?10:0)+std::abs(rx)-20)*71+ry+35;auto c=horizontal_cell(source,end.first,phase);value=c.base;if(nx>=2)value+=c.delta+int64_t(nx-2)*std::max(0,int(c.delta));}
+        else value=at(source,end.first,rx,ry);
+        value+=end.second;return Distance(std::max<int64_t>(0,value))+Distance(nx)*125+Distance(ny)*(g.dy>0?127:125);
+    }
+    // Fixed-profile evaluation for ordinary paths and the single-hub corridor.
+    // The two shared target-side corridor slots follow the original order.
+    // Research callbacks and inactive layouts stay outside this hot path.
+    Distance predict_periodic_prepared(const Graph&graph,const PreparedRequest&r)const{
+        if constexpr(!(CORE_PREPARED_GEOMETRY && !CORE_ROUTE_TRACE && !CORE_ENDPOINT_RESEARCH && !CORE_LEGAL_TERMINALS && !CORE_PHYSICAL_PREFIX))return predict(graph,r.source,r.target,nullptr,&r);
+        if(r.source==r.target)return 0;
+        auto geometry=[](int dx,int dy){NominalGeometry g;g.dx=dx;g.dy=dy;int ax=std::abs(dx),ay=std::abs(dy);g.qx=ax>29?(ax-20)/10:0;g.qy=ay>35?(ay-24)/12:0;g.rx=(dx<0?-1:1)*(ax-g.qx*10);g.ry=(dy<0?-1:1)*(ay-g.qy*12);return g;};
+        Distance best=r.local_best;int target=r.target%496;auto b=archdata::SITES[r.target/496];std::array<Distance,2>second{};std::array<bool,2>ready{};
+        for(unsigned i=0;i<r.count;++i){const auto&branch=r.branches[i];const auto&g=r.geometry[branch.geometry];Distance value;
+            if(!g.cross)value=periodic_nominal(branch.port,target,g);
+            else{
+                auto a=archdata::SITES[branch.site];const archdata::Block*block=nullptr;if(corridor_block[a.y]>=0){auto&c=archdata::BLOCKS[corridor_block[a.y]];if(b.y>=c.lower&&b.y<=c.upper)block=&c;}
+                value=block?INF:periodic_nominal(branch.port,target,g);
+                if(block){
+                    auto corridor=[&](int cy,unsigned slot){int hub=corridor_ports[0];Distance first=periodic_nominal(branch.port,hub,geometry(82-a.x,cy-a.y));if(!ready[slot]){second[slot]=periodic_nominal(hub,target,geometry(b.x-82,b.y-cy));ready[slot]=true;}
+                        Distance detour=Distance(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[cy])))+Distance(std::llabs(int64_t(ygap[b.y])-int64_t(ygap[cy])))-Distance(std::llabs(int64_t(ygap[a.y])-int64_t(ygap[b.y])));return first+second[slot]+detour;};
+                    if(block->lower>0)value=corridor(block->lower-1,0);
+                    if(block->upper+1<archdata::HEIGHT)value=std::min(value,corridor(block->upper+1,1));
+                }
+                value=std::min(value,periodic_nominal(branch.port,target,geometry(g.dx+(g.dx>0?-14:14),g.dy))+292);
+            }
+            best=std::min(best,Distance(branch.cost)+value+g.gap);
+        }
+        return best<INF?best:predict(graph,r.source,r.target,nullptr,&r);
+    }
     Distance predict(const Graph&graph,Node source,Node target,RouteTrace*trace=nullptr,const PreparedRequest*prepared=nullptr,bool allow_paired=true,std::vector<BranchSummary>*branch_records=nullptr,std::vector<PrefixSupervision>*supervision=nullptr,std::vector<uint16_t>*policy_actions=nullptr)const{
         if(source==target)return 0;Node site=source/496;int port=source%496,tp=target%496;auto b=archdata::SITES[target/496];Distance best=INF;
         uint32_t mask=prepared?prepared->mask:UINT32_MAX;if(!prepared && source_hint_count && source_hint_index[port]>=0){auto a=archdata::SITES[site];int dx=b.x-a.x,dy=b.y-a.y;bool cross=std::min(a.x,b.x)<76 && std::max(a.x,b.x)>89;if(source_hint_target[tp]>=0 && std::abs(dy)>35 && !cross){unsigned xp=std::abs(dx)<=29?dx+29:59+(dx<0?10:0)+std::abs(dx)%10,phase=xp*24+(dy<0?12:0)+std::abs(dy)%12;size_t pos=(size_t(source_hint_index[port])*source_hint_targets+source_hint_target[tp])*1896+phase;mask=adaptive_mask(pos,source_masks[pos],dy);}}

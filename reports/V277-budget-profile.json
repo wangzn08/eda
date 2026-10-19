@@ -1,0 +1,63 @@
+{
+  "state": "complete-single-speed-screen",
+  "version": "277",
+  "scope": "Apple M4/macOS single process and single thread standard CSV CLI; two disjoint synthetic novel-request batches; billion extrapolation includes one initialization, not an official judge measurement",
+  "target_cpu_seconds": 600,
+  "prediction_cache": false,
+  "architecture_operator_cache": false,
+  "holdout_used": false,
+  "asset_sha256_before": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "1bd620cdd3c4691dd4a573843d1acceb3b2a9f3c58182354cbde9ffd51572ff9",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "runtime_bytes": 99332067,
+  "runs": [
+    {
+      "name": "validation",
+      "rows": 150053,
+      "total_cpu_seconds": 23.110021,
+      "initialization_cpu_seconds": 23.01485,
+      "query_cpu_seconds": 0.09517100000000056,
+      "wall_seconds": 23.608351792005124,
+      "maximum_rss_bytes": 1711325184,
+      "output_sha256": "3ea7a8aea722fd870cad499fb3742069fe9e467e9a3a9914325cbb1a7bb3c52c",
+      "output_pin_order_and_range_verified": true,
+      "score": 99.02566494302609
+    },
+    {
+      "name": "novel-1",
+      "rows": 3000000,
+      "total_cpu_seconds": 25.105411,
+      "initialization_cpu_seconds": 23.227043,
+      "query_cpu_seconds": 1.8783680000000018,
+      "wall_seconds": 25.133866749994922,
+      "maximum_rss_bytes": 1711587328,
+      "output_sha256": "112ec433446861a957eabf2863d6a810e9cf9a09d55333da9a4be230f729fbe3",
+      "output_pin_order_and_range_verified": true,
+      "query_cpu_seconds_per_request": 6.261226666666673e-07,
+      "billion_estimate_cpu_seconds": 649.3497096666673
+    }
+  ],
+  "asset_sha256_after": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "1bd620cdd3c4691dd4a573843d1acceb3b2a9f3c58182354cbde9ffd51572ff9",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "validation_score": 99.02566494302609,
+  "peak_rss_bytes": 1711587328,
+  "pooled_billion_estimate_cpu_seconds": 649.3497096666673,
+  "all_measured_speed_runs_under_budget": false
+}

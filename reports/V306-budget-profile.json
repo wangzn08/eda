@@ -1,0 +1,111 @@
+{
+  "state": "complete",
+  "version": "306",
+  "scope": "Apple M4/macOS single process and single thread standard CSV CLI; two disjoint synthetic novel-request batches; billion extrapolation includes one initialization, not an official judge measurement",
+  "target_cpu_seconds": 600,
+  "prediction_cache": false,
+  "architecture_operator_cache": false,
+  "holdout_used": false,
+  "asset_sha256_before": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "43afe25e0c6ceb9db01ada98a1d67a6c85b38f4c1fb5c658bbc8fb63f9e216ab",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "runtime_bytes": 99433715,
+  "runs": [
+    {
+      "name": "validation",
+      "rows": 150053,
+      "total_cpu_seconds": 23.204325,
+      "initialization_cpu_seconds": 23.133501,
+      "query_cpu_seconds": 0.07082400000000177,
+      "wall_seconds": 23.68116233398905,
+      "maximum_rss_bytes": 1711374336,
+      "output_sha256": "5e595c953afe4c1d0188ed15c3d4fa716fe607789af8b2d2cc5977ed11c3bcbe",
+      "output_pin_order_and_range_verified": true,
+      "observed_runtime_threads": 1,
+      "score": 99.11375822929791,
+      "all_predictions_equal_offline": true
+    },
+    {
+      "name": "novel-1",
+      "rows": 3000000,
+      "total_cpu_seconds": 24.529494,
+      "initialization_cpu_seconds": 23.136363,
+      "query_cpu_seconds": 1.3931310000000003,
+      "wall_seconds": 24.54714325000532,
+      "maximum_rss_bytes": 1711652864,
+      "output_sha256": "fe1a71e6b39b26fba70d55779e9bfeca2861828124322ab5ef2bd4550439583d",
+      "output_pin_order_and_range_verified": true,
+      "observed_runtime_threads": 1,
+      "query_cpu_seconds_per_request": 4.643770000000001e-07,
+      "billion_estimate_cpu_seconds": 487.51336300000014
+    },
+    {
+      "name": "novel-2",
+      "rows": 3000000,
+      "total_cpu_seconds": 24.578165,
+      "initialization_cpu_seconds": 23.178665,
+      "query_cpu_seconds": 1.3994999999999997,
+      "wall_seconds": 24.596557041979395,
+      "maximum_rss_bytes": 1711685632,
+      "output_sha256": "ab88880cb7941e4baa7b4578af2b2b32fa5f65341f716b684605b9cc2665aace",
+      "output_pin_order_and_range_verified": true,
+      "observed_runtime_threads": 1,
+      "query_cpu_seconds_per_request": 4.664999999999999e-07,
+      "billion_estimate_cpu_seconds": 489.6786649999999
+    }
+  ],
+  "asset_sha256_after": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "43afe25e0c6ceb9db01ada98a1d67a6c85b38f4c1fb5c658bbc8fb63f9e216ab",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "validation_score": 99.11375822929791,
+  "peak_rss_bytes": 1711685632,
+  "pooled_billion_estimate_cpu_seconds": 488.596014,
+  "all_measured_speed_runs_under_budget": true,
+  "fixed_novel_input_inventory": {
+    "seed": 20261019,
+    "numpy_version": "2.5.3",
+    "development_rows": 700705,
+    "distinct_source_pins": 652051,
+    "distinct_target_pins": 679079,
+    "method": "Independent empirical development source and target marginals; reject all development/validation pairs and duplicates; shuffle; disjoint sequential slices for separate fresh processes",
+    "distinct_pairs_across_all_runs": 6000000,
+    "known_development_validation_pairs_present": 0,
+    "duplicate_pairs_across_all_runs": 0,
+    "labels_read": false,
+    "holdout_read": false,
+    "files": [
+      {
+        "path": "out/v242/novel-requests/novel-1.request.csv",
+        "rows": 3000000,
+        "bytes": 106183457,
+        "sha256": "1fa56771389e6449e70da765d46a8d7c882a819038bc25d09b056ee84c4c5ae4"
+      },
+      {
+        "path": "out/v242/novel-requests/novel-2.request.csv",
+        "rows": 3000000,
+        "bytes": 106185024,
+        "sha256": "11bebc6dafd1a3bf86aa9a7581ffc7307ef232ff443026ee66fe78a4dd67b1b3"
+      }
+    ]
+  },
+  "input_sha256_rechecked_after_all_runs": {
+    "out/v242/novel-requests/novel-1.request.csv": "1fa56771389e6449e70da765d46a8d7c882a819038bc25d09b056ee84c4c5ae4",
+    "out/v242/novel-requests/novel-2.request.csv": "11bebc6dafd1a3bf86aa9a7581ffc7307ef232ff443026ee66fe78a4dd67b1b3"
+  }
+}

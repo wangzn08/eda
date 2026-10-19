@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := runtime-v254
+.DEFAULT_GOAL := runtime-budget
 RUNTIME_CXX = clang++
 RUNTIME_CXXFLAGS = -O3 -std=c++17
 ifeq ($(shell uname -s),Darwin)
@@ -10,13 +10,15 @@ RUNTIME_ARCHFLAGS ?=
 RUNTIME_LZMA_CFLAGS ?=
 RUNTIME_LZMA_LIBS ?= -llzma
 endif
-RUNTIME_DIR ?= build/runtime-v254
+RUNTIME_DIR ?= build/runtime-research
 RUNTIME_ASSETS ?= artifacts/runtime-v219
 RUNTIME_DEFINES = -DCORE_LIBLZMA=1 -DROUTING_GRAPH_ONLY=1 -DRUNTIME_COMPONENT_PROFILE=0 -DRUNTIME_COMPILED_FOREST=1 -DRUNTIME_TERMINAL_MASKS=1 -DRUNTIME_INTERVAL_MASKS=1 -DRUNTIME_CORRECTION_GATE=1 -DRUNTIME_SHORT_PACK_VERIFY=0 -DRUNTIME_BATCH_SIZE=32 -DRUNTIME_OPERATOR_CACHE=0 -DRUNTIME_REFINED_TERMINALS=1 -DRUNTIME_MASK_HOT_CODEC=0 -DRUNTIME_MASK_DIRECT=1
 RUNTIME_HEADERS = src/architecture_data.hpp src/architecture_operator_cache.hpp src/buffered_csv_reader.hpp src/buffered_csv_writer.hpp src/compact_phi_model.hpp src/compact_response_kernel.hpp src/compiled_selected_correction_gate.hpp src/compiled_selected_forest.hpp src/directional_terminal_bounds.hpp src/endpoint_bellman_profile.hpp src/initial_kernel_candidates.hpp src/mask_palette_index.hpp src/routing_search.hpp src/runtime_memory.hpp src/runtime_route_model.hpp src/runtime_short_kernel.hpp src/selected_feature_schema.hpp src/selected_physics_features.hpp src/terminal_interval_mask_catalog.hpp src/terminal_mask_catalog.hpp src/xz_decode.hpp
 RUNTIME_MODELS = correction.bin far-curves.bin near-curves.bin phi-patterns.bin source-hints.bin LIBLZMA-LICENSE.txt
-.PHONY: runtime-v254 runtime-v253 runtime-v250 runtime-v242 runtime-v274 runtime-accuracy runtime-current
-runtime-v254 runtime-current: runtime-frozen-254
+.PHONY: runtime-budget runtime-budget-fast runtime-budget-accuracy runtime-v306 runtime-v309 runtime-v254 runtime-v253 runtime-v250 runtime-v242 runtime-v274 runtime-accuracy runtime-current
+runtime-budget runtime-budget-fast runtime-current runtime-v306: runtime-frozen-306
+runtime-budget-accuracy runtime-v309: runtime-frozen-309
+runtime-v254: runtime-frozen-254
 runtime-v274 runtime-accuracy: runtime-frozen-274
 runtime-v242: runtime-frozen-242
 runtime-v250: runtime-frozen-250

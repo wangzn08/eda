@@ -1,0 +1,57 @@
+{
+  "state": "complete",
+  "fit_scope": "development labels only; static architecture port semantics",
+  "holdout_used": false,
+  "features": 56,
+  "candidates": [
+    {
+      "name": "one511",
+      "leaves": 511,
+      "trees": 1,
+      "score": 99.08285445440671,
+      "elapsed_seconds": 1.0347641659900546
+    },
+    {
+      "name": "one2047",
+      "leaves": 2047,
+      "trees": 1,
+      "score": 99.09103410023864,
+      "elapsed_seconds": 1.1240194999845698
+    },
+    {
+      "name": "one8191",
+      "leaves": 8191,
+      "trees": 1,
+      "score": 99.08692007834908,
+      "elapsed_seconds": 1.4731294169905595
+    },
+    {
+      "name": "two1023",
+      "leaves": 1023,
+      "trees": 2,
+      "score": 99.09429592692321,
+      "elapsed_seconds": 1.3408974999911152
+    },
+    {
+      "name": "four511",
+      "leaves": 511,
+      "trees": 4,
+      "score": 99.10767768294562,
+      "elapsed_seconds": 1.7515105420025066
+    },
+    {
+      "name": "eight511",
+      "leaves": 511,
+      "trees": 8,
+      "score": 99.11375822929791,
+      "elapsed_seconds": 2.706840958009707
+    },
+    {
+      "name": "sixteen511",
+      "leaves": 511,
+      "trees": 16,
+      "score": 99.11702735899819,
+      "elapsed_seconds": 4.6158918750006706
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "state": "complete",
+  "version": "287",
+  "scope": "Apple M4/macOS single process and single thread standard CSV CLI; two disjoint synthetic novel-request batches; billion extrapolation includes one initialization, not an official judge measurement",
+  "target_cpu_seconds": 600,
+  "prediction_cache": false,
+  "architecture_operator_cache": false,
+  "holdout_used": false,
+  "asset_sha256_before": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "9053e9eb5ae174662e541b5a1dee8279f320ed6f47e78762442eb0450f1645c7",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "runtime_bytes": 99367555,
+  "runs": [
+    {
+      "name": "validation",
+      "rows": 150053,
+      "total_cpu_seconds": 23.337704,
+      "initialization_cpu_seconds": 23.243761,
+      "query_cpu_seconds": 0.09394299999999944,
+      "wall_seconds": 23.895247999986168,
+      "maximum_rss_bytes": 1711292416,
+      "output_sha256": "0c7d75464c6a80bce9ab5a03dc28d5f7663703b538d581726da3d76ac4164aba",
+      "output_pin_order_and_range_verified": true,
+      "score": 99.07851452209808,
+      "all_predictions_equal_offline": true
+    },
+    {
+      "name": "novel-1",
+      "rows": 3000000,
+      "total_cpu_seconds": 24.993198,
+      "initialization_cpu_seconds": 23.242894,
+      "query_cpu_seconds": 1.7503039999999999,
+      "wall_seconds": 25.011945415986702,
+      "maximum_rss_bytes": 1711603712,
+      "output_sha256": "a779d8faa16c945882267d4bc86af7f3be2b08d09dddf2211bb624779363b0e5",
+      "output_pin_order_and_range_verified": true,
+      "query_cpu_seconds_per_request": 5.834346666666667e-07,
+      "billion_estimate_cpu_seconds": 606.6775606666666
+    },
+    {
+      "name": "novel-2",
+      "rows": 3000000,
+      "total_cpu_seconds": 25.023007,
+      "initialization_cpu_seconds": 23.276473,
+      "query_cpu_seconds": 1.7465340000000005,
+      "wall_seconds": 25.0475013749965,
+      "maximum_rss_bytes": 1711620096,
+      "output_sha256": "6189678205fa0edf38c7c1218939c03f6b06d117ddf842075c2d73b6a9fbcbaa",
+      "output_pin_order_and_range_verified": true,
+      "query_cpu_seconds_per_request": 5.821780000000001e-07,
+      "billion_estimate_cpu_seconds": 605.4544730000001
+    }
+  ],
+  "asset_sha256_after": {
+    "vertical-transients.bin": "b49799f70291848fd5d5d86512898c37e67635250087c3e67b4b3c29614a8d65",
+    "LIBLZMA-LICENSE.txt": "0b01625d853911cd0e2e088dcfb743261034a091bb379246cb25a14cc4c74bf1",
+    "vertical-far-delta.bin": "bb216cbb5c6c0581a7a53471de1bf1eb0a0ffb5f27d6fd50892bc249bfb4a3f1",
+    "core-template.bin": "ff53b1af1699bab93db66c42d767750aef7b1300af28a4386de6898192676142",
+    "horizontal-hints.bin": "9698988cbc52d367a4453310cfb9cbdb1df0bd890e4b3420a6e702331fc37811",
+    "joint-interaction.bin": "9d44a912ebc89e852a72e07a7c1382f3500d41c243d9ae8e40482c22c59c209c",
+    "horizontal-transients.bin": "ab0ac8d1405d517cdcf409d3e1b44b3ac207d3efaa27ffb6cb6f06d6e8dca1b3",
+    "estimate": "9053e9eb5ae174662e541b5a1dee8279f320ed6f47e78762442eb0450f1645c7",
+    "source-hints.bin": "a0f67e3f254fd35451fe16234d07e6ff482d798d65a0e0e873ee6a24d24251bc"
+  },
+  "validation_score": 99.07851452209808,
+  "peak_rss_bytes": 1711620096,
+  "pooled_billion_estimate_cpu_seconds": 606.0660168333334,
+  "all_measured_speed_runs_under_budget": false
+}

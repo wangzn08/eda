@@ -1,5 +1,24 @@
 # 运行快照与共享资产
 
+## 当前十分钟预算快照：V306 / V309
+
+`runtime-v306/`与`runtime-v309/`保存各自实测程序、冻结源码、生成信息和完整SHA清单；不变的周期架构文件共用`runtime-periodic-v158/`，源候选资产和许可证共用`runtime-v219/`。这些轻量目录需要组装后才能运行。
+
+```sh
+make
+make runtime-budget-accuracy
+python3 scripts/assemble_score_release.py --version 306 --output out/submission/reassembled-v306
+python3 scripts/assemble_score_release.py --version 309 --output out/submission/reassembled-v309
+```
+
+默认V306：验证99.1137582、两批新请求外推487.51/489.68秒、完整目录99,954,766 bytes。V309精度选项：验证99.1170274、551.96/580.44秒、完整目录99,859,283 bytes。均约1.712GB RSS；逐项SHA核对后，从本版源码独立重编译得到与实际测量相同的可执行文件SHA。
+
+源码构建需要C++17、zlib、liblzma及Python3标准库。自动生成的架构头无损压缩保存；V309还压缩生成树头与编译画像，重建时在临时目录展开。运行阶段不解压源码，不需要LightGBM、训练数据或黄金答案。LLVM画像只使用700705条development请求输入，未供应标签。Linux可关闭PGO重编译，性能未实测。
+
+这是本机合成新请求的CPU外推，不是官方隐藏输入成绩。完整原始验证和全部失败方案见[本轮报告](../reports/V275-V310-budget-progress.md)。后续版本只有每批外推<=600秒、RSS<=2GB、完整包<=100MB且输出/重建一致时才允许冻结。
+
+以下为历史快照。
+
 ## V274高精度快照（2026-10-19）
 
 `runtime-v274/`保存实测程序、主模型、冻结源码和构建清单，共约5.68MB；不变架构文件与`runtime-v219/`共用。轻量目录需先组装，完整提交为99,415,300 bytes。

@@ -1,0 +1,31 @@
+{
+  "objective": "technical",
+  "hard_budget_cpu_seconds": 600,
+  "selected": {
+    "version": "306",
+    "validation_score": 99.11375822929791,
+    "billion_estimate_cpu_seconds": 488.596014,
+    "worst_measured_billion_cpu_seconds": 489.6786649999999,
+    "complete_submission_bytes": 99954766,
+    "technical_proxy_assuming_consistency_100": 95.21937313343832
+  },
+  "eligible": [
+    {
+      "version": "306",
+      "validation_score": 99.11375822929791,
+      "billion_estimate_cpu_seconds": 488.596014,
+      "worst_measured_billion_cpu_seconds": 489.6786649999999,
+      "complete_submission_bytes": 99954766,
+      "technical_proxy_assuming_consistency_100": 95.21937313343832
+    },
+    {
+      "version": "309",
+      "validation_score": 99.11702735899819,
+      "billion_estimate_cpu_seconds": 566.2021290000002,
+      "worst_measured_billion_cpu_seconds": 580.4411546666665,
+      "complete_submission_bytes": 99859283,
+      "technical_proxy_assuming_consistency_100": 94.57527081219855
+    }
+  ],
+  "scope": "Local CPU extrapolation on two synthetic novel-request batches, not official judge guarantees; technical comparison assumes consistency=100 without formal five-run proof"
+}
